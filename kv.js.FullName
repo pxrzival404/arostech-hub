@@ -1,0 +1,1 @@
+"use strict";import{CacheAdaptor as a}from"./adaptor.js";export default class r extends a{constructor(e={}){super(e)}async retrieve(e){return await process.env.__NEXT_ON_PAGES__KV_SUSPENSE_CACHE?.get(this.buildCacheKey(e))??null}async update(e,s,t){const _=t?{expirationTtl:t}:{};await process.env.__NEXT_ON_PAGES__KV_SUSPENSE_CACHE?.put(this.buildCacheKey(e),s,_)}}

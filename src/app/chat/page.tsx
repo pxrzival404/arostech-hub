@@ -1,0 +1,30 @@
+'use client'
+
+export const runtime = 'edge'
+
+import { AgentChat, createAgentChat } from '@21st-sdk/nextjs'
+import { useChat } from '@ai-sdk/react'
+import theme from './theme.json'
+
+const chat = createAgentChat({
+  agent: 'my-agent',
+  tokenUrl: '/api/an-token',
+})
+
+export default function ChatPage() {
+  const { messages, sendMessage, status, stop, error } =
+    useChat({ chat })
+
+  return (
+    <div className="flex h-screen flex-col">
+      <AgentChat
+        messages={messages}
+        onSend={(msg) => sendMessage({ text: msg.content })}
+        status={status}
+        onStop={stop}
+        error={error ?? undefined}
+        theme={theme}
+      />
+    </div>
+  )
+}

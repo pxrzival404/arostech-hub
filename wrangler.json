@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dayaberkah",
+  "main": ".vercel/output/static/_worker.js/index.js",
+  "assets": {
+    "directory": ".vercel/output/static"
+  },
+  "compatibility_date": "2026-06-03",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "NEXT_PUBLIC_ROOT_DOMAIN": "dayaberkah.id",
+    "NEXTAUTH_URL": "https://dashboard.dayaberkah.id",
+    "NEXT_PUBLIC_SITE_URL": "https://dayaberkah.id",
+    "SANITY_PROJECT_ID": "3h4k8dye",
+    "SANITY_DATASET": "production",
+    "SANITY_API_VERSION": "v2026-05-21",
+    "RESEND_FROM_EMAIL": "onboarding@resend.dev",
+    "WHATSAPP_SALES_NUMBER": "6281234567890"
+  }
+}

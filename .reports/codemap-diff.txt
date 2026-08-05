@@ -1,0 +1,74 @@
+# Codemap Generation Report
+Generated: 2026-05-20
+
+## Summary
+- **Project**: Next.js 16 App Router (DBSN Website)
+- **Type**: Single app, monorepo-ready structure
+- **Files scanned**: 15 TypeScript files
+- **Codemaps created**: 5
+
+## Files Analyzed
+
+### Source Files (src/)
+```
+src/app/(dashboard)/layout.tsx   - Dashboard shell (24 lines)
+src/app/(hub)/page.tsx           - Hub homepage (95 lines)
+
+src/components/forms/TextField.tsx       - Form input component
+src/components/ui/badge.tsx              - Status badge
+src/components/ui/button.tsx             - Button with variants
+src/components/ui/card.tsx               - Card container
+src/components/ui/dialog.tsx             - Modal/dialog
+src/components/ui/input.tsx              - Text input
+src/components/ui/select.tsx             - Dropdown select
+src/components/ui/tabs.tsx               - Tab interface
+src/components/ui/index.ts               - UI exports
+
+src/lib/schema/rfq-schemas.ts            - B2G/B2B RFQ validation (80 lines)
+src/lib/schema/__tests__/rfq-schemas.test.ts - RFQ schema tests
+src/lib/utils/cn.ts                      - Tailwind class merger
+src/lib/utils/index.ts                   - Utility exports
+```
+
+### Configuration Files
+```
+package.json           - Dependencies and scripts
+tsconfig.json          - TypeScript configuration
+next.config.ts         - Next.js configuration
+```
+
+## Codemaps Created
+
+| File | Token Estimate | Purpose |
+|------|----------------|---------|
+| `architecture.md` | ~400 | High-level system topology, route groups, phase status |
+| `backend.md` | ~300 | Planned API routes, middleware, service layer |
+| `frontend.md` | ~350 | Page tree, component hierarchy, UI dependencies |
+| `data.md` | ~250 | RFQ schema definitions, planned database tables |
+| `dependencies.md` | ~250 | Runtime packages, external services |
+
+## Architecture Notes
+
+### Current State (Phase 1)
+- Basic UI component library (Radix UI primitives)
+- RFQ validation schemas for B2G and B2B segments
+- Dashboard layout shell
+- Hub homepage with portfolio showcase
+
+### Planned (Phase 2)
+- Sanity.io integration for CMS
+- Neon Postgres + Prisma for transactional data
+- Auth.js v5 for session management
+- Cloudflare Pages hosting
+- Resend + Telegram notifications
+
+## Staleness Warnings
+- No previous codemaps found (first-time generation)
+- CLAUDE.md last updated: 2026-05-13 (7 days ago) — still fresh
+
+## Recommendations
+
+1. **Priority**: Complete Phase 2 backend implementation
+2. **Testing**: Add E2E tests for critical user flows (RFQ submission)
+3. **Docs**: Update CLAUDE.md when Phase 2 services are integrated
+4. **Codemaps**: Regenerate after major feature additions or refactoring

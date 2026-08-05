@@ -1,0 +1,33 @@
+{
+  "name": "website-studio",
+  "private": true,
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Everything Claude Code",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "keywords": [],
+  "dependencies": {
+    "sanity": "^6.0.0",
+    "styled-components": "^6.1.15",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^3.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/styled-components": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

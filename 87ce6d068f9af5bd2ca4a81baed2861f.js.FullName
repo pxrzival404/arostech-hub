@@ -1,0 +1,6 @@
+"use strict";var _={},E=(A,e,T)=>(_.__REACT_LOADABLE_MANIFEST=A.__REACT_LOADABLE_MANIFEST="{}",_.__NEXT_FONT_MANIFEST=A.__NEXT_FONT_MANIFEST=`{
+  "app": {},
+  "appUsingSizeAdjust": false,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}`,_);export{E as __getNamedExports};

@@ -1,0 +1,200 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+enum Segment {
+  B2G
+  B2B
+}
+
+enum SubmissionStatus {
+  RECEIVED
+  CONTACTED
+  QUALIFIED
+  DISQUALIFIED
+}
+
+enum DashboardAccessStatus {
+  NOT_ELIGIBLE
+  PENDING
+  GRANTED
+  REVOKED
+}
+
+enum Role {
+  ADMIN
+  VIEWER
+  CLIENT
+}
+
+enum TrackingScopeType {
+  PROJECT
+  ORDER
+}
+
+model Lead {
+  id                       String                @id @default(cuid())
+  createdAt                DateTime              @default(now()) @map("created_at")
+  updatedAt                DateTime              @updatedAt @map("updated_at")
+  segment                  Segment
+  
+  // Source tracking
+  sourceDomain             String                @map("source_domain") @db.VarChar(255)
+  sourcePagePath           String                @map("source_page_path") @db.VarChar(512)
+  sourceCampaignTag        String?               @map("source_campaign_tag") @db.VarChar(255)
+  utmSource                String?               @map("utm_source") @db.VarChar(255)
+  utmMedium                String?               @map("utm_medium") @db.VarChar(255)
+  utmCampaign              String?               @map("utm_campaign") @db.VarChar(255)
+  
+  // Contact information
+  contactName              String?               @map("contact_name") @db.VarChar(255)
+  contactEmail             String?               @unique @map("contact_email") @db.VarChar(255)
+  contactPhone             String?               @map("contact_phone") @db.VarChar(50)
+  companyName              String?               @map("company_name") @db.VarChar(255)
+  
+  // RFQ details
+  productCategory          String?               @map("product_category") @db.VarChar(255)
+  quantity                 Int?                  @map("quantity")
+  projectScope             String?               @map("project_scope") @db.Text
+  timeline                 String?               @map("timeline") @db.VarChar(255)
+  procurementType          String?               @map("procurement_type") @db.VarChar(255) // B2G only
+  notes                    String?               @map("notes") @db.Text
+  
+  // Status tracking
+  submissionStatus         SubmissionStatus      @default(RECEIVED) @map("submission_status")
+  fallbackTriggered        Boolean               @default(false) @map("fallback_triggered")
+  fallbackWaUrl            String?               @map("fallback_wa_url") @db.Text
+  
+  // Dashboard provisioning
+  trackingProjectId        String?               @map("tracking_project_id") @db.VarChar(255)
+  dashboardAccessGrantedAt DateTime?             @map("dashboard_access_granted_at")
+  dashboardAccessStatus    DashboardAccessStatus @default(NOT_ELIGIBLE) @map("dashboard_access_status")
+  
+  // Notification queue jobs
+  notificationJobs         NotificationJob[]
+  
+  @@index([segment, createdAt])
+  @@index([sourceDomain])
+  @@index([contactEmail])
+  @@index([submissionStatus])
+  @@map("leads")
+}
+
+model User {
+  id                String             @id @default(cuid())
+  email             String             @unique @map("email") @db.VarChar(255)
+  emailVerified     DateTime?          @map("email_verified")
+  hashedPassword    String?            @map("hashed_password")
+  image             String?
+  name              String             @map("name") @db.VarChar(255)
+  role              Role               @default(ADMIN)
+  createdAt         DateTime           @default(now()) @map("created_at")
+  
+  // Lead linkage (soft delete)
+  linkedLeadId      String?            @map("linked_lead_id") @db.VarChar(255)
+  clientCompanyName String?            @map("client_company_name") @db.VarChar(255)
+  
+  // Tracking access scope
+  trackingScopeType TrackingScopeType? @map("tracking_scope_type")
+  trackingScopeIds  Json?              @map("tracking_scope_ids") // Array of authorized IDs
+  
+  lastLoginAt       DateTime?          @map("last_login_at")
+  isActive          Boolean            @default(true) @map("is_active")
+  
+  // Auth.js relations
+  accounts          Account[]
+  sessions          Session[]
+  
+  @@index([email])
+  @@index([linkedLeadId])
+  @@index([role])
+  @@map("users")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model RedirectMap {
+  legacyUrl String @id @map("legacy_url") @db.VarChar(1024)
+  targetUrl String @map("target_url") @db.VarChar(1024)
+  spoke     String @map("spoke") @db.VarChar(100)
+  hitCount  Int    @default(0) @map("hit_count")
+  
+  @@index([legacyUrl])
+  @@map("redirect_map")
+}
+
+enum NotificationType {
+  EMAIL_ACK
+  EMAIL_INTERNAL
+  TELEGRAM
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model NotificationJob {
+  id            String           @id @default(cuid())
+  type          NotificationType
+  leadId        String           @map("lead_id")
+  lead          Lead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  payload       Json
+  status        JobStatus        @default(PENDING)
+  attempts      Int              @default(0)
+  maxAttempts   Int              @default(3)
+  lastAttemptAt DateTime?        @map("last_attempt_at")
+  nextAttemptAt DateTime?        @map("next_attempt_at")
+  errorLog      String?          @map("error_log") @db.Text
+  createdAt     DateTime         @default(now()) @map("created_at")
+  updatedAt     DateTime         @updatedAt @map("updated_at")
+
+  @@index([status, nextAttemptAt])
+  @@index([leadId])
+  @@map("notification_jobs")
+}

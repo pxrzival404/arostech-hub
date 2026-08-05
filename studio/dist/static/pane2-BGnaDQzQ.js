@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-Cyuzqnbw.js";import{h as t,o as n}from"./sanity-CEnciWOA.js";e((()=>{t()}))();export{n as default};
