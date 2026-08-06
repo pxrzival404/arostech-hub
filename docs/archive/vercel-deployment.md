@@ -1,5 +1,5 @@
 > [!CAUTION]
-> **Archived 2026-07-21.** Vercel deployment is deprecated per [ADR-0001](../../adr/0001-migrate-fully-to-cloudflare-pages.md). Staging and production both run on Cloudflare Pages. This document is retained for historical reference only — the runtime, env vars, and routing behavior described here no longer apply. See [../core/development/cloudflare-deployment.md](../core/development/cloudflare-deployment.md) for the active guide.
+> **Archived 2026-07-21.** Vercel deployment is deprecated per [ADR-0001](../adr/0001-migrate-fully-to-cloudflare-pages.md). Staging and production both run on Cloudflare Pages. This document is retained for historical reference only — the runtime, env vars, and routing behavior described here no longer apply. See [../core/development/cloudflare-deployment.md](../core/development/cloudflare-deployment.md) for the active guide.
 
 # Vercel Deployment Guide (Testing Phase)
 
@@ -13,7 +13,7 @@
 
 The DBSN website is currently deployed on Vercel for testing and preview
 purposes. This is a temporary deployment before migrating to the production
-target: Cloudflare Pages at `sentradaya.com`.
+target: Cloudflare Pages at `dayaberkah.id`.
 
 ### Why Vercel First?
 - Faster iteration during development
@@ -80,7 +80,7 @@ Set these in the Vercel Dashboard under
 | Dashboard | ❌ Requires custom domain | ✅ Via CNAME records |
 | 301 Redirects | ⚠️ Requires DATABASE_URL | ✅ Full support |
 | Edge Runtime | ⚠️ Partial (see Known Issues) | ✅ Native Workers |
-| Custom domain | ❌ Not configured | ✅ sentradaya.com |
+| Custom domain | ❌ Not configured | ✅ dayaberkah.id |
 
 ---
 
@@ -89,7 +89,7 @@ Set these in the Vercel Dashboard under
 ### Only 1 Page Displays
 The Hub currently shows only the homepage. Clicking navigation links
 results in blank pages or errors. See the troubleshooting section in
-[local-setup.md](./local-setup.md#only-one-page-displays) for root
+[local-setup.md](../core/development/local-setup.md#troubleshooting) for root
 cause analysis and fix instructions.
 
 ---
@@ -97,7 +97,7 @@ cause analysis and fix instructions.
 ## Relationship to Cloudflare Deployment
 
 This guide is for the **testing phase only**. The production deployment
-target is Cloudflare Pages. See [cloudflare-deployment.md](./cloudflare-deployment.md)
+target is Cloudflare Pages. See [cloudflare-deployment.md](../core/development/cloudflare-deployment.md)
 for the production deployment guide.
 
 **Migration checklist** (for when Vercel → Cloudflare migration happens):

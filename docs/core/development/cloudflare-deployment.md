@@ -13,8 +13,8 @@ The application is built and compiled into a worker and static assets using `@cl
                              │ (Custom Domains CNAME)
          ┌───────────────────┼───────────────────┐
          ▼                   ▼                   ▼
- sentradaya.com      pju.sentradaya.com   dashboard.sentradaya.com
- (Hub Router)          (Spoke Router)     (Secure Tracking Portal)
+  dayaberkah.id       pju.dayaberkah.id    dashboard.dayaberkah.id
+  (Hub Router)          (Spoke Router)     (Secure Tracking Portal)
          │                   │                   │
          └───────────────────┼───────────────────┘
                              ▼
@@ -34,13 +34,13 @@ The hub-and-spoke routing maps 6 domains to a single Cloudflare Pages deployment
 
 | Subdomain Hostname | Route Group Mapped | Purpose |
 |--------------------|--------------------|---------|
-| `sentradaya.com` (apex) | `/(hub)` | Corporate trust hub site |
-| `www.sentradaya.com` | `/(hub)` | Corporate trust hub site alias |
-| `pju.sentradaya.com` | `/(spokes)/pju` | Product spoke for PJU Street Lights |
-| `solarcell.sentradaya.com` | `/(spokes)/solarcell` | Product spoke for Solar Cells |
-| `alatpetir.sentradaya.com` | `/(spokes)/alatpetir` | Product spoke for Lightning Protection |
-| `baterai.sentradaya.com` | `/(spokes)/baterai` | Product spoke for Batteries |
-| `dashboard.sentradaya.com` | `/(dashboard)` | Secure authenticated client portal |
+| `dayaberkah.id` (apex) | `/(hub)` | Corporate trust hub site |
+| `www.dayaberkah.id` | `/(hub)` | Corporate trust hub site alias |
+| `pju.dayaberkah.id` | `/(spokes)/pju` | Product spoke for PJU Street Lights |
+| `solarcell.dayaberkah.id` | `/(spokes)/solarcell` | Product spoke for Solar Cells |
+| `alatpetir.dayaberkah.id` | `/(spokes)/alatpetir` | Product spoke for Lightning Protection |
+| `baterai.dayaberkah.id` | `/(spokes)/baterai` | Product spoke for Batteries |
+| `dashboard.dayaberkah.id` | `/(dashboard)` | Secure authenticated client portal |
 
 ### B. DNS CNAME Configuration
 
@@ -64,8 +64,8 @@ All environments variables from `.env.example` must be set up in Cloudflare to e
 
 | Key | Example Value / Setup | Description |
 |-----|----------------------|-------------|
-| `NEXT_PUBLIC_ROOT_DOMAIN` | `sentradaya.com` | Root domain for extracting subdomains |
-| `NEXTAUTH_URL` | `https://sentradaya.com` | NextAuth callback base URL |
+| `NEXT_PUBLIC_ROOT_DOMAIN` | `dayaberkah.id` | Root domain for extracting subdomains |
+| `NEXTAUTH_URL` | `https://dayaberkah.id` | NextAuth callback base URL |
 | `SANITY_PROJECT_ID` | `3h4k8dye` | Sanity project identifier |
 | `SANITY_DATASET` | `production` | Active Sanity dataset name |
 | `SANITY_API_VERSION` | `v2026-05-21` | Version for queries |

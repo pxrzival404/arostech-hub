@@ -102,7 +102,7 @@ Build hub pages, spoke pages, RFQ forms, and authentication system.
 
 **Description:** Set up Sanity.io for content federation across hub and spokes.
 
-**Note:** Review: REQUEST CHANGES — bugfixes pending (see [sanity-cms-review.md](file:///d:/CLAUDE-PROJECT/website/.claude/reviews/sanity-cms-review.md))
+**Note:** Review: REQUEST CHANGES — bugfixes pending (see `.claude/reviews/sanity-cms-review.md`, untracked in `docs/` — verify path locally)
 
 **Tasks:**
 - ✅ Configure Sanity client
@@ -121,7 +121,7 @@ Build hub pages, spoke pages, RFQ forms, and authentication system.
 
 **Description:** Implement middleware-based routing for hub, spokes, and dashboard.
 
-**Note:** Review: APPROVED — 155/155 tests passing (see [subdomain-middleware-review.md](file:///d:/CLAUDE-PROJECT/website/.claude/reviews/subdomain-middleware-review.md))
+**Note:** Review: APPROVED — 155/155 tests passing (see `.claude/reviews/subdomain-middleware-review.md`, untracked in `docs/` — verify path locally)
 
 **Tasks:**
 - ✅ Create `middleware.ts` file
@@ -137,15 +137,15 @@ Build hub pages, spoke pages, RFQ forms, and authentication system.
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host')?.split(':')[0] || '';
 
-  if (hostname === 'sentradaya.com') {
+  if (hostname === 'dayaberkah.id') {
     return NextResponse.rewrite(new URL('/', request.url));
   }
 
-  if (hostname === 'pju.sentradaya.com') {
+  if (hostname === 'pju.dayaberkah.id') {
     return NextResponse.rewrite(new URL('/(spokes)/pju', request.url));
   }
 
-  if (hostname === 'dashboard.sentradaya.com') {
+  if (hostname === 'dashboard.dayaberkah.id') {
     return NextResponse.rewrite(new URL('/(dashboard)', request.url));
   }
 
@@ -154,9 +154,9 @@ export function middleware(request: NextRequest) {
 ```
 
 **Success Criteria:**
-- Hub routes correctly via `sentradaya.com`
+- Hub routes correctly via `dayaberkah.id`
 - Spokes route correctly via their subdomains
-- Dashboard routes correctly via `dashboard.sentradaya.com`
+- Dashboard routes correctly via `dashboard.dayaberkah.id`
 - Local testing works with `lvh.me`
 
 ---
@@ -248,7 +248,7 @@ Trigger rollback if any of the following occur:
 
 | Term | Definition |
 |------|------------|
-| **Hub** | Root domain `sentradaya.com` — corporate trust center |
+| **Hub** | Root domain `dayaberkah.id` — corporate trust center |
 | **Spoke** | Product subdomains (`pju.*`, `solarcell.*`, etc.) |
 | **B2G** | Business-to-Government segment (procurement officers, PPK, BUMN) |
 | **B2B** | Business-to-Business segment (private sector buyers) |
@@ -261,10 +261,10 @@ Trigger rollback if any of the following occur:
 
 - [PRD v3.1](../prd/prd-v3.md) — Business requirements and user journeys
 - [TDD v1](../architecture/tdd-v1.md) — Technical design and implementation
-- [CLAUDE.md](../../../../CLAUDE.md) — Project context and architecture
-- [Local Setup](./local-setup.md) — Development environment configuration
-- [Mocking Specs](../testing/mocking-specs.md) — Testing patterns for external services
+- [AGENTS.md](../../AGENTS.md) — Project context, rules, and architecture
+- [Local Setup](./development/local-setup.md) — Development environment configuration
+- [Mocking Specs](./testing/mocking-specs.md) — Testing patterns for external services
 
 ---
 
-*Last modified: 2026-06-03*
+*Last modified: 2026-08-06*

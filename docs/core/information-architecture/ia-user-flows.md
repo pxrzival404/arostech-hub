@@ -1,8 +1,9 @@
 # Arsitektur Informasi — DBSN Digital Ecosystem
 ## Bagian 3: Alur Pengguna Inti (Core User Flows)
 
-**Proyek:** DBSN Centralized Digital Ecosystem  
-**Berbasis:** PRD v3.0 + Jawaban Klarifikasi IA  
+**Proyek:** DBSN Centralized Digital Ecosystem — dayaberkah.id  
+**Berbasis:** PRD v3.1  
+**Tanggal Update:** 2026-08-06  
 
 ---
 
@@ -12,7 +13,7 @@
 
 **Persona:** PPK / Staf Pengadaan / Pejabat BUMN  
 **Tujuan:** Validasi kepatuhan vendor (SNI/TKDN/LKPP), verifikasi referensi proyek, kemudian ajukan RFQ formal.  
-**Entry Point Utama:** Hub (sentradaya.com) via pencarian langsung atau referensi LKPP.
+**Entry Point Utama:** Hub (dayaberkah.id) via pencarian langsung atau referensi LKPP.
 
 ```mermaid
 ---
@@ -24,10 +25,10 @@ flowchart TD
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
     START(["Pejabat Pengadaan Pemerintah"])
-    START --> ENTRY["Masuk: sentradaya.com Beranda Hub"]
+    START --> ENTRY["Masuk: dayaberkah.id Beranda Hub"]
     ENTRY --> INTENT{"Tujuan Utama?"}
-    INTENT -->|"Validasi Legalitas"| CERT["Pusat Sertifikasi /sertifikasi"]
-    INTENT -->|"Lihat Referensi Proyek"| PORT["Portofolio Proyek /portofolio"]
+    INTENT -->|"Validasi Legalitas"| CERT["Pusat Sertifikasi /certifications"]
+    INTENT -->|"Lihat Referensi Proyek"| PORT["Portofolio Proyek /portfolio"]
     INTENT -->|"Cari Info Produk"| SPOKE["Navigasi ke Spoke Produk"]
     CERT --> CTYPE["Pilih Tipe: SNI / TKDN / LKPP / ISO"]
     CTYPE --> CVIEW["Lihat Detail Sertifikat"]
@@ -40,16 +41,16 @@ flowchart TD
     CDL --> READY{"Siap Mengajukan Penawaran?"}
     PVIEW --> READY
     SCERT --> READY
-    READY -->|"Ya"| RFQPAGE["Halaman Ajukan Penawaran\n/permintaan-penawaran"]
+    READY -->|"Ya"| RFQPAGE["Formulir RFQ\n/contact"]
     READY -->|"Belum"| BROWSE["Lanjut Telusuri - Kembali ke Hub"]
     BROWSE --> INTENT
     RFQPAGE --> SEGMENT["Pilih Segmen: Instansi Pemerintah"]
     SEGMENT --> B2GFORM["Isi Formulir B2G"]
-    B2GFORM --> SUBMIT{"Kirim Formulir"}
+    B2GFORM --> SUBMIT{"Kirim Formulir\nPOST /api/rfq"}
     SUBMIT -->|"Berhasil"| CONFIRM["Konfirmasi: Email ACK\n+ Telegram Alert ke Sales"]
     SUBMIT -->|"Gagal"| FALLBACK["Fallback: WhatsApp Pre-filled"]
     CONFIRM --> QUALIFY{"Terkualifikasi oleh Sales?"}
-    QUALIFY -->|"Ya"| PROVISION["Akun Dashboard Dibuat\ndi dashboard.sentradaya.com"]
+    QUALIFY -->|"Ya"| PROVISION["Akun Dashboard Dibuat\ndi dashboard.dayaberkah.id"]
     QUALIFY -->|"Belum"| FOLLOWUP["Follow-up Sales Standar"]
     PROVISION --> TRACKING["Akses Pelacakan Status Proyek"]
     class START entry
@@ -69,8 +70,8 @@ flowchart TD
 | 2b | Portofolio | Filter proyek per sektor pemerintah | `portfolio_view` |
 | 2c | Spoke PDP | Verifikasi TKDN/SNI di halaman produk | `hub_to_spoke_click` |
 | 3 | Detail Sertifikat | Unduh dokumen sertifikat | `file_download` |
-| 4 | Ajukan Penawaran | Pilih segmen B2G, isi formulir | `rfq_start` |
-| 5 | Formulir B2G | Kirim formulir RFQ | `rfq_submit_attempt` → `rfq_submit_success` |
+| 4 | Ajukan Penawaran | Pilih segmen B2G pada Halaman Kontak `/contact` | `rfq_start` |
+| 5 | Formulir B2G | Kirim formulir RFQ ke `/api/rfq` | `rfq_submit_attempt` → `rfq_submit_success` |
 | 6 | Konfirmasi | Terima email acknowledgment | - |
 | 7 | Dashboard | Login dan lihat status proyek | `dashboard_login_success` → `tracking_status_view` |
 
@@ -94,27 +95,27 @@ flowchart TD
     START(["Pembeli B2B Sektor Swasta"])
     START --> ENTRY{"Titik Masuk?"}
     ENTRY -->|"SEO / Organik"| SPOKE["Masuk Langsung ke Spoke Produk"]
-    ENTRY -->|"Direct / Kampanye"| HUB["Masuk: sentradaya.com Hub"]
+    ENTRY -->|"Direct / Kampanye"| HUB["Masuk: dayaberkah.id Hub"]
     HUB --> HUBCTA["Pilih Produk via Mega Menu atau Grid"]
     HUBCTA --> SPOKE
     SPOKE --> SPHOME["Beranda Spoke: Produk Unggulan"]
-    SPHOME --> CATALOG["Katalog Produk /katalog"]
+    SPHOME --> CATALOG["Katalog Produk /products"]
     CATALOG --> LINE["Pilih Lini Produk"]
     LINE --> SUBCAT["Pilih Sub-kategori"]
-    SUBCAT --> PDP["Detail Produk - PDP"]
+    SUBCAT --> PDP["Detail Produk - PDP /products/[slug]"]
     PDP --> ACTION{"Aksi Konversi?"}
-    ACTION -->|"Ajukan Penawaran"| RFQPAGE["Halaman RFQ /permintaan-penawaran\ndengan param produk=slug"]
+    ACTION -->|"Ajukan Penawaran"| RFQPAGE["Form/Modal RFQ /contact\ndengan param produk=slug"]
     ACTION -->|"Kontak Cepat"| WHATSAPP["WhatsApp Click-to-Chat\nGA4: whatsapp_click"]
     ACTION -->|"Unduh Dokumen"| DOWNLOAD["Unduh Datasheet PDF\nGA4: file_download"]
-    ACTION -->|"Baca Konten"| ARTIKEL["Artikel Spoke /artikel\nGA4: article_view"]
-    ARTIKEL --> ARTDET["Detail Artikel\nKonten Edukasi & Produk Terkait"]
+    ACTION -->|"Baca Konten"| ARTIKEL["Artikel Spoke /articles\nGA4: article_view"]
+    ARTIKEL --> ARTDET["Detail Artikel /articles/[slug]\nKonten Edukasi & Produk Terkait"]
     ARTDET --> REENGAGE2["Re-engagement CTA:\nAjukan Penawaran atau WhatsApp"]
     REENGAGE2 --> RFQPAGE
     DOWNLOAD --> REENGAGE["Re-engagement CTA:\nAjukan Penawaran atau WhatsApp"]
     REENGAGE --> RFQPAGE
     RFQPAGE --> SEGMENT["Pilih Segmen: Perusahaan Swasta"]
     SEGMENT --> B2BFORM["Isi Formulir B2B: Produk pre-filled"]
-    B2BFORM --> SUBMIT{"Kirim Formulir"}
+    B2BFORM --> SUBMIT{"Kirim Formulir\nPOST /api/rfq"}
     SUBMIT -->|"Berhasil"| CONFIRM["Konfirmasi: Email ACK + Telegram Alert"]
     SUBMIT -->|"Gagal"| FALLBACK["Fallback: WhatsApp Pre-filled"]
     CONFIRM --> QUALIFY{"Terkualifikasi?"}
@@ -139,10 +140,10 @@ flowchart TD
 | 3 | Detail Produk (PDP) | Baca spesifikasi, lihat gambar | - |
 | 4a | PDP | Unduh datasheet | `file_download` |
 | 4b | PDP | Klik WhatsApp | `whatsapp_click` |
-| 4c | Ajukan Penawaran | Klik CTA, formulir pre-filled | `rfq_start` |
+| 4c | Halaman Kontak / PDP | Klik CTA Ajukan Penawaran | `rfq_start` |
 | 4d | Artikel Spoke | Baca konten edukasi produk | `article_view` |
 | 5 | Detail Artikel | Baca artikel lengkap, klik CTA re-engagement | `article_cta_click` |
-| 6 | Formulir B2B | Kirim formulir | `rfq_submit_attempt` → `rfq_submit_success` |
+| 6 | Formulir B2B | Kirim formulir ke `/api/rfq` | `rfq_submit_attempt` → `rfq_submit_success` |
 | 7 | Konfirmasi | Terima email acknowledgment | - |
 | 8 | Dashboard | Login dan lihat status pesanan | `dashboard_login_success` → `tracking_status_view` |
 
@@ -203,7 +204,3 @@ flowchart TD
 | **1** | [ia-strategy-navigation.md](./ia-strategy-navigation.md) | Strategi IA, prinsip desain, sistem navigasi global |
 | **2** | [ia-sitemaps.md](./ia-sitemaps.md) | Sitemap Hub, Spoke template, Dashboard |
 | **3** | [ia-user-flows.md](./ia-user-flows.md) | Alur B2G, alur B2B, alur fallback |
-
----
-
-*Dokumen ini siap digunakan oleh tim UI/UX untuk wireframing dan prototyping.*

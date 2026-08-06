@@ -90,12 +90,12 @@ flowchart TD
     User["👤 Users (B2G / B2B / Admin)"]
     
     subgraph Domains["Public Layer"]
-        HUB["🏢 sentradaya.com\nHub (Corporate Trust)"]
-        PJU["🌐 pju.sentradaya.com\nPJU / Street Lighting"]
-        SOL["🌐 solarcell.sentradaya.com\nSolar Cell"]
-        LGT["🌐 alatpetir.sentradaya.com\nLightning Protection"]
-        BAT["🌐 baterai.sentradaya.com\nBattery (Extensible)"]
-        DASH["🔐 dashboard.sentradaya.com\nClient Tracking Portal"]
+        HUB["🏢 dayaberkah.id\nHub (Corporate Trust)"]
+        PJU["🌐 pju.dayaberkah.id\nPJU / Street Lighting"]
+        SOL["🌐 solarcell.dayaberkah.id\nSolar Cell"]
+        LGT["🌐 alatpetir.dayaberkah.id\nLightning Protection"]
+        BAT["🌐 baterai.dayaberkah.id\nBattery (Extensible)"]
+        DASH["🔐 dashboard.dayaberkah.id\nClient Tracking Portal"]
     end
     
     subgraph Edge["Edge Layer"]
@@ -217,13 +217,13 @@ export default function middleware(request: NextRequest) {
 
 ```
 src/app/
-├── (hub)/              # Hub root pages (sentradaya.com)
+├── (hub)/              # Hub root pages (dayaberkah.id)
 ├── (spokes)/            # Product spoke pages (pju, solarcell, alatpetir, baterai)
 │   ├── pju/
 │   ├── solarcell/
 │   ├── alatpetir/
 │   └── baterai/
-├── dashboard/           # Client tracking portal (dashboard.sentradaya.com) — flat route, not route group
+├── dashboard/           # Client tracking portal (dashboard.dayaberkah.id) — flat route, not route group
 └── api/                  # API routes (shared across all domains)
 ```
 
@@ -233,9 +233,9 @@ Sessions must be scoped correctly to prevent cross-domain leakage:
 
 | Domain | Session Scope | Purpose |
 |---------|---------------|---------|
-| sentradaya.com | Anonymous | Public browsing |
+| dayaberkah.id | Anonymous | Public browsing |
 | Product spokes | Anonymous | Product browsing and RFQ initiation |
-| dashboard.sentradaya.com | Authenticated | Secure client access only |
+| dashboard.dayaberkah.id | Authenticated | Secure client access only |
 
 ```typescript
 // Auth.js configuration for cross-domain sessions
@@ -244,7 +244,7 @@ export const authOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       // Dashboard access requires explicit provisioning
-      if (host === 'dashboard.sentradaya.com') {
+      if (host === 'dashboard.dayaberkah.id') {
         const hasAccess = await checkDashboardAccess(user.email);
         if (!hasAccess) {
           throw new Error('Dashboard access not granted');
@@ -398,13 +398,13 @@ describe('Lead Repository', () => {
     it('should create lead with source attribution', async () => {
       const lead = await leadRepo.create({
         segment: 'B2G',
-        sourceDomain: 'sentradaya.com',
+        sourceDomain: 'dayaberkah.id',
         contactEmail: 'test@example.com',
         // ...
       });
       
       expect(lead.segment).toBe('B2G');
-      expect(lead.sourceDomain).toBe('sentradaya.com');
+      expect(lead.sourceDomain).toBe('dayaberkah.id');
       expect(lead.id).toBeDefined();
       expect(lead.createdAt).toBeDefined();
     });
@@ -521,7 +521,7 @@ describe('POST /api/rfq', () => {
     it('should create lead and return 201', async () => {
       const validPayload = {
         segment: 'B2G',
-        sourceDomain: 'sentradaya.com',
+        sourceDomain: 'dayaberkah.id',
         contactEmail: 'test@example.com',
         contactName: 'Test User',
         companyName: 'PT Test',
@@ -980,7 +980,7 @@ describe('Performance Targets', () => {
 describe('RFQ Submission Flow', () => {
   test('complete success path', async ({ page }) => {
     // Navigate to spoke RFQ form
-    await page.goto('https://pju.sentradaya.com/rfq');
+    await page.goto('https://pju.dayaberkah.id/contact');
     
     // Fill B2G form
     await page.fill('[name="contact_name"]', 'John Doe');
@@ -1008,7 +1008,7 @@ describe('RFQ Submission Flow', () => {
     // Mock API to return 500
     mockApiResponse('/api/rfq', 500);
     
-    await page.goto('https://pju.sentradaya.com/rfq');
+    await page.goto('https://pju.dayaberkah.id/contact');
     await page.fill('[name="contact_email"]', 'john@example.com');
     await page.click('[type="submit"]');
     
@@ -1029,7 +1029,7 @@ describe('RFQ Submission Flow', () => {
 describe('Dashboard Access Flow', () => {
   test('client can access own tracking data', async ({ page }) => {
     // Login as client
-    await page.goto('https://dashboard.sentradaya.com/login');
+    await page.goto('https://dashboard.dayaberkah.id/login');
     await page.fill('[name="email"]', 'client@example.com');
     await page.fill('[name="password"]', 'password');
     await page.click('[type="submit"]');

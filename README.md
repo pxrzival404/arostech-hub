@@ -132,17 +132,15 @@ Execute these scripts during development and testing:
 
 ## 📖 Project Documentation Index
 
-Detailed guides are located inside the `/docs` directory:
+Full documentation index: **[`docs/README.md`](docs/README.md)**
 
-### Architecture Reference
-* 📐 [System Architecture Guide](file:///docs/core/architecture/architecture.md) — Structural design, domain mappings, and stack decisions.
-* 🔀 [Middleware & Routing Manual](file:///docs/core/architecture/middleware-routing.md) — How hostnames resolve at the Edge.
-* 🧪 [Test-Driven Development Specs](file:///docs/core/architecture/tdd-v1.md) — Test strategies and mock configurations.
-
-### Developer Playbooks
-* 🔧 [Local Setup & Hosts Guide](file:///docs/core/development/local-setup.md) — Detailed instructions on host configurations and env setup.
-* 🪵 [Sanity CMS Integration Guide](file:///docs/core/development/sanity-cms-guide.md) — GROQ queries, cache invalidations, and image optimizations.
-* 🧪 [Jest & Playwright Testing Guide](file:///docs/core/development/testing-guide.md) — Patterns for unit, integration, and E2E testing.
+Frequently used entry points:
+* 📐 [System Architecture Guide](docs/core/architecture/architecture.md) — Structural design, domain mappings, and stack decisions.
+* 🔀 [Middleware & Routing Manual](docs/core/architecture/middleware-routing.md) — How hostnames resolve at the Edge.
+* 🧪 [Test-Driven Development Specs](docs/core/architecture/tdd-v1.md) — Test strategies and mock configurations.
+* 🔧 [Local Setup & Hosts Guide](docs/core/development/local-setup.md) — Host configurations and env setup.
+* 🪵 [Sanity CMS Integration Guide](docs/core/development/sanity-cms-guide.md) — GROQ queries, cache invalidations, and image optimizations.
+* 🧪 [Jest & Playwright Testing Guide](docs/core/development/testing-guide.md) — Patterns for unit, integration, and E2E testing.
 
 ---
 

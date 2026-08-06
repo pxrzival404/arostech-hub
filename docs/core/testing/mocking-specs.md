@@ -88,7 +88,7 @@ describe('LeadRepository', () => {
   it('should create lead with source attribution', async () => {
     const leadData = {
       segment: 'B2G' as const,
-      sourceDomain: 'sentradaya.com',
+      sourceDomain: 'dayaberkah.id',
       contactEmail: 'test@example.com',
     };
 
@@ -103,7 +103,7 @@ describe('LeadRepository', () => {
     expect(mockClient.lead.create).toHaveBeenCalledWith({
       data: expect.objectContaining({
         segment: 'B2G',
-        sourceDomain: 'sentradaya.com',
+        sourceDomain: 'dayaberkah.id',
         contactEmail: 'test@example.com',
       }),
     });
@@ -319,7 +319,7 @@ export const mockResend = {
 export const mockResendSend = {
   success: jest.fn().mockResolvedValue({
     id: 'email-abc123',
-    from: 'noreply@sentradaya.com',
+    from: 'noreply@dayaberkah.id',
     to: 'recipient@example.com',
     created_at: '2026-05-20T10:00:00Z',
   }),
@@ -353,7 +353,7 @@ describe('EmailService', () => {
     });
 
     expect(resend.emails.send).toHaveBeenCalledWith({
-      from: 'noreply@sentradaya.com',
+      from: 'noreply@dayaberkah.id',
       to: 'customer@example.com',
       subject: expect.stringContaining('RFQ Received'),
       html: expect.stringContaining('lead-123'),
@@ -381,7 +381,7 @@ it('should use correct template for client provisioning', async () => {
 
   await sendClientProvisioningEmail({
     to: 'client@example.com',
-    dashboardUrl: 'https://dashboard.sentradaya.com',
+    dashboardUrl: 'https://dashboard.dayaberkah.id',
     tempPassword: 'TempPass123!',
   });
 
@@ -560,7 +560,7 @@ it('should handle rate limiting with backoff', async () => {
 export const mockLead = (overrides = {}) => ({
   id: 'lead-123',
   segment: 'B2G' as const,
-  sourceDomain: 'sentradaya.com',
+  sourceDomain: 'dayaberkah.id',
   contactEmail: 'test@example.com',
   contactName: 'Test User',
   createdAt: new Date('2026-05-20T10:00:00Z'),
@@ -579,7 +579,7 @@ export const mockProduct = (overrides = {}) => ({
 
 export const mockEmailResponse = (overrides = {}) => ({
   id: 'email-abc123',
-  from: 'noreply@sentradaya.com',
+  from: 'noreply@dayaberkah.id',
   to: 'test@example.com',
   created_at: '2026-05-20T10:00:00Z',
   ...overrides,

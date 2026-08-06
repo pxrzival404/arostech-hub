@@ -1,6 +1,9 @@
 # Dokumen Persyaratan Produk (PRD)
 ## Ekosistem Digital Terpadu DBSN — Pendekatan Berbasis Segmen Pelanggan
 
+> [!NOTE]
+> **Executive Companion Notice:** This document serves as the executive & segment-focused companion to the technical [**PRD v3.1**](prd-v3.md).
+
 **Disiapkan untuk:** Manajemen Eksekutif DBSN (CEO, CTO, COO)
 **Tanggal:** 11 Mei 2026
 **Versi:** C-Level Executive Edition
@@ -32,7 +35,7 @@ Inisiatif ini mengonsolidasikan semua aset digital DBSN menjadi **ekosistem digi
 | Dimensi | Segmen B2G (Pemerintah) | Segmen B2B (Swasta) |
 |---------|------------------------|---------------------|
 | **Mindset Utama** | *Trust-first* — validasi kepatuhan sebelum enggajemen | *Efficiency-first* — riset spesifikasi, akses cepat |
-| **Titik Masuk Utama** | Hub root domain (sentradaya.com) | Spoke langsung via SEO/kampanye |
+| **Titik Masuk Utama** | Hub root domain (dayaberkah.id) | Spoke langsung via SEO/kampanye |
 | **Sinyal Kepercayaan Kritis** | Sertifikasi SNI, TKDN, Registrasi LKPP | Portofolio proyek, dokumentasi teknis |
 | **Jalur Konversi** | Formulir RFQ formal terstruktur | RFQ atau WhatsApp (channel paralel) |
 | **Pasca-Konversi** | Dashboard pelacakan proyek multi-milestone | Dashboard pelacakan status pengiriman |
@@ -83,7 +86,7 @@ flowchart TD
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
     A(["👤 PPK / Pejabat Pengadaan"])
-    A --> B["Masuk: sentradaya.com (Hub)"]
+    A --> B["Masuk: dayaberkah.id (Hub)"]
     B --> C{"Intent Utama?"}
     C -->|"Validasi Legalitas"| D["Pusat Sertifikasi /sertifikasi"]
     C -->|"Lihat Referensi"| E["Portofolio /portofolio"]
@@ -280,7 +283,7 @@ Keputusan teknologi kunci: **satu aplikasi Next.js 16** yang melayani semua doma
 | M1.4 | Transactional Data Layer | Neon Postgres schema, Prisma ORM, migration validation | Pramono (Engineer) |
 | M1.5 | Auth & RFQ Pipeline | Auth.js v5, segmented RFQ API, Resend + Telegram integrations | Pramono (Engineer) |
 | M1.6 | Admin Dashboard | Protected lead management dengan filter/search | Pramono (Engineer) |
-| M1.7 | Client Tracking Portal | `dashboard.sentradaya.com` dengan autentikasi klien | Pramono (Engineer) |
+| M1.7 | Client Tracking Portal | `dashboard.dayaberkah.id` dengan autentikasi klien | Pramono (Engineer) |
 | M1.8 | SEO Migration Validation | 301 redirect mapping, legacy URL inventory, canonical tags | Pramono (Engineer) |
 | M1.9 | Content Migration | Minimum 20 portfolio entries, sertifikasi uploads | Sani (UI/UX Designer) |
 | M1.10 | Mobile Performance QA | PSI 90+ pada semua template kunci | Sani (UI/UX Designer) |

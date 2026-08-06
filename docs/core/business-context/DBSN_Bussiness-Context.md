@@ -1,5 +1,9 @@
 # DBSN Strategic Intelligence Report
 ### AI-Ready Input Document for Website PRD Generation
+
+> [!NOTE]
+> **Canonical Context Notice:** This document provides the foundational business context, SWOT, PESTLE, and market analysis that directly **informs PRD v3.1** ([`docs/core/prd/prd-v3.md`](../prd/prd-v3.md)).
+
 **Prepared by:** Senior Internal Market Research Consultant  
 **Subject:** PT. Daya Berkah Sentosa Nusantara (DBSN) — Full Digital Ecosystem Analysis  
 **Source URLs Analyzed:** pjusolarcellindonesia.com · sentradaya.com · alatpenangkalpetir.co.id  

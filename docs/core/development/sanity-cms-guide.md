@@ -340,7 +340,7 @@ When content is published in Sanity Studio, a webhook fires `POST /api/revalidat
 
 | Field | Value |
 |---|---|
-| **URL** | `https://sentradaya.com/api/revalidate` |
+| **URL** | `https://dayaberkah.id/api/revalidate` |
 | **Method** | `POST` |
 | **Trigger on** | Create, Update, Delete |
 | **Filter** | `_type in ["product", "certification", "portfolioEntry", "spokeConfig", "page"]` |
@@ -371,7 +371,7 @@ Timing-safe comparison prevents timing attacks. Requests without a valid signatu
 
 ```bash
 # Check if webhook secret is configured
-curl https://sentradaya.com/api/revalidate
+curl https://dayaberkah.id/api/revalidate
 # → { "status": "ok", "webhookConfigured": true }
 ```
 

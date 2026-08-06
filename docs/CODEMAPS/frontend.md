@@ -35,6 +35,11 @@ src/app/
 
 ```
 src/components/
+├── forms/                         → RFQ form components (submits to /api/rfq)
+│   ├── RfqB2BForm.tsx            → B2B RFQ form (company data, product specs)
+│   ├── RfqB2GForm.tsx            → B2G RFQ form (government procurement, NIB/NPWP)
+│   └── contact-form.tsx          → Direct contact inquiry form
+│
 ├── ui/                           → 12 Radix UI primitives (shadcn pattern)
 │   ├── accordion.tsx             → Accordion primitive wrapper
 │   ├── badge.tsx                 → Status/label badge with CVA variants

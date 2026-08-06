@@ -105,12 +105,12 @@ flowchart TD
     classDef entry fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
-    Root["🏢 sentradaya.com (Hub)\nCorporate Trust Center\nCertifications · Portfolio · Routing"]
-    Root -->|"Middleware Routing"| S1["🌐 pju.sentradaya.com\nPJU / Street Lighting\nSpoke"]
-    Root -->|"Middleware Routing"| S2["🌐 solarcell.sentradaya.com\nSolar Cell\nSpoke"]
-    Root -->|"Middleware Routing"| S3["🌐 alatpetir.sentradaya.com\nLightning Protection\nSpoke"]
-    Root -->|"Middleware Routing"| SN["🌐 baterai.sentradaya.com\nAdditional Spokes\n(extensible)"]
-    Root -->|"Secure access"| SD["🔐 dashboard.sentradaya.com\nClient Tracking Services\n(B2B/B2G Login Portal)"]
+    Root["🏢 dayaberkah.id (Hub)\nCorporate Trust Center\nCertifications · Portfolio · Routing"]
+    Root -->|"Middleware Routing"| S1["🌐 pju.dayaberkah.id\nPJU / Street Lighting\nSpoke"]
+    Root -->|"Middleware Routing"| S2["🌐 solarcell.dayaberkah.id\nSolar Cell\nSpoke"]
+    Root -->|"Middleware Routing"| S3["🌐 alatpetir.dayaberkah.id\nLightning Protection\nSpoke"]
+    Root -->|"Middleware Routing"| SN["🌐 baterai.dayaberkah.id\nAdditional Spokes\n(extensible)"]
+    Root -->|"Secure access"| SD["🔐 dashboard.dayaberkah.id\nClient Tracking Services\n(B2B/B2G Login Portal)"]
     subgraph SingleApp ["📦 Single Next.js 16 App"]
         direction TB
         NextJS["App Router + Middleware\n(shared codebase)"]
@@ -182,11 +182,11 @@ flowchart TD
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
     A(["👤 Government Procurement Officer\n(PPK / Pengadaan / BUMN)"])
-    A --> B["Landing: Hub Root Domain sentradaya.com"]
+    A --> B["Landing: Hub Root Domain dayaberkah.id"]
     B --> C{"Intent Detection:\nNavigation Choice"}
     C -->|"Certifications / Compliance"| D["📄 Certifications Hub\nSNI · TKDN · LKPP Docs"]
     C -->|"Portfolio / References"| E["🏗️ Project Portfolio\nFiltered by Sector / Type"]
-    C -->|"Product Info"| F["🌐 Navigate to Relevant Spoke\ne.g. pju.sentradaya.com"]
+    C -->|"Product Info"| F["🌐 Navigate to Relevant Spoke\ne.g. pju.dayaberkah.id"]
     D --> G["Download Document\n(GA4: file_download event)"]
     E --> H["View Project Reference\nLinked to Relevant Spoke"]
     F --> I["Spoke: Product Detail Page\nSpecs · Docs · CTA"]
@@ -196,7 +196,7 @@ flowchart TD
     K --> M{"Form Submission"}
     M -->|"Success"| N["✅ Confirmation Page\n+ Resend Email ACK\n+ Telegram Alert → Sales"]
     N --> Q{"Qualified / Converted to Active Project?"}
-    Q -->|"Yes"| R["🔐 Provision Client Account\nfor dashboard.sentradaya.com"]
+    Q -->|"Yes"| R["🔐 Provision Client Account\nfor dashboard.dayaberkah.id"]
     R --> S["📊 Tracking Services Access\n(Project / Order Status)"]
     Q -->|"Not yet"| T["Standard Sales Follow-up\nwithout dashboard access"]
     M -->|"API / DB Failure"| O["⚠️ Fallback Handler\nPre-filled WhatsApp URL\nwith captured form data"]
@@ -221,9 +221,9 @@ flowchart TD
 
     A(["👤 B2B Private Buyer\n(Procurement Mgr / EPC Engineer / Facility Mgr)"])
     A --> B{"Entry Point"}
-    B -->|"Direct / Campaign"| C["Hub: sentradaya.com\nCompany Overview + Spoke CTAs"]
+    B -->|"Direct / Campaign"| C["Hub: dayaberkah.id\nCompany Overview + Spoke CTAs"]
     B -->|"SEO / Organic"| D["Spoke Landing Page\n(direct to product cluster)"]
-    C --> E["🌐 Navigate to Product Spoke\ne.g. solarcell.sentradaya.com"]
+    C --> E["🌐 Navigate to Product Spoke\ne.g. solarcell.dayaberkah.id"]
     D --> E
     E --> F["Product Catalogue / Category Page\nSpecs · Filters · Comparison"]
     F --> G["📄 Product Detail Page\nSpec sheet · Datasheet · CTA"]
@@ -234,7 +234,7 @@ flowchart TD
     I --> L{"Form Submission"}
     L -->|"Success"| M["✅ Confirmation\n+ Resend ACK Email\n+ Telegram Alert → Sales"]
     M --> Q{"Qualified / Converted to Active Project?"}
-    Q -->|"Yes"| R["🔐 Provision Client Account\nfor dashboard.sentradaya.com"]
+    Q -->|"Yes"| R["🔐 Provision Client Account\nfor dashboard.dayaberkah.id"]
     R --> S["📊 Tracking Services Access\n(Project / Order Status)"]
     Q -->|"Not yet"| T["Standard Sales Follow-up\nwithout dashboard access"]
     L -->|"API / DB Failure"| N["⚠️ Fallback Handler\nPre-filled WhatsApp URL"]
@@ -504,7 +504,7 @@ All pages must render correctly on three viewport breakpoints: 375px (mobile S),
 **Given-When-Then Test Cases:**
 
 **Test Case 1: Hub Navigation**
-- Given I am on the hub homepage sentradaya.com
+- Given I am on the hub homepage dayaberkah.id
 - When I click on any spoke navigation link
 - Then I am redirected to the correct spoke subdomain
 - And the shared design system is applied consistently
@@ -553,7 +553,7 @@ All pages must render correctly on three viewport breakpoints: 375px (mobile S),
 
 **Test Case 1: Client Authentication**
 - Given I am a provisioned client user
-- When I attempt to login to dashboard.sentradaya.com
+- When I attempt to login to dashboard.dayaberkah.id
 - Then I can authenticate with valid credentials
 - And I see only my authorized tracking projects
 - And unauthorized access attempts are logged
@@ -856,7 +856,7 @@ SUPABASE_PROJECT_REF="project-ref"
 
 # Authentication (High Sensitivity)
 AUTH_SECRET="random-32-char-secret"
-NEXTAUTH_URL="https://sentradaya.com"
+NEXTAUTH_URL="https://dayaberkah.id"
 NEXTAUTH_SECRET="auth-secret-here"
 
 # External APIs (Medium Sensitivity)
@@ -870,7 +870,7 @@ GSC_SERVICE_ACCOUNT_JSON="service-account-json"
 
 # Environment
 NODE_ENV=production
-BASE_URL="https://sentradaya.com"
+BASE_URL="https://dayaberkah.id"
 ```
 
 **Variable Sensitivity Levels:**
