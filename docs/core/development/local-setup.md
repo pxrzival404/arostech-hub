@@ -13,12 +13,12 @@ The DBSN platform uses a hub-and-spoke architecture with multiple subdomains ser
 
 | Domain | Purpose | Route |
 |--------|---------|-------|
-| `sentradaya.com` | Hub — Corporate trust center | `(hub)` |
-| `pju.sentradaya.com` | PJU / Street Lighting spoke | `(spokes)/pju` |
-| `solarcell.sentradaya.com` | Solar Cell spoke | `(spokes)/solarcell` |
-| `alatpetir.sentradaya.com` | Lightning Protection spoke | `(spokes)/alatpetir` |
-| `baterai.sentradaya.com` | Battery spoke | `(spokes)/baterai` |
-| `dashboard.sentradaya.com` | Client tracking portal | `dashboard/` (flat route) |
+| `dayaberkah.id` | Hub — Corporate trust center | `(hub)` |
+| `pju.dayaberkah.id` | PJU / Street Lighting spoke | `(spokes)/pju` |
+| `solarcell.dayaberkah.id` | Solar Cell spoke | `(spokes)/solarcell` |
+| `alatpetir.dayaberkah.id` | Lightning Protection spoke | `(spokes)/alatpetir` |
+| `baterai.dayaberkah.id` | Battery spoke | `(spokes)/baterai` |
+| `dashboard.dayaberkah.id` | Client tracking portal | `dashboard/` (flat route) |
 
 ---
 
@@ -37,12 +37,12 @@ Replace `:3000` with your dev server port if different:
 
 | Production Domain | Local Access URL |
 |------------------|-------------------|
-| `sentradaya.com` | `lvh.me:3000` |
-| `pju.sentradaya.com` | `pju.lvh.me:3000` |
-| `solarcell.sentradaya.com` | `solarcell.lvh.me:3000` |
-| `alatpetir.sentradaya.com` | `alatpetir.lvh.me:3000` |
-| `baterai.sentradaya.com` | `baterai.lvh.me:3000` |
-| `dashboard.sentradaya.com` | `dashboard.lvh.me:3000` |
+| `dayaberkah.id` | `lvh.me:3000` |
+| `pju.dayaberkah.id` | `pju.lvh.me:3000` |
+| `solarcell.dayaberkah.id` | `solarcell.lvh.me:3000` |
+| `alatpetir.dayaberkah.id` | `alatpetir.lvh.me:3000` |
+| `baterai.dayaberkah.id` | `baterai.lvh.me:3000` |
+| `dashboard.dayaberkah.id` | `dashboard.lvh.me:3000` |
 
 ### Middleware Configuration
 
@@ -126,12 +126,12 @@ No additional configuration is needed — the middleware detects `.pages.dev` do
 3. Add entries:
 
 ```
-127.0.0.1 sentradaya.com
-127.0.0.1 pju.sentradaya.com
-127.0.0.1 solarcell.sentradaya.com
-127.0.0.1 alatpetir.sentradaya.com
-127.0.0.1 baterai.sentradaya.com
-127.0.0.1 dashboard.sentradaya.com
+127.0.0.1 dayaberkah.id
+127.0.0.1 pju.dayaberkah.id
+127.0.0.1 solarcell.dayaberkah.id
+127.0.0.1 alatpetir.dayaberkah.id
+127.0.0.1 baterai.dayaberkah.id
+127.0.0.1 dashboard.dayaberkah.id
 ```
 
 4. Save file
@@ -177,8 +177,8 @@ Create `.env.local` in project root:
 
 ```bash
 # Domain
-NEXT_PUBLIC_ROOT_DOMAIN="lvh.me"          # Use sentradaya.com in production
-NEXT_PUBLIC_SITE_URL="http://lvh.me:3000" # Use https://sentradaya.com in production
+NEXT_PUBLIC_ROOT_DOMAIN="lvh.me"          # Use dayaberkah.id in production
+NEXT_PUBLIC_SITE_URL="http://lvh.me:3000" # Use https://dayaberkah.id in production
 
 # Sanity CMS
 SANITY_PROJECT_ID="your-project-id"

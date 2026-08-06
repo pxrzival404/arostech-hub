@@ -10,10 +10,10 @@
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                       Cloudflare Edge                        │
-│  Hub: sentradaya.com | Spokes: pju/solar/etc | Dashboard     │
+│  Hub: dayaberkah.id | Spokes: pju/solar/etc | Dashboard      │
 └──────────────────────────────────────────────────────────────┘
-                              │
-                              ↓
+                               │
+                               ↓
 ┌──────────────────────────────────────────────────────────────┐
 │              Next.js 16.2.6 App Router (Edge Middleware)     │
 │  src/middleware.ts → cleanHostname() → domain routing        │
@@ -38,18 +38,18 @@
 
 | Route | Type | Domain | Notes |
 |-------|------|---------|-------|
-| `(hub)/` | Route Group | sentradaya.com | Hub homepage + sub-pages |
-| `(hub)/about` | Sub-page | sentradaya.com | |
-| `(hub)/articles` | Sub-page | sentradaya.com | + `[slug]` |
-| `(hub)/certifications` | Sub-page | sentradaya.com | |
-| `(hub)/contact` | Sub-page | sentradaya.com | |
-| `(hub)/faq` | Sub-page | sentradaya.com | |
-| `(hub)/portfolio` | Sub-page | sentradaya.com | |
-| `(hub)/products` | Sub-page | sentradaya.com | |
-| `chat/` | Flat route | sentradaya.com | Agent chat interface (21st SDK) |
-| `dashboard/` | Flat route | dashboard.sentradaya.com | Rewritten by middleware |
-| `(spokes)/pju/` | Route Group | pju.sentradaya.com | |
-| `(spokes)/[spoke]/` | Route Group | *.sentradaya.com | Dynamic spokes |
+| `(hub)/` | Route Group | dayaberkah.id | Hub homepage + sub-pages |
+| `(hub)/about` | Sub-page | dayaberkah.id | |
+| `(hub)/articles` | Sub-page | dayaberkah.id | + `[slug]` |
+| `(hub)/certifications` | Sub-page | dayaberkah.id | |
+| `(hub)/contact` | Sub-page | dayaberkah.id | |
+| `(hub)/faq` | Sub-page | dayaberkah.id | |
+| `(hub)/portfolio` | Sub-page | dayaberkah.id | |
+| `(hub)/products` | Sub-page | dayaberkah.id | |
+| `chat/` | Flat route | dayaberkah.id | Agent chat interface (21st SDK) |
+| `dashboard/` | Flat route | dashboard.dayaberkah.id | Rewritten by middleware |
+| `(spokes)/pju/` | Route Group | pju.dayaberkah.id | |
+| `(spokes)/[spoke]/` | Route Group | *.dayaberkah.id | Dynamic spokes |
 | `api/revalidate/` | API route | any | Sanity webhook ISR |
 | `api/rfq/` | API route | any | POST ingest multi-product RFQ / GET healthcheck |
 | `api/auth/[...nextauth]` | API route | any | NextAuth.js v5 route handler (GET/POST) |

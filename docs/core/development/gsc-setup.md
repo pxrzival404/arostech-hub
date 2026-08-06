@@ -1,6 +1,6 @@
 # Google Search Console (GSC) Setup & Verification Guide
 
-This guide details the Google Search Console (GSC) configuration, property structure, verification processes, and sitemap submission automation for the DBSN central digital ecosystem (`sentradaya.com` and its spoke subdomains).
+This guide details the Google Search Console (GSC) configuration, property structure, verification processes, and sitemap submission automation for the DBSN central digital ecosystem (`dayaberkah.id` and its spoke subdomains).
 
 ---
 
@@ -9,18 +9,18 @@ This guide details the Google Search Console (GSC) configuration, property struc
 For maximum coverage and granular reporting, we configure a hybrid GSC property structure.
 
 ### A. Domain Property (Recommended Primary)
-- **Target**: `sentradaya.com` (covers `https://sentradaya.com`, `https://pju.sentradaya.com`, `https://solarcell.sentradaya.com`, `https://alatpetir.sentradaya.com`, `https://baterai.sentradaya.com`, `https://dashboard.sentradaya.com` under all HTTP/HTTPS protocols).
+- **Target**: `dayaberkah.id` (covers `https://dayaberkah.id`, `https://pju.dayaberkah.id`, `https://solarcell.dayaberkah.id`, `https://alatpetir.dayaberkah.id`, `https://baterai.dayaberkah.id`, `https://dashboard.dayaberkah.id` under all HTTP/HTTPS protocols).
 - **Verification Method**: DNS TXT Record.
 - **Why**: Captures domain-wide aggregate statistics, handles all paths/subdomains, and persists across protocol transitions.
 
 ### B. URL-Prefix Properties (Granular Secondary)
 If individual teams or managers require access to specific subdomains or isolated settings, individual URL-prefix properties should be added:
-- `https://sentradaya.com/` (Hub)
-- `https://pju.sentradaya.com/` (PJU Spoke)
-- `https://solarcell.sentradaya.com/` (Solarcell Spoke)
-- `https://alatpetir.sentradaya.com/` (Alat Petir Spoke)
-- `https://baterai.sentradaya.com/` (Baterai Spoke)
-- `https://dashboard.sentradaya.com/` (Client Portal)
+- `https://dayaberkah.id/` (Hub)
+- `https://pju.dayaberkah.id/` (PJU Spoke)
+- `https://solarcell.dayaberkah.id/` (Solarcell Spoke)
+- `https://alatpetir.dayaberkah.id/` (Alat Petir Spoke)
+- `https://baterai.dayaberkah.id/` (Baterai Spoke)
+- `https://dashboard.dayaberkah.id/` (Client Portal)
 - **Verification Methods**: HTML File, Meta Verification Tag, or DNS TXT.
 
 ---
@@ -30,12 +30,12 @@ If individual teams or managers require access to specific subdomains or isolate
 The application supports three verification mechanisms.
 
 ### A. DNS TXT Verification (Domain Property)
-1. Add the domain property `sentradaya.com` in Google Search Console.
+1. Add the domain property `dayaberkah.id` in Google Search Console.
 2. Copy the generated verification code (e.g. `google-site-verification=xxxxxxxxx`).
-3. Log in to the Cloudflare Dashboard and navigate to the DNS Zone editor for `sentradaya.com`.
+3. Log in to the Cloudflare Dashboard and navigate to the DNS Zone editor for `dayaberkah.id`.
 4. Create a new DNS record:
    - **Type**: `TXT`
-   - **Name**: `@` (representing the root domain `sentradaya.com`)
+   - **Name**: `@` (representing the root domain `dayaberkah.id`)
    - **Content**: The token value copied from GSC.
    - **TTL**: `Auto` or `3600`.
 5. Once DNS propagates, click **Verify** in the GSC dashboard.
@@ -92,6 +92,6 @@ Use this checklist inside the Google Search Console UI to monitor the consolidat
 - [ ] **Inspect Redirect Mappings**: Verify that old URLs are returning 301 redirects and are registered under **Pages > Redirects** in GSC.
 - [ ] **Check Crawl Rate**: Monitor **Settings > Crawl stats** for any spikes in 404s, 500s, or DNS connection timeouts.
 - [ ] **Analyze Sitemap Coverage**: Confirm all submitted sitemaps are marked as **Success** and track the count of discovered pages.
-- [ ] **URL Inspection**: Test key landing and product pages using the **URL Inspection** tool to verify rendering, mobile usability, and correct canonical tagging (`https://sentradaya.com/...` or spoke equivalents).
+- [ ] **URL Inspection**: Test key landing and product pages using the **URL Inspection** tool to verify rendering, mobile usability, and correct canonical tagging (`https://dayaberkah.id/...` or spoke equivalents).
 - [ ] **Search Performance**: Compare pre- and post-migration impressions and CTR under **Performance** to ensure organic keywords match the consolidated architecture.
 - [ ] **Core Web Vitals**: Monitor mobile page performance. High-speed edge rendering on Cloudflare Pages should help achieve green scores (LCP, FID/INP, CLS).
