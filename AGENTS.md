@@ -8,7 +8,7 @@ This document defines the single, authoritative operating rules and system manda
 
 1. **Antigravity Primary Role**: Operate as both the **Context Coordinator** (research, architectural planning, documentation) and **Execution Engine** (TDD, implementation, terminal verification loops).
 2. **Rule Priority**: Instructions in `.agents/rules/` (e.g., `documentation-mode.md`, `typescript-*.md`) and this `AGENTS.md` take precedence over general defaults.
-3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under `[DOCS_MODE]` or working on documentation tasks, strict write restrictions apply according to `.agents/rules/documentation-mode.md`. Codebase files (`src/`, `prisma/`, `package.json`, etc.) are **STRICTLY READ-ONLY**. Only markdown documentation files in `docs/` and root documentation files (`AGENTS.md`, `README.md`, `ONBOARDING.md`) may be modified.
+3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under `[DOCS_MODE]` or working on documentation tasks, strict write restrictions apply according to `.agents/rules/documentation-mode.md`. Codebase files (`src/`, `prisma/`, `package.json`, etc.) are **STRICTLY READ-ONLY**. Only markdown documentation files in `docs/`, `openspec/`, and root documentation files (`AGENTS.md`, `README.md`, `ONBOARDING.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `LICENSE`) may be modified.
 4. **Workflow Discipline**: Follow the **Plan -> TDD -> Review** cycle for non-trivial codebase changes.
 
 ---
