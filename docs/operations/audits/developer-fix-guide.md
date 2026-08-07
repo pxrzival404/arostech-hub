@@ -1,6 +1,6 @@
 # Developer Fix Guide — Pre-Fix Manual Tasks
 > Date: 2026-07-14
-> Prerequisite for: Fix Agent Prompt (docs/audits/integration-health-audit-2026-07-14.md)
+> Prerequisite for: Fix Agent Prompt (integration-health-audit-2026-07-14.md)
 > Estimated developer time: ~30 minutes
 
 ## How This Works

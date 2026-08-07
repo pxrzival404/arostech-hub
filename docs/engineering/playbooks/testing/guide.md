@@ -10,8 +10,8 @@
 
 Testing follows a TDD-first philosophy. All new features and bug fixes should have tests written before or alongside implementation. This guide covers how to run tests, the project's Jest configuration, file conventions, and patterns used in the existing test suite.
 
-For **mocking patterns** (Prisma, Sanity, Resend, Telegram), see [Mocking Specs](../testing/mocking-specs.md).  
-For **test strategy and coverage targets per feature**, see [TDD v1](../architecture/tdd-v1.md) §9.
+For **mocking patterns** (Prisma, Sanity, Resend, Telegram), see [Mocking Specs](mocking-specs.md).  
+For **test strategy and coverage targets per feature**, see [Testing Strategy](strategy.md) §9.
 
 ---
 
@@ -389,7 +389,7 @@ API route tests (`route.test.ts` in `src/app/api/rfq/__tests__/`) test server-si
 
 **Minimum:** 80% overall (enforced by ECC rules).
 
-**Per-feature targets** (from [TDD v1](../architecture/tdd-v1.md) §9):
+**Per-feature targets** (from [Testing Strategy](strategy.md) §9):
 
 | Feature | Coverage Target | Test Priority |
 |---|---|---|
@@ -429,9 +429,9 @@ open coverage/lcov-report/index.html
 
 ## Related Documentation
 
-- [Mocking Specs](../testing/mocking-specs.md) — Complete mock patterns for Prisma, Sanity, Resend, Telegram
-- [TDD v1](../architecture/tdd-v1.md) — Full test strategy, coverage requirements, E2E test examples
-- [Local Setup](./local-setup.md) — Development environment setup
+- [Mocking Specs](mocking-specs.md) — Complete mock patterns for Prisma, Sanity, Resend, Telegram
+- [Testing Strategy](strategy.md) — Full test strategy, coverage requirements, E2E test examples
+- [Quickstart Setup](../quickstart.md) — Development environment setup
 
 ---
 

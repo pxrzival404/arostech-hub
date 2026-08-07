@@ -388,7 +388,7 @@ curl -X POST http://localhost:3000/api/revalidate \
 
 ## Testing Sanity Integrations
 
-Use the mock at `src/lib/__mocks__/sanity.ts` to avoid live Sanity calls in tests. See [Mocking Specs](../testing/mocking-specs.md) §2 for full patterns.
+Use the mock at `src/lib/__mocks__/sanity.ts` to avoid live Sanity calls in tests. See [Mocking Specs](testing/mocking-specs.md) §2 for full patterns.
 
 ```typescript
 import { mockSanityClient, mockFetch, mockSanityFetch } from '@/lib/__mocks__/sanity'
@@ -417,9 +417,9 @@ it('fetches products by spoke', async () => {
 
 - [`src/lib/api/sanity/`](../../../src/lib/api/sanity/) — Source directory (client, queries, types, image)
 - [`src/app/api/revalidate/route.ts`](../../../src/app/api/revalidate/route.ts) — Webhook handler
-- [Mocking Specs](../testing/mocking-specs.md) — How to mock Sanity in tests
-- [Data Codemap](../../CODEMAPS/data.md) — Token-lean data layer overview
-- [TDD v1](../architecture/tdd-v1.md) — Testing strategy and coverage targets
+- [Mocking Specs](testing/mocking-specs.md) — How to mock Sanity in tests
+- [Data Codemap](../../system/architecture/codemaps/data.md) — Token-lean data layer overview
+- [Testing Strategy](testing/strategy.md) — Testing strategy and coverage targets
 
 ---
 

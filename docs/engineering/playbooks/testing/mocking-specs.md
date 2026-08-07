@@ -602,9 +602,9 @@ export const mockEmailResponse = (overrides = {}) => ({
 
 ## Related Documentation
 
-- [Project Roadmap](../project-roadmap.md) — Phase 2.5 (RFQ Forms) status
-- [TDD v1](../architecture/tdd-v1.md) — Testing strategy and coverage requirements
-- [Local Setup](../development/local-setup.md) — Development environment configuration
+- [Project Roadmap](../../../strategy/roadmap.md) — Phase 2.5 (RFQ Forms) status
+- [Testing Strategy](strategy.md) — Testing strategy and coverage requirements
+- [Quickstart Setup](../quickstart.md) — Development environment configuration
 
 ---
 

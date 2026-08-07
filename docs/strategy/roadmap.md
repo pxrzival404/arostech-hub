@@ -259,11 +259,11 @@ Trigger rollback if any of the following occur:
 
 ## Related Documentation
 
-- [PRD v3.1](../prd/prd-v3.md) — Business requirements and user journeys
-- [TDD v1](../architecture/tdd-v1.md) — Technical design and implementation
+- [PRD v3.1](prd.md) — Business requirements and user journeys
+- [TDD v1](../engineering/playbooks/testing/strategy.md) — Technical design and implementation
 - [AGENTS.md](../../AGENTS.md) — Project context, rules, and architecture
-- [Local Setup](./development/local-setup.md) — Development environment configuration
-- [Mocking Specs](./testing/mocking-specs.md) — Testing patterns for external services
+- [Quickstart Setup](../engineering/playbooks/quickstart.md) — Development environment configuration
+- [Mocking Specs](../engineering/playbooks/testing/mocking-specs.md) — Testing patterns for external services
 
 ---
 

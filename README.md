@@ -135,16 +135,16 @@ Execute these scripts during development and testing:
 Full documentation hub index: **[`docs/README.md`](docs/README.md)**
 
 Frequently used entry points:
-* 📐 [System Architecture Guide](docs/system/architecture.md) — Structural design, domain mappings, and stack decisions.
-* 🔀 [Middleware & Routing Manual](docs/system/middleware-routing.md) — How hostnames resolve at the Edge.
+* 📐 [System Architecture Guide](docs/system/architecture/overview.md) — Structural design, domain mappings, and stack decisions.
+* 🔀 [Middleware & Routing Manual](docs/system/architecture/execution-lifecycle.md) — How hostnames resolve at the Edge.
 * 🛡️ [Security Policy](SECURITY.md) — Vulnerability reporting SLA & secrets policy.
 * 📋 [Contributing Guidelines](CONTRIBUTING.md) — Git Flow, conventional commits, and PR checklist.
-* 🚀 [Adding a New Spoke (MWE)](docs/mwe/add-new-spoke.md) — Step-by-step guide for creating product spokes.
-* ⚡ [Adding an API Endpoint (MWE)](docs/mwe/add-api-endpoint.md) — Step-by-step guide for building API route handlers.
-* 🔌 [Public API Reference](docs/api/api-reference.md) — Zod schemas & JSON payloads for RFQ, Auth, and Revalidation.
-* ⚙️ [Environment Variable Schema](docs/api/env-configuration-schema.md) — Environment variables reference matrix.
-* 🪵 [Sanity CMS Integration Guide](docs/development/sanity-cms-guide.md) — GROQ queries, cache tags, & ISR webhooks.
-* 🧪 [Jest & Playwright Testing Guide](docs/development/testing-guide.md) — Patterns for unit, integration, and E2E testing.
+* 🚀 [Adding a New Spoke (MWE)](docs/system/api/mwe/add-new-spoke.md) — Step-by-step guide for creating product spokes.
+* ⚡ [Adding an API Endpoint (MWE)](docs/system/api/mwe/add-api-endpoint.md) — Step-by-step guide for building API route handlers.
+* 🔌 [Public API Reference](docs/system/api/reference.md) — Zod schemas & JSON payloads for RFQ, Auth, and Revalidation.
+* ⚙️ [Environment Variable Schema](docs/system/api/configuration-schema.md) — Environment variables reference matrix.
+* 🪵 [Sanity CMS Integration Guide](docs/engineering/playbooks/sanity-cms-guide.md) — GROQ queries, cache tags, & ISR webhooks.
+* 🧪 [Jest & Playwright Testing Guide](docs/engineering/playbooks/testing/guide.md) — Patterns for unit, integration, and E2E testing.
 
 ---
 

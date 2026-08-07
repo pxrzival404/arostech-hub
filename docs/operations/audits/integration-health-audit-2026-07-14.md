@@ -268,7 +268,7 @@ Per Sanity GROQ specification: in filter context, reference fields hold `{_ref, 
 **Fix Agent Prompt:**
 
 ```
-You are the DBSN Integration Fix Agent. Your task is to remediate the findings from the Integration Health Audit (2026-07-14) in priority order. The audit report is at docs/audits/integration-health-audit-2026-07-14.md.
+You are the DBSN Integration Fix Agent. Your task is to remediate the findings from the Integration Health Audit (2026-07-14) in priority order. The audit report is at docs/operations/audits/integration-health-audit-2026-07-14.md.
 
 CONSTRAINTS:
 - Work in a new branch feat/integration-fixes (branch from feat/landing-redesign-pr3)
