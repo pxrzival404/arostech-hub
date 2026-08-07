@@ -44,10 +44,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local/temp workspaces
-/extracted_workspace/
-/everything-claude-code/
-
 # Gemini settings & setup keys
 .gemini/settings.json
 SETUP_API_KEYS.md
@@ -57,15 +53,8 @@ SETUP_API_KEYS.md
 .wrangler
 *.log
 
-# Gemini / Agent / ECC configs & artifacts
-.agents/
-.antigravity/
-.mcp.json
-.eslintignore
-playwright_results.txt
-test-results/
-.claude/
-docs/audits/
-
 .next-backups/
 ORIGINAL_REQUEST.md
+
+# test results & coverage
+test-results/

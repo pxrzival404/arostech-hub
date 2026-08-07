@@ -132,15 +132,19 @@ Execute these scripts during development and testing:
 
 ## 📖 Project Documentation Index
 
-Full documentation index: **[`docs/README.md`](docs/README.md)**
+Full documentation hub index: **[`docs/README.md`](docs/README.md)**
 
 Frequently used entry points:
-* 📐 [System Architecture Guide](docs/core/architecture/architecture.md) — Structural design, domain mappings, and stack decisions.
-* 🔀 [Middleware & Routing Manual](docs/core/architecture/middleware-routing.md) — How hostnames resolve at the Edge.
-* 🧪 [Test-Driven Development Specs](docs/core/architecture/tdd-v1.md) — Test strategies and mock configurations.
-* 🔧 [Local Setup & Hosts Guide](docs/core/development/local-setup.md) — Host configurations and env setup.
-* 🪵 [Sanity CMS Integration Guide](docs/core/development/sanity-cms-guide.md) — GROQ queries, cache invalidations, and image optimizations.
-* 🧪 [Jest & Playwright Testing Guide](docs/core/development/testing-guide.md) — Patterns for unit, integration, and E2E testing.
+* 📐 [System Architecture Guide](docs/system/architecture.md) — Structural design, domain mappings, and stack decisions.
+* 🔀 [Middleware & Routing Manual](docs/system/middleware-routing.md) — How hostnames resolve at the Edge.
+* 🛡️ [Security Policy](SECURITY.md) — Vulnerability reporting SLA & secrets policy.
+* 📋 [Contributing Guidelines](CONTRIBUTING.md) — Git Flow, conventional commits, and PR checklist.
+* 🚀 [Adding a New Spoke (MWE)](docs/mwe/add-new-spoke.md) — Step-by-step guide for creating product spokes.
+* ⚡ [Adding an API Endpoint (MWE)](docs/mwe/add-api-endpoint.md) — Step-by-step guide for building API route handlers.
+* 🔌 [Public API Reference](docs/api/api-reference.md) — Zod schemas & JSON payloads for RFQ, Auth, and Revalidation.
+* ⚙️ [Environment Variable Schema](docs/api/env-configuration-schema.md) — Environment variables reference matrix.
+* 🪵 [Sanity CMS Integration Guide](docs/development/sanity-cms-guide.md) — GROQ queries, cache tags, & ISR webhooks.
+* 🧪 [Jest & Playwright Testing Guide](docs/development/testing-guide.md) — Patterns for unit, integration, and E2E testing.
 
 ---
 
