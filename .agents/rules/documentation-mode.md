@@ -6,7 +6,7 @@ trigger: always_on
 
 > **STATUS**: ACTIVE / ENFORCED  
 > **SCOPE**: Project-wide Agent Write Restrictions  
-> **LAST UPDATED**: 2026-08-06
+> **LAST UPDATED**: 2026-08-07
 
 ---
 

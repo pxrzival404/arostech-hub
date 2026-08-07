@@ -1,9 +1,4 @@
-﻿# documentation-governance Specification
-
-## Purpose
-Defines the authoritative standards, directory layout rules, governance policies, and verification requirements for repository documentation within the PT Daya Berkah Sentosa Nusantara digital ecosystem.
-
-## Requirements
+﻿## MODIFIED Requirements
 
 ### Requirement: Repository Documentation Structure Compliance
 The repository documentation layout SHALL adhere to the 4-domain deep-module structure: `docs/strategy/`, `docs/system/`, `docs/engineering/`, and `docs/operations/`. Each domain SHALL expose a `README.md` index file as its shallow interface. The tree SHALL be no more than 3 levels deep from the `docs/` root at any point. Every documentation concern SHALL be reachable via a single `glob docs/<domain>/**` pattern.

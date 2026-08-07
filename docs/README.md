@@ -1,79 +1,44 @@
-# DBSN Centralized Digital Ecosystem — Documentation Hub Index
+# DBSN Documentation Hub — Master Index
 
-This index is the single entry point for both human contributors and AI agents. Start here before opening individual guides.
-
-> **Production Domain Notice:** The production domain is **`dayaberkah.id`** (see [DNS Cutover Mapping](system/dns-cutover-mapping.md) and [ADR-0001](adr/0001-migrate-fully-to-cloudflare-pages.md)).
+Welcome to the PT. Daya Berkah Sentosa Nusantara (DBSN) central documentation hub. This repository documentation is structured into **4 top-level domains**, keeping implementation deep while exposing shallow, predictable interfaces for human engineers and AI agent harnesses.
 
 ---
 
-## 🚀 Quick Navigation
+## 🚦 Audience Routing
 
-| Audience / Purpose | Read First |
-|---|---|
-| AI agent / Antigravity CLI | [`/AGENTS.md`](../AGENTS.md) — authoritative operating reference & rules |
-| New human contributor | [`ONBOARDING.md`](ONBOARDING.md) — Day-1 checklist & setup |
-| Repo visitor | [`/README.md`](../README.md) — quick start & system topology |
-| Security scanner / reporter | [`/SECURITY.md`](../SECURITY.md) — security disclosure policy |
-| Code contributor | [`/CONTRIBUTING.md`](../CONTRIBUTING.md) — Git Flow & commit rules |
-
----
-
-## 🏛️ 7-Pillar Documentation Structure
-
-### 1. System Identity & Scope (`docs/system/`)
-- [Identity & Compatibility Matrix](system/identity-and-scope.md) — System vision, philosophy & compatibility matrix
-- [System Architecture](system/architecture.md) — Stack, topology, data flows, API contracts
-- [Middleware & Routing](system/middleware-routing.md) — Edge subdomain resolution & execution chain
-- [TDD v1 Specs](system/tdd-v1.md) — Test-driven build blueprint & E2E contracts
-- [DNS Cutover Mapping](system/dns-cutover-mapping.md) — Authoritative domain & DNS routing source of truth
-- [Business Context Report](system/business-context.md) — BMC, PESTLE, SWOT & VRIO analysis
-- [Project Roadmap](system/project-roadmap.md) — Launch gates & roadmap milestones
-
-### 2. Quick Start & MWE (`docs/mwe/`)
-- [Adding a New Product Spoke](mwe/add-new-spoke.md) — Step-by-step guide for creating product spokes
-- [Adding a Secure API Endpoint](mwe/add-api-endpoint.md) — Step-by-step guide for building API route handlers
-- [Local Setup Manual](development/local-setup.md) — Subdomain dev environment (`lvh.me` routing)
-
-### 3. Architecture & Core Mechanics (`docs/system/` & `docs/adr/`)
-- [Architecture Decision Records Index](adr/README.md) — All accepted ADR records
-- [ADR-0001: Cloudflare Pages Migration](adr/0001-migrate-fully-to-cloudflare-pages.md)
-- [ADR-0002: Deploy Command Strategy](adr/0002-explicit-cloudflare-pages-deploy-command.md)
-
-### 4. API Reference & Extensibility (`docs/api/`)
-- [Public API Reference](api/api-reference.md) — Zod contracts for RFQ, Auth, and Revalidation
-- [Environment Configuration Schema](api/env-configuration-schema.md) — Complete environment variables matrix
-
-### 5. Governance & Workflow (`docs/workflow/`)
-- [Release Management Guide](workflow/release-management.md) — SemVer & Cloudflare deployment pipeline
-- [Coding Standards & Style Guide](workflow/coding-standards.md) — TypeScript 5.7, React 19 & Tailwind v4
-- [ECC & OpenSpec Agent Workflow](workflow/ecc-openspec-workflow.md) — AI agent coordination guidelines
-
-### 6. QA & Testing (`docs/testing/` & `docs/development/`)
-- [Testing Guide](development/testing-guide.md) — Jest & Playwright conventions & targets
-- [Mocking Specs](testing/mocking-specs.md) — Prisma, Sanity, Resend & Telegram mock patterns
-- [Cloudflare Deployment](development/cloudflare-deployment.md) — Custom domains, env vars & Wrangler deploy workflows
-- [Sanity CMS Guide](development/sanity-cms-guide.md) — GROQ queries, cache tags, & ISR webhooks
-- [Google Search Console Setup](development/gsc-setup.md) — Search Console verification & sitemap submission
-
-### 7. Product Requirements & Business Context (`docs/prd/`)
-- [PRD v3.1](prd/prd-v3.md) — Canonical technical PRD
-- [PRD Executive Edition](prd/prd-c-level-segment-focus.md) — Executive companion to PRD v3.1
-
-### 8. Information Architecture (`docs/ia/`)
-- [IA Index](ia/index.md) — Entry point for Information Architecture docs
-- [Strategy & Navigation](ia/strategy-navigation.md) — Navigation systems, header & footer specs
-- [Sitemaps](ia/sitemaps.md) — Hub, Spoke, and Dashboard sitemaps
-- [User Flows](ia/user-flows.md) — B2G/B2B core user flows & fallback behavior
-
-### 9. Code Terrain Maps (`docs/codemaps/`)
-- [Architecture Codemap](codemaps/architecture.md) — Route structure & middleware execution chain
-- [Backend Codemap](codemaps/backend.md) — API routes, auth layer & notification services
-- [Frontend Codemap](codemaps/frontend.md) — Page tree, component hierarchy & forms
-- [Data Codemap](codemaps/data.md) — Sanity schemas, Prisma models & validation schemas
-- [Dependencies Codemap](codemaps/dependencies.md) — Package inventory by architectural concern
+| Role / Intent | Primary Entry Point | Content Summary |
+| :--- | :--- | :--- |
+| **AI Agent / Harness** | [`/AGENTS.md`](../AGENTS.md) ➔ [`docs/engineering/governance/ai-agent-rules.md`](engineering/governance/ai-agent-rules.md) | Operating rules, stack topology, rule priority, & MCP tools |
+| **New Human Contributor** | [`docs/engineering/playbooks/quickstart.md`](engineering/playbooks/quickstart.md) | Day-1 checklist, prerequisites, local setup (`lvh.me`), & commands |
+| **Code Contributor** | [`/CONTRIBUTING.md`](../CONTRIBUTING.md) ➔ [`docs/engineering/governance/contributing.md`](engineering/governance/contributing.md) | Git Flow, conventional commit standards, & PR checklist |
+| **Security Scanner / Auditor** | [`/SECURITY.md`](../SECURITY.md) ➔ [`docs/operations/security/security-policy.md`](operations/security/security-policy.md) | Vulnerability disclosure SLA, secrets handling, & WAF policy |
+| **System Architect / Engineer** | [`docs/system/README.md`](system/README.md) | Component topology, execution lifecycle, ADRs, & API reference |
 
 ---
 
-## 📜 Legal & Change Management
-- [Changelog](../CHANGELOG.md) — Version history & Semantic Versioning log
-- [License](../LICENSE) — Software licensing declaration
+## 📂 The 4 Top-Level Domains
+
+### 1. Strategy & Scope (`docs/strategy/`)
+*What is this system, why does it exist, and what are its product & platform boundaries?*
+- 📄 [`vision.md`](strategy/vision.md) — System identity, core value, design philosophy, & strategic business context report.
+- 📄 [`roadmap.md`](strategy/roadmap.md) — Launch gates, phase milestones, and feature delivery schedule.
+- 📄 [`prd.md`](strategy/prd.md) — Canonical Technical Product Requirements Document (PRD v3.1).
+- 📄 [`segments.md`](strategy/segments.md) — Executive companion PRD focusing on B2G Government and B2B Private sector strategies.
+- 📊 [`compatibility-matrix.md`](strategy/compatibility-matrix.md) — Supported runtimes, frameworks, and deployment target versions.
+
+### 2. System Architecture & API (`docs/system/`)
+*How does the system work, and what are its internal & external contracts?*
+- 📐 [`architecture/README.md`](system/architecture/README.md) — System overview, execution lifecycle, code terrain maps, & information architecture.
+- 📜 [`adr/README.md`](system/adr/README.md) — Architecture Decision Records index (ADR-0001, ADR-0002).
+- 🔌 [`api/README.md`](system/api/README.md) — Public API contracts, environment schema, extensibility model, and MWE guides.
+
+### 3. Engineering & Governance (`docs/engineering/`)
+*How do I build, test, and contribute to this repository correctly?*
+- ⚖️ [`governance/README.md`](engineering/README.md) — Contributing rules, AI agent rules, coding standards, versioning policy, & OpenSpec workflow.
+- 📖 [`playbooks/README.md`](engineering/README.md) — Quickstart onboarding, Sanity CMS integration guide, GSC setup, & testing strategy/guide.
+
+### 4. Operations & Audits (`docs/operations/`)
+*How do I run, ship, monitor, and secure the system in production?*
+- 🚀 [`runbooks/README.md`](operations/README.md) — Cloudflare Pages deployment, DNS cutover mapping, & release process.
+- 🛡️ [`security/security-policy.md`](operations/security/security-policy.md) — Canonical vulnerability disclosure SLA & secrets handling policy.
+- 🔍 [`audits/README.md`](operations/audits/README.md) — Audit log index (Integration health, landing page UX, & Lighthouse reports).

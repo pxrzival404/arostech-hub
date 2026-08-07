@@ -1,0 +1,402 @@
+# Developer Quickstart & Onboarding Playbook
+
+## Section I: Day-1 Onboarding Checklist & System Overview
+
+> *Merged from docs/ONBOARDING.md*
+
+# Onboarding Guide: DBSN Centralized Digital Ecosystem
+
+This is a Day-1 checklist. For full architectural detail, defer to [`/AGENTS.md`](../../../AGENTS.md) and the docs linked below.
+
+---
+
+## What This Project Is
+
+A Next.js 16 (React 19) platform consolidating legacy WordPress domains into a single hub-and-spoke architecture, deployed on Cloudflare Pages with Edge Middleware for subdomain routing.
+
+---
+
+## Domain & Routing (Source of Truth)
+
+| Hostname | Route | Purpose |
+|---|---|---|
+| `dayaberkah.id` | `src/app/(hub)` | Corporate trust center |
+| `*.dayaberkah.id` (`pju`, `solarcell`, `alatpetir`, `baterai`) | `src/app/(spokes)` | Product segments |
+| `dashboard.dayaberkah.id` | `src/app/dashboard` | Client tracking portal |
+
+---
+
+## Day-1 Developer Checklist
+
+- [ ] Install `pnpm` and Node.js v20+
+- [ ] `pnpm install`
+- [ ] Copy `.env.example` → `.env`, fill in Sanity + database credentials (see [Local Setup](#section-ii-local-development-environment-setup-lvhme))
+- [ ] `pnpm dev` — verify hub loads at `http://lvh.me:3000`
+- [ ] Verify at least one spoke loads at `http://pju.lvh.me:3000`
+- [ ] Read [System Architecture](../../system/architecture/overview.md) — mental model of hub/spoke/dashboard split
+- [ ] Read [Middleware & Routing](../../system/architecture/execution-lifecycle.md) — Edge routing anti-patterns to avoid
+- [ ] Skim [Testing Guide](testing/guide.md) and run `pnpm test`
+- [ ] Review [Contributing Guidelines](../../../CONTRIBUTING.md) — branching model & commit standards
+
+---
+
+## Minimal Working Examples (MWE)
+
+- 🚀 [Adding a New Product Spoke](../../system/api/mwe/add-new-spoke.md) — Step-by-step guide for creating product spokes
+- ⚡ [Adding a Secure API Endpoint](../../system/api/mwe/add-api-endpoint.md) — Step-by-step guide for building API route handlers
+
+---
+
+## Key Entry Points
+
+- **Middleware**: `src/middleware.ts` — subdomain routing and redirects
+- **Route Groups**: `src/app/(hub)`, `src/app/(spokes)`, `src/app/dashboard`
+- **Database Schema**: `prisma/schema.prisma`
+- **CMS Client**: `src/lib/api/sanity/client.ts`
+- **Environment Config**: `src/lib/config/env.ts`
+
+---
+
+## Common Commands
+
+```bash
+pnpm dev              # Local dev server (lvh.me:3000)
+pnpm build            # Production build (runs prisma generate first)
+pnpm pages:build      # Cloudflare Pages edge build (requires bash in PATH on Windows)
+pnpm test             # Run Jest suite
+pnpm test:e2e         # Run Playwright suite
+pnpm exec prisma migrate dev   # Database migration
+```
+
+
+---
+
+## Section II: Local Development Environment Setup (lvh.me)
+
+> *Merged from docs/development/local-setup.md*
+
+# Local Development Setup
+
+**Purpose:** Configure local development environment for hub-and-spoke subdomain routing  
+**OS:** Windows, macOS, Linux
+
+---
+
+## Overview
+
+The DBSN platform uses a hub-and-spoke architecture with multiple subdomains served from a single Next.js 16 codebase. This document explains how to test subdomain routing locally.
+
+### Subdomain Architecture
+
+| Domain | Purpose | Route |
+|--------|---------|-------|
+| `dayaberkah.id` | Hub — Corporate trust center | `(hub)` |
+| `pju.dayaberkah.id` | PJU / Street Lighting spoke | `(spokes)/pju` |
+| `solarcell.dayaberkah.id` | Solar Cell spoke | `(spokes)/solarcell` |
+| `alatpetir.dayaberkah.id` | Lightning Protection spoke | `(spokes)/alatpetir` |
+| `baterai.dayaberkah.id` | Battery spoke | `(spokes)/baterai` |
+| `dashboard.dayaberkah.id` | Client tracking portal | `dashboard/` (flat route) |
+
+---
+
+## Method A: Using lvh.me (Recommended)
+
+**Pros:** No system file modifications, works immediately  
+**Cons:** Requires port specification in URL
+
+### How lvh.me Works
+
+The domain `lvh.me` (and all subdomains `*.lvh.me`) resolves to `127.0.0.1` (localhost). This allows you to test subdomain routing without modifying your system's hosts file.
+
+### Access URLs
+
+Replace `:3000` with your dev server port if different:
+
+| Production Domain | Local Access URL |
+|------------------|-------------------|
+| `dayaberkah.id` | `lvh.me:3000` |
+| `pju.dayaberkah.id` | `pju.lvh.me:3000` |
+| `solarcell.dayaberkah.id` | `solarcell.lvh.me:3000` |
+| `alatpetir.dayaberkah.id` | `alatpetir.lvh.me:3000` |
+| `baterai.dayaberkah.id` | `baterai.lvh.me:3000` |
+| `dashboard.dayaberkah.id` | `dashboard.lvh.me:3000` |
+
+### Middleware Configuration
+
+The actual middleware at `src/middleware.ts` uses domain-resolution helpers from `src/lib/middleware/config.ts`. You do **not** need to rewrite it — it already supports `lvh.me` local development out of the box.
+
+**Key helpers in `src/lib/middleware/config.ts`:**
+
+| Function | Purpose |
+|----------|---------|
+| `cleanHostname(host)` | Strips port number from `Host` header |
+| `isHubDomain(hostname)` | Returns `true` for root/www domain and `localhost` |
+| `isDashboardDomain(hostname)` | Returns `true` when subdomain is `dashboard` |
+| `isSpokeDomain(hostname)` | Returns the spoke subdomain string, or `null` |
+| `SPOKE_SUBDOMAINS` | `['pju', 'solarcell', 'alatpetir', 'baterai']` |
+
+**Routing outcome:**
+
+```
+Request hostname       → Routed to
+─────────────────────────────────────────────────────
+lvh.me:3000            → (hub) route group  (NextResponse.next)
+dashboard.lvh.me:3000  → rewrite /dashboard/*
+pju.lvh.me:3000        → rewrite /pju/*  →  (spokes)/pju
+solarcell.lvh.me:3000  → rewrite /solarcell/*
+unknown hostname       → rewrite /404
+```
+
+**Actual matcher configuration** (in `src/middleware.ts`):
+
+```typescript
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
+}
+```
+
+**Development hostname map** (`src/lib/middleware/dev-hosts.ts`):
+
+```typescript
+export const DEV_HOSTNAMES = {
+  'lvh.me': '(hub)',
+  'www.lvh.me': '(hub)',
+  'dashboard.lvh.me': '/dashboard',
+  'pju.lvh.me': '(spokes)/pju',
+  'solarcell.lvh.me': '(spokes)/solarcell',
+  'alatpetir.lvh.me': '(spokes)/alatpetir',
+  'baterai.lvh.me': '(spokes)/baterai',
+} as const
+```
+
+### Cloudflare Pages Preview Domain Support
+
+The middleware also supports Cloudflare Pages preview deployments. Hostnames ending in `.pages.dev` are treated as root domains, enabling full hub-and-spoke testing on preview URLs:
+
+| Preview URL | Routed as |
+|-------------|-----------|
+| `<branch>.dbsn-website.pages.dev` | Hub |
+| `pju.<branch>.dbsn-website.pages.dev` | PJU spoke |
+| `dashboard.<branch>.dbsn-website.pages.dev` | Dashboard |
+
+No additional configuration is needed — the middleware detects `.pages.dev` domains automatically.
+
+### Usage
+
+1. Start dev server: `pnpm dev`
+2. Navigate to: `http://pju.lvh.me:3000`
+3. Verify you see the PJU spoke page
+
+---
+
+## Method B: Hosts File Modification
+
+**Pros:** No port specification needed in URL  
+**Cons:** Requires admin privileges, manual cleanup required
+
+### Windows
+
+1. Open Notepad as Administrator
+2. Open file: `C:\Windows\System32\drivers\etc\hosts`
+3. Add entries:
+
+```
+127.0.0.1 dayaberkah.id
+127.0.0.1 pju.dayaberkah.id
+127.0.0.1 solarcell.dayaberkah.id
+127.0.0.1 alatpetir.dayaberkah.id
+127.0.0.1 baterai.dayaberkah.id
+127.0.0.1 dashboard.dayaberkah.id
+```
+
+4. Save file
+
+### macOS / Linux
+
+1. Edit `/etc/hosts` with sudo:
+   ```bash
+   sudo nano /etc/hosts
+   ```
+
+2. Add entries:
+   ```
+   127.0.0.1 sentradaya.com
+   127.0.0.1 pju.sentradaya.com
+   127.0.0.1 solarcell.sentradaya.com
+   127.0.0.1 alatpetir.sentradaya.com
+   127.0.0.1 baterai.sentradaya.com
+   127.0.0.1 dashboard.sentradaya.com
+   ```
+
+3. Save (Ctrl+O, Enter, Ctrl+X)
+
+4. Flush DNS cache:
+   ```bash
+   sudo dscacheutil -flushcache
+   sudo killall -HUP mDNSResponder
+   ```
+
+### Usage
+
+1. Start dev server: `pnpm dev`
+2. Navigate to: `http://pju.sentradaya.com:3000`
+3. Verify you see the PJU spoke page
+
+---
+
+## Environment Variables
+
+### Required Variables
+
+Create `.env.local` in project root:
+
+```bash
+# Domain
+NEXT_PUBLIC_ROOT_DOMAIN="lvh.me"          # Use dayaberkah.id in production
+NEXT_PUBLIC_SITE_URL="http://lvh.me:3000" # Use https://dayaberkah.id in production
+
+# Sanity CMS
+SANITY_PROJECT_ID="your-project-id"
+SANITY_DATASET="production"
+SANITY_API_VERSION="v2025-05-21"
+SANITY_API_READ_TOKEN="sk-your-read-token"
+SANITY_API_WRITE_TOKEN="sk-your-write-token"   # Optional
+SANITY_WEBHOOK_SECRET="your-webhook-secret"     # Optional in dev
+
+# Email (Resend) — Optional in dev
+RESEND_API_KEY="re_your-api-key-here"
+
+# Telegram Bot — Optional in dev
+TELEGRAM_BOT_TOKEN="your-bot-token"
+TELEGRAM_CHAT_ID="-1001234567890"
+
+# Analytics — Optional in dev
+GA_TRACKING_ID="G-XXXXXXXXXX"
+```
+
+### Verification
+
+```bash
+# Verify environment variables are loaded
+node -e "require('dotenv').config({ path: '.env.local' }); console.log(process.env.NEXT_PUBLIC_ROOT_DOMAIN)"
+```
+
+---
+
+## Development Server Configuration
+
+### Port Configuration
+
+Default port is `3000`. To use a different port:
+
+```bash
+# Pass port flag directly
+pnpm dev -- -p 4000
+```
+
+### Available Scripts
+
+| Command | Purpose |
+|---------|---------|
+| `pnpm dev` | Start development server (port 3000) |
+| `pnpm build` | Production build |
+| `pnpm start` | Serve production build |
+| `pnpm lint` | Run ESLint |
+| `pnpm test` | Run Jest unit/integration tests |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm test:coverage` | Run tests with coverage report |
+
+### Windows Local Build Requirement (`@cloudflare/next-on-pages`)
+
+When running `pnpm pages:build` to compile edge bundles for Cloudflare Pages:
+- `@cloudflare/next-on-pages` CLI v1.13.16 spawns `bash` internally during asset bundling.
+- On Windows native PowerShell or CMD without `bash` in system `PATH`, executing `pnpm pages:build` throws `Error: spawn bash ENOENT`.
+
+**Local Development Workarounds for Windows:**
+1. Run `pnpm pages:build` inside **Git Bash** or **WSL (Windows Subsystem for Linux)**.
+2. Ensure `bash.exe` (from Git for Windows, MSYS2, or WSL) is present in your Windows system `PATH` (e.g. `C:\Program Files\Git\bin`).
+
+**CI Environment Note:**
+Cloudflare Pages CI environment runs natively on Linux runners where `bash` is present in `PATH`. Remote CI builds are unaffected.
+
+### Hot Module Replacement
+
+Next.js 16 provides fast HMR. No additional configuration needed.
+
+---
+
+## Troubleshooting
+
+### Subdomain routing not working
+
+1. Verify middleware.ts exists at project root
+2. Check hostname extraction:
+   ```typescript
+   // Add debug logging to middleware.ts
+   console.log('Hostname:', hostname);
+   ```
+3. Ensure matcher configuration includes your routes
+
+### lvh.me not resolving
+
+1. Verify DNS resolution:
+   ```bash
+   # Windows
+   nslookup lvh.me
+   nslookup pju.lvh.me
+   
+   # macOS / Linux
+   dig lvh.me
+   dig pju.lvh.me
+   ```
+2. Both should resolve to `127.0.0.1`
+
+### Port already in use
+
+```bash
+# Find process using port 3000 (Windows)
+netstat -ano | findstr :3000
+
+# Find process using port 3000 (macOS / Linux)
+lsof -ti:3000
+
+# Kill the process (replace PID with actual process ID)
+taskkill /PID <PID> /F  # Windows
+kill -9 <PID>  # macOS / Linux
+```
+
+### Environment variables not loading
+
+1. Verify `.env.local` file exists
+2. Check file encoding (must be UTF-8)
+3. Restart dev server after adding variables
+
+---
+
+## Testing Checklist
+
+Before committing code, verify:
+
+- [ ] Hub page loads at `lvh.me:3000`
+- [ ] At least one spoke loads at `*.lvh.me:3000`
+- [ ] Dashboard routes correctly with authentication
+- [ ] Environment variables are properly set
+- [ ] No console errors in browser dev tools
+- [ ] Network requests resolve correctly
+
+---
+
+## Related Documentation
+
+- [Project Roadmap](../project-roadmap.md) — Phase 2.7 (Subdomain Middleware) status
+- [Mocking Specs](../testing/mocking-specs.md) — External service mocking patterns
+- [TDD v1](../architecture/tdd-v1.md) — Middleware routing architecture
+- [`src/middleware.ts`](../../../src/middleware.ts) — Active edge middleware implementation
+- [`src/lib/middleware/config.ts`](../../../src/lib/middleware/config.ts) — Domain resolution helpers
+- [`src/lib/middleware/dev-hosts.ts`](../../../src/lib/middleware/dev-hosts.ts) — Development hostname map
+
+---
+
+*Last modified: 2026-05-26*
