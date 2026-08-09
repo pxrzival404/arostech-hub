@@ -1,0 +1,26 @@
+# run with flags shell.sh
+
+> 2 nodes
+
+## Key Concepts
+
+- **scripts/run-with-flags-shell.sh** (1 connections) — `.agents/scripts/run-with-flags-shell.sh`
+- **run-with-flags-shell.sh script** (1 connections) — `.agents/scripts/run-with-flags-shell.sh`
+
+## Relationships
+
+- No strong cross-community connections detected
+
+## Source Files
+
+- `.agents/scripts/run-with-flags-shell.sh`
+
+## Audit Trail
+
+- EXTRACTED: 2 (100%)
+- INFERRED: 0 (0%)
+- AMBIGUOUS: 0 (0%)
+
+---
+
+*Part of the graphify knowledge wiki. See [index](index.md) to navigate.*
