@@ -1,19 +1,36 @@
-# Arsitektur Informasi — DBSN Digital Ecosystem
-## Bagian 3: Alur Pengguna Inti (Core User Flows)
+---
+id: IA-USER-FLOWS-001
+title: Information Architecture Core User Flows & Conversion Pathways
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_ia"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  navigation_strategy: "file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/navigation-strategy.md#L1-L50"
+---
 
-**Proyek:** DBSN Centralized Digital Ecosystem — dayaberkah.id  
-**Berbasis:** PRD v3.1  
-**Tanggal Update:** 2026-08-06  
+# Information Architecture Core User Flows & Conversion Pathways
+
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
+> **Authoritative Baseline Reference**: This document defines the primary user journeys, conversion pathways, and fallback mechanisms for B2G (Government Procurement) and B2B (Private Commercial Buyers) personas across the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)).
 
 ---
 
-## 6. Alur Pengguna Inti
+## ## OpenSpec Delta
 
-### 6.1 Alur B2G — Pejabat Pengadaan Pemerintah
+- **ADDED**: Greenfield PRD v4.0.0 B2G and B2B user conversion pathways, composite cart RFQ ingestion flows, and WhatsApp pre-filled fallback mechanisms.
+- **REMOVED**: Legacy single-form branching pathways and legacy redirect flow handlers.
 
-**Persona:** PPK / Staf Pengadaan / Pejabat BUMN  
-**Tujuan:** Validasi kepatuhan vendor (SNI/TKDN/LKPP), verifikasi referensi proyek, kemudian ajukan RFQ formal.  
-**Entry Point Utama:** Hub (dayaberkah.id) via pencarian langsung atau referensi LKPP.
+---
+
+## Section I: Core User Journeys
+
+### 1. B2G User Flow (Government & State-Owned Enterprises)
+
+**Persona:** Procurement Officer / PPK / BUMN Procurement Manager  
+**Objective:** Validate vendor compliance (SNI/TKDN/LKPP), inspect reference project portfolio, and submit formal RFQ.  
+**Primary Entry Point:** Hub (`dayaberkah.id`) via direct search or LKPP referral.
 
 ```mermaid
 ---
@@ -24,147 +41,38 @@ flowchart TD
     classDef entry fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
-    START(["Pejabat Pengadaan Pemerintah"])
-    START --> ENTRY["Masuk: dayaberkah.id Beranda Hub"]
+    START(["Pejabat Pengadaan Pemerintah"]) --> ENTRY["Masuk: dayaberkah.id Beranda Hub"]
     ENTRY --> INTENT{"Tujuan Utama?"}
     INTENT -->|"Validasi Legalitas"| CERT["Pusat Sertifikasi /certifications"]
     INTENT -->|"Lihat Referensi Proyek"| PORT["Portofolio Proyek /portfolio"]
     INTENT -->|"Cari Info Produk"| SPOKE["Navigasi ke Spoke Produk"]
-    CERT --> CTYPE["Pilih Tipe: SNI / TKDN / LKPP / ISO"]
-    CTYPE --> CVIEW["Lihat Detail Sertifikat"]
-    CVIEW --> CDL["Unduh Dokumen Sertifikat\nGA4: file_download"]
-    PORT --> PFILT["Filter: Pemerintah / BUMN"]
-    PFILT --> PVIEW["Lihat Detail Proyek Referensi"]
-    SPOKE --> SCAT["Katalog Produk di Spoke"]
-    SCAT --> SPDP["Detail Produk - PDP"]
-    SPDP --> SCERT["Verifikasi TKDN/SNI Terkait Produk"]
-    CDL --> READY{"Siap Mengajukan Penawaran?"}
-    PVIEW --> READY
-    SCERT --> READY
-    READY -->|"Ya"| RFQPAGE["Formulir RFQ\n/contact"]
-    READY -->|"Belum"| BROWSE["Lanjut Telusuri - Kembali ke Hub"]
-    BROWSE --> INTENT
-    RFQPAGE --> SEGMENT["Pilih Segmen: Instansi Pemerintah"]
-    SEGMENT --> B2GFORM["Isi Formulir B2G"]
-    B2GFORM --> SUBMIT{"Kirim Formulir\nPOST /api/rfq"}
-    SUBMIT -->|"Berhasil"| CONFIRM["Konfirmasi: Email ACK\n+ Telegram Alert ke Sales"]
-    SUBMIT -->|"Gagal"| FALLBACK["Fallback: WhatsApp Pre-filled"]
-    CONFIRM --> QUALIFY{"Terkualifikasi oleh Sales?"}
-    QUALIFY -->|"Ya"| PROVISION["Akun Dashboard Dibuat\ndi dashboard.dayaberkah.id"]
-    QUALIFY -->|"Belum"| FOLLOWUP["Follow-up Sales Standar"]
-    PROVISION --> TRACKING["Akses Pelacakan Status Proyek"]
-    class START entry
-    class B2GFORM conversion
-    class SUBMIT conversion
-    class CONFIRM conversion
-    class FALLBACK conversion
-    class PROVISION conversion
-```
 
-**Langkah-langkah Kunci Alur B2G:** (Single-App dengan middleware routing)
+    CERT --> CVIEW["Lihat & Unduh Sertifikat"]
+    PORT --> PVIEW["Filter Proyek Pemerintah / BUMN"]
+    SPOKE --> SPDP["Detail Produk (PDP)"]
 
-| Langkah | Halaman | Aksi Pengguna | GA4 Event |
-|---------|---------|---------------|-----------|
-| 1 | Hub Beranda | Lihat Trust Badge Bar, pilih tujuan | - |
-| 2a | Pusat Sertifikasi | Telusuri per tipe sertifikasi | `certification_view` |
-| 2b | Portofolio | Filter proyek per sektor pemerintah | `portfolio_view` |
-| 2c | Spoke PDP | Verifikasi TKDN/SNI di halaman produk | `hub_to_spoke_click` |
-| 3 | Detail Sertifikat | Unduh dokumen sertifikat | `file_download` |
-| 4 | Ajukan Penawaran | Pilih segmen B2G pada Halaman Kontak `/contact` | `rfq_start` |
-| 5 | Formulir B2G | Kirim formulir RFQ ke `/api/rfq` | `rfq_submit_attempt` → `rfq_submit_success` |
-| 6 | Konfirmasi | Terima email acknowledgment | - |
-| 7 | Dashboard | Login dan lihat status proyek | `dashboard_login_success` → `tracking_status_view` |
+    CVIEW & PVIEW & SPDP --> READY{"Siap Mengajukan Penawaran?"}
+    READY -->|"Ya"| RFQPAGE["Formulir RFQ Composite /contact"]
+    RFQPAGE --> SUBMIT{"Kirim Formulir (POST /api/rfq)"}
 
----
-
-### 6.2 Alur B2B — Pembeli Teknis Sektor Swasta
-
-**Persona:** Procurement Manager / EPC Engineer / Facility Manager  
-**Tujuan:** Riset spesifikasi produk, unduh datasheet, kemudian ajukan inquiry terstruktur atau hubungi via WhatsApp.  
-**Entry Point Utama:** Spoke langsung via SEO organik, atau Hub via kampanye/direct.
-
-```mermaid
----
-config:
-  layout: elk
----
-flowchart TD
-    classDef entry fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
-    classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
-
-    START(["Pembeli B2B Sektor Swasta"])
-    START --> ENTRY{"Titik Masuk?"}
-    ENTRY -->|"SEO / Organik"| SPOKE["Masuk Langsung ke Spoke Produk"]
-    ENTRY -->|"Direct / Kampanye"| HUB["Masuk: dayaberkah.id Hub"]
-    HUB --> HUBCTA["Pilih Produk via Mega Menu atau Grid"]
-    HUBCTA --> SPOKE
-    SPOKE --> SPHOME["Beranda Spoke: Produk Unggulan"]
-    SPHOME --> CATALOG["Katalog Produk /products"]
-    CATALOG --> LINE["Pilih Lini Produk"]
-    LINE --> SUBCAT["Pilih Sub-kategori"]
-    SUBCAT --> PDP["Detail Produk - PDP /products/[slug]"]
-    PDP --> ACTION{"Aksi Konversi?"}
-    ACTION -->|"Ajukan Penawaran"| RFQPAGE["Form/Modal RFQ /contact\ndengan param produk=slug"]
-    ACTION -->|"Kontak Cepat"| WHATSAPP["WhatsApp Click-to-Chat\nGA4: whatsapp_click"]
-    ACTION -->|"Unduh Dokumen"| DOWNLOAD["Unduh Datasheet PDF\nGA4: file_download"]
-    ACTION -->|"Baca Konten"| ARTIKEL["Artikel Spoke /articles\nGA4: article_view"]
-    ARTIKEL --> ARTDET["Detail Artikel /articles/[slug]\nKonten Edukasi & Produk Terkait"]
-    ARTDET --> REENGAGE2["Re-engagement CTA:\nAjukan Penawaran atau WhatsApp"]
-    REENGAGE2 --> RFQPAGE
-    DOWNLOAD --> REENGAGE["Re-engagement CTA:\nAjukan Penawaran atau WhatsApp"]
-    REENGAGE --> RFQPAGE
-    RFQPAGE --> SEGMENT["Pilih Segmen: Perusahaan Swasta"]
-    SEGMENT --> B2BFORM["Isi Formulir B2B: Produk pre-filled"]
-    B2BFORM --> SUBMIT{"Kirim Formulir\nPOST /api/rfq"}
     SUBMIT -->|"Berhasil"| CONFIRM["Konfirmasi: Email ACK + Telegram Alert"]
     SUBMIT -->|"Gagal"| FALLBACK["Fallback: WhatsApp Pre-filled"]
-    CONFIRM --> QUALIFY{"Terkualifikasi?"}
-    QUALIFY -->|"Ya"| PROVISION["Akun Dashboard Dibuat"]
-    QUALIFY -->|"Belum"| FOLLOWUP["Follow-up Sales Standar"]
-    PROVISION --> TRACKING["Akses Pelacakan Status Pesanan"]
+    CONFIRM --> PROVISION["Akun Dashboard Dibuat di dashboard.dayaberkah.id"]
+
     class START entry
-    class WHATSAPP conversion
-    class B2BFORM conversion
     class SUBMIT conversion
     class CONFIRM conversion
     class FALLBACK conversion
     class PROVISION conversion
 ```
 
-**Langkah-langkah Kunci Alur B2B:**
-
-| Langkah | Halaman | Aksi Pengguna | GA4 Event |
-|---------|---------|---------------|-----------|
-| 1 | Spoke Beranda atau Hub | Masuk via SEO langsung ke spoke, atau via Hub mega menu | `hub_to_spoke_click` (jika via Hub) |
-| 2 | Katalog Produk | Telusuri lini produk dan sub-kategori | - |
-| 3 | Detail Produk (PDP) | Baca spesifikasi, lihat gambar | - |
-| 4a | PDP | Unduh datasheet | `file_download` |
-| 4b | PDP | Klik WhatsApp | `whatsapp_click` |
-| 4c | Halaman Kontak / PDP | Klik CTA Ajukan Penawaran | `rfq_start` |
-| 4d | Artikel Spoke | Baca konten edukasi produk | `article_view` |
-| 5 | Detail Artikel | Baca artikel lengkap, klik CTA re-engagement | `article_cta_click` |
-| 6 | Formulir B2B | Kirim formulir ke `/api/rfq` | `rfq_submit_attempt` → `rfq_submit_success` |
-| 7 | Konfirmasi | Terima email acknowledgment | - |
-| 8 | Dashboard | Login dan lihat status pesanan | `dashboard_login_success` → `tracking_status_view` |
-
 ---
 
-### 6.3 Perbedaan Kunci Antar Alur
+### 2. B2B User Flow (Private Commercial & EPC Engineers)
 
-| Aspek | Alur B2G | Alur B2B |
-|-------|----------|----------|
-| **Entry point** | Selalu via Hub | Sering langsung ke Spoke via SEO |
-| **Langkah pertama** | Validasi sertifikasi/legalitas | Riset spesifikasi produk |
-| **Jumlah touchpoint sebelum RFQ** | 3-5 (sertifikasi + portofolio + produk) | 2-4 (katalog + PDP + artikel opsional) |
-| **Field formulir khusus** | Nama Proyek, Ref DIPA, Jenis Pengadaan | Lingkup proyek, timeline |
-| **Toleransi WhatsApp** | Rendah (butuh jalur formal) | Tinggi (channel paralel) |
-| **Tipe pelacakan** | Proyek (multi-milestone) | Pesanan (status delivery) |
-
----
-
-### 6.4 Alur Fallback RFQ (Kedua Segmen)
-
-Berlaku identik untuk B2G dan B2B ketika submission API gagal:
+**Persona:** Procurement Manager / EPC Project Engineer / Facility Manager  
+**Objective:** Research technical product specifications, download datasheets, and submit composite inquiry or contact sales via WhatsApp.  
+**Primary Entry Point:** Product Spoke direct via organic search or campaign landing page.
 
 ```mermaid
 ---
@@ -175,32 +83,72 @@ flowchart TD
     classDef entry fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
     classDef conversion fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412
 
-    SUBMIT["Pengguna Klik Kirim"]
-    SUBMIT --> API{"API /api/rfq"}
-    API -->|"200 OK"| SUCCESS["Konfirmasi + Email ACK + Telegram"]
-    API -->|"422 Validation"| INLINE["Pesan Error Inline\nData Tidak Hilang"]
-    API -->|"500 / Timeout"| FAIL["Fallback UI Aktif"]
-    INLINE --> SUBMIT
-    FAIL --> SERIALIZE["Data Formulir Di-serialize ke URL Params"]
-    SERIALIZE --> WABUILD["Bangun URL wa.me Pre-filled"]
-    WABUILD --> WAUI["Tampilkan CTA WhatsApp Full-Width"]
-    WAUI --> WACLICK["Pengguna Tap WhatsApp\nGA4: whatsapp_click fallback"]
-    FAIL --> TGALERT["Telegram Alert:\nSubmission Gagal ke Tim Sales"]
-    FAIL --> GA4FAIL["GA4: rfq_submit_failure\ndengan fallback_triggered=true"]
+    START(["Pembeli B2B Swasta / EPC"]) --> ENTRY{"Titik Masuk?"}
+    ENTRY -->|"SEO Organik"| SPOKE["Spoke Homepage / Catalog"]
+    ENTRY -->|"Hub / Direct"| HUB["dayaberkah.id Mega Menu"] --> SPOKE
+
+    SPOKE --> PDP["Product Detail Page (PDP) /products/[slug]"]
+    PDP --> ACTION{"Tindakan User?"}
+    ACTION -->|"Ajukan Penawaran"| RFQPAGE["Form / Modal RFQ /contact"]
+    ACTION -->|"Kontak Cepat"| WA["WhatsApp Click-to-Chat"]
+    ACTION -->|"Unduh Datasheet"| DL["Unduh PDF Datasheet"]
+
+    RFQPAGE --> SUBMIT{"Kirim Formulir (POST /api/rfq)"}
+    SUBMIT -->|"Berhasil"| CONFIRM["Email ACK + Telegram Alert"]
+    SUBMIT -->|"Gagal"| FALLBACK["WhatsApp Pre-filled Link"]
+
+    class START entry
+    class WA conversion
     class SUBMIT conversion
-    class SUCCESS conversion
-    class FAIL conversion
-    class WAUI conversion
-    class WACLICK conversion
-    class TGALERT conversion
+    class CONFIRM conversion
+    class FALLBACK conversion
 ```
 
 ---
 
-## Ringkasan Dokumen IA
+## Section II: RFQ Failure Fallback Protocol
 
-| Bagian | Dokumen | Isi |
-|--------|---------|-----|
-| **1** | [ia-strategy-navigation.md](./ia-strategy-navigation.md) | Strategi IA, prinsip desain, sistem navigasi global |
-| **2** | [ia-sitemaps.md](./ia-sitemaps.md) | Sitemap Hub, Spoke template, Dashboard |
-| **3** | [ia-user-flows.md](./ia-user-flows.md) | Alur B2G, alur B2B, alur fallback |
+When the RFQ submission API (`POST /api/rfq`) returns a server error or times out:
+1. The client form state MUST NOT be cleared.
+2. The form serializer SHALL encode all cart items and contact fields into a pre-filled WhatsApp link (`https://wa.me/...`).
+3. The UI SHALL render a full-width alert button: "Formulir Terkendala — Kirim via WhatsApp".
+
+---
+
+## Section III: Declarative User Session Event Types
+
+```typescript
+export interface UserFlowSessionEvent {
+  eventId: string;
+  timestamp: string;
+  persona: 'B2G' | 'B2B' | 'UNKNOWN';
+  entryPoint: string;
+  pathHistory: string[];
+  conversionAction?: 'RFQ_SUBMISSION' | 'WHATSAPP_CLICK' | 'DATASHEET_DOWNLOAD';
+  rfqTrackingId?: string;
+  fallbackTriggered: boolean;
+}
+```
+
+---
+
+## Section IV: OpenSpec Behavioral Contracts
+
+### Requirement: REQ-IA-003-USER-FLOWS
+The system SHALL support end-to-end user journeys for B2G and B2B personas, logging conversion analytics to GA4 and guaranteeing fallback handling if API ingestion fails.
+
+#### Scenario: Fallback Trigger Validation
+- GIVEN a user submitting an RFQ form on `/contact`
+- WHEN the `/api/rfq` endpoint encounters a network timeout or 500 status
+- THEN the application MUST NOT wipe user-entered form data
+- AND it SHALL display the WhatsApp fallback button with pre-filled message text.
+
+---
+
+## Section V: Knowledge Graph Anchoring
+
+- **Graphify Node**: `doc:docs/system/architecture/information-architecture/user-flows.md`
+- **Community**: `community_ia`
+- **Authoritative References**:
+  - [`navigation-strategy.md`](file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/navigation-strategy.md#L1-L50)
+  - [`sitemaps.md`](file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/sitemaps.md#L1-L50)

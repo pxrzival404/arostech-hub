@@ -58,3 +58,7 @@ ORIGINAL_REQUEST.md
 
 # test results & coverage
 test-results/
+
+# graphify cache
+graphify-out/cache/
+

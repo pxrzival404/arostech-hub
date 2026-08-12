@@ -1,16 +1,27 @@
-# Release Management & Cloudflare Deployment Pipeline
+---
+id: DOC-OPS-RUN-RELEASE
+title: Release Management & Cloudflare Deployment Pipeline Runbook
+version: 4.0.0
+status: LOCKED_BASELINE
+graphify_community: "community_operations"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  versioning_policy: "file:///d:/dev/arostech-hub/docs/engineering/governance/versioning-policy.md#L1-L40"
+---
 
-This document defines the Semantic Versioning (SemVer) policy, CI/CD pipeline, and Cloudflare Pages deployment workflows for the **DBSN Centralized Digital Ecosystem**.
+# Release Management & Cloudflare Deployment Pipeline Runbook
+
+> **Authoritative Baseline Reference**: Deployment process, CI/CD pipeline, and Cloudflare Pages edge hosting release controls for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
 
 ---
 
-## 1. Versioning Policy (SemVer)
+## 1. Versioning Policy (SemVer 2.0.0)
 
-We adhere to Semantic Versioning (`MAJOR.MINOR.PATCH`):
+All releases MUST follow Semantic Versioning (`MAJOR.MINOR.PATCH`):
 
-- **MAJOR (`v1.0.0` → `v2.0.0`)**: Breaking architectural changes (e.g. migrating routing engine or database provider).
-- **MINOR (`v1.0.0` → `v1.1.0`)**: Adding a new product spoke, new major feature, or new public API endpoint.
-- **PATCH (`v1.0.1`)**: Bug fixes, performance tweaks, security updates, or documentation updates.
+- **MAJOR (`v3.0.0` → `v4.0.0`)**: Breaking architectural changes (e.g., domain topology redesign or database ORM shift).
+- **MINOR (`v4.0.0` → `v4.1.0`)**: New product spoke capability, new public API endpoint, or schema addition.
+- **PATCH (`v4.0.1`)**: Bug fixes, performance optimizations, security patches, or documentation updates.
 
 ---
 
@@ -18,7 +29,7 @@ We adhere to Semantic Versioning (`MAJOR.MINOR.PATCH`):
 
 ### Automated Production Build (CI/CD)
 
-Cloudflare Pages automatically triggers a production deployment whenever commits are merged into the `main` branch.
+Cloudflare Pages automatically triggers a production deployment whenever commits are merged into `main`.
 
 ```mermaid
 sequenceDiagram
@@ -34,7 +45,7 @@ sequenceDiagram
     Edge-->>Dev: Live on dayaberkah.id
 ```
 
-### Manual Deployment via CLI
+### Manual Deployment Execution
 
 If manual deployment is required from a verified local environment:
 
@@ -49,16 +60,47 @@ pnpm pages:preview
 pnpm pages:deploy
 ```
 
-> **Windows Platform Note**: Running `pnpm pages:build` requires `bash` in your system `PATH` (available via Git Bash or WSL).
-
 ---
 
 ## 3. Pre-Release Launch Gate Checklist
 
-Before promoting a build to production, verify:
+Before promoting a release candidate to production, operators MUST verify:
 
 - [ ] All unit and integration tests pass: `pnpm test`.
-- [ ] Code coverage target met (80%+ threshold): `pnpm test:coverage`.
-- [ ] ESLint checks clean: `pnpm lint`.
-- [ ] Cloudflare secret bindings verified in Page Settings.
-- [ ] Release release notes tagged in `CHANGELOG.md`.
+- [ ] Total test coverage meets the **80%+** threshold: `pnpm test:coverage`.
+- [ ] ESLint and static analysis pass clean: `pnpm lint`.
+- [ ] Cloudflare encrypted secret bindings verified in Page Settings.
+- [ ] Release notes tagged in `CHANGELOG.md`.
+
+---
+
+## 4. OpenSpec Behavioral Requirements
+
+### Requirement: REQ-OPS-RELEASE-001-GATEWAY
+Production deployments to Cloudflare Pages SHALL require 100% passing test suites, clean linting, and successful edge compilation.
+
+#### Scenario: Production Deployment Trigger
+- GIVEN a release candidate merged into `main`
+- WHEN Cloudflare Pages executes the build script (`pnpm pages:build`)
+- THEN the build pipeline SHALL generate edge artifacts and deploy to `dayaberkah.id` only if all pre-release checks pass.
+
+---
+
+## 5. OpenSpec Delta
+
+## ADDED Requirements
+- REQ-OPS-RELEASE-001-GATEWAY: Production release gateway gate.
+
+## MODIFIED Requirements
+- Aligned deployment target with Cloudflare Pages Edge Runtime.
+
+## REMOVED Requirements
+- Legacy Vercel deployment workflows.
+
+---
+
+## 6. Graphify Knowledge Graph Anchoring
+
+- Knowledge Graph Node ID: `doc:docs/operations/runbooks/release-process.md`
+- Graphify Community: `community_operations`
+- Master Reference: [`versioning-policy.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/versioning-policy.md#L1-L40)

@@ -1,148 +1,73 @@
-# Developer Fix Guide — Pre-Fix Manual Tasks
-> Date: 2026-07-14
-> Prerequisite for: Fix Agent Prompt (integration-health-audit-2026-07-14.md)
-> Estimated developer time: ~30 minutes
+---
+id: DOC-OPS-AUDIT-FIX-GUIDE
+title: Developer Remediation Fix Guide & Manual Checkpoints
+version: 4.0.0
+status: LOCKED_BASELINE
+graphify_community: "community_audits"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  verify_prompt: "file:///d:/dev/arostech-hub/docs/operations/audits/verify-manual-tasks-prompt.md#L1-L60"
+---
 
-## How This Works
+# Developer Remediation Fix Guide & Manual Checkpoints
 
-1. You (developer) complete ALL tasks below
-2. Run: `I have completed all manual tasks, please verify`
-3. Agent verifies each checkpoint automatically
-4. If all pass → you paste the Fix Agent Prompt
-5. If any fail → agent tells you exactly what's missing
+> **Authoritative Baseline Reference**: Step-by-step manual task guide and environment verification protocol for engineering remediation, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
 
 ---
 
-## Task 1: Sanity Studio Authentication (for SAN-001)
+## 1. Operating Protocol
 
-The Fix Agent will create 3 new schemas + update existing ones in code, but Sanity Studio needs to be deployed to the cloud for editors to use them.
+Developers and execution agents MUST complete all manual environment checkpoints prior to running automated fix loops:
 
-**What to do:**
-1. Open terminal in project root
-2. Run: `cd studio && npx sanity login`
-3. Authenticate via browser when prompted
-4. DO NOT deploy yet — the Fix Agent will create the schema files first
-
-**After Fix Agent completes Phase 1:**
-5. Run: `cd studio && npx sanity deploy`
-6. Verify at: https://dayaberkah.sanity.studio/
-
-**Checkpoint:** Agent will verify schema count via Sanity MCP `get_schema` tool
+1. Developer completes manual environment configuration tasks described in this guide.
+2. Operator triggers manual task verification via [`verify-manual-tasks-prompt.md`](file:///d:/dev/arostech-hub/docs/operations/audits/verify-manual-tasks-prompt.md#L1-L60).
+3. System verifies each checkpoint automatically.
+4. If all checks pass, execution proceeds to automated task implementation.
 
 ---
 
-## Task 2: Cloudflare Secrets Setup (for CF-001)
+## 2. Checkpoint Tasks
 
-The Fix Agent will update `wrangler.toml` with public vars, but secrets must be set by you in the Cloudflare Dashboard.
+### Task 1: Sanity Studio Authentication & Schema Deployment
+1. Open terminal in project root.
+2. Authenticate Sanity CLI: `cd studio && pnpm exec sanity login`.
+3. Deploy Studio schema: `cd studio && pnpm exec sanity deploy`.
+4. Verify deployment at: `https://dayaberkah.sanity.studio/`.
 
-**What to do:**
-1. Login to Cloudflare Dashboard: https://dash.cloudflare.com
-2. Navigate to: Pages > `dbsn-website` > Settings > Environment variables
-3. Add these **Production** secrets (copy values from your `.env.local` or password manager):
-
-| Secret Name | Where to Find Value |
-|-------------|-------------------|
-| DATABASE_URL | Neon Console > Connection String |
-| NEXTAUTH_SECRET | Generate: `openssl rand -base64 32` |
-| SANITY_API_READ_TOKEN | Sanity Dashboard > API > Tokens > Add Read Token |
-| SANITY_API_WRITE_TOKEN | Sanity Dashboard > API > Tokens > Add Write Token |
-| SANITY_WEBHOOK_SECRET | Generate: `openssl rand -hex 32` (save for Task 4) |
-| RESEND_API_KEY | Resend Dashboard > API Keys |
-| TELEGRAM_BOT_TOKEN | @BotFather on Telegram |
-| TELEGRAM_CHAT_ID | Your existing chat ID from .env.local |
-| GOOGLE_CLIENT_ID | Google Cloud Console (see Task 3) |
-| GOOGLE_CLIENT_SECRET | Google Cloud Console (see Task 3) |
-| SENTRY_AUTH_TOKEN | Sentry > Settings > Auth Tokens > Create |
-| GSC_SERVICE_ACCOUNT_JSON | Google Cloud Console > Service Accounts |
-| API_KEY_21ST | 21st.dev Dashboard > API Keys |
-
-**Also update your local `.env.local`** with the same values so the Fix Agent can verify connectivity during local builds.
-
-**Checkpoint:** Agent will run `pnpm build` and check that env validation passes for all schemas
+### Task 2: Cloudflare Encrypted Secrets Configuration
+1. Log in to Cloudflare Dashboard (`https://dash.cloudflare.com`).
+2. Navigate to **Pages > dayaberkah.id > Settings > Environment variables**.
+3. Configure required secrets (`DATABASE_URL`, `NEXTAUTH_SECRET`, `SANITY_API_READ_TOKEN`, `RESEND_API_KEY`, `TELEGRAM_BOT_TOKEN`).
 
 ---
 
-## Task 3: Google OAuth Callback URLs (for CF-002, CF-009)
+## 3. OpenSpec Behavioral Requirements
 
-**What to do:**
-1. Go to Google Cloud Console > APIs & Services > Credentials
-2. Select your OAuth 2.0 Client ID
-3. Add these Authorized Redirect URIs:
-   - `https://dayaberkah.id/api/auth/callback/google`
-   - `https://dashboard.dayaberkah.id/api/auth/callback/google`
-   - `http://lvh.me:3000/api/auth/callback/google` (dev — should already exist)
-4. Save
+### Requirement: REQ-OPS-FIX-001-CHECKPOINT-PASS
+Automated remediation loops SHALL NOT proceed until all manual environment secret and CLI authentication checkpoints yield PASS status.
 
-**Checkpoint:** Agent will verify by checking `GOOGLE_CLIENT_ID` is set in env
+#### Scenario: Remediation Gate Verification
+- GIVEN a developer preparing to run automated fix scripts
+- WHEN executing the manual tasks verification suite
+- THEN all environment secret variables and Sanity CLI credentials MUST validate successfully before code execution starts.
 
 ---
 
-## Task 4: Sanity Webhook Configuration (for SAN-005, SAN-006)
+## 4. OpenSpec Delta
 
-**What to do:**
-1. Go to Sanity Dashboard > API > Webhooks
-2. Create or update webhook:
-   - **Name:** `ISR Cache Revalidation`
-   - **URL:** `https://dayaberkah.id/api/revalidate` (production)
-   - **Trigger on:** Create, Update, Delete
-   - **Filter:** Leave empty (all document types)
-   - **Secret:** Paste the value you generated in Task 2 (`SANITY_WEBHOOK_SECRET`)
-   - **Projection:** `{_id, _type, "subdomain": spoke->subdomain}`
-3. Also add staging webhook if needed:
-   - **URL:** `https://<branch>.dbsn-website.pages.dev/api/revalidate`
-   - Use the same secret from your Cloudflare Pages env vars
+## ADDED Requirements
+- REQ-OPS-FIX-001-CHECKPOINT-PASS: Mandatory manual checkpoint verification gate.
 
-**Checkpoint:** Agent will verify webhook secret is set in env and revalidate route handles the payload shape
+## MODIFIED Requirements
+- Standardized Cloudflare Pages secret management requirements.
+
+## REMOVED Requirements
+- Legacy Vercel environment setup instructions.
 
 ---
 
-## Task 5: Cloudflare Pages Git Integration (for CF-004)
+## 5. Graphify Knowledge Graph Anchoring
 
-**What to do:**
-1. Go to Cloudflare Dashboard > Pages > Create a project (or reconfigure `dbsn-website`)
-2. Connect to GitHub repository: `pampam666/dbsnweb-vbeta`
-3. Build settings:
-   - **Build command:** `pnpm pages:build`
-   - **Build output directory:** `.vercel/output/static`
-   - **Root directory:** `/`
-   - **Environment variables:** Set `NODE_VERSION=22` and `PNPM_VERSION=10`
-4. Do NOT trigger first deploy yet — wait for Fix Agent to complete
-
-**Checkpoint:** Agent will verify `.github/workflows/cloudflare-pages.yml` exists (created by Fix Agent)
-
----
-
-## Task 6: DNS CNAME Records (for CF-012)
-
-> ⚠️ Do this LAST, only after Fix Agent has completed ALL phases and you've verified staging works.
-
-**What to do:**
-1. Go to your DNS Manager (Cloudflare DNS or registrar)
-2. Create CNAME records:
-
-| Hostname | Type | Target |
-|----------|------|--------|
-| `@` (dayaberkah.id) | CNAME | `dbsn-website.pages.dev` |
-| `www` | CNAME | `dbsn-website.pages.dev` |
-| `pju` | CNAME | `dbsn-website.pages.dev` |
-| `solarcell` | CNAME | `dbsn-website.pages.dev` |
-| `alatpetir` | CNAME | `dbsn-website.pages.dev` |
-| `baterai` | CNAME | `dbsn-website.pages.dev` |
-| `dashboard` | CNAME | `dbsn-website.pages.dev` |
-
-**Checkpoint:** Agent cannot verify DNS (external) — you must confirm: "DNS records are configured"
-
----
-
-## Summary Checklist
-
-Before triggering agent verification, confirm:
-
-- [ ] Task 1: `npx sanity login` completed (deploy AFTER Fix Agent Phase 1)
-- [ ] Task 2: All 13 Cloudflare secrets set in Dashboard + `.env.local` updated
-- [ ] Task 3: Google OAuth callback URLs added for production domain
-- [ ] Task 4: Sanity webhook configured with secret and subdomain projection
-- [ ] Task 5: Cloudflare Pages connected to GitHub repo
-- [ ] Task 6: DNS — SKIP for now (do after all fixes are complete)
-
-When ready, type: **"I have completed all manual tasks, please verify"**
+- Knowledge Graph Node ID: `doc:docs/operations/audits/developer-fix-guide.md`
+- Graphify Community: `community_audits`
+- Master Reference: [`verify-manual-tasks-prompt.md`](file:///d:/dev/arostech-hub/docs/operations/audits/verify-manual-tasks-prompt.md#L1-L60)

@@ -1,53 +1,93 @@
+---
+id: ADR-0002
+title: "ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace"
+version: 4.0.0
+status: ACCEPTED
+target_domain: dayaberkah.id
+graphify_community: "community_adr"
+authoritative_references:
+  adr_0001: "file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50"
+  config_schema: "file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L1-L50"
+---
+
 # ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace
 
-**Date**: 2026-07-21
-**Status**: accepted
-**Deciders**: User, Antigravity
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
+> **Authoritative Baseline Reference**: Architectural Decision Record establishing explicit build target paths for Cloudflare Pages deployment scripts in the monorepo workspace, adhering to PRD v4.0.0 ([`adr_0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50)).
+> **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md`
 
-## Context
+---
 
-During Cloudflare CI deployments for the project (`dayaberkah`), builds failed at the deployment stage (e.g. build UUID `6814bd5c-6277-44b8-9851-4795afdb0f61` and `2a50bd1b`). While the Next.js compilation step (`@cloudflare/next-on-pages`) succeeded cleanly, the subsequent deployment step threw the following error:
+## OpenSpec Delta
 
+- `MODIFIED`: Enforced explicit project target parameters in `pages:deploy` package scripts to prevent CLI framework ambiguity errors.
+
+---
+
+## 1. Behavioral Contracts & Requirements
+
+### Requirement: REQ-ADR-0002 Explicit Deploy Script Parameters
+All CI build scripts and deployment commands MUST explicitly specify the target static asset directory (`.vercel/output/static`) and Cloudflare Pages project name (`dayaberkah`). CI runners SHALL NOT invoke bare `wrangler deploy` without explicit positional directory parameters.
+
+#### Scenario: Multi-Package Workspace CI Build
+- GIVEN a pnpm workspace containing root Next.js app and `studio/` package
+- WHEN the CI build script executes `pnpm pages:deploy`
+- THEN Wrangler MUST receive explicit target path `.vercel/output/static` and `--project-name dayaberkah`
+- AND the deployment SHALL complete cleanly without framework auto-detection errors.
+
+---
+
+## 2. Context & Problem Statement
+
+During Cloudflare CI deployments, builds executed in multi-package repositories can fail during automatic framework detection if Wrangler discovers multiple package frameworks (such as root Next.js and subpackage Sanity Studio). Executing an unguided `wrangler deploy` from the root directory causes CLI ambiguity errors.
+
+---
+
+## 3. Decision & Declarative Command Schema
+
+We SHALL explicitly target the static build output directory (`.vercel/output/static`) produced by `@cloudflare/next-on-pages` and specify `--project-name dayaberkah` in all deployment invocations:
+
+```typescript
+import { z } from "zod";
+
+export const DeployCommandConfigSchema = z.object({
+  targetDirectory: z.literal(".vercel/output/static"),
+  projectName: z.literal("dayaberkah"),
+  command: z.literal("npx wrangler pages deploy .vercel/output/static --project-name dayaberkah"),
+});
+
+export type DeployCommandConfig = z.infer<typeof DeployCommandConfigSchema>;
 ```
-✘ [ERROR] Wrangler was unable to automatically configure your project to work with Cloudflare,
-  since multiple frameworks were found: PNPM + Next.js studio, PNPM + Next.js ..
-```
 
-Because the repository is structured as a PNPM workspace containing both the root Next.js web application and a `studio/` workspace package (Sanity Studio), Wrangler's automatic framework detection becomes ambiguous when executing bare `wrangler deploy` from the root directory.
-
-## Decision
-
-We will explicitly target the `@cloudflare/next-on-pages` static build output directory (`.vercel/output/static`) and specify the project name (`dayaberkah`) in all Cloudflare Pages deployment invocations.
-
-> **Note**: `.vercel/output/static` is the standard temporary build directory generated locally by `@cloudflare/next-on-pages` (which uses Next.js Build Output API v3 specification). It is deployed entirely onto **Cloudflare Pages** infrastructure, and **does not use Vercel hosting or Vercel servers** in any way.
-
-Specifically, the deployment command is updated to:
+Command invocation:
 ```bash
 npx wrangler pages deploy .vercel/output/static --project-name dayaberkah
 ```
 
-## Alternatives Considered
+> **Note**: `.vercel/output/static` is the standard build output directory generated locally by `@cloudflare/next-on-pages` (using Next.js Build Output API v3 spec). It is deployed directly to **Cloudflare Pages** edge infrastructure.
 
-### Alternative 1: Run Wrangler within a specific subfolder shell step
+---
+
+## 4. Alternatives Considered
+
+### Alternative 1: Shell `cd` into Subfolder Prior to Deploy
 - **Pros**: Keeps deployment parameters implicit.
-- **Cons**: Requires custom shell scripting in CI and does not resolve bare `wrangler` CLI ambiguities in root commands.
-- **Why not**: Explicitly passing path parameters to `wrangler pages deploy` is simpler, cleaner, and guaranteed to work across local and CI environments.
+- **Cons**: Breaks monorepo relative paths and adds brittle shell scripting step.
+- **Why not**: Explicit CLI parameters are cleaner, deterministic, and self-documenting.
 
-### Alternative 2: Separate `studio/` into a completely distinct standalone git repository
-- **Pros**: Eliminates multi-framework workspace detection by removing monorepo structure.
-- **Cons**: Loses monorepo benefits (shared versioning, atomic commits, single repository management).
-- **Why not**: Unnecessary architectural overhead when Wrangler provides explicit CLI deployment flags.
+### Alternative 2: Separate `studio/` into Standalone Repository
+- **Pros**: Removes multi-framework detection ambiguity.
+- **Cons**: Breaks workspace monorepo advantages (atomic commits, shared versioning).
+- **Why not**: Unnecessary overhead when Wrangler natively supports explicit path and project arguments.
 
-## Consequences
+---
+
+## 5. Consequences
 
 ### Positive
-- Bypasses Wrangler's multi-framework auto-detection logic completely during CI/CD.
-- Ensures reliable, deterministic deployments directly to Cloudflare Pages.
-- Maintains monorepo workspace organization intact.
+- Completely bypasses Wrangler multi-framework auto-detection logic.
+- Guarantees deterministic CI/CD deployments to Cloudflare Pages.
+- Retains clean monorepo architecture.
 
-### Negative
-- CI build configuration must maintain explicit deployment arguments if the output path or project name changes in the future.
-
-### Risks
-- If Cloudflare CI settings still call bare `npx wrangler deploy` instead of the project's `pages:deploy` command, manual adjustment in the Cloudflare Dashboard (Settings -> Build -> Deploy command) is required.
-- **Mitigation**: Update `package.json` script `"pages:deploy"` and document dashboard requirement.
+### Negative & Mitigation
+- Future changes to project name or output path MUST be updated explicitly in `package.json` scripts.

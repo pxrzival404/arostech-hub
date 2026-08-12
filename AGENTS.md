@@ -26,9 +26,17 @@
 | 1 (Highest) | **High-Level Architecture (HLA)** | `docs/` | Strategy, system architecture, engineering governance, operations |
 | 2 | **Low-Level Architecture (LLA)** | `openspec/` | Spec-driven change proposals, requirements, design, tasks |
 | 3 | **Enforcement Rules** | `.agents/rules/` | Platform-specific constraints (Edge Runtime, CMS, Deploy, etc.) |
+| 3.1 | **Teamwork Squad Rules** | `.agents/rules/teamwork-squad-orchestration.md` | Teamwork-Preview, Draft-First, PRD SSOT Cascade, Dynamic Task Expansion |
 | 4 (Lowest) | **Implementation** | `src/`, `studio/`, `prisma/` | Production code — must match all layers above |
 
 **Conflict Resolution**: When layers disagree, the higher-priority layer wins. Implementation that contradicts docs is a bug in the implementation.
+
+### 2.0 Teamwork-Preview & Draft-First Workflow
+When performing multi-agent operations or executing `/teamwork-preview`:
+1. **Draft-First Alignment**: Always generate a structured Draft Plan / Prompt first for user review before execution.
+2. **PRD-First SSOT Cascade**: All document modifications MUST cascade top-down from `docs/strategy/prd.md` (Root SSOT).
+3. **Dynamic Task Expansion**: Squad agents have decision autonomy to dynamically add new Kanban work items when gap discovery reveals missing HLA artifacts or schemas.
+4. **Merge Gates**: Every updated document MUST pass static 7-Pillars validation (`node .agents/scripts/validate-ai-docs.cjs`) and Knowledge Graph update (`graphify update .`).
 
 ### 2.1 Documentation Architecture (docs/)
 

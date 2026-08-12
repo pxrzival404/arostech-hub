@@ -1,45 +1,88 @@
-# ADR-0001: Migrate Fully to Cloudflare Pages and Deprecate Vercel
+---
+id: ADR-0001
+title: "ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure"
+version: 4.0.0
+status: ACCEPTED
+target_domain: dayaberkah.id
+graphify_community: "community_adr"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L28-L38"
+---
 
-**Date**: 2026-07-20
-**Status**: accepted
-**Deciders**: User, Antigravity
+# ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure
 
-## Context
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
+> **Authoritative Baseline Reference**: Architectural Decision Record governing the consolidation of preview, staging, and production hosting environments onto **Cloudflare Pages**, synchronized with PRD v4.0.0 ([`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L28-L38)).
+> **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md`
 
-The project currently uses Vercel for preview and staging deployments (`dbsn-test01.vercel.app`) and Cloudflare Pages for production deployments (`dayaberkah.id`). Cloudflare is also utilized for DNS and domain management (pointing CNAME records to Vercel).
+---
 
-This dual-provider integration introduces two main issues:
-1. High integration overhead: Managing two separate deployment platforms (Vercel and Cloudflare Pages) is redundant and complex.
-2. Free tier limitations: The development team experiences frequent errors and build queue blocks on Vercel's free tier due to concurrency and seat limits when pushing commits. Furthermore, Vercel's free tier is strictly for personal, non-commercial use.
+## OpenSpec Delta
 
-## Decision
+- `MODIFIED`: Consolidated hosting baseline to Cloudflare Pages for all application branches and preview environments.
+- `REMOVED`: Deprecated third-party serverless hosting platforms.
 
-We will migrate preview and staging deployments entirely to Cloudflare Pages and deprecate the use of Vercel. All hosting, preview URLs, DNS, and routing will be consolidated under Cloudflare.
+---
 
-## Alternatives Considered
+## 1. Behavioral Contracts & Requirements
 
-### Alternative 1: Upgrade to Vercel Pro (Paid Tier)
-- **Pros**: Seamless Next.js deployment experience and fast builds.
-- **Cons**: Vercel Pro charges per user ($20/member/month), which adds up quickly for a collaborating team.
-- **Why not**: It introduces high recurring costs for temporary staging/preview environments and does not resolve the complexity of managing two distinct providers.
+### Requirement: REQ-ADR-0001 Single Hosting Provider Consolidation
+The DBSN Centralized Digital Ecosystem MUST deploy exclusively onto Cloudflare Pages infrastructure. All HTTP traffic, edge middleware execution, preview environments, and custom subdomain DNS routing SHALL be managed under Cloudflare.
 
-### Alternative 2: Maintain Current Setup (Vercel Free Tier)
-- **Pros**: No immediate changes needed to the CI/CD staging configuration.
-- **Cons**: Team workflow continues to be disrupted by build queue blocks and errors.
-- **Why not**: Directly impacts developer productivity and violates Vercel's terms for commercial/team projects on the free plan.
+#### Scenario: Production Deployment Pipeline
+- GIVEN a commit merged into main branch
+- WHEN Cloudflare CI builds the project via `@cloudflare/next-on-pages`
+- THEN the system SHALL deploy static and serverless edge functions directly to Cloudflare Pages
+- AND production domain `dayaberkah.id` MUST be updated automatically.
 
-## Consequences
+---
+
+## 2. Context & Decision Drivers
+
+Prior infrastructure setups split preview, staging, and production environments across multiple deployment vendors. This dual-provider integration introduced two major issues:
+1. High integration overhead: Managing two separate deployment platforms introduced redundant configuration friction.
+2. Free tier limitations: External platforms suffered from build queue blocks and strict seat concurrency limits for collaborating team members.
+
+---
+
+## 3. Decision & Technical Architecture
+
+We SHALL consolidate preview, staging, and production hosting entirely onto **Cloudflare Pages**. All hosting, preview URLs, DNS management, and WAF rules are unified under Cloudflare.
+
+```typescript
+export interface CloudflarePagesDeploymentConfig {
+  projectName: "dayaberkah";
+  buildOutputDirectory: ".vercel/output/static";
+  nodeVersion: "20.x";
+  framework: "nextjs-pages";
+  edgeRuntimeEnabled: true;
+}
+```
+
+---
+
+## 4. Alternatives Considered
+
+### Alternative 1: Upgrade Third-Party Host to Enterprise Tier
+- **Pros**: Dedicated build resources.
+- **Cons**: Per-seat recurring team pricing adds high financial overhead without resolving multi-provider management complexity.
+- **Why not**: Cloudflare Pages provides unlimited team seats and native Edge integration for flat cost.
+
+### Alternative 2: Maintain Split Staging and Production Hosts
+- **Pros**: No immediate CI workflow changes needed.
+- **Cons**: Causes parity discrepancies ("works on staging, breaks in production").
+- **Why not**: Violates environmental parity standards and disrupts developer productivity.
+
+---
+
+## 5. Consequences & Risk Mitigation
 
 ### Positive
-- Unifies hosting, CDN, DNS, SSL, and security (WAF) under a single provider (Cloudflare).
-- Resolves build concurrency and team collaboration limits for free on Cloudflare Pages.
-- Guarantees staging/production parity by running both on the exact same infrastructure, preventing "works on staging, breaks in production" bugs.
-- Keeps git branch preview deployments functional via Cloudflare Pages' native branch previews.
+- Unifies hosting, CDN, DNS, SSL, and security (WAF) under a single cloud infrastructure provider.
+- Resolves build concurrency and team collaboration limits.
+- Guarantees staging/production environment parity by running all builds on the exact same Edge runtime.
 
-### Negative
-- Cloudflare Pages build times might be slightly slower compared to Vercel's optimized builder.
-- Limited to 500 builds per month on the free tier (though upgrading to Cloudflare Pages Pro is a flat $20/month per account rather than per user).
-
-### Risks
-- Next.js compatibility: Cloudflare Pages compiles Next.js using `@cloudflare/next-on-pages` to run on the Edge Workers runtime, meaning any server-side code must run on the Edge runtime (`const runtime = 'edge'`).
-- **Mitigation**: The codebase is already designed and configured for Cloudflare Pages Edge execution, so the risk is extremely low.
+### Negative & Risks
+- Edge runtime constraints: All Next.js server-side code MUST run on the Edge Workers runtime (`export const runtime = "edge"`).
+- **Mitigation**: Base code architecture, Prisma Neon proxy connection, and Auth.js v5 are fully configured for Edge compatibility.
