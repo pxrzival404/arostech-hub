@@ -1,111 +1,126 @@
-# Dependencies Codemap
+---
+id: ARCH-MAP-DEPS-001
+title: System Package Dependencies & Service Mapping
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_architecture"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  compatibility_matrix: "file:///d:/dev/arostech-hub/docs/strategy/compatibility-matrix.md#L1-L40"
+---
 
-<!-- Generated: 2026-07-22 | Files scanned: package.json | Token estimate: ~600 -->
+# System Package Dependencies & Service Mapping
 
-## Core Runtime
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
+> **Authoritative Baseline Reference**: This document provides the complete mapping of node dependencies, active packages, runtime engines, and external service bindings for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)) and the system runtime compatibility matrix ([`compatibility-matrix.md`](file:///d:/dev/arostech-hub/docs/strategy/compatibility-matrix.md#L1-L40)).
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `next` | 16.2.6 | Framework (App Router, Edge Middleware, ISR) |
-| `react` | 19.2.4 | UI library |
-| `react-dom` | 19.2.4 | DOM renderer |
+---
 
-## CMS & Content
+## ## OpenSpec Delta
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `@sanity/client` | ^7.22.0 | Sanity GROQ query client |
-| `@sanity/image-url` | ^2.1.1 | Sanity image URL builder |
-| `next-sanity` | ^12.4.5 | Next.js Sanity integration (createClient, stega) |
-| `@portabletext/react` | ^6.2.0 | Render Sanity PortableText blocks |
-| `@portabletext/types` | ^4.0.2 | TypeScript types for PortableText |
+- **ADDED**: Modern package ecosystem specifications including Next.js 16.2.6, React 19.2.4, Tailwind CSS v4, `@prisma/adapter-neon`, Auth.js v5 (`next-auth`), Motion (`framer-motion`), and 21st SDK.
+- **REMOVED**: Legacy Supabase SDKs, Redis client drivers, and legacy 301 redirect engine packages.
 
-## UI Components & Animation
+---
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `framer-motion` | ^12.40.0 | Page/component animations |
-| `lucide-react` | ^1.16.0 | Icon library |
-| `embla-carousel-react` | ^8.6.0 | Carousel / slider |
-| `next-themes` | ^0.4.6 | Dark/light theme management |
-| `@radix-ui/react-accordion` | ^1.2.12 | Accessible accordion primitive |
-| `@radix-ui/react-avatar` | ^1.1.11 | Accessible avatar primitive |
-| `@radix-ui/react-dialog` | ^1.1.15 | Modal/dialog primitive |
-| `@radix-ui/react-select` | ^2.2.6 | Dropdown select primitive |
-| `@radix-ui/react-slot` | ^1.2.4 | Compound component (asChild) |
-| `@radix-ui/react-tabs` | ^1.1.13 | Tab interface primitive |
-| `@radix-ui/react-tooltip` | ^1.2.8 | Tooltip primitive |
-| `class-variance-authority` | ^0.7.1 | Type-safe component variants (CVA) |
-| `clsx` | ^2.1.1 | Conditional class name utility |
-| `tailwind-merge` | ^3.6.0 | Merge Tailwind classes without conflicts |
-| `tw-animate-css` | ^1.4.0 | CSS animation utilities for Tailwind |
+## Section I: Core Framework & Runtime Packages
 
-## Validation & Forms
+| Package | Version | Layer / Purpose | Constraints |
+| :--- | :--- | :--- | :--- |
+| `next` | `16.2.6` | App Router, Edge Middleware, ISR | MUST run with Edge Runtime compatibility |
+| `react` | `19.2.4` | UI Library & RSC Server Actions | React Server Components baseline |
+| `react-dom` | `19.2.4` | DOM Renderer | Browser rendering target |
+| `typescript` | `^5.7.3` | Type System | Strict mode enabled |
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `zod` | ^4.4.3 | Schema validation (RFQ, env) |
-| `react-hook-form` | ^7.76.0 | Form state management |
-| `@hookform/resolvers` | ^5.2.2 | Zod bridge for RHF |
+---
 
-## Database & Authentication
+## Section II: CMS & Content Ecosystem
+
+| Package | Version | Layer / Purpose |
+| :--- | :--- | :--- |
+| `next-sanity` | `^12.4.5` | Next.js Sanity client, Stega visual editing, ISR handler |
+| `@sanity/client` | `^7.22.0` | GROQ query client |
+| `@sanity/image-url` | `^2.1.1` | Sanity image URL builder |
+| `@portabletext/react` | `^6.2.0` | PortableText rich content renderer |
+
+---
+
+## Section III: UI Components & Animation
 
 | Package | Version | Purpose |
-|---------|---------|---------|
-| `@prisma/client` | ^6.19.3 | Prisma query engine client for PostgreSQL |
-| `@auth/prisma-adapter` | ^2.11.2 | Database adapter mapping Auth.js users/sessions to Prisma |
-| `next-auth` | ^5.0.0-beta.31 | Auth.js v5 beta library for next-gen React/Next.js authentication |
+| :--- | :--- | :--- |
+| `tailwindcss` | `^4.0.0` | Utility-first styling engine (`@theme` tokens) |
+| `@tailwindcss/postcss` | `^4.0.0` | PostCSS build integration |
+| `framer-motion` | `^12.40.0` | Motion animations & entrance reveals |
+| `lucide-react` | `^1.16.0` | SVG Icon library |
+| `embla-carousel-react` | `^8.6.0` | Accessible carousel primitive |
+| `next-themes` | `^0.4.6` | Dark/light theme switcher |
+| `class-variance-authority` | `^0.7.1` | Component variant composition (CVA) |
+| `clsx` | `^2.1.1` | Conditional class composition |
+| `tailwind-merge` | `^3.6.0` | Tailwind class merger |
 
-## Notification Services
+---
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `resend` | ^6.12.4 | Resend API client for email transmission |
-
-## Styling
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `tailwindcss` | ^4 | Utility-first CSS |
-| `@tailwindcss/postcss` | ^4 | PostCSS integration |
-
-## Testing & Tooling (devDependencies)
+## Section IV: Validation & Data Layer
 
 | Package | Version | Purpose |
-|---------|---------|---------|
-| `jest` | ^30.4.2 | Test runner |
-| `jest-environment-jsdom` | ^30.4.1 | jsdom environment for component tests |
-| `@jest/globals` | ^30.4.1 | Jest global types |
-| `@swc/jest` | ^0.2.39 | SWC-based TS transpilation for Jest |
-| `ts-jest` | ^29.4.10 | TypeScript Jest transformer |
-| `@testing-library/react` | ^16.3.2 | Component testing |
-| `@testing-library/jest-dom` | ^6.9.1 | DOM matchers |
-| `@testing-library/user-event` | ^14.6.1 | User interaction simulation |
-| `@playwright/test` | ^1.60.0 | E2E testing |
-| `@types/jest` | ^30.0.0 | TypeScript types for Jest |
-| `cross-env` | ^10.1.0 | Cross-platform env variable setting |
-| `prisma` | ^6.19.3 | Prisma CLI and code generator |
+| :--- | :--- | :--- |
+| `zod` | `^4.4.3` | Schema validation for RFQ, forms, and env |
+| `@prisma/client` | `^6.19.3` | Prisma ORM database client |
+| `@prisma/adapter-neon` | `^7.8.0` | Neon Serverless Postgres Proxy adapter |
+| `@auth/prisma-adapter` | `^2.11.2` | Auth.js database adapter |
+| `next-auth` | `^5.0.0-beta.31` | Auth.js v5 session management & RBAC |
 
-## TypeScript (devDependencies)
+---
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `typescript` | ^5 | Type system |
-| `@types/node` | ^20 | Node.js types |
-| `@types/react` | ^19 | React types |
-| `@types/react-dom` | ^19 | React DOM types |
-| `eslint` | ^9 | Linter |
-| `eslint-config-next` | 16.2.6 | Next.js ESLint config |
+## Section V: Notification & Telemetry Services
 
-## External Services (Active & Planned)
+| Service / Package | Status | Target Environment / Purpose |
+| :--- | :--- | :--- |
+| `resend` (`^6.12.4`) | **Active** | Resend API client for RFQ quotation ACK & alerts |
+| Telegram Bot API | **Active** | Ingestion alerts & infrastructure warning channel |
+| WhatsApp `wa.me` | **Active** | Manual submission fallback for RFQ failure path |
+| Cloudflare Pages | **Active** | Edge hosting & CDN infrastructure |
+| 21st SDK | **Active** | AI Agent Chat integration (`/api/an-token`) |
 
-| Service | Status | Purpose |
-|---------|---------|---------|
-| Neon Postgres + Prisma | **Active** | Transactional database storing users, leads, redirects |
-| Auth.js v5 | **Active** | Session management, RBAC, cookie auth |
-| Resend | **Active** | Email notifications (quotation ACK & alerts) |
-| Telegram Bot API | **Active** | Ingestion alerts and dev error messaging channel |
-| Cloudflare Pages | **Active** | Edge hosting & CDN (Staging & Production) |
-| GA4 + GSC | **Active** | Analytics & SEO |
-| 21st SDK | **Active** | Agent chat integration |
-| Sentry | **Active** | Error tracking |
+---
+
+## Section VI: Declarative Dependencies Schema
+
+```typescript
+export interface PackageManifestSchema {
+  name: 'arostech-hub';
+  private: true;
+  scripts: {
+    dev: string;
+    build: string;
+    start: string;
+    lint: string;
+    test: string;
+  };
+  dependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+}
+```
+
+---
+
+## Section VII: OpenSpec Behavioral Contracts
+
+### Requirement: REQ-MAP-DEPS-001-PACKAGES
+The project package ecosystem MUST enforce compatibility across Next.js 16, React 19, Auth.js v5, and Prisma 6, and SHALL NOT include deprecated drivers (Supabase, Redis, or legacy redirect utilities).
+
+#### Scenario: Dependency Verification
+- GIVEN a dependency audit execution
+- WHEN `package.json` dependencies are scanned
+- THEN the system MUST verify that all installed packages comply with PRD v4.0.0 baseline requirements
+- AND it SHALL confirm that zero legacy 301 redirect or Redis packages exist in the manifest.
+
+---
+
+## Section VIII: Knowledge Graph Anchoring
+
+- **Graphify Node**: `doc:docs/system/architecture/codemaps/dependencies.md`
+- **Community**: `community_architecture`
+- **Authoritative Anchor**: [`compatibility-matrix.md`](file:///d:/dev/arostech-hub/docs/strategy/compatibility-matrix.md#L1-L40)

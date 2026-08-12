@@ -1,16 +1,16 @@
 # Graph Report - arostech-hub  (2026-08-12)
 
 ## Corpus Check
-- 769 files · ~708,510 words
+- 909 files · ~747,255 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 7002 nodes · 11115 edges · 770 communities (539 shown, 231 thin omitted)
+- 7939 nodes · 11921 edges · 906 communities (616 shown, 290 thin omitted)
 - Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 926 edges (avg confidence: 0.52)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ef71cfc1`
+- Built from commit: `df45d80e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,14 +18,14 @@
 - worker-configuration.d.ts
 - github-coordination/actions.js
 - scripts/gateguard-fact-force.js
-- (hub)/page.tsx
+- PortfolioSection.tsx
 - config.ts
 - RfqB2GForm.tsx
 - hooks/gateguard-fact-force.js
 - utils.js
 - single_worker.js
 - collect.js
-- cn
+- claude-skill-migration.js
 - install-executor.js
 - install-lifecycle.js
 - resolve-formatter.js
@@ -45,17 +45,17 @@
 - env.ts
 - scripts/session-start.js
 - operator-readiness-dashboard.js
-- app/layout.tsx
+- useTrackEvent
 - hooks/mcp-health-check.js
 - plan-canvas.js
 - scripts/mcp-health-check.js
 - compilerOptions
-- PortfolioSection.tsx
+- cn
 - release-video-suite.js
 - hooks/posttooluse-dispatcher.js
 - hooks/session-start.js
 - memory-vault.js
-- contact/page.tsx
+- redirects/route.ts
 - package-manager.js
 - canonical-session.js
 - tmux-worktree-orchestrator.js
@@ -73,25 +73,25 @@
 - memory-mcp.mjs
 - session-inspect.js
 - release-approval-gate.js
-- types.ts
+- queries.ts
 - ito.js
 - agent-proximity/index.js
-- claude-skill-migration.js
+- products/[slug]/page.tsx
 - work-items.js
 - Event
-- rfq-schemas.ts
+- contact-client.tsx
 - scripts/session-end.js
 - session-aliases.js
-- session-manager.js
+- log
 - scripts/suggest-compact.js
 - memory-vault-format.js
 - codex-worktree.js
-- generate-command-registry.js
+- AboutSection.tsx
 - install-plan.js
 - proximity.js
 - skill-evolution/health.js
-- FAQSection.tsx
-- AboutSection.tsx
+- 1.2 Individual File Audit Results
+- (hub)/page.tsx
 - consult.js
 - devDependencies
 - merge-codex-config.js
@@ -113,7 +113,7 @@
 - URL
 - scripts/block-no-verify.js
 - validate-install-manifests.js
-- scripts/ecc-statusline.js
+- scripts/ecc-metrics-bridge.js
 - hooks/block-no-verify.js
 - hooks/pre-bash-commit-quality.js
 - provenance.js
@@ -121,30 +121,30 @@
 - scripts/pre-bash-commit-quality.js
 - SkillCreateOutput
 - package.json
-- buildControlPaneSnapshot
+- 2. Declarative Zod Schemas & TypeScript Interfaces
 - ThemeToggle.tsx
 - auto-update.js
 - check-plugin-cache.js
 - buildPreToolUseAdditionalContext
 - scripts/session-start-bootstrap.js
 - dashboard.js
-- redirects/route.ts
-- [spoke]/page.tsx
-- json-ld.ts
+- prisma.ts
+- install-state.js
+- FAQSection.tsx
 - scripts/ecc-context-monitor.js
 - agent-compress.js
-- repair.js
+- list-installed.js
 - scripts
-- rfq/route.ts
-- getOptimizedImageUrl
+- route.test.ts
+- empirical_stress_test.cjs
 - merge-mcp-config.js
-- scripts/ecc-metrics-bridge.js
+- scripts/catalog.js
 - hooks/ecc-metrics-bridge.js
 - hooks/plugin-hook-bootstrap.js
 - scripts/run-with-flags.js
 - markdown.js
 - articles/[slug]/page.tsx
-- [spoke]/[slug]/page.tsx
+- Brownfield Specification Audit & Documentation Verification Report
 - URLSearchParams
 - discussion-audit.js
 - scripts/governance-capture.js
@@ -152,24 +152,24 @@
 - hooks/governance-capture.js
 - hooks/run-with-flags.js
 - hooks/session-end.js
-- install-state.js
-- observability-readiness.js
-- prisma.ts
-- DurableObjectStorage
-- scripts/catalog.js
-- validate-hooks.js
 - ecc.js
+- observability-readiness.js
+- rfq-schemas.ts
+- DurableObjectStorage
+- Handoff & Review Report — Milestone 3 (SQ-OPS Reviewer)
+- validate-hooks.js
+- portfolio/[slug]/page.tsx
 - gemini-adapt-agents.js
 - hooks/observe-runner.js
 - hooks/pre-bash-dev-server-block.js
 - hooks/stop-format-typecheck.js
-- claude-home.js
-- p
+- normalizeRelativePath
+- cursor-project.js
 - project-detect.js
 - tracker.js
 - scripts/observe-runner.js
 - release.sh
-- (hub)/portfolio/page.tsx
+- empirical_stress_test.js
 - Element
 - Headers
 - SubtleCrypto
@@ -191,18 +191,18 @@
 - main
 - opencode-home.js
 - observations.js
-- an-token/route.ts
-- queries.ts
+- Handoff Report — Independent Technical Review for Milestone 2 (SQ-SYSTEM)
+- Review & Handoff Report — Milestone 2 (SQ-SYSTEM)
 - DurableObjectState
 - ExtendableEvent
 - WorkerEntrypoint
 - validate-workflow-security.js
-- scripts/cost-tracker.js
+- ensureDir
 - scripts/desktop-notify.js
 - hooks/cost-tracker.js
 - hooks/desktop-notify.js
 - work-item-mutations.js
-- cursor-project.js
+- graph.js
 - sessions.js
 - session-aliases.d.ts
 - main
@@ -214,10 +214,10 @@
 - scripts/design-quality-check.js
 - gan-harness.sh
 - hooks/design-quality-check.js
-- list-installed.js
+- uninstall.js
 - preserve-manifest.js
-- NotificationQueue
-- redirects.test.ts
+- BRIEFING — 2026-08-12T08:49:40Z
+- BRIEFING — 2026-08-12T01:47:25Z
 - schemaTypes/index.ts
 - EventSource
 - Flagship
@@ -230,8 +230,8 @@
 - hooks/quality-gate.js
 - hooks/session-start-bootstrap.js
 - scripts/post-bash-command-log.js
-- auth.config.ts
-- metadata.ts
+- Milestone 2 (SQ-SYSTEM) Empirical Verification Report
+- Milestone 1 (SQ-STRATEGY) Empirical Verification & Test Evidence Report
 - redirect-engine.ts
 - AgentMemoryProfile
 - ByteLengthQueuingStrategy
@@ -264,7 +264,7 @@
 - antigravity-project.js
 - session-manager.d.ts
 - utils.d.ts
-- orchestration-status.js
+- Milestone 1 (SQ-STRATEGY) Technical Review Handoff Report
 - gemini-adapt-ecc.js
 - AbortSignal
 - Ai
@@ -273,7 +273,7 @@
 - VectorizeIndex
 - WorkflowInstance
 - validate-rules.js
-- scripts/doc-file-warning.js
+- BRIEFING — 2026-08-12T01:47:45Z
 - helpers.js
 - package-manager.d.ts
 - skill-evolution/index.js
@@ -300,7 +300,7 @@
 - orchestrate-codex-worker.sh
 - seed-redirects.ts
 - chat/page.tsx
-- session-bridge.js
+- NotificationQueue
 - AiGateway
 - Comment
 - ForwardableEmailMessage
@@ -390,14 +390,14 @@
 - WorkerStub
 - WorkflowStep
 - WritableStreamDefaultController
-- @21st-sdk/node
-- @21st-sdk/react
+- BRIEFING — 2026-08-12T08:57:33+07:00
+- Adversarial Stress Testing Handoff Report — Milestone 1 (SQ-STRATEGY)
 - register-commands.mjs
 - hooks/check-hook-enabled.js
 - hooks/run-with-flags-shell.sh
 - scripts/run-with-flags-shell.sh
 - ai
-- @ai-sdk/react
+- BRIEFING — 2026-08-12T01:47:30Z
 - bcryptjs
 - clsx
 - cross-env
@@ -492,8 +492,144 @@
 - UnsafeTraceMetrics
 - WebSearch
 - { GET, POST }
-- (hub)/layout.tsx
+- BRIEFING — 2026-08-12T08:31:37Z
+- BRIEFING — 2026-08-12T08:38:52Z
+- BRIEFING — 2026-08-12T08:45:25+07:00
+- buildSkillHealthReport
+- BRIEFING — 2026-08-12T01:36:55Z
+- BRIEFING — 2026-08-12T08:36:40Z
+- BRIEFING — 2026-08-12T08:43:40+07:00
+- BRIEFING — 2026-08-12T01:36:35Z
+- BRIEFING — 2026-08-12T08:36:45+07:00
+- BRIEFING — 2026-08-12T01:35:10Z
+- BRIEFING — 2026-08-12T01:42:40Z
+- normalizeConfig
+- BRIEFING — 2026-08-12T08:36:15Z
+- 5-Component Handoff Report
+- BRIEFING — 2026-08-12T08:41:50+07:00
+- BRIEFING — 2026-08-12T01:44:00Z
+- Handoff Report — Milestone 1 Strategy Documentation Remediations (Iteration 2)
+- e
+- BRIEFING — 2026-08-12T08:47:30+07:00
+- BRIEFING — 2026-08-12T08:31:30Z
+- Forensic Audit Handoff Report — Milestone 1 Iteration 2
+- Forensic Audit Report — Milestone 1 Iteration 3
+- BRIEFING — 2026-08-12T01:39:57Z
+- check-all-docs.cjs
+- check-links.cjs
+- BRIEFING — 2026-08-12T01:32:02Z
+- BRIEFING — 2026-08-12T01:33:20Z
+- BRIEFING — 2026-08-12T01:39:30Z
+- BRIEFING — 2026-08-12T08:32:02Z
+- verify-uris.cjs
+- verify-uris-detailed.cjs
+- Project: Deep Architectural Cascade & Autonomous Discovery (`arostech-hub`)
+- Review & Challenge Report — Milestone 1 (SQ-STRATEGY)
+- Progress Log
+- Forensic Audit Report & Handoff — Milestone 2 Iteration 2 (SQ-SYSTEM)
+- Handoff Report: Milestone 1 (Iteration 3) Empirical Link & Line Anchor Verification
+- Handoff Report: Operations & Engineering Documentation Survey (PRD v4.0.0 Alignment)
+- Handoff Report — Milestone 1 Strategy Documentation Re-verification (Iteration 2)
+- Handoff Report — Milestone 1 (SQ-STRATEGY)
+- Handoff Report — Milestone 1 Remediation (Iteration 2)
+- Handoff Report — Milestone 1 Line Anchor Bounds Remediation (Iteration 3)
+- test_links.cjs
+- Progress Log — teamwork_preview_orchestrator_r1
+- Audit Progress — Milestone 1 Iteration 2
+- Progress Tracker — teamwork_preview_challenger
+- Progress Log — teamwork_preview_explorer_survey_1
+- Progress Log
+- BRIEFING — 2026-08-12T01:50:50Z
+- teamwork_preview_auditor_m1_1/DISPATCH.md
+- teamwork_preview_auditor_m1_2/DISPATCH.md
+- teamwork_preview_auditor_m1_3/DISPATCH.md
+- teamwork_preview_challenger_m1_1/DISPATCH.md
+- teamwork_preview_challenger_m1_2/DISPATCH.md
+- teamwork_preview_challenger_m1_2/progress.md
+- teamwork_preview_challenger_m1_3/DISPATCH.md
+- teamwork_preview_challenger_m1_3/progress.md
+- teamwork_preview_challenger_m1_4/DISPATCH.md
+- teamwork_preview_challenger_m1_4/progress.md
+- teamwork_preview_explorer_survey_1/DISPATCH.md
+- teamwork_preview_explorer_survey_2/DISPATCH.md
+- teamwork_preview_orchestrator_r1/DISPATCH.md
+- GATE_STATUS.md
+- teamwork_preview_reviewer_m1_1/DISPATCH.md
+- teamwork_preview_reviewer_m1_2/DISPATCH.md
+- teamwork_preview_reviewer_m1_2/progress.md
+- teamwork_preview_reviewer_m1_3/DISPATCH.md
+- teamwork_preview_spec_miner_survey_3/DISPATCH.md
+- teamwork_preview_spec_miner_survey_3/progress.md
+- teamwork_preview_worker_m1_1/DISPATCH.md
+- teamwork_preview_worker_m1_2/DISPATCH.md
+- teamwork_preview_worker_m1_2/progress.md
+- teamwork_preview_worker_m1_3/DISPATCH.md
+- teamwork_preview_worker_m1_3/progress.md
+- teamwork_preview_worker_m2_1/DISPATCH.md
+- teamwork_preview_worker_m2_1/progress.md
+- BRIEFING — 2026-08-12T01:47:30Z
+- Forensic Audit Handoff Report — Milestone 2 (SQ-SYSTEM)
+- test_uri_verification.cjs
+- Verification Handoff Report — Milestone 2 (SQ-SYSTEM)
+- Milestone 2 (SQ-SYSTEM) Handoff Report
+- BRIEFING — 2026-08-12T02:02:00Z
+- ErrorEvent
+- Progress Log
+- @21st-sdk/react
+- teamwork_preview_auditor_m2_1/DISPATCH.md
+- teamwork_preview_auditor_m2_1/progress.md
+- teamwork_preview_challenger_m2_1/DISPATCH.md
+- teamwork_preview_challenger_m2_1/progress.md
+- teamwork_preview_challenger_m2_2/DISPATCH.md
+- teamwork_preview_challenger_m2_2/progress.md
+- teamwork_preview_reviewer_m2_1/DISPATCH.md
+- teamwork_preview_reviewer_m2_2/DISPATCH.md
+- teamwork_preview_reviewer_m2_2/progress.md
+- teamwork_preview_worker_m2_2/DISPATCH.md
 - typescript
+- Handoff Report — Empirical Re-verification for Milestone 2 System Architecture Remediations (Iteration 2)
+- BRIEFING — 2026-08-12T01:50:45Z
+- BRIEFING — 2026-08-12T08:52:40Z
+- Handoff Report — System Architecture & API Contracts Documentation Re-verification (Iteration 2)
+- Milestone 2 (SQ-SYSTEM) Remediation (Iteration 2) — Handoff Report
+- ArticlesSection.tsx
+- redirects.test.ts
+- auth.config.ts
+- about/page.tsx
+- Progress Log - teamwork_preview_auditor_m2_2
+- teamwork_preview_auditor_m2_2/DISPATCH.md
+- teamwork_preview_challenger_m2_3/DISPATCH.md
+- teamwork_preview_challenger_m2_3/progress.md
+- teamwork_preview_reviewer_m2_3/DISPATCH.md
+- @ai-sdk/react
+- BRIEFING — 2026-08-12T02:00:00Z
+- BRIEFING — 2026-08-12T02:00:35Z
+- BRIEFING — 2026-08-12T02:00:00Z
+- BRIEFING — 2026-08-12T09:02:00Z
+- Handoff Report — Reviewer Milestone 3 (SQ-OPS)
+- redirect-audit.ts
+- test_harness.cjs
+- test_harness.js
+- Handoff Report — Milestone 3 (SQ-OPS) Challenger Review
+- Soft Handoff Report — Gen 1 to Gen 2 Orchestrator
+- Handoff Report — Milestone 3 (SQ-OPS)
+- app/layout.tsx
+- check_uris.cjs
+- check_schemas.cjs
+- check_rfc2119.cjs
+- investigate.cjs
+- lookup/route.ts
+- @21st-sdk/agent
+- teamwork_preview_auditor_m3_1/DISPATCH.md
+- teamwork_preview_challenger_m3_1/DISPATCH.md
+- teamwork_preview_challenger_m3_1/progress.md
+- teamwork_preview_challenger_m3_2/DISPATCH.md
+- teamwork_preview_challenger_m3_2/progress.md
+- teamwork_preview_reviewer_m3_1/DISPATCH.md
+- teamwork_preview_reviewer_m3_1/progress.md
+- teamwork_preview_reviewer_m3_2/DISPATCH.md
+- teamwork_preview_worker_m3_1/DISPATCH.md
+- teamwork_preview_worker_m3_1/progress.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 59 edges
@@ -510,19 +646,19 @@
 ## Surprising Connections (you probably didn't know these)
 - `searchDocs()` --indirect_call--> `r()`  [INFERRED]
   .agents/scripts/discord/ecc-bot.mjs → single_worker.js
-- `jaccard()` --indirect_call--> `v()`  [INFERRED]
-  .agents/scripts/lib/agent-proximity/distance.js → single_worker.js
 - `loadCommands()` --indirect_call--> `p()`  [INFERRED]
   .agents/scripts/dashboard-web.js → single_worker.js
 - `sleep()` --indirect_call--> `r()`  [INFERRED]
   .agents/scripts/discord/release-announce.mjs → single_worker.js
 - `run()` --indirect_call--> `p()`  [INFERRED]
   .agents/scripts/ecc-metrics-bridge.js → single_worker.js
+- `run()` --indirect_call--> `event()`  [INFERRED]
+  .agents/scripts/governance-capture.js → src/lib/analytics/gtag.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (770 total, 231 thin omitted)
+## Communities (906 total, 290 thin omitted)
 
 ### Community 0 - "worker-configuration.d.ts"
 Cohesion: 0.00
@@ -549,17 +685,17 @@ Nodes (80): {
 Cohesion: 0.06
 Nodes (71): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+63 more)
 
-### Community 3 - "(hub)/page.tsx"
-Cohesion: 0.05
-Nodes (54): AboutPage(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, AboutPage(), metadata (+46 more)
+### Community 3 - "PortfolioSection.tsx"
+Cohesion: 0.08
+Nodes (23): LeafletMap, ProjectMapDynamic(), categoryAccentColors, categoryColors, categoryLabels, cityCards, defaultPortfolioItems, filters (+15 more)
 
 ### Community 4 - "config.ts"
 Cohesion: 0.07
 Nodes (47): base64url(), getAccessToken(), logger, main(), ServiceAccount, SUBMISSIONS, submitSitemap(), metadata (+39 more)
 
 ### Community 5 - "RfqB2GForm.tsx"
-Cohesion: 0.06
-Nodes (53): generateMetadata(), revalidate, runtime, RfqB2BForm(), RfqB2BFormProps, RfqB2GForm(), mockCartItems, mockClearCart (+45 more)
+Cohesion: 0.11
+Nodes (29): RfqB2BForm(), RfqB2GForm(), mockCartItems, mockClearCart, mockRemoveItem, mockUpdateItemNotes, mockUpdateQuantity, mockUseRfqCartStoreMock (+21 more)
 
 ### Community 6 - "hooks/gateguard-fact-force.js"
 Cohesion: 0.08
@@ -567,64 +703,64 @@ Nodes (54): allowWithStateWarning(), collectExecutableBodies(), commandBasename(
 
 ### Community 7 - "utils.js"
 Cohesion: 0.10
-Nodes (28): EXCLUDED_PATTERNS, fs, { isGitRepo, getGitModifiedFiles, readFile, log }, passThroughAndExit(), fs, {
+Nodes (29): EXCLUDED_PATTERNS, fs, { isGitRepo, getGitModifiedFiles, readFile, log }, passThroughAndExit(), fs, {
   getLearnedSkillsDir,
   ensureDir,
   readFile,
   countInFile,
   log
-}, main(), path (+20 more)
+}, main(), path (+21 more)
 
 ### Community 8 - "single_worker.js"
-Cohesion: 0.11
-Nodes (44): a, applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at(), checkPhase() (+36 more)
+Cohesion: 0.12
+Nodes (37): jaccard(), applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at(), checkPhase() (+29 more)
 
 ### Community 9 - "collect.js"
 Cohesion: 0.07
 Nodes (42): asNonEmptyString(), asStringArray(), buildFragmentation(), buildInventory(), buildSignature(), isObject(), looksLikeSecretValue(), mergeServers() (+34 more)
 
-### Community 10 - "cn"
-Cohesion: 0.08
-Nodes (40): categoryColors, ContactPage(), isValidEmail(), isValidPhone(), SelectField(), SelectFieldProps, TextFieldProps, ContactSection() (+32 more)
+### Community 10 - "claude-skill-migration.js"
+Cohesion: 0.17
+Nodes (27): assertSafeClaudeSkillOperation(), assertSafeSkillPath(), { assertWithinTrustedRoot }, buildMigrationStates(), buildState(), classifyPreviousOperations(), classifySkillConflicts(), classifySkillGroup() (+19 more)
 
 ### Community 11 - "install-executor.js"
-Cohesion: 0.10
-Nodes (40): path, toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations(), buildCopyFileOperation() (+32 more)
+Cohesion: 0.09
+Nodes (41): path, toCursorAgentFileName(), toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations() (+33 more)
 
 ### Community 12 - "install-lifecycle.js"
-Cohesion: 0.06
-Nodes (70): analyzeRecord(), areFilesEqual(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildDoctorReport(), buildIssue() (+62 more)
+Cohesion: 0.07
+Nodes (67): analyzeRecord(), areFilesEqual(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildDoctorReport(), buildIssue() (+59 more)
 
 ### Community 13 - "resolve-formatter.js"
 Cohesion: 0.07
-Nodes (39): binCache, BIOME_CONFIGS, detectFormatter(), findProjectRoot(), FORMATTER_PACKAGES, formatterCache, fs, getRunnerFromPackageManager() (+31 more)
+Nodes (40): binCache, BIOME_CONFIGS, detectFormatter(), findProjectRoot(), FORMATTER_PACKAGES, formatterCache, fs, getRunnerFromPackageManager() (+32 more)
 
 ### Community 14 - "scripts/bash-hook-dispatcher.js"
 Cohesion: 0.07
-Nodes (33): path, run(), { spawnSync }, {
+Nodes (38): path, run(), { spawnSync }, {
   buildPreToolUseAdditionalContext,
   combineAdditionalContext,
-}, { isHookEnabled }, main(), normalizeHookResult(), POST_BASH_HOOKS (+25 more)
+}, { isHookEnabled }, main(), normalizeHookResult(), POST_BASH_HOOKS (+30 more)
 
 ### Community 15 - "agent-data-home.js"
 Cohesion: 0.10
-Nodes (39): {
+Nodes (38): {
   getCursorSessionEnvPayload,
   resolveAgentDataHome,
   AGENT_DATA_HOME_ENV,
-}, main(), { readStdinJson, log }, { assertWithinTrustedRoot }, DEFAULT_CURSOR_ECC_DIR_SEGMENTS, ensureAgentDataHomeEnv(), expandHomePath(), fs (+31 more)
+}, main(), { readStdinJson, log }, { assertWithinTrustedRoot }, DEFAULT_CURSOR_ECC_DIR_SEGMENTS, ensureAgentDataHomeEnv(), expandHomePath(), fs (+30 more)
 
 ### Community 16 - "control-pane/state.js"
-Cohesion: 0.13
-Nodes (27): { buildControlPaneActions }, classifyAssignee(), deepMerge(), DEFAULT_STATE_STORE_RELATIVE_PATH, defaultConfigPaths(), defaultDbPath(), defaultStateDbPath(), fs (+19 more)
+Cohesion: 0.16
+Nodes (31): { buildControlPaneActions }, buildControlPaneSnapshot(), classifyAssignee(), connectorStatus(), DEFAULT_STATE_STORE_RELATIVE_PATH, execRows(), fs, initSqlJs (+23 more)
 
 ### Community 17 - "loop-status.js"
 Cohesion: 0.11
 Nodes (41): analyzeTranscript(), atomicWriteJson(), buildRecommendation(), buildStatus(), crypto, extractToolResultIds(), extractToolUses(), findTranscriptPaths() (+33 more)
 
 ### Community 18 - "scan-supply-chain-iocs.js"
-Cohesion: 0.08
-Nodes (37): addFinding(), claudePermissionDenyRanges(), CRITICAL_TEXT_INDICATORS, crypto, DEFAULT_ROOT, DEPENDENCY_FILENAMES, dependencyFileReferencesPackageVersion(), escapeRegExp() (+29 more)
+Cohesion: 0.05
+Nodes (61): checkRegistry(), cleanYamlScalar(), collectKnownReferences(), DEFAULT_OUTPUT_PATH, extractDescription(), extractReferences(), formatRegistry(), formatTextSummary() (+53 more)
 
 ### Community 19 - "scripts/posttooluse-dispatcher.js"
 Cohesion: 0.09
@@ -668,19 +804,19 @@ Nodes (36): sanity, @sanity/eslint-config-studio, author, dependencies, react, r
 
 ### Community 27 - "env.ts"
 Cohesion: 0.07
-Nodes (30): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, FetchOptions (+22 more)
+Nodes (31): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, client (+23 more)
 
 ### Community 28 - "scripts/session-start.js"
 Cohesion: 0.10
-Nodes (42): getSessionLeaseDir(), getSessionLeaseFile(), resolveSessionId(), writeSessionLease(), getSelectionPrompt(), findFiles(), log(), stripAnsi() (+34 more)
+Nodes (34): findFiles(), collapseWhitespace(), collectLearnedSkillFiles(), dedupeRecentSessions(), { detectProjectType }, extractFirstParagraph(), extractInstinctAction(), extractMarkdownHeading() (+26 more)
 
 ### Community 29 - "operator-readiness-dashboard.js"
 Cohesion: 0.11
 Nodes (35): agentShieldEnterpriseEvidence(), agentShieldEnterpriseGap(), buildGrowthSummary(), buildReport(), { buildReport: buildPlatformReport }, buildRequirement(), buildRequirements(), DEFAULT_THRESHOLDS (+27 more)
 
-### Community 30 - "app/layout.tsx"
-Cohesion: 0.24
-Nodes (7): metadata, runtime, GoogleAnalytics(), RouteChangeListener(), ThemeProvider(), GA_TRACKING_ID, pageview()
+### Community 30 - "useTrackEvent"
+Cohesion: 0.09
+Nodes (24): runtime, AnalyticsDownloadLink(), AnalyticsDownloadLinkProps, AnalyticsLink(), AnalyticsLinkProps, BackToTop(), contactInfo, Footer() (+16 more)
 
 ### Community 31 - "hooks/mcp-health-check.js"
 Cohesion: 0.12
@@ -703,9 +839,9 @@ Nodes (34): attemptReconnect(), configPaths(), detectFailureCode(), emitLogs(), 
 Cohesion: 0.06
 Nodes (34): esnext, everything-claude-code, extracted_workspace, jest, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts (+26 more)
 
-### Community 35 - "PortfolioSection.tsx"
-Cohesion: 0.07
-Nodes (32): CertificationsGrid(), CertificationsPage(), metadata, revalidate, runtime, LeafletMap, ProjectMapDynamic(), ArticlesSection() (+24 more)
+### Community 35 - "cn"
+Cohesion: 0.09
+Nodes (29): categoryColors, SelectField(), SelectFieldProps, TextFieldProps, Avatar(), AvatarFallback(), AvatarImage(), Button() (+21 more)
 
 ### Community 36 - "release-video-suite.js"
 Cohesion: 0.11
@@ -723,13 +859,13 @@ Nodes (55): allowedSymbolCodePoints, changedFiles, collectDangerousInvisibleMatc
 Cohesion: 0.12
 Nodes (32): assertMemoryDirectorySafe(), assertMemoryMatchesLocation(), assertMemoryRootSafe(), { assertWithinTrustedRoot, realpathNearestExisting }, buildExcerpt(), countOccurrences(), crypto, defaultMemoryId() (+24 more)
 
-### Community 40 - "contact/page.tsx"
-Cohesion: 0.50
-Nodes (3): ContactPage(), metadata, runtime
+### Community 40 - "redirects/route.ts"
+Cohesion: 0.22
+Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, checkDashboardAccess(), getServerSession(), requireAuth() (+6 more)
 
 ### Community 41 - "package-manager.js"
-Cohesion: 0.12
-Nodes (29): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+21 more)
+Cohesion: 0.11
+Nodes (30): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+22 more)
 
 ### Community 42 - "canonical-session.js"
 Cohesion: 0.12
@@ -747,12 +883,12 @@ Nodes (31): buildCheck(), buildGithubReport(), buildLocalEvidenceChecks(), build
 }, fetchGithubRepo() (+23 more)
 
 ### Community 45 - "queue.test.ts"
-Cohesion: 0.19
-Nodes (11): sendInternalNotification(), sendRfqAcknowledgment(), mockSend, mockAlertNew, mockAlertQueueFailure, mockJobCreate, mockJobFindMany, mockJobFindUnique (+3 more)
+Cohesion: 0.17
+Nodes (14): sendInternalNotification(), sendRfqAcknowledgment(), alertNewRfq(), alertQueueFailure(), alertRfqFailure(), mockSend, mockAlertNew, mockAlertQueueFailure (+6 more)
 
 ### Community 46 - "control-pane/server.js"
-Cohesion: 0.10
-Nodes (28): {
+Cohesion: 0.11
+Nodes (27): {
   createControlPaneServer,
   parseArgs,
   usage,
@@ -760,7 +896,7 @@ Nodes (28): {
   buildAllowedHostnames,
   isAllowedHostHeader,
   isAllowedOrigin
-}, { buildControlPaneAction } (+20 more)
+}, { buildControlPaneAction } (+19 more)
 
 ### Community 47 - "apply.js"
 Cohesion: 0.12
@@ -771,12 +907,12 @@ Nodes (28): applyInstallPlan(), {
 }, { buildInstallIndex, rewriteRelativeLinks }, buildLinkIndexForPlan(), buildResolvedClaudeHooks(), cloneJsonValue(), deepMergeJson(), { filterMcpConfig, parseDisabledMcpServers } (+20 more)
 
 ### Community 48 - "install-manifests.js"
-Cohesion: 0.12
-Nodes (29): addSyntheticSkillComponents(), assertKnownModuleIds(), COMPONENT_FAMILY_PREFIXES, dedupeStrings(), DEFAULT_REPO_ROOT, expandComponentIdsToModuleIds(), fs, { getInstallTargetAdapter, planInstallTargetScaffold } (+21 more)
+Cohesion: 0.11
+Nodes (30): getOpencodeBuildValidationIssues(), addSyntheticSkillComponents(), assertKnownModuleIds(), COMPONENT_FAMILY_PREFIXES, dedupeStrings(), DEFAULT_REPO_ROOT, expandComponentIdsToModuleIds(), fs (+22 more)
 
 ### Community 49 - "observer-sessions.js"
-Cohesion: 0.14
-Nodes (24): computeProjectId(), crypto, { ensureDir, sanitizeSessionId }, fs, getHomunculusDir(), getObserverPidFile(), getObserverSignalCounterFile(), getProjectRegistryPath() (+16 more)
+Cohesion: 0.13
+Nodes (29): computeProjectId(), crypto, { ensureDir, sanitizeSessionId }, fs, getHomunculusDir(), getObserverPidFile(), getObserverSignalCounterFile(), getProjectRegistryPath() (+21 more)
 
 ### Community 50 - "queries.js"
 Cohesion: 0.08
@@ -821,15 +957,15 @@ Nodes (24): DEFAULT_RECALL_SCOPES, Ajv, assertScopesAuthorized(), createMemoryMc
 
 ### Community 56 - "session-inspect.js"
 Cohesion: 0.13
-Nodes (25): createAdapterRegistry(), inspectSessionTarget(), { buildSkillHealthReport }, createProposalId(), proposeSkillAmendment(), summarizePatchPreview(), buildSkillEvaluationScaffold(), roundRate() (+17 more)
+Nodes (22): createAdapterRegistry(), inspectSessionTarget(), buildSkillEvaluationScaffold(), roundRate(), summarize(), fs, { inspectSessionTarget }, main() (+14 more)
 
 ### Community 57 - "release-approval-gate.js"
 Cohesion: 0.13
 Nodes (28): ANNOUNCEMENT_FILE_NAMES, buildReport(), crypto, fileExists(), findAnnouncementOffenders(), fs, isApproved(), ledgerBlockers() (+20 more)
 
-### Community 58 - "types.ts"
-Cohesion: 0.09
-Nodes (26): CertificationsGridProps, mockCertification(), mockPage(), mockPortfolioEntry(), mockProduct(), mockSpokeConfig(), mockFetch, Article (+18 more)
+### Community 58 - "queries.ts"
+Cohesion: 0.06
+Nodes (43): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, CertificationsGridProps (+35 more)
 
 ### Community 59 - "ito.js"
 Cohesion: 0.12
@@ -839,40 +975,40 @@ Nodes (26): assertUsableExecutable(), buildInvocation(), CANONICAL_ENTRY_SEGMENT
 }, fs, invokeIto(), isCanonicalItoEntry(), isUsableExecutable() (+18 more)
 
 ### Community 60 - "agent-proximity/index.js"
-Cohesion: 0.16
-Nodes (27): advise(), agentPriority(), clamp01(), closureRate(), collisionRisk(), DEFAULTS, dependencyRisk(), graphDistance() (+19 more)
+Cohesion: 0.19
+Nodes (23): advise(), agentPriority(), clamp01(), closureRate(), collisionRisk(), DEFAULTS, dependencyRisk(), graphDistance() (+15 more)
 
-### Community 61 - "claude-skill-migration.js"
-Cohesion: 0.17
-Nodes (27): assertSafeClaudeSkillOperation(), assertSafeSkillPath(), { assertWithinTrustedRoot }, buildMigrationStates(), buildState(), classifyPreviousOperations(), classifySkillConflicts(), classifySkillGroup() (+19 more)
+### Community 61 - "products/[slug]/page.tsx"
+Cohesion: 0.07
+Nodes (43): generateMetadata(), HubHomePage(), generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate (+35 more)
 
 ### Community 62 - "work-items.js"
 Cohesion: 0.15
 Nodes (26): assignOption(), buildGithubIssueWorkItem(), buildGithubPrWorkItem(), buildUpsertPayload(), { claimWorkItem }, claimWorkItemCli(), closeStaleGithubItems(), { createStateStore } (+18 more)
 
 ### Community 63 - "Event"
-Cohesion: 0.06
-Nodes (6): CloseEvent, CustomEvent, ErrorEvent, Event, MessageEvent, PromiseRejectionEvent
+Cohesion: 0.07
+Nodes (5): CloseEvent, CustomEvent, Event, MessageEvent, PromiseRejectionEvent
 
-### Community 64 - "rfq-schemas.ts"
-Cohesion: 0.12
-Nodes (19): RfqB2GFormProps, b2GSpecificFieldsSchema, ContactInfo, contactInfoSchema, PROCUREMENT_TYPES, ProcurementType, rfqB2BSchema, RfqB2GInput (+11 more)
+### Community 64 - "contact-client.tsx"
+Cohesion: 0.15
+Nodes (18): ContactPage(), isValidEmail(), isValidPhone(), ContactPage(), metadata, runtime, productSegments, ContactSection() (+10 more)
 
 ### Community 65 - "scripts/session-end.js"
-Cohesion: 0.10
-Nodes (38): extractConversationText(), fs, generateSessionSummary(), getContextRemainingPct(), getContextThreshold(), getLLMModel(), { spawnSync }, appendFile() (+30 more)
+Cohesion: 0.14
+Nodes (25): extractConversationText(), fs, generateSessionSummary(), getContextRemainingPct(), getContextThreshold(), getLLMModel(), { spawnSync }, getDateString() (+17 more)
 
 ### Community 66 - "session-aliases.js"
 Cohesion: 0.14
 Nodes (24): fs, isSessionFileTarget(), { normalizeClaudeHistorySession, persistCanonicalSnapshot }, parseClaudeTarget(), path, resolveSessionRecord(), sessionAliases, sessionManager (+16 more)
 
-### Community 67 - "session-manager.js"
-Cohesion: 0.15
-Nodes (22): hydrateSessionFromPath(), appendSessionContent(), buildSessionRecord(), deleteSession(), fs, getAllSessions(), getMatchingSessionCandidates(), getSessionById() (+14 more)
+### Community 67 - "log"
+Cohesion: 0.16
+Nodes (23): hydrateSessionFromPath(), appendSessionContent(), buildSessionRecord(), deleteSession(), fs, getAllSessions(), getMatchingSessionCandidates(), getSessionById() (+15 more)
 
 ### Community 68 - "scripts/suggest-compact.js"
 Cohesion: 0.14
-Nodes (24): computeContextBucket(), extractUsageTokens(), formatWindowLabel(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens() (+16 more)
+Nodes (26): computeContextBucket(), extractUsageTokens(), formatWindowLabel(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens() (+18 more)
 
 ### Community 69 - "memory-vault-format.js"
 Cohesion: 0.15
@@ -882,9 +1018,9 @@ Nodes (24): asNonEmptyString(), FATAL_UTF8_DECODER, FRONTMATTER_FIELDS, FRONTMAT
 Cohesion: 0.14
 Nodes (24): CODEX_TARGET_PREFIXES, deriveLastActivityMs(), deriveModel(), deriveObjective(), { execFileSync }, extractText(), findLatestRollout(), findRolloutById() (+16 more)
 
-### Community 71 - "generate-command-registry.js"
-Cohesion: 0.17
-Nodes (23): checkRegistry(), cleanYamlScalar(), collectKnownReferences(), DEFAULT_OUTPUT_PATH, extractDescription(), extractReferences(), formatRegistry(), formatTextSummary() (+15 more)
+### Community 71 - "AboutSection.tsx"
+Cohesion: 0.16
+Nodes (17): AboutSection(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, misiIcons, visiMisiItems (+9 more)
 
 ### Community 72 - "install-plan.js"
 Cohesion: 0.14
@@ -899,20 +1035,20 @@ Nodes (22): {
 }, main(), { normalizeInstallRequest }, parseArgs(), printComponents(), printModules(), printPlan() (+14 more)
 
 ### Community 73 - "proximity.js"
-Cohesion: 0.12
-Nodes (21): buildDependencyGraph(), buildDependencyGraphFromSources(), extractRelativeSpecifiers(), fs, isSourceFile(), path, RESOLVE_EXTENSIONS, resolveSpecifier() (+13 more)
+Cohesion: 0.18
+Nodes (13): buildProximityTriggers(), clamp01(), pct(), { buildDependencyGraph }, buildProximitySnapshot(), defaultChangedFilesFor(), defaultWorkingSetFor(), { execFileSync } (+5 more)
 
 ### Community 74 - "skill-evolution/health.js"
 Cohesion: 0.14
 Nodes (22): collectSkillHealth(), discoverSkills(), filterRecordsWithinDays(), formatHealthReport(), formatRate(), fs, getFailureTrend(), getLastRun() (+14 more)
 
-### Community 75 - "FAQSection.tsx"
-Cohesion: 0.21
-Nodes (12): categoryIcons, categoryLabels, FAQItem, categoryIcons, categoryLabels, FAQ, faqCategories, FAQSection() (+4 more)
+### Community 75 - "1.2 Individual File Audit Results"
+Cohesion: 0.11
+Nodes (17): 1.1 PRD v4.0.0 Reference Baseline (`D:\dev\arostech-hub\docs\strategy\prd.md`), 1.2 Individual File Audit Results, 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion & Actionable Matrix, 5. Verification Method, Actionable Remediation Matrix for `doc-updater` (+9 more)
 
-### Community 76 - "AboutSection.tsx"
-Cohesion: 0.17
-Nodes (16): AboutSection(), companyMilestones, companyStats, getInitials(), managementTeam, misiIcons, visiMisiItems, Button (+8 more)
+### Community 76 - "(hub)/page.tsx"
+Cohesion: 0.08
+Nodes (35): AboutPage(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, dynamic, runtime (+27 more)
 
 ### Community 77 - "consult.js"
 Cohesion: 0.16
@@ -944,8 +1080,8 @@ Cohesion: 0.09
 Nodes (21): ES2020, compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+13 more)
 
 ### Community 83 - "install-apply.js"
-Cohesion: 0.20
-Nodes (17): { getComputeSponsorCopy }, getHelpText(), {
+Cohesion: 0.19
+Nodes (18): { getComputeSponsorCopy }, getHelpText(), {
   LEGACY_INSTALL_TARGETS,
   normalizeInstallRequest,
   parseInstallArgs,
@@ -953,7 +1089,7 @@ Nodes (17): { getComputeSponsorCopy }, getHelpText(), {
   SUPPORTED_INSTALL_TARGETS,
   listLegacyCompatibilityLanguages,
   listSupportedLocales,
-} (+9 more)
+} (+10 more)
 
 ### Community 84 - "state-store/index.js"
 Cohesion: 0.15
@@ -972,8 +1108,8 @@ Cohesion: 0.17
 Nodes (20): { createStateStore }, formatCode(), formatPercent(), fs, main(), os, parseArgs(), path (+12 more)
 
 ### Community 88 - "orchestration-session.js"
-Cohesion: 0.18
-Nodes (18): inspectPackageDir(), buildSessionSnapshot(), collectSessionSnapshot(), fs, listTmuxPanes(), listWorkerDirectories(), loadWorkerSnapshots(), parseBullets() (+10 more)
+Cohesion: 0.22
+Nodes (17): buildSessionSnapshot(), collectSessionSnapshot(), fs, listTmuxPanes(), listWorkerDirectories(), loadWorkerSnapshots(), parseBullets(), parseSection() (+9 more)
 
 ### Community 89 - "supply-chain-advisory-sources.js"
 Cohesion: 0.16
@@ -1003,9 +1139,9 @@ Nodes (18): checkCommand(), COMMIT_OPTIONS_WITH_INLINE_VALUE, COMMIT_OPTIONS_WIT
 Cohesion: 0.13
 Nodes (18): Ajv, COMPONENT_FAMILY_PREFIXES, COMPONENTS_MANIFEST_PATH, COMPONENTS_SCHEMA_PATH, CURATED_SKILLS_DIR, fs, INTENTIONALLY_UNSHIPPED_SKILL_IDS, isCuratedSkillReferenced() (+10 more)
 
-### Community 98 - "scripts/ecc-statusline.js"
-Cohesion: 0.31
-Nodes (9): buildContextBar(), formatDuration(), fs, os, path, readCurrentTask(), runStatusline(), { sanitizeSessionId, readBridge, writeBridgeAtomic } (+1 more)
+### Community 98 - "scripts/ecc-metrics-bridge.js"
+Cohesion: 0.10
+Nodes (32): crypto, extractFilePaths(), fs, { getClaudeDir }, getCostWarningCachePath(), hashToolCall(), os, path (+24 more)
 
 ### Community 99 - "hooks/block-no-verify.js"
 Cohesion: 0.21
@@ -1035,13 +1171,13 @@ Nodes (9): animateProgress(), BOX, chalk, demo(), progressBar(), SkillCreateOutp
 Cohesion: 0.11
 Nodes (18): author, bugs, url, description, directories, doc, test, homepage (+10 more)
 
-### Community 106 - "buildControlPaneSnapshot"
-Cohesion: 0.34
-Nodes (14): buildControlPaneSnapshot(), connectorStatus(), execRows(), normalizeSession(), parseJson(), readConnectorCheckpointRows(), readEntities(), readObservations() (+6 more)
+### Community 106 - "2. Declarative Zod Schemas & TypeScript Interfaces"
+Cohesion: 0.22
+Nodes (8): 1. Executive Summary & Legacy Rot Elimination, 2.1 Universal RFQ Submission Contracts, 2.2 Product Spoke Metadata & Cart Items Schemas, 2.3 Auth.js v5 JWT Session Contracts (`authSessionSchema`), 2. Declarative Zod Schemas & TypeScript Interfaces, 3. Transactional Database Models (Neon Postgres via Prisma ORM), Declarative System Data Model & Schema Contracts, Key Architectural Invariants
 
 ### Community 107 - "ThemeToggle.tsx"
-Cohesion: 0.43
-Nodes (6): Button(), buttonVariants, getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
+Cohesion: 0.70
+Nodes (4): getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
 
 ### Community 108 - "auto-update.js"
 Cohesion: 0.16
@@ -1063,49 +1199,53 @@ Nodes (16): DEFAULT_SCRIPT_PROBE, DEFAULT_SKILL_PROBE, fs, os, path, PLUGIN_CACH
 Cohesion: 0.21
 Nodes (17): bucketByDay(), formatPercent(), getTrendArrow(), groupRecordsBySkill(), health, horizontalBar(), panelBox(), renderAmendmentPanel() (+9 more)
 
-### Community 113 - "redirects/route.ts"
+### Community 113 - "prisma.ts"
+Cohesion: 0.13
+Nodes (16): limiter, POST(), runtime, POST(), runtime, sendPasswordResetEmail(), globalForPrisma, prisma (+8 more)
+
+### Community 114 - "install-state.js"
 Cohesion: 0.22
-Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, checkDashboardAccess(), getServerSession(), requireAuth() (+6 more)
+Nodes (14): assertValidInstallStateForWrite(), buildDiscoveryRecord(), assertValidInstallState(), cloneJsonValue(), createFallbackValidator(), createInstallState(), formatValidationErrors(), fs (+6 more)
 
-### Community 114 - "[spoke]/page.tsx"
-Cohesion: 0.18
-Nodes (15): generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate, runtime, SpokePortfolioPage() (+7 more)
-
-### Community 115 - "json-ld.ts"
-Cohesion: 0.15
-Nodes (16): faqData, FAQPage(), FAQPage(), metadata, runtime, ProductDetailPage(), ArticleData, createBreadcrumbSchema() (+8 more)
+### Community 115 - "FAQSection.tsx"
+Cohesion: 0.14
+Nodes (17): categoryIcons, categoryLabels, faqData, FAQItem, FAQPage(), FAQPage(), metadata, runtime (+9 more)
 
 ### Community 116 - "scripts/ecc-context-monitor.js"
-Cohesion: 0.20
-Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
+Cohesion: 0.21
+Nodes (15): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+7 more)
 
 ### Community 117 - "agent-compress.js"
 Cohesion: 0.21
 Nodes (15): allowedModes, buildAgentCatalog(), compressToCatalog(), compressToSummary(), extractSummary(), fs, lazyLoadAgent(), loadAgent() (+7 more)
 
-### Community 118 - "repair.js"
-Cohesion: 0.36
-Nodes (7): main(), os, parseArgs(), printHuman(), { repairInstalledStates }, showHelp(), { SUPPORTED_INSTALL_TARGETS }
+### Community 118 - "list-installed.js"
+Cohesion: 0.25
+Nodes (10): discoverInstalledStates(), normalizeTargets(), listInstallTargetAdapters(), { discoverInstalledStates }, main(), os, parseArgs(), printHuman() (+2 more)
 
 ### Community 119 - "scripts"
 Cohesion: 0.12
 Nodes (17): scripts, build, clean:pages, _comment_pages_build, db:seed:users, dev, generate, lint (+9 more)
 
-### Community 120 - "rfq/route.ts"
-Cohesion: 0.16
-Nodes (13): limiter, POST(), runtime, mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest (+5 more)
+### Community 120 - "route.test.ts"
+Cohesion: 0.25
+Nodes (6): mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest, mockNextResponse
 
-### Community 121 - "getOptimizedImageUrl"
-Cohesion: 0.20
-Nodes (13): generateMetadata(), PortfolioDetailPage(), revalidate, runtime, GalleryCarousel(), Props, client, getOptimizedImageUrl() (+5 more)
+### Community 121 - "empirical_stress_test.cjs"
+Cohesion: 0.11
+Nodes (16): apiErrorDetailSchema, apiErrorSchema, apiMetaSchema, apiPaginationSchema, apiResponseSchema, authSessionSchema, authUserSchema, contactInfoSchema (+8 more)
 
 ### Community 122 - "merge-mcp-config.js"
 Cohesion: 0.17
 Nodes (14): configDiffers(), ECC_SERVERS, findSubSections(), fs, LEGACY_ALIASES, log(), main(), { parseDisabledMcpServers } (+6 more)
 
-### Community 123 - "scripts/ecc-metrics-bridge.js"
-Cohesion: 0.19
-Nodes (15): crypto, extractFilePaths(), fs, { getClaudeDir }, getCostWarningCachePath(), hashToolCall(), os, path (+7 more)
+### Community 123 - "scripts/catalog.js"
+Cohesion: 0.25
+Nodes (13): FAMILY_ALIASES, {
+  getInstallComponent,
+  listInstallComponents,
+  listInstallProfiles,
+}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+5 more)
 
 ### Community 124 - "hooks/ecc-metrics-bridge.js"
 Cohesion: 0.19
@@ -1124,12 +1264,12 @@ Cohesion: 0.25
 Nodes (15): applyEmphasis(), buildList(), buildListBlock(), cellAlign(), classifyUrl(), isAlignmentRow(), listTag(), renderInline() (+7 more)
 
 ### Community 128 - "articles/[slug]/page.tsx"
-Cohesion: 0.24
-Nodes (9): ArticleDetailPage(), generateMetadata(), revalidate, runtime, Props, ShareButtons(), getArticleBySlug(), createArticleSchema() (+1 more)
+Cohesion: 0.13
+Nodes (17): ArticleDetailPage(), generateMetadata(), revalidate, runtime, generateMetadata(), revalidate, runtime, SpokeDynamicPage() (+9 more)
 
-### Community 129 - "[spoke]/[slug]/page.tsx"
-Cohesion: 0.27
-Nodes (8): generateMetadata(), revalidate, runtime, SpokeDynamicPage(), PortableText(), Props, getAllSpokeConfigs(), getPageBySlug()
+### Community 129 - "Brownfield Specification Audit & Documentation Verification Report"
+Cohesion: 0.14
+Nodes (13): 1. Observation, 25 Core High-Level Architecture (HLA) Inventory & Compliance Table, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5-Component Handoff Report, 5. Verification Method, Brownfield Specification Audit & Documentation Verification Report (+5 more)
 
 ### Community 131 - "discussion-audit.js"
 Cohesion: 0.22
@@ -1144,7 +1284,7 @@ Cohesion: 0.22
 Nodes (14): analyzeForGovernanceEvents(), APPROVAL_COMMANDS, crypto, detectApprovalRequired(), detectSecrets(), detectSensitivePath(), emitGovernanceEvent(), fingerprintCommand() (+6 more)
 
 ### Community 133 - "hooks/ecc-context-monitor.js"
-Cohesion: 0.22
+Cohesion: 0.20
 Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
 
 ### Community 134 - "hooks/governance-capture.js"
@@ -1159,33 +1299,29 @@ Nodes (14): buildDryRunPreview(), { buildPreToolUseAdditionalContext }, exitWith
 Cohesion: 0.24
 Nodes (14): buildSessionHeader(), buildSummaryBlock(), buildSummarySection(), escapeRegExp(), extractHeaderField(), extractSessionSummary(), fs, { generateSessionSummary, getContextRemainingPct, getContextThreshold } (+6 more)
 
-### Community 137 - "install-state.js"
-Cohesion: 0.24
-Nodes (13): assertValidInstallStateForWrite(), assertValidInstallState(), cloneJsonValue(), createFallbackValidator(), createInstallState(), formatValidationErrors(), fs, getValidator() (+5 more)
+### Community 137 - "ecc.js"
+Cohesion: 0.19
+Nodes (13): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+5 more)
 
 ### Community 138 - "observability-readiness.js"
 Cohesion: 0.24
 Nodes (14): buildChecks(), buildReport(), fileExists(), fs, hasObjectKeys(), includesAll(), main(), parseArgs() (+6 more)
 
-### Community 139 - "prisma.ts"
-Cohesion: 0.09
-Nodes (21): POST(), runtime, GET(), runtime, globalForPrisma, prisma, AuditOptions, auditRedirects() (+13 more)
+### Community 139 - "rfq-schemas.ts"
+Cohesion: 0.07
+Nodes (34): getTokenHandler(), limiter, POST(), runtime, limiter, POST(), runtime, RfqB2BFormProps (+26 more)
 
-### Community 141 - "scripts/catalog.js"
-Cohesion: 0.25
-Nodes (13): FAMILY_ALIASES, {
-  getInstallComponent,
-  listInstallComponents,
-  listInstallProfiles,
-}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+5 more)
+### Community 141 - "Handoff & Review Report — Milestone 3 (SQ-OPS Reviewer)"
+Cohesion: 0.17
+Nodes (11): 1.1 Direct Tool Execution Results, 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, 6. Detailed Review Findings & Stress Test Summary, Adversarial Stress Testing Results (+3 more)
 
 ### Community 142 - "validate-hooks.js"
 Cohesion: 0.19
 Nodes (13): Ajv, EVENTS_WITHOUT_MATCHER, fs, HOOKS_FILE, HOOKS_SCHEMA_PATH, isNonEmptyString(), isNonEmptyStringArray(), path (+5 more)
 
-### Community 143 - "ecc.js"
-Cohesion: 0.17
-Nodes (14): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+6 more)
+### Community 143 - "portfolio/[slug]/page.tsx"
+Cohesion: 0.15
+Nodes (17): metadata, PortfolioPage(), revalidate, runtime, CategoryFilter, PortfolioGridClient(), Props, generateMetadata() (+9 more)
 
 ### Community 144 - "gemini-adapt-agents.js"
 Cohesion: 0.23
@@ -1203,12 +1339,12 @@ Nodes (12): DEV_COMMAND_WORDS, {
 }, getLeadingCommandWord(), isBlockedDevSegment(), isOptionToken(), normalizeCommandWord(), path, PREFIX_OPTION_VALUE_WORDS (+4 more)
 
 ### Community 147 - "hooks/stop-format-typecheck.js"
-Cohesion: 0.17
-Nodes (15): crypto, { execFileSync, spawnSync }, { findProjectRoot, detectFormatter, resolveFormatterBin }, findTsConfigDir(), formatBatch(), fs, getAccumFile(), main() (+7 more)
+Cohesion: 0.21
+Nodes (13): crypto, { execFileSync, spawnSync }, { findProjectRoot, detectFormatter, resolveFormatterBin }, findTsConfigDir(), formatBatch(), fs, getAccumFile(), main() (+5 more)
 
-### Community 148 - "claude-home.js"
-Cohesion: 0.25
-Nodes (9): {
+### Community 148 - "normalizeRelativePath"
+Cohesion: 0.23
+Nodes (12): {
   createInstallTargetAdapter,
   createRemappedOperation,
   isForeignPlatformPath,
@@ -1218,19 +1354,21 @@ Nodes (9): {
   createRemappedOperation,
   isForeignPlatformPath,
   normalizeRelativePath,
-}, getClaudeManagedDestinationPath(), path, planOperations() (+1 more)
+}, getClaudeManagedDestinationPath(), path, planOperations() (+4 more)
 
-### Community 149 - "p"
-Cohesion: 0.23
-Nodes (12): {
+### Community 149 - "cursor-project.js"
+Cohesion: 0.14
+Nodes (22): {
   createFlatRuleOperations,
   createInstallTargetAdapter,
   isForeignPlatformPath,
-}, path, planOperations(), createFlatRuleOperations(), isForeignPlatformPath(), {
+}, path, planOperations(), {
+  createFlatFileOperations,
   createFlatRuleOperations,
   createInstallTargetAdapter,
+  createManagedOperation,
   isForeignPlatformPath,
-}, path, planOperations() (+4 more)
+}, createJsonMergeOperation(), fs, path, planOperations() (+14 more)
 
 ### Community 150 - "project-detect.js"
 Cohesion: 0.23
@@ -1248,13 +1386,13 @@ Nodes (12): combineStderr(), findShellBinary(), fs, getPhaseFromHookId(), getPlu
 Cohesion: 0.27
 Nodes (13): release.sh script, update_agent_yaml_version(), update_agents_version(), update_codex_marketplace_version(), update_latest_release_heading(), update_marketplace_plugin_version(), update_opencode_hook_banner_version(), update_package_lock_version() (+5 more)
 
-### Community 154 - "(hub)/portfolio/page.tsx"
-Cohesion: 0.21
-Nodes (11): HubHomePage(), metadata, PortfolioPage(), revalidate, runtime, CategoryFilter, PortfolioGridClient(), Props (+3 more)
+### Community 154 - "empirical_stress_test.js"
+Cohesion: 0.11
+Nodes (16): apiErrorDetailSchema, apiErrorSchema, apiMetaSchema, apiPaginationSchema, apiResponseSchema, authSessionSchema, authUserSchema, contactInfoSchema (+8 more)
 
 ### Community 158 - "dependencies"
 Cohesion: 0.15
-Nodes (13): @21st-sdk/agent, @21st-sdk/nextjs, @auth/prisma-adapter, class-variance-authority, next, dependencies, @21st-sdk/agent, @21st-sdk/nextjs (+5 more)
+Nodes (13): @21st-sdk/nextjs, @21st-sdk/node, @auth/prisma-adapter, class-variance-authority, next, dependencies, @21st-sdk/nextjs, @21st-sdk/node (+5 more)
 
 ### Community 159 - "generate.ts"
 Cohesion: 0.27
@@ -1317,13 +1455,13 @@ Nodes (11): buildValidationIssue(), defaultValidateAdapterInput(), {
 Cohesion: 0.26
 Nodes (11): appendSkillObservation(), createObservationId(), createSkillObservation(), ensureString(), fs, getSkillObservationsPath(), getSkillTelemetryRoot(), os (+3 more)
 
-### Community 176 - "an-token/route.ts"
-Cohesion: 0.18
-Nodes (13): getTokenHandler(), limiter, POST(), runtime, limiter, POST(), runtime, sendPasswordResetEmail() (+5 more)
-
-### Community 177 - "queries.ts"
+### Community 176 - "Handoff Report — Independent Technical Review for Milestone 2 (SQ-SYSTEM)"
 Cohesion: 0.13
-Nodes (17): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, articleFields (+9 more)
+Nodes (14): 1. Observation, 2. Logic Chain, 3. Findings, 4. Caveats, 5. Conclusion, 6. Verification Method, Additional Major Observation: Relational Database Model Inconsistency, Criterion 1: 7-Pillars AI-Friendly Docs Compliance (+6 more)
+
+### Community 177 - "Review & Handoff Report — Milestone 2 (SQ-SYSTEM)"
+Cohesion: 0.17
+Nodes (11): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Findings, [Minor] Finding 1: Legacy `RedirectMap` Model Remains in `prisma/schema.prisma`, [Minor] Finding 2: Pre-existing Unit Test Failures in Code Base Implementation (+3 more)
 
 ### Community 179 - "ExtendableEvent"
 Cohesion: 0.17
@@ -1333,9 +1471,9 @@ Nodes (6): EmailEvent, ExtendableEvent, FetchEvent, QueueEvent, ScheduledEvent, 
 Cohesion: 0.25
 Nodes (10): DEFAULT_WORKFLOWS_DIR, extractCheckoutSteps(), findViolations(), fs, getLineNumber(), getWorkflowFiles(), path, RULES (+2 more)
 
-### Community 182 - "scripts/cost-tracker.js"
-Cohesion: 0.20
-Nodes (8): { ensureDir, appendFile, getClaudeDir }, fs, os, path, RATE_TABLE, { sanitizeSessionId }, sumUsageFromTranscript(), toNumber()
+### Community 182 - "ensureDir"
+Cohesion: 0.12
+Nodes (20): { ensureDir, appendFile, getClaudeDir }, fs, os, path, RATE_TABLE, { sanitizeSessionId }, sumUsageFromTranscript(), toNumber() (+12 more)
 
 ### Community 183 - "scripts/desktop-notify.js"
 Cohesion: 0.29
@@ -1350,18 +1488,12 @@ Cohesion: 0.29
 Nodes (10): extractSummary(), findPowerShell(), findTerminalTTY(), fs, { isMacOS, log }, isUnderMultiplexer(), notifyMacOS(), notifyWindows() (+2 more)
 
 ### Community 186 - "work-item-mutations.js"
-Cohesion: 0.29
-Nodes (9): claimWorkItem(), DONE_STATUSES, isOpenStatus(), LANE_TO_STATUS, PRIORITY_RANK, priorityRank(), selectClaimTarget(), VALID_ASSIGNEE_KINDS (+1 more)
-
-### Community 187 - "cursor-project.js"
 Cohesion: 0.25
-Nodes (14): toCursorAgentFileName(), {
-  createFlatFileOperations,
-  createFlatRuleOperations,
-  createInstallTargetAdapter,
-  createManagedOperation,
-  isForeignPlatformPath,
-}, createJsonMergeOperation(), fs, path, planOperations(), readJsonObject(), { toCursorAgentFileName } (+6 more)
+Nodes (10): claimWorkItem(), DONE_STATUSES, isOpenStatus(), LANE_TO_STATUS, moveWorkItem(), PRIORITY_RANK, priorityRank(), selectClaimTarget() (+2 more)
+
+### Community 187 - "graph.js"
+Cohesion: 0.24
+Nodes (11): buildDependencyGraph(), buildDependencyGraphFromSources(), extractRelativeSpecifiers(), fs, isSourceFile(), path, RESOLVE_EXTENSIONS, resolveSpecifier() (+3 more)
 
 ### Community 188 - "sessions.js"
 Cohesion: 0.22
@@ -1403,21 +1535,21 @@ Nodes (7): fail(), log(), ok(), phase(), score_passes(), gan-harness.sh script, 
 Cohesion: 0.29
 Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
 
-### Community 199 - "list-installed.js"
-Cohesion: 0.14
-Nodes (19): buildDiscoveryRecord(), cleanupEmptyParentDirs(), discoverInstalledStates(), uninstallInstalledStates(), SUPPORTED_INSTALL_TARGETS, { discoverInstalledStates }, main(), os (+11 more)
+### Community 199 - "uninstall.js"
+Cohesion: 0.29
+Nodes (9): cleanupEmptyParentDirs(), uninstallInstalledStates(), main(), os, parseArgs(), printHuman(), showHelp(), { SUPPORTED_INSTALL_TARGETS } (+1 more)
 
 ### Community 200 - "preserve-manifest.js"
 Cohesion: 0.20
 Nodes (9): backupBuildIdPath, backupDir, backupManifestPath, buildIdPath, filesToBackup, manifestPath, nextDir, pagesManifestPath (+1 more)
 
-### Community 201 - "NotificationQueue"
-Cohesion: 0.24
-Nodes (6): dynamic, GET(), runtime, NotificationQueue, mockNextResponse, mockProcessAllPending
+### Community 201 - "BRIEFING — 2026-08-12T08:49:40Z"
+Cohesion: 0.17
+Nodes (11): Artifact Index, BRIEFING — 2026-08-12T08:49:40Z, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+3 more)
 
-### Community 202 - "redirects.test.ts"
-Cohesion: 0.20
-Nodes (8): mockClearCache, mockCreate, mockDelete, mockFindMany, mockFindUnique, mockNextResponse, mockRequireAuth, mockUpdate
+### Community 202 - "BRIEFING — 2026-08-12T01:47:25Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:47:25Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
 
 ### Community 203 - "schemaTypes/index.ts"
 Cohesion: 0.29
@@ -1428,8 +1560,8 @@ Cohesion: 0.25
 Nodes (8): AGENTS_DIR, COMMANDS_DIR, fs, path, ROOT_DIR, SKILLS_DIR, validateCommands(), validateFrontmatter()
 
 ### Community 208 - "doctor.js"
-Cohesion: 0.33
-Nodes (8): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS }
+Cohesion: 0.16
+Nodes (16): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS } (+8 more)
 
 ### Community 209 - "hooks/ecc-statusline.js"
 Cohesion: 0.31
@@ -1455,13 +1587,13 @@ Nodes (8): fs, path, raw, rel, { resolveEccRoot }, root, script, { spawnSync }
 Cohesion: 0.31
 Nodes (8): appendLine(), fs, main(), MODE_CONFIG, os, path, run(), sanitizeCommand()
 
-### Community 215 - "auth.config.ts"
-Cohesion: 0.22
-Nodes (7): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User
+### Community 215 - "Milestone 2 (SQ-SYSTEM) Empirical Verification Report"
+Cohesion: 0.18
+Nodes (10): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Milestone 2 (SQ-SYSTEM) Empirical Verification Report, Required Remediation for Approval:, Static Validation (`validate-ai-docs.cjs`) (+2 more)
 
-### Community 216 - "metadata.ts"
-Cohesion: 0.33
-Nodes (7): generateMetadata(), createHubHomeMetadata(), createHubPageMetadata(), createSpokeProductMetadata(), PAGE_TITLE_MAP, slugify(), SpokeProduct
+### Community 216 - "Milestone 1 (SQ-STRATEGY) Empirical Verification & Test Evidence Report"
+Cohesion: 0.15
+Nodes (12): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Command 1: Static Documentation Validation, Empirical Test Harness: URI & Anchor Resolution, Milestone 1 (SQ-STRATEGY) Empirical Verification & Test Evidence Report (+4 more)
 
 ### Community 217 - "redirect-engine.ts"
 Cohesion: 0.33
@@ -1548,9 +1680,9 @@ Nodes (6): GetAllSessionsOptions, Session, SessionFilenameMeta, SessionListResul
 Cohesion: 0.29
 Nodes (6): CommandResult, FileMatch, FindFilesOptions, GrepMatch, ReadStdinJsonOptions, ReplaceInFileOptions
 
-### Community 249 - "orchestration-status.js"
-Cohesion: 0.38
-Nodes (6): fs, { inspectSessionTarget }, main(), parseArgs(), path, usage()
+### Community 249 - "Milestone 1 (SQ-STRATEGY) Technical Review Handoff Report"
+Cohesion: 0.15
+Nodes (12): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Findings, 5. Verified Claims, 6. Verification Method, Conclusion, [Major] Finding 1: Broken File URI in `docs/strategy/vision.md` (Lines 10 & 49) (+4 more)
 
 ### Community 250 - "gemini-adapt-ecc.js"
 Cohesion: 0.29
@@ -1560,9 +1692,9 @@ Nodes (4): fs, path, targetDir, toolMappings
 Cohesion: 0.40
 Nodes (5): collectRuleFiles(), fs, path, RULES_DIR, validateRules()
 
-### Community 258 - "scripts/doc-file-warning.js"
-Cohesion: 0.47
-Nodes (5): { buildPreToolUseAdditionalContext }, isSuspiciousDocPath(), main(), path, run()
+### Community 258 - "BRIEFING — 2026-08-12T01:47:45Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:47:45Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
 
 ### Community 259 - "helpers.js"
 Cohesion: 0.14
@@ -1622,9 +1754,9 @@ Nodes (3): logger, prisma, sampleRedirects
 Cohesion: 0.50
 Nodes (3): chat, ChatPage(), runtime
 
-### Community 285 - "session-bridge.js"
-Cohesion: 0.27
-Nodes (9): crypto, fs, getBridgePath(), os, path, readBridge(), renameWithRetry(), resolveSessionId() (+1 more)
+### Community 285 - "NotificationQueue"
+Cohesion: 0.24
+Nodes (6): dynamic, GET(), runtime, NotificationQueue, mockNextResponse, mockProcessAllPending
 
 ### Community 303 - "install-global-git-hooks.sh"
 Cohesion: 0.83
@@ -1664,30 +1796,338 @@ Nodes (3): mockCapture, mockIdentify, mockInit
 Cohesion: 0.67
 Nodes (3): BasicImageTransformations, RequestInitCfPropertiesImage, RequestInitCfPropertiesImageDraw
 
+### Community 376 - "BRIEFING — 2026-08-12T08:57:33+07:00"
+Cohesion: 0.17
+Nodes (11): Artifact Index, BRIEFING — 2026-08-12T08:57:33+07:00, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+3 more)
+
+### Community 377 - "Adversarial Stress Testing Handoff Report — Milestone 1 (SQ-STRATEGY)"
+Cohesion: 0.17
+Nodes (11): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Adversarial Stress Testing Handoff Report — Milestone 1 (SQ-STRATEGY), Observation 1.1: GTM Domain Overrides, Observation 1.2: `segments.md` Section 5 & Section 6 Integrity (+3 more)
+
+### Community 383 - "BRIEFING — 2026-08-12T01:47:30Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:47:30Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
 ### Community 389 - "Standardize Documentation (7 Pillars Standard)"
 Cohesion: 0.20
 Nodes (9): 🏛️ Mapping of the 7 Pillars, Standardize Documentation (7 Pillars Standard), Step 1: Scan & Audit Document (Pillar 5 - Graph Exploration), Step 2: Inject Machine-Readable YAML Frontmatter (Pillar 1), Step 3: Refactor Requirements & Normative Precision (Pillar 2 & 3), Step 4: Add Declarative Schemas & Graphify Anchors (Pillar 4 & 5), Step 5: Map OpenSpec SDD Spec Deltas (Pillar 6), Step 6: Anchor URIs & Enforce Zero Redundancy (Pillar 7) (+1 more)
 
-### Community 767 - "(hub)/layout.tsx"
-Cohesion: 0.38
-Nodes (3): runtime, BackToTop(), ScrollProgress()
+### Community 767 - "BRIEFING — 2026-08-12T08:31:37Z"
+Cohesion: 0.17
+Nodes (11): Active Timers, Artifact Index, BRIEFING — 2026-08-12T08:31:37Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+3 more)
+
+### Community 769 - "BRIEFING — 2026-08-12T08:38:52Z"
+Cohesion: 0.17
+Nodes (11): Artifact Index, BRIEFING — 2026-08-12T08:38:52Z, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+3 more)
+
+### Community 770 - "BRIEFING — 2026-08-12T08:45:25+07:00"
+Cohesion: 0.17
+Nodes (11): Artifact Index, BRIEFING — 2026-08-12T08:45:25+07:00, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+3 more)
+
+### Community 771 - "buildSkillHealthReport"
+Cohesion: 0.33
+Nodes (9): { buildSkillHealthReport }, createProposalId(), proposeSkillAmendment(), summarizePatchPreview(), buildSkillHealthReport(), deriveSkillStatus(), rankCounts(), roundRate() (+1 more)
+
+### Community 772 - "BRIEFING — 2026-08-12T01:36:55Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:36:55Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 773 - "BRIEFING — 2026-08-12T08:36:40Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T08:36:40Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 774 - "BRIEFING — 2026-08-12T08:43:40+07:00"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T08:43:40+07:00, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 775 - "BRIEFING — 2026-08-12T01:36:35Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:36:35Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 776 - "BRIEFING — 2026-08-12T08:36:45+07:00"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T08:36:45+07:00, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 777 - "BRIEFING — 2026-08-12T01:35:10Z"
+Cohesion: 0.18
+Nodes (10): BRIEFING — 2026-08-12T01:35:10Z, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission, 🔒 My Identity (+2 more)
+
+### Community 778 - "BRIEFING — 2026-08-12T01:42:40Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, BRIEFING — 2026-08-12T01:42:40Z, Change Tracker, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 779 - "normalizeConfig"
+Cohesion: 0.24
+Nodes (10): deepMerge(), defaultConfigPaths(), defaultDbPath(), defaultStateDbPath(), homeDir(), isPlainObject(), normalizeConfig(), normalizeMemoryConnectors() (+2 more)
+
+### Community 780 - "BRIEFING — 2026-08-12T08:36:15Z"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T08:36:15Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 781 - "5-Component Handoff Report"
+Cohesion: 0.20
+Nodes (9): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5-Component Handoff Report, 5. Verification Method, Forensic Audit Report, Forensic Audit Report & Handoff (+1 more)
+
+### Community 782 - "BRIEFING — 2026-08-12T08:41:50+07:00"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T08:41:50+07:00, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 783 - "BRIEFING — 2026-08-12T01:44:00Z"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T01:44:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 784 - "Handoff Report — Milestone 1 Strategy Documentation Remediations (Iteration 2)"
+Cohesion: 0.20
+Nodes (9): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Command 1: Static Document Validation, Command 2: Empirical Link & Anchor Check, File Inspection: `docs/strategy/compatibility-matrix.md` (+1 more)
+
+### Community 785 - "e"
+Cohesion: 0.31
+Nodes (9): a, c(), ct(), e(), n(), o(), ot(), pt() (+1 more)
+
+### Community 786 - "BRIEFING — 2026-08-12T08:47:30+07:00"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T08:47:30+07:00, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 787 - "BRIEFING — 2026-08-12T08:31:30Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T08:31:30Z, 🔒 Key Constraints, Mission, 🔒 My Identity, Project Status, User Context, Victory Audit Status
+
+### Community 788 - "Forensic Audit Handoff Report — Milestone 1 Iteration 2"
+Cohesion: 0.22
+Nodes (8): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Forensic Audit Handoff Report — Milestone 1 Iteration 2, Forensic Audit Report, Phase Results
+
+### Community 789 - "Forensic Audit Report — Milestone 1 Iteration 3"
+Cohesion: 0.22
+Nodes (8): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Evidence Output, Forensic Audit Report — Milestone 1 Iteration 3, Phase Results
+
+### Community 790 - "BRIEFING — 2026-08-12T01:39:57Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T01:39:57Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity, Review Scope
+
+### Community 791 - "check-all-docs.cjs"
+Cohesion: 0.36
+Nodes (8): extractLinksFromFile(), fs, getAllDocFiles(), getFileHeadings(), path, run(), slugify(), verifyLink()
+
+### Community 792 - "check-links.cjs"
+Cohesion: 0.33
+Nodes (8): extractLinksFromFile(), fs, getFileHeadings(), path, run(), slugify(), TARGET_FILES, verifyLink()
+
+### Community 793 - "BRIEFING — 2026-08-12T01:32:02Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T01:32:02Z, Current Parent, Investigation State, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity
+
+### Community 794 - "BRIEFING — 2026-08-12T01:33:20Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T01:33:20Z, Current Parent, Investigation State, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity
+
+### Community 795 - "BRIEFING — 2026-08-12T01:39:30Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T01:39:30Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity, Review Scope
+
+### Community 796 - "BRIEFING — 2026-08-12T08:32:02Z"
+Cohesion: 0.22
+Nodes (8): Artifact Index, BRIEFING — 2026-08-12T08:32:02Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity, Task Summary
+
+### Community 797 - "verify-uris.cjs"
+Cohesion: 0.25
+Nodes (5): fs, invalidUris, path, rootDir, targetFiles
+
+### Community 798 - "verify-uris-detailed.cjs"
+Cohesion: 0.25
+Nodes (5): failures, fs, path, rootDir, targetFiles
+
+### Community 799 - "Project: Deep Architectural Cascade & Autonomous Discovery (`arostech-hub`)"
+Cohesion: 0.25
+Nodes (7): Agent Kanban Board, Architecture & SSOT Anchor, Feature Inventory & Documentation Targets, Interface Contracts & Validation Rules, Milestones, Project: Deep Architectural Cascade & Autonomous Discovery (`arostech-hub`), Squad Matrix & Roles
+
+### Community 800 - "Review & Challenge Report — Milestone 1 (SQ-STRATEGY)"
+Cohesion: 0.25
+Nodes (7): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Review & Challenge Report — Milestone 1 (SQ-STRATEGY), Review Summary
+
+### Community 801 - "Progress Log"
+Cohesion: 0.25
+Nodes (7): Progress Log, Step 1: Initializing & Reading Baseline Context, Step 2: Modifying `docs/strategy/vision.md` — COMPLETED, Step 3: Modifying `docs/strategy/segments.md` — COMPLETED, Step 4: Modifying `docs/strategy/roadmap.md` — COMPLETED, Step 5: Verification — COMPLETED, Step 6: Reporting & Handoff — IN PROGRESS
+
+### Community 802 - "Forensic Audit Report & Handoff — Milestone 2 Iteration 2 (SQ-SYSTEM)"
+Cohesion: 0.18
+Nodes (10): 1.1 Static Analysis Execution, 1.2 Target Document Source Verification, 1.3 Residual Legacy Reference Check, 1.4 Knowledge Graph Synchronization, 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion (+2 more)
+
+### Community 803 - "Handoff Report: Milestone 1 (Iteration 3) Empirical Link & Line Anchor Verification"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 4. Caveats, 5. Conclusion, 6. Verification Method, Handoff Report: Milestone 1 (Iteration 3) Empirical Link & Line Anchor Verification
+
+### Community 804 - "Handoff Report: Operations & Engineering Documentation Survey (PRD v4.0.0 Alignment)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report: Operations & Engineering Documentation Survey (PRD v4.0.0 Alignment)
+
+### Community 805 - "Handoff Report — Milestone 1 Strategy Documentation Re-verification (Iteration 2)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 1 Strategy Documentation Re-verification (Iteration 2)
+
+### Community 806 - "Handoff Report — Milestone 1 (SQ-STRATEGY)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 1 (SQ-STRATEGY)
+
+### Community 807 - "Handoff Report — Milestone 1 Remediation (Iteration 2)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 1 Remediation (Iteration 2)
+
+### Community 808 - "Handoff Report — Milestone 1 Line Anchor Bounds Remediation (Iteration 3)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 1 Line Anchor Bounds Remediation (Iteration 3)
+
+### Community 809 - "test_links.cjs"
+Cohesion: 0.33
+Nodes (5): errors, files, fs, linkDetails, path
+
+### Community 810 - "Progress Log — teamwork_preview_orchestrator_r1"
+Cohesion: 0.33
+Nodes (5): Checklist, Current Status, Iteration Status, Progress Log — teamwork_preview_orchestrator_r1, Subagent Activity Log
+
+### Community 815 - "BRIEFING — 2026-08-12T01:50:50Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:50:50Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 843 - "BRIEFING — 2026-08-12T01:47:30Z"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T01:47:30Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 844 - "Forensic Audit Handoff Report — Milestone 2 (SQ-SYSTEM)"
+Cohesion: 0.25
+Nodes (7): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Forensic Audit Handoff Report — Milestone 2 (SQ-SYSTEM), Forensic Audit Summary
+
+### Community 845 - "test_uri_verification.cjs"
+Cohesion: 0.25
+Nodes (6): auditedURIs, errors, fs, path, repoRoot, targetFiles
+
+### Community 846 - "Verification Handoff Report — Milestone 2 (SQ-SYSTEM)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Verification Handoff Report — Milestone 2 (SQ-SYSTEM)
+
+### Community 847 - "Milestone 2 (SQ-SYSTEM) Handoff Report"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Milestone 2 (SQ-SYSTEM) Handoff Report
+
+### Community 848 - "BRIEFING — 2026-08-12T02:02:00Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T02:02:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 863 - "Handoff Report — Empirical Re-verification for Milestone 2 System Architecture Remediations (Iteration 2)"
+Cohesion: 0.18
+Nodes (10): 1.1 Static Validator Execution (`node .agents/scripts/validate-ai-docs.cjs`), 1.2 Empirical Link Check (`execution-lifecycle.md`), 1.3 Frontmatter `authoritative_references` Line Range Anchors Audit, 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method (+2 more)
+
+### Community 864 - "BRIEFING — 2026-08-12T01:50:45Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T01:50:45Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 865 - "BRIEFING — 2026-08-12T08:52:40Z"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T08:52:40Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 866 - "Handoff Report — System Architecture & API Contracts Documentation Re-verification (Iteration 2)"
+Cohesion: 0.20
+Nodes (9): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — System Architecture & API Contracts Documentation Re-verification (Iteration 2), Integrity Check, Review Summary Report (+1 more)
+
+### Community 867 - "Milestone 2 (SQ-SYSTEM) Remediation (Iteration 2) — Handoff Report"
+Cohesion: 0.20
+Nodes (9): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Execution Output of Static Validator (`node .agents/scripts/validate-ai-docs.cjs`), Invalidation Conditions, Milestone 2 (SQ-SYSTEM) Remediation (Iteration 2) — Handoff Report (+1 more)
+
+### Community 868 - "ArticlesSection.tsx"
+Cohesion: 0.10
+Nodes (22): CertificationsGrid(), CertificationsPage(), metadata, revalidate, runtime, ArticlesSection(), categoryColors, categoryFilters (+14 more)
+
+### Community 869 - "redirects.test.ts"
+Cohesion: 0.20
+Nodes (8): mockClearCache, mockCreate, mockDelete, mockFindMany, mockFindUnique, mockNextResponse, mockRequireAuth, mockUpdate
+
+### Community 870 - "auth.config.ts"
+Cohesion: 0.22
+Nodes (7): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User
+
+### Community 871 - "about/page.tsx"
+Cohesion: 0.50
+Nodes (3): AboutPage(), metadata, runtime
+
+### Community 878 - "BRIEFING — 2026-08-12T02:00:00Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T02:00:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission (+2 more)
+
+### Community 879 - "BRIEFING — 2026-08-12T02:00:35Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T02:00:35Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 880 - "BRIEFING — 2026-08-12T02:00:00Z"
+Cohesion: 0.18
+Nodes (10): Artifact Index, Attack Surface, BRIEFING — 2026-08-12T02:00:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission, 🔒 My Identity (+2 more)
+
+### Community 881 - "BRIEFING — 2026-08-12T09:02:00Z"
+Cohesion: 0.20
+Nodes (9): Artifact Index, Audit Progress, Audit Scope, BRIEFING — 2026-08-12T09:02:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Mission (+1 more)
+
+### Community 882 - "Handoff Report — Reviewer Milestone 3 (SQ-OPS)"
+Cohesion: 0.22
+Nodes (8): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Reviewer Milestone 3 (SQ-OPS), Target Files Reviewed, Verbatim Tool Commands & Results
+
+### Community 883 - "redirect-audit.ts"
+Cohesion: 0.25
+Nodes (7): AuditOptions, auditRedirects(), AuditReport, BrokenTarget, RedirectChain, RedirectLoop, mockFindMany
+
+### Community 884 - "test_harness.cjs"
+Cohesion: 0.25
+Nodes (6): { execSync }, fs, path, rootDir, rotPatterns, targetFiles
+
+### Community 885 - "test_harness.js"
+Cohesion: 0.25
+Nodes (6): { execSync }, fs, path, rootDir, rotPatterns, targetFiles
+
+### Community 886 - "Handoff Report — Milestone 3 (SQ-OPS) Challenger Review"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 3 (SQ-OPS) Challenger Review
+
+### Community 887 - "Soft Handoff Report — Gen 1 to Gen 2 Orchestrator"
+Cohesion: 0.29
+Nodes (6): Active Subagents, Key Artifacts, Milestone State, Pending Decisions & Context, Remaining Work for Successor, Soft Handoff Report — Gen 1 to Gen 2 Orchestrator
+
+### Community 888 - "Handoff Report — Milestone 3 (SQ-OPS)"
+Cohesion: 0.29
+Nodes (6): 1. Observation, 2. Logic Chain, 3. Caveats, 4. Conclusion, 5. Verification Method, Handoff Report — Milestone 3 (SQ-OPS)
+
+### Community 889 - "app/layout.tsx"
+Cohesion: 0.33
+Nodes (4): metadata, runtime, GoogleAnalytics(), ThemeProvider()
+
+### Community 890 - "check_uris.cjs"
+Cohesion: 0.33
+Nodes (5): errors, files, fs, path, validUris
+
+### Community 891 - "check_schemas.cjs"
+Cohesion: 0.33
+Nodes (5): { execSync }, fs, path, rootDir, targetFiles
+
+### Community 892 - "check_rfc2119.cjs"
+Cohesion: 0.40
+Nodes (4): fs, path, rootDir, targetFiles
+
+### Community 893 - "investigate.cjs"
+Cohesion: 0.40
+Nodes (4): fs, path, rootDir, targetFiles
 
 ## Knowledge Gaps
-- **2477 isolated node(s):** `$schema`, `PreToolUse`, `PreCompact`, `SessionStart`, `PostToolUse` (+2472 more)
+- **3149 isolated node(s):** `$schema`, `PreToolUse`, `PreCompact`, `SessionStart`, `PostToolUse` (+3144 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **231 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **290 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Console` connect `Console` to `worker-configuration.d.ts`, `scripts/ecc-context-monitor.js`?**
-  _High betweenness centrality (0.106) - this node is a cross-community bridge._
-- **Why does `event()` connect `RfqB2GForm.tsx` to `scripts/session-activity-tracker.js`, `scripts/governance-capture.js`, `hooks/governance-capture.js`, `hooks/session-activity-tracker.js`?**
-  _High betweenness centrality (0.099) - this node is a cross-community bridge._
+- **Why does `Console` connect `Console` to `worker-configuration.d.ts`, `hooks/ecc-context-monitor.js`?**
+  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+- **Why does `event()` connect `useTrackEvent` to `scripts/session-activity-tracker.js`, `scripts/governance-capture.js`, `hooks/governance-capture.js`, `hooks/session-activity-tracker.js`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
 - **Why does `collectLearnedSkillFiles()` connect `scripts/session-start.js` to `hooks/session-start.js`?**
-  _High betweenness centrality (0.075) - this node is a cross-community bridge._
+  _High betweenness centrality (0.058) - this node is a cross-community bridge._
 - **What connects `$schema`, `PreToolUse`, `PreCompact` to the rest of the system?**
-  _2477 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _3149 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `worker-configuration.d.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.002386634844868735 - nodes in this community are weakly interconnected._
 - **Should `github-coordination/actions.js` be split into smaller, more focused modules?**

@@ -1,31 +1,57 @@
-# Backend Codemap
+---
+id: ARCH-MAP-BACKEND-001
+title: System Backend Architecture & Code Terrain Map
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_architecture"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150"
+---
 
-<!-- Generated: 2026-07-22 | Files scanned: 12 API routes | Token estimate: ~850 -->
+# System Backend Architecture & Code Terrain Map
 
-## API Routes
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
+> **Authoritative Baseline Reference**: This document defines the backend serverless architecture, route handlers, middleware pipeline, authentication layer, and notification services for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)) and the data model specification ([`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150)).
+
+---
+
+## ## OpenSpec Delta
+
+- **ADDED**: Next.js 16 App Router Route Handlers, composite cart RFQ ingestion (`/api/rfq`), Auth.js v5 JWT handlers (`/api/auth/[...nextauth]`), Sanity ISR revalidation (`/api/revalidate`), and 21st SDK agent chat integration (`/api/an-token`).
+- **REMOVED**: Legacy 301 redirect handlers (`/api/admin/redirects`, `/api/redirects/lookup`), legacy Supabase auth handlers, and Redis queue processors.
+
+---
+
+## Section I: API Route Landscape
+
+The system backend operates strictly via Next.js 16 Serverless Route Handlers executing on Cloudflare Pages or Node.js runtime bindings:
 
 ```
 POST/GET  /api/revalidate          → route.ts → verify webhook secret → revalidateTag()
-POST      /api/rfq                 → route.ts → parse & validate B2B/B2G Zod schemas → prisma.lead.create → fire-and-forget notifications
+POST      /api/rfq                 → route.ts → parse & validate rfqSubmissionSchema → prisma.rfqSubmission.create → fire-and-forget notifications
 GET       /api/rfq                 → route.ts → JSON healthcheck response
-GET/POST  /api/auth/[...nextauth]  → route.ts → handlers mapping to NextAuth.js v5
+GET/POST  /api/auth/[...nextauth]  → route.ts → handlers mapping to Auth.js v5
 POST      /api/auth/forgot-password → route.ts → password reset request initiation
 POST      /api/auth/reset-password  → route.ts → password reset completion
-GET/POST  /api/admin/redirects     → route.ts → admin redirect map management (CRUD + hit tracking)
-GET       /api/redirects/lookup      → route.ts → lightweight redirect lookup (middleware loopback)
 POST      /api/an-token             → route.ts → 21st SDK agent chat token handler
 POST      /api/cron/notifications   → route.ts → notification queue processor (cron endpoint)
 ```
 
-| File | Purpose | Lines |
-|------|---------|-------|
-| `src/app/api/revalidate/route.ts` | Sanity webhook ISR revalidation | ~120 |
-| `src/app/api/revalidate/__tests__/route.test.ts` | Route tests | ~250 |
-| `src/app/api/rfq/route.ts` | B2B & B2G RFQ form ingestion handler & healthcheck | 173 |
-| `src/app/api/rfq/__tests__/route.test.ts` | Infrastructure failure, validation & success tests | ~310 |
-| `src/app/api/auth/[...nextauth]/route.ts` | Route handlers integration wrapper for NextAuth.js | 3 |
+| File Path | Purpose | Key Integrations |
+| :--- | :--- | :--- |
+| `src/app/api/revalidate/route.ts` | Sanity CMS webhook ISR revalidation | `revalidateTag()`, `SANITY_WEBHOOK_SECRET` |
+| `src/app/api/revalidate/__tests__/route.test.ts` | Webhook security & revalidation tests | Jest unit & mock handlers |
+| `src/app/api/rfq/route.ts` | RFQ composite cart submission ingestion & healthcheck | Prisma Neon Proxy, Zod validation |
+| `src/app/api/rfq/__tests__/route.test.ts` | Ingestion, cart schema validation & fallback tests | Jest integration tests |
+| `src/app/api/auth/[...nextauth]/route.ts` | Auth.js v5 route handlers wrapper | `handlers.GET`, `handlers.POST` |
 
-## Middleware Chain (Active)
+---
+
+## Section II: Middleware Pipeline Architecture
+
+The Edge Middleware MUST process all incoming hostnames before page rendering:
 
 ```
 Request → src/middleware.ts (Edge Runtime)
@@ -33,84 +59,84 @@ Request → src/middleware.ts (Edge Runtime)
   ├─ Short-circuit: /api/*, /_next/*, /*.ext  → NextResponse.next()
   │
   ├─ cleanHostname(host)   → strips port number
-  ├─ isDashboardDomain()   → extractSubdomain() === 'dashboard'
-  ├─ isSpokeDomain()       → subdomain in SPOKE_SUBDOMAINS
+  ├─ extractSubdomain(host)→ extracts spoke or dashboard prefix
   │
-  ├─ isHubDomain()         → rewrite: x-middleware-subdomain: 'hub'
-  ├─ isDashboardDomain()   → session check (next-auth cookie) 
+  ├─ isHubDomain()         → pass-through with x-middleware-subdomain: 'hub'
+  ├─ isDashboardDomain()   → session check (Auth.js cookie) 
   │                          ├── authenticated   → rewrite: /dashboard{pathname}
-  │                          └── unauthenticated → redirect: /login
-  ├─ isSpokeDomain(spoke)  → rewrite: /{spoke}{pathname}
-  └─ unknown               → rewrite: /404
+  │                          └── unauthenticated → redirect: /dashboard/login
+  ├─ isSpokeDomain(spoke)  → rewrite: /${spoke}${pathname}
+  └─ unknown               → return new NextResponse(null, { status: 404 })
 ```
 
-## Middleware Config (`src/lib/middleware/config.ts`)
+---
 
-| Function | Signature | Purpose |
-|----------|-----------|---------|
-| `cleanHostname` | `(host) → string` | Strip port from hostname |
-| `isLocalDevelopment` | `(hostname) → boolean` | Detect lvh.me local dev |
-| `extractSubdomain` | `(hostname) → string \| null` | Extract subdomain relative to ROOT_DOMAIN |
-| `isHubDomain` | `(hostname) → boolean` | Match root / www domain |
-| `isDashboardDomain` | `(hostname) → boolean` | Match dashboard subdomain |
-| `isSpokeDomain` | `(hostname) → string \| null` | Match pju/solarcell/alatpetir/baterai |
+## Section III: Authentication & Authorization Layer (Auth.js v5)
 
-```
-SPOKE_SUBDOMAINS = ['pju', 'solarcell', 'alatpetir', 'baterai']
-```
-
-## Environment Config (`src/lib/config/env.ts`)
-
-| Schema | Variables | Validator |
-|--------|-----------|-----------|
-| `sanityEnvSchema` | SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_VERSION, SANITY_API_READ_TOKEN, SANITY_API_WRITE_TOKEN, SANITY_WEBHOOK_SECRET | `validateSanityEnv()` / `getSanityEnv()` |
-| `middlewareEnvSchema` | NEXT_PUBLIC_ROOT_DOMAIN, NEXT_PUBLIC_SITE_URL | `validateMiddlewareEnv()` / `getMiddlewareEnv()` |
-| `databaseEnvSchema` | DATABASE_URL | `validateDatabaseEnv()` / `getDatabaseEnv()` |
-| `authEnvSchema` | NEXTAUTH_SECRET, NEXTAUTH_URL | `validateAuthEnv()` / `getAuthEnv()` |
-| `notificationEnvSchema` | RESEND_API_KEY, RESEND_FROM_EMAIL, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, WHATSAPP_SALES_NUMBER | `validateNotificationEnv()` / `getNotificationEnv()` |
-
-## Sanity Revalidation Flow
-
-```
-Sanity Webhook → POST /api/revalidate
-  → verify SANITY_WEBHOOK_SECRET
-  → revalidateTag('sanity:*')
-  → ISR pages refresh
-```
-
-## Authentication & Authorization Layer
-
-### Config & Flow (`src/lib/auth/auth.config.ts`)
-- **Strategy**: JWT-based session token storage.
-- **Provider**: Credentials provider with custom `authorize(credentials)` hook that validates database user status and matches standard credentials.
-- **Role-based Session Max Age**: Evaluated inside `jwt()` callback dynamically:
+### Session & Guard Mechanics (`src/lib/auth/auth.config.ts`)
+- **Strategy**: JWT-based session token storage with dynamic role-based expiry.
+- **Providers**: Credentials Provider with database user verification via Prisma Neon Proxy adapter.
+- **Role-Based Token Expiry**:
   - `CLIENT` role: 24 hours.
   - `ADMIN` & `VIEWER` roles: 8 hours.
-  - Expired tokens automatically yield `null` to prompt re-login.
-- **Sign In Verification**: Custom `signIn()` callback forces strict database access checking. If the signing-in user has the `CLIENT` role, they must have a valid `linkedLeadId` pointing to a Lead with `dashboardAccessStatus === 'GRANTED'`.
+- **Server Guards** (`src/lib/auth/auth-guard.ts`):
+  - `getServerSession()`: Retrieves current authenticated Auth.js session.
+  - `requireAuth(requiredRole?)`: Guard redirecting unauthenticated or unauthorized requests to `/dashboard/login`.
+  - `requireDashboardAccess()`: Enforces explicit client dashboard access checks (`dashboardAccessStatus === 'GRANTED'`).
 
-### Server Guards (`src/lib/auth/auth-guard.ts`)
-- `getServerSession()`: Wrapper to fetch current server-side NextAuth session.
-- `checkDashboardAccess(email)`: Queries the Postgres database to verify user status and ensure client access is explicitly provisioned (`dashboardAccessStatus === 'GRANTED'`).
-- `requireAuth(requiredRole?)`: Guard for pages/routes. Redirects to `/login` if unauthenticated or if a specific role check fails.
-- `requireDashboardAccess()`: Guard verifying session status and querying `checkDashboardAccess` dynamically. Redirects to `/login` if not active.
+---
 
-## Notification Services Layer
+## Section IV: Notification Services Layer
 
-### Resend Email (`src/lib/api/notifications/resend.ts`)
-- `sendRfqAcknowledgment(lead)`: Dispatches customer ACK email containing Segment, Product Category list, and Total Quantity.
-- `sendInternalNotification(lead)`: Routes detailed internal email with lead context (Scope, Timeline, Contact Details) to the admin/sales address.
+### 1. Resend Email (`src/lib/api/notifications/resend.ts`)
+- `sendRfqAcknowledgment(submission)`: Dispatches customer ACK email containing product line items, total quantity, and tracking reference.
+- `sendInternalNotification(submission)`: Routes internal lead alert with full quotation context to the sales team.
 
-### Telegram Webhooks (`src/lib/api/notifications/telegram.ts`)
-- Non-blocking alerts using the native `fetch` API.
-- `alertNewRfq(lead)`: Formats and pushes successful RFQ ingestion data to the Telegram channel.
-- `alertRfqFailure(error, payload)`: Alerts the development/infrastructure channel of ingestion failure with error messages and the raw payload.
+### 2. Telegram Bot Alerts (`src/lib/api/notifications/telegram.ts`)
+- `alertNewRfq(submission)`: Non-blocking alert pushing RFQ payload details to the Telegram ops channel.
+- `alertRfqFailure(error, payload)`: Pushes dev alerts on ingestion failures.
 
-### WhatsApp Fallback Prefills (`src/lib/api/notifications/whatsapp.ts`)
-- `buildWhatsAppFallbackUrl(formData)`: Encodes all RFQ form fields into a custom WA chat prefilled link (`https://wa.me/{phone}?text={encodedText}`) to allow manual submission on API failure.
+### 3. WhatsApp Fallback Link Builder (`src/lib/api/notifications/whatsapp.ts`)
+- `buildWhatsAppFallbackUrl(formData)`: Encodes cart submission items into a pre-filled `wa.me` URL for manual customer submission upon API failure.
 
-## Planned (Phase 3)
+---
 
+## Section V: Declarative Backend Interfaces
+
+```typescript
+import { z } from 'zod';
+
+export const ApiHealthCheckResponseSchema = z.object({
+  status: z.enum(['ok', 'degraded', 'error']),
+  timestamp: z.string().datetime(),
+  environment: z.string(),
+  services: z.object({
+    database: z.boolean(),
+    sanity: z.boolean(),
+  }),
+});
+
+export type ApiHealthCheckResponse = z.infer<typeof ApiHealthCheckResponseSchema>;
 ```
-GET  /api/tracking/:id     → Auth guard → Prisma Row Access Scope
-```
+
+---
+
+## Section VI: OpenSpec Behavioral Contracts
+
+### Requirement: REQ-MAP-BACKEND-001-ROUTE-HANDLERS
+The backend route handlers SHALL validate incoming requests using Zod schemas, write composite cart data via Prisma Neon Proxy, and execute non-blocking notification alerts without relying on legacy redirect engines or Redis queues.
+
+#### Scenario: RFQ Ingestion Success
+- GIVEN a valid composite cart payload sent to `POST /api/rfq`
+- WHEN the route handler parses and validates the request against `rfqSubmissionSchema`
+- THEN it SHALL persist the submission header and line items to Neon Postgres via Prisma
+- AND it MUST trigger fire-and-forget email and Telegram notifications
+- AND it SHALL return HTTP 201 Created with the generated tracking ID.
+
+---
+
+## Section VII: Knowledge Graph Anchoring
+
+- **Graphify Node**: `doc:docs/system/architecture/codemaps/backend.md`
+- **Community**: `community_architecture`
+- **Authoritative Anchor**: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150)

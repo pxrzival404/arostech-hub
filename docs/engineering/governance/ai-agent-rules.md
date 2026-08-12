@@ -1,26 +1,36 @@
-# Antigravity CLI (`agy`) — Main Operating Rules & System Identity
+---
+id: GOV-AGENT-001
+title: Antigravity AI Agent Rules & System Governance
+version: 4.0.0
+status: LOCKED_BASELINE
+graphify_community: "community_governance"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  agents_root: "file:///d:/dev/arostech-hub/AGENTS.md#L1-L100"
+---
 
-This document defines the single, authoritative operating rules and system mandates for **Antigravity CLI** (`agy`) within the **PT. Daya Berkah Sentosa Nusantara (DBSN)** digital ecosystem repository.
+# Antigravity AI Agent Rules & System Governance
+
+> **Authoritative Baseline Reference**: Operating rules, system mandates, and domain topology for AI agent execution in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)) and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100).
 
 ---
 
 ## 1. Core Mandates & Operating Modes
 
-1. **Antigravity Primary Role**: Operate as both the **Context Coordinator** (research, architectural planning, documentation) and **Execution Engine** (TDD, implementation, terminal verification loops).
-2. **Rule Priority**: Instructions in `.agents/rules/` (e.g., `documentation-mode.md`, `typescript-*.md`) and this `AGENTS.md` take precedence over general defaults.
-3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under `[DOCS_MODE]` or working on documentation tasks, strict write restrictions apply according to `.agents/rules/documentation-mode.md`. Codebase files (`src/`, `prisma/`, `package.json`, etc.) are **STRICTLY READ-ONLY**. Only markdown documentation files in `docs/`, `openspec/`, and root documentation files (`AGENTS.md`, `README.md`, `docs/engineering/playbooks/quickstart.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `LICENSE`) may be modified.
-4. **Workflow Discipline**: Follow the **Plan -> TDD -> Review** cycle for non-trivial codebase changes.
+1. **Agent Primary Role**: Operate as both Context Coordinator (research, architectural planning, documentation) and Execution Engine (TDD, implementation, terminal verification loops).
+2. **Rule Hierarchy & Priority**: Instructions in `.agents/rules/` and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100) MUST take precedence over default LLM behaviors.
+3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under documentation tasks, strict write restrictions apply according to `.agents/rules/documentation-mode.md`. Codebase files (`src/`, `prisma/`, `package.json`) SHALL remain strictly read-only. Only markdown documentation files under `docs/`, `openspec/`, and root documentation files MAY be modified.
+4. **Workflow Discipline**: Agents MUST follow the **Plan -> TDD -> Review** cycle for non-trivial changes.
 
 ---
 
-## 2. Project Stack & Architecture Overview
+## 2. Project Stack & Domain Topology
 
 ### 2.1 Tech Stack
-
-- **Framework**: Next.js 16.2.6 (App Router + Middleware)
+- **Framework**: Next.js 16.2.6 (App Router + Edge Middleware)
 - **Deployment Platform**: Cloudflare Pages (via `@cloudflare/next-on-pages` edge runtime)
 - **Language**: TypeScript 5.7+
-- **Styling**: Tailwind CSS v4 + Vanilla CSS Design Tokens
+- **Styling**: Tailwind CSS v4 + Design Tokens
 - **Database / ORM**: Neon Postgres + Prisma ORM (Edge driver `@neondatabase/serverless`)
 - **CMS**: Sanity CMS (GROQ queries + ISR webhook revalidation via `next-sanity`)
 - **Authentication**: Auth.js v5 (NextAuth v5 edge-compatible JWT session management)
@@ -28,66 +38,53 @@ This document defines the single, authoritative operating rules and system manda
 
 ### 2.2 Domain & Subdomain Topology
 
-| Domain / Subdomain | Route Group | Purpose |
+| Domain / Subdomain | App Router Mapping | Surface Purpose |
 | :--- | :--- | :--- |
-| `dayaberkah.id` | `/(hub)` | Corporate trust center (profile, certifications, portfolio, routing) |
-| `pju.dayaberkah.id` | `/(spokes)/pju` | Product spoke for PJU Street Lighting |
-| `solarcell.dayaberkah.id` | `/(spokes)/solarcell` | Product spoke for Solar Cell Systems |
-| `alatpetir.dayaberkah.id` | `/(spokes)/alatpetir` | Product spoke for Lightning Protection Systems |
-| `baterai.dayaberkah.id` | `/(spokes)/baterai` | Product spoke for Battery Storage Systems |
-| `dashboard.dayaberkah.id` | `/(dashboard)` | Secure B2B/B2G client tracking portal |
+| `dayaberkah.id` | `(hub)` | Corporate trust center (profile, certifications, portfolio, routing) |
+| `pju.dayaberkah.id` | `(spokes)/pju` | Product spoke for PJU Street Lighting |
+| `solarcell.dayaberkah.id` | `(spokes)/solarcell` | Product spoke for Solar Cell Systems |
+| `alatpetir.dayaberkah.id` | `(spokes)/alatpetir` | Product spoke for Lightning Protection Systems |
+| `baterai.dayaberkah.id` | `(spokes)/baterai` | Product spoke for Battery Storage Systems |
+| `dashboard.dayaberkah.id` | `dashboard/` | Flat route: Secure B2B/B2G client tracking portal |
 
 ---
 
-## 3. Development Commands & Workflows
+## 3. Operational Guardrails & Security
 
-### 3.1 Common Package Commands
-
-| Command | Purpose |
-| :--- | :--- |
-| `pnpm dev` | Start Next.js local development server (port 3000, `lvh.me` resolution) |
-| `pnpm build` | Compile Next.js production build |
-| `pnpm lint` | Run ESLint static analysis |
-| `pnpm test` | Run Jest unit and integration tests |
-| `pnpm test:coverage` | Run Jest tests with code coverage report |
-| `pnpm pages:build` | Compile edge bundles using `@cloudflare/next-on-pages` |
-| `pnpm pages:preview` | Preview edge build locally using `wrangler` |
-| `pnpm pages:deploy` | Deploy compiled edge static assets to Cloudflare Pages |
+1. **Secrets Security**: Agents SHALL NEVER log, print, or commit raw API keys or database connection strings. Use `.env.local` locally and Cloudflare Pages Encrypted Secrets in production.
+2. **Immutability Invariant**: Code modifications MUST favor immutable object copies over in-place mutations.
+3. **File Scoping & Size**: Files SHOULD be kept focused (200–400 lines typical, 800 lines maximum).
+4. **Git Commit Standard**: Commit messages MUST follow Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
 
 ---
 
-## 4. Operational Guardrails & Security
+## 4. OpenSpec Behavioral Requirements
 
-1. **Secrets Security**: NEVER log, print, or commit raw API keys or database connection strings. Use `.env.local` locally and Cloudflare Pages Encrypted Secrets in production.
-2. **Immutability**: Prefer immutable updates over in-place mutations.
-3. **File Scoping & Size**: Keep files focused (200-400 lines typical, 800 lines max). Split large modules into smaller, testable units.
-4. **Git Commit Format**: Use Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
+### Requirement: REQ-GOV-AGENT-001-MODE-SAFETY
+When operating under documentation mode (`[DOCS_MODE]`), AI agents SHALL NOT mutate production application code outside markdown documentation boundaries.
 
----
-
-## 5. Cloudflare Platform & Domain Skills
-
-Antigravity CLI leverages active Cloudflare platform capabilities and global skills:
-- **`cloudflare`**: Cloudflare Workers, Pages, KV, R2, D1, Vectorize, Hyperdrive architecture.
-- **`wrangler`**: Wrangler CLI operations, `wrangler.json` configuration validation, bindings, and secrets management.
-- **`workers-best-practices`**: Cold-start mitigation, memory optimization, edge routing, subrequests.
-- **`durable-objects`**: Stateful serverless computing, WebSockets, transactional storage.
-- **`web-perf`**: Core Web Vitals optimization, Cloudflare Speed features (Auto Minify, Rocket Loader, Early Hints).
+#### Scenario: Documentation Task Execution
+- GIVEN an AI agent executing a documentation task or playbook update
+- WHEN operating under documentation mode
+- THEN write tool calls MUST be restricted exclusively to `.md` files in `docs/`, `openspec/`, and root indices.
 
 ---
 
-## 6. Active MCP Servers Integration
+## 5. OpenSpec Delta
 
-| MCP Server | Key Capabilities | Primary Tools / Actions |
-| :--- | :--- | :--- |
-| `cloudflare-docs` | Cloudflare platform docs & migration guides | `search_cloudflare_documentation`, `migrate_pages_to_workers_guide` |
-| `cloudflare-observability` | Worker logs, telemetry, metrics & error queries | `workers_list`, `workers_get_worker`, `query_worker_observability` |
-| `cloudflare-workers-bindings` | Edge database & storage resource management | `kv_namespaces_*`, `r2_buckets_*`, `d1_databases_*` (`d1_database_query`) |
-| `cloudflare-workers-builds` | CI/CD build logs & active worker deployment | `workers_builds_list_builds`, `workers_builds_get_build_logs` |
-| `Sanity` | Sanity CMS schema deployment, document queries, and content management | `get_schema`, `query_documents`, `patch_documents` |
-| `mcp-server-neon` | Neon Serverless Postgres schema inspection & SQL execution | `get_database_tables`, `describe_table_schema`, `run_sql` |
+## ADDED Requirements
+- REQ-GOV-AGENT-001-MODE-SAFETY: Explicit documentation mode write boundary enforcement.
+
+## MODIFIED Requirements
+- Aligned baseline stack definitions with Next.js 16.2.6, Tailwind v4, and Auth.js v5.
+
+## REMOVED Requirements
+- Legacy Vercel staging deployment references.
 
 ---
 
-*Last Updated: 2026-08-06*  
-*Status: Antigravity CLI (`agy`) established as sole Main Rules & System Identity.*
+## 6. Graphify Knowledge Graph Anchoring
+
+- Knowledge Graph Node ID: `doc:docs/engineering/governance/ai-agent-rules.md`
+- Graphify Community: `community_governance`
+- Master Governance File: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100)

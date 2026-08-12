@@ -1,122 +1,163 @@
-# Frontend Codemap
+---
+id: ARCH-MAP-FRONTEND-001
+title: System Frontend Architecture & Code Terrain Map
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_architecture"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80"
+---
 
-<!-- Generated: 2026-07-22 | Files scanned: 184 TS/TSX | Token estimate: ~800 -->
+# System Frontend Architecture & Code Terrain Map
 
-## Page Tree
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
+> **Authoritative Baseline Reference**: This document defines the frontend application structure, component hierarchy, state management, design system tokenization, and UI patterns for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)).
+
+---
+
+## ## OpenSpec Delta
+
+- **ADDED**: Tailwind CSS v4 design token engine, Motion animation primitives (`motion/react` / `framer-motion`), Lucide React icon set, and dynamic spoke subdomain page trees (`pju`, `solarcell`, `alatpetir`, `baterai`).
+- **REMOVED**: Legacy CSS utility files, legacy UI templates, and legacy client-side state models.
+
+---
+
+## Section I: Page Tree Structure
+
+The application page hierarchy SHALL operate within Next.js 16 App Router route groups:
 
 ```
 src/app/
 ├── layout.tsx                    → Root layout (ThemeProvider, PageLoader, fonts)
-├── globals.css                   → Global styles + Tailwind v4 + theme tokens
+├── globals.css                   → Global Tailwind v4 styles + theme tokens
 ├── (hub)/
 │   ├── layout.tsx                → Hub layout (Navbar, Footer, ScrollProgress)
-│   ├── page.tsx                  → Hub homepage (all sections composed)
-│   ├── about/page.tsx            → About sub-page
+│   ├── page.tsx                  → Hub homepage (composed sections)
+│   ├── about/page.tsx            → Corporate about sub-page
 │   ├── articles/
 │   │   ├── page.tsx              → Articles listing
 │   │   └── [slug]/page.tsx       → Article detail
-│   ├── certifications/page.tsx   → Certifications listing
-│   ├── contact/page.tsx          → Contact page
-│   ├── faq/page.tsx              → FAQ page
-│   ├── portfolio/page.tsx        → Portfolio listing
-│   └── products/page.tsx         → Products listing
+│   ├── certifications/page.tsx   → Centralized certification matrix
+│   ├── contact/page.tsx          → Contact page + RFQ composite form
+│   ├── faq/page.tsx              → Corporate FAQ
+│   ├── portfolio/page.tsx        → Portfolio project showcase
+│   └── products/page.tsx         → Product catalog & spoke gateway
 ├── chat/
 │   ├── page.tsx                  → Agent chat interface (21st SDK integration)
 │   └── theme.json                → Chat theme configuration
 ├── dashboard/
-│   ├── layout.tsx                → Dashboard layout
-│   └── page.tsx                  → Dashboard home (rewritten from dashboard.*)
+│   ├── layout.tsx                → Client dashboard layout (Auth guard)
+│   └── page.tsx                  → Project/order tracking overview
 └── (spokes)/
-    ├── pju/                      → PJU spoke pages
-    └── [spoke]/                  → Dynamic spoke pages
+    ├── pju/                      → PJU spoke static route group
+    └── [spoke]/                  → Dynamic spoke route segment (solarcell, alatpetir, baterai)
+        ├── page.tsx              → Spoke homepage
+        ├── products/             → Spoke catalog
+        └── portfolio/            # Spoke portfolio showcase
 ```
 
-## Component Hierarchy
+---
+
+## Section II: Component Hierarchy & Architecture
 
 ```
 src/components/
-├── forms/                         → RFQ form components (submits to /api/rfq)
-│   ├── RfqB2BForm.tsx            → B2B RFQ form (company data, product specs)
-│   ├── RfqB2GForm.tsx            → B2G RFQ form (government procurement, NIB/NPWP)
+├── forms/                         → Composite cart RFQ form components (submits to /api/rfq)
+│   ├── RfqCompositeForm.tsx      → Multi-item composite RFQ cart form
+│   ├── RfqB2BForm.tsx            → B2B segment inline form handler
+│   ├── RfqB2GForm.tsx            → B2G procurement inline form handler
 │   └── contact-form.tsx          → Direct contact inquiry form
 │
-├── ui/                           → 12 Radix UI primitives (shadcn pattern)
+├── ui/                           → Radix UI primitives (shadcn pattern)
 │   ├── accordion.tsx             → Accordion primitive wrapper
 │   ├── badge.tsx                 → Status/label badge with CVA variants
 │   ├── button.tsx                → Button with CVA variants
 │   ├── card.tsx                  → Card container + sub-parts
-│   ├── dialog.tsx                → Modal/dialog (Radix portal)
-│   ├── index.ts                  → Barrel export
-│   ├── input.tsx                 → Text input
-│   ├── label.tsx                 → Form label
-│   ├── select.tsx                → Dropdown select (Radix)
-│   ├── tabs.tsx                  → Tab interface (Radix)
-│   ├── textarea.tsx              → Multiline input
+│   ├── dialog.tsx                → Modal/dialog primitive
+│   ├── input.tsx                 → Text input with Zod error integration
+│   ├── select.tsx                → Accessible dropdown select
+│   ├── tabs.tsx                  → Accessible tab interface
 │   └── tooltip.tsx               → Tooltip trigger wrapper
 │
-├── shared/                       → 14 shared/layout components
-│   ├── Accordion.tsx             → FAQ-style accordion (framer-motion)
-│   ├── Avatar.tsx                → User avatar with fallback
-│   ├── BackToTop.tsx             → Scroll-to-top button (framer-motion)
-│   ├── Button.tsx                → High-level button with variants + motion
-│   ├── Footer.tsx                → Site footer (links, social, copyright)
-│   ├── Navbar.tsx                → Responsive navigation bar
+├── shared/                       → Shared layout & motion components
+│   ├── Accordion.tsx             → Motion accordion wrapper
+│   ├── BackToTop.tsx             → Motion scroll-to-top button
+│   ├── Button.tsx                → Tokenized button with motion micro-interactions
+│   ├── Footer.tsx                → Global site footer
+│   ├── Navbar.tsx                → Responsive navigation bar with spoke dropdowns
 │   ├── PageLoader.tsx            → Full-page loading overlay
 │   ├── PortableText.tsx          → @portabletext/react renderer wrapper
-│   ├── ScrollProgress.tsx        → Top progress bar (scroll indicator)
-│   ├── ScrollReveal.tsx          → Intersection observer reveal animation
-│   ├── Tabs.tsx                  → High-level tab component
-│   ├── ThemeToggle.tsx           → Dark/light mode toggle (next-themes)
-│   ├── Tooltip.tsx               → High-level tooltip wrapper
-│   └── WaveDivider.tsx           → SVG wave section divider
+│   ├── ScrollProgress.tsx        → Scroll indicator bar
+│   ├── ScrollReveal.tsx          → IntersectionObserver reveal animation wrapper
+│   └── ThemeToggle.tsx           → Dark/light theme switcher (`next-themes`)
 │
-└── sections/                     → 12 hub page section components
-    ├── AboutSection.tsx          → Company about (16 KB)
-    ├── ArticlesSection.tsx       → Articles grid/list (14 KB)
-    ├── CTABanner.tsx             → Call-to-action banner (7 KB)
-    ├── CertificationsSection.tsx → Cert cards/grid (11 KB)
-    ├── ContactSection.tsx        → Contact form + info (14 KB)
-    ├── FAQSection.tsx            → FAQ accordion (12 KB)
-    ├── HeroSection.tsx           → Hero banner + CTA (11 KB)
-    ├── PortfolioSection.tsx      → Portfolio carousel/grid (14 KB)
-    ├── ProcessSection.tsx        → How-we-work steps (6 KB)
-    ├── ProductsSection.tsx       → Products showcase (19 KB)
-    ├── ProjectMapSection.tsx     → Geographic project map (6 KB)
-    └── TestimonialsSection.tsx   → Testimonials carousel (8 KB)
+└── sections/                     → Hub page section components
+    ├── AboutSection.tsx          → Corporate background section
+    ├── CertificationsSection.tsx → Cert cards grid section
+    ├── ContactSection.tsx        → Contact info & RFQ form container
+    ├── HeroSection.tsx           → Hero banner + primary CTA
+    ├── PortfolioSection.tsx      → Portfolio grid/carousel section
+    └── ProductsSection.tsx       → Spoke product gateway grid
 ```
 
-## Hooks
+---
 
-| File | Purpose |
-|------|---------|
-| `src/hooks/use-counter.ts` | Animated counter hook (IntersectionObserver + RAF) |
-| `src/hooks/use-rfq-cart.ts` | Zustand hydration hook (`useRfqCartHydrated`) to prevent SSR mismatches |
+## Section III: State Management & Styling Stack
 
-## Utilities
+| Concern | Approach / Technology | Enforcement Invariant |
+| :--- | :--- | :--- |
+| **Styling** | Tailwind CSS v4 + PostCSS | Theme tokens in `globals.css` using `@theme` directive |
+| **Motion** | Motion (`motion/react` / `framer-motion`) | Reduced-motion safe entrance animations & reveals |
+| **Icons** | Lucide React | Standardized `lucide-react` SVG icon set |
+| **Theme** | `next-themes` | SSR hydration-safe Light/Dark mode switching |
+| **Forms** | React Hook Form + Zod | Strict schema validation with `@hookform/resolvers` |
+| **RFQ Cart State** | Zustand | LocalStorage persisted store (`dbsn-rfq-cart`) |
+| **Session** | Auth.js v5 | Client SessionProvider & JWT cookie tracking |
 
-| File | Purpose |
-|------|---------|
-| `src/lib/utils/cn.ts` | Tailwind class merger (`clsx` + `tailwind-merge`) |
-| `src/lib/utils/index.ts` | Utility barrel export |
-| `src/lib/utils/tracking.ts` | UTM / source tracking helpers |
+---
 
-## State Management
+## Section IV: Declarative Component Props Schema
 
-| Concern | Approach |
-|---------|---------|
-| Theme | `next-themes` ThemeProvider (dark/light) |
-| Forms | React Hook Form + Zod |
-| Animations | Framer Motion (page transitions, scroll reveals) |
-| Carousel | Embla Carousel React |
-| Session & Auth | Auth.js v5 JWT cookie authentication & RBAC |
-| RFQ Cart State | Zustand localStorage persisted store (`dbsn-rfq-cart`) |
-| URL state | Planned Phase 3 |
+```typescript
+import { ReactNode } from 'react';
 
-## UI Pattern
+export interface BaseSectionProps {
+  id?: string;
+  className?: string;
+  children?: ReactNode;
+}
 
+export interface ProductCardProps {
+  id: string;
+  title: string;
+  slug: string;
+  spokeSubdomain: 'pju' | 'solarcell' | 'alatpetir' | 'baterai';
+  imageUrl: string;
+  shortDescription: string;
+  specifications: Record<string, string>;
+  isTkdnCertified?: boolean;
+}
 ```
-CVA (class-variance-authority) → variant definitions
-clsx + tailwind-merge (cn()) → conditional class composition
-Radix UI primitives → accessibility-first headless components
-Framer Motion → entrance animations, scroll-triggered reveals
-```
+
+---
+
+## Section V: OpenSpec Behavioral Contracts
+
+### Requirement: REQ-MAP-FRONTEND-001-UI-ARCHITECTURE
+The frontend layer SHALL render responsive, accessible UI components using Tailwind CSS v4 and Motion, and MUST interface with the composite RFQ cart state store without client-side hydration mismatches.
+
+#### Scenario: Spoke Navigation & Cart Ingestion
+- GIVEN a user browsing `solarcell.dayaberkah.id/products`
+- WHEN the user selects a solar panel product and clicks "Ajukan Penawaran"
+- THEN the frontend MUST append the product item to the Zustand `dbsn-rfq-cart` store
+- AND it SHALL open the RFQ modal or redirect to `/contact` with pre-filled cart state.
+
+---
+
+## Section VI: Knowledge Graph Anchoring
+
+- **Graphify Node**: `doc:docs/system/architecture/codemaps/frontend.md`
+- **Community**: `community_architecture`
+- **Authoritative Anchor**: [`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80)

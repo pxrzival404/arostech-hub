@@ -1,24 +1,48 @@
-# Subdomain Routing & Middleware Architecture
+---
+id: ARCH-LIFECYCLE-001
+title: Subdomain Routing & Middleware Execution Lifecycle Architecture
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_architecture"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80"
+---
 
-This document describes the subdomain-based routing architecture for the DBSN platform, how it maps request hostnames to Next.js route groups internally, and the Cloudflare Pages deployment patterns and lessons learned.
+# Subdomain Routing & Middleware Execution Lifecycle Architecture
+
+> **[SUPERSEDED]**  
+> The legacy 301 redirect engine, database-driven redirect lookups, and `/api/redirects/lookup` loopback mechanism detailed in prior specification drafts were **PERMANENTLY SUPERSEDED** by Greenfield Native SEO metadata generation (`sitemap.ts`, `robots.ts`) in PRD v3.6/v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L24-L30)).  
+> The Next.js Edge Middleware logic SHALL execute pure Edge subdomain resolution without database calls, external loopbacks, or legacy 301 redirect tables.
+
+> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
+> **Authoritative Baseline Reference**: This document describes the subdomain-based routing architecture for the DBSN platform, mapping request hostnames to internal Next.js App Router route groups on Cloudflare Pages via `@cloudflare/next-on-pages`.
 
 ---
 
-## 1. Subdomain Mapping System
+## ## OpenSpec Delta
 
-PT Daya Berkah Sentosa Nusantara uses a multi-tenant hub-and-spoke domain routing model. The routing logic runs inside the Next.js Middleware (on the Edge Runtime via `@cloudflare/next-on-pages`) and maps hostnames to internal Next.js Route Groups as follows:
+- **ADDED**: Strict Edge Runtime execution contracts for Next.js 16 middleware, clean domain resolution, dynamic spoke rewrites, and client dashboard route guards.
+- **REMOVED**: Legacy 301 redirect lookup tables (`redirect_map`), middleware database loopbacks, and AbortController fetch timeouts for legacy API endpoints.
+
+---
+
+## Section I: Subdomain Mapping System
+
+PT Daya Berkah Sentosa Nusantara uses a multi-tenant hub-and-spoke domain routing model. The routing logic runs inside the Next.js Middleware (on the Cloudflare Pages Edge Runtime via `@cloudflare/next-on-pages`) and maps hostnames to internal Next.js App Router paths as follows:
 
 | Hostname Variation | Clean Domain Class | Target Route Group / Path | Subdomain Header |
-|--------------------|--------------------|---------------------------|------------------|
+| :--- | :--- | :--- | :--- |
 | `dayaberkah.id` / `www.dayaberkah.id` | Hub Domain | `(hub)` (Transparent Root) | `hub` |
-| `dashboard.dayaberkah.id` | Dashboard Subdomain | `/dashboard` | `dashboard` |
+| `dashboard.dayaberkah.id` | Dashboard Subdomain | `/dashboard` (Dashboard Group) | `dashboard` |
 | `[spoke].dayaberkah.id` | Spoke Subdomain | `/(spokes)/[spoke]` (Dynamic Route) | `[spoke]` |
 
 ---
 
-## 2. Route Groups & Folder Structure
+## Section II: Route Groups & Directory Structure
 
-The `src/app` directory is structured to isolate these three domain zones while sharing common UI components, hooks, and types:
+The `src/app` directory is structured to isolate domain zones while sharing common UI components, hooks, and type definitions:
 
 ```
 src/app/
@@ -32,66 +56,91 @@ src/app/
 │   ├── portfolio/          # Hub Portfolio
 │   └── articles/           # Hub Articles
 ├── (spokes)/               # Route group for individual spoke pages
-│   └── [spoke]/            # Dynamic route segment matching spoke name (e.g. pju, solarcell)
+│   └── [spoke]/            # Dynamic route segment matching spoke name (pju, solarcell, alatpetir, baterai)
 │       ├── page.tsx        # Spoke Homepage (pju.dayaberkah.id/)
 │       ├── products/       # Spoke Products Catalog
 │       └── portfolio/      # Spoke Portfolio
-├── dashboard/              # Route group for admin dashboard pages
+├── dashboard/              # Route group for client dashboard pages
 │   ├── page.tsx            # Dashboard home (dashboard.dayaberkah.id/)
 │   └── login/              # Login pages
 ├── layout.tsx              # Root HTML layout (shared)
-└── globals.css             # Global styles
+└── globals.css             # Global Tailwind v4 styles
 ```
 
 ---
 
-## 3. Redirect Engine & Edge Runtime Offloading
+## Section III: Middleware Chain & Routing Protocol
 
-To ensure high performance and comply with Cloudflare Pages Edge worker limits:
-1. **No Direct Database Queries in Middleware**: Importing the Prisma client in middleware causes the bundler to compile Prisma database engines into the Edge Function bundle, bloating its size and causing Edge deployment errors.
-2. **Serverless API Loopback**: We offload all database-driven redirect lookups to a standard serverless route at `/api/redirects/lookup`. The Edge middleware fetches the redirect target from this API route via `fetch()`, keeping the Edge Function bundle size minimal.
-3. **Deadlock Prevention (AbortController)**: When running Next.js locally in development mode (which operates single-threaded), a loopback `fetch()` inside the middleware can cause a deadlock. We prevent this by enforcing a **2-second timeout** using `AbortController`:
-   ```typescript
-   const controller = new AbortController()
-   const timeoutId = setTimeout(() => controller.abort(), 2000)
-   const response = await fetch(url, { signal: controller.signal })
-   clearTimeout(timeoutId)
-   ```
+The Edge Middleware execution flow MUST strictly follow the non-blocking pipeline:
 
----
-
-## 4. Cloudflare Pages Edge Routing Caveats & Anti-Patterns
-
-### ❌ Anti-Pattern: Explicit Rewrites to Transparent Route Groups
-Rewriting requests on the Hub domain explicitly to their route group folder (e.g. `NextResponse.rewrite(new URL('/(hub)/about', request.url))`) is an **anti-pattern**.
-- **Reason**: Next.js route groups (parentheses directories like `(hub)`) are transparent. During `@cloudflare/next-on-pages` edge compilation, they are compiled away from routing manifests. Explicitly rewriting to `/(hub)` causes Cloudflare Pages edge routing to return a `404 Not Found` in production.
-- **Solution**: Return `NextResponse.next()` for Hub domain requests. Next.js will naturally and transparently map the request path (e.g., `/about`) to `(hub)/about/page.tsx`. Custom metadata headers (such as `x-middleware-subdomain`) can be attached directly to the pass-through response.
-
-### ❌ Anti-Pattern: Loose 404 Rewrites
-Rewriting directly to `/404` inside the middleware when a nonexistent path or spoke path is requested on the Hub domain (e.g., `dayaberkah.id/pju`) is an **anti-pattern**.
-- **Reason**: Because Next.js contains a root-level dynamic route `/[spoke]`, rewriting to `/404` matches the dynamic segment, resolving to `/[spoke]` (with `spoke = '404'`) and returning a `200 OK` page instead of a `404 Not Found` status.
-- **Solution**: Return `new NextResponse(null, { status: 404 })` directly from the middleware to short-circuit the routing tree and immediately return a true `404` HTTP status.
+```
+Request → src/middleware.ts (Edge Runtime)
+  │
+  ├─ Short-circuit: /api/*, /_next/*, /*.ext  → NextResponse.next()
+  │
+  ├─ cleanHostname(host)   → strips port number
+  ├─ extractSubdomain(host)→ extracts spoke or dashboard prefix
+  │
+  ├─ isHubDomain()         → NextResponse.next() with header x-middleware-subdomain: 'hub'
+  ├─ isDashboardDomain()   → session check (Auth.js cookie)
+  │                          ├── authenticated   → rewrite: /dashboard{pathname}
+  │                          └── unauthenticated → redirect: /dashboard/login
+  ├─ isSpokeDomain(spoke)  → rewrite: /${spoke}${pathname}
+  └─ unknown               → return new NextResponse(null, { status: 404 })
+```
 
 ---
 
-## 5. Troubleshooting Deployment Issues
+## Section IV: Cloudflare Pages Edge Constraints & Invariants
 
-### ⚠️ Issue: `ERR_PNPM_OUTDATED_LOCKFILE` during Build
-- **Symptom**: Cloudflare Pages build fails with an error message indicating `pnpm-lock.yaml` is not up-to-date with `package.json`.
-- **Cause**: Project dependencies were added or updated in `package.json` without updating the lockfile.
-- **Resolution**: Run `pnpm install` locally to update the lockfile, verify changes with git, and commit the updated lockfile before pushing.
+1. **Zero Database Imports in Middleware**: The middleware MUST NOT import Prisma Client or database drivers directly. Importing database modules inflates the Edge Function bundle and causes deployment failure.
+2. **Transparent Route Group Rewrites**: The middleware MUST NOT rewrite Hub requests explicitly to `/(hub)` directories. Next.js route groups are transparent; explicit rewrites to `/(hub)` cause 404 errors on Cloudflare Pages.
+3. **Strict Status 404 Return**: When an unrecognized subdomain or invalid path is requested, the middleware MUST return `new NextResponse(null, { status: 404 })` directly rather than rewriting to `/404`.
 
-### 开启 ⚠️ Issue: Cloudflare Edge Worker Size Limit Exceeded
-- **Symptom**: Deployment fails at the build stage with an error stating the Edge bundle size limit has been exceeded.
-- **Cause**: Standard Node.js packages (specifically Prisma or heavy database/native libraries) are imported inside `src/middleware.ts` or its dependencies.
-- **Resolution**: Move all database-centric logic to standard route API handlers (e.g., `/api/redirects/lookup`) and make a loopback `fetch()` from the middleware.
+---
 
-### ⚠️ Issue: Local Development Dev Server Deadlocks
-- **Symptom**: Running `pnpm dev` causes the local server to hang indefinitely when loading page routes.
-- **Cause**: Next.js development server is single-threaded; calling a local API route using `fetch()` from inside the middleware blocks the single thread, resulting in a deadlock.
-- **Resolution**: Enforce a short timeout (maximum 2000ms) on all loopback requests using `AbortController` signal to allow graceful fallback when the target API handler is blocked.
+## Section V: Declarative Middleware Interfaces
 
-### ⚠️ Issue: 404 Page Not Found on Hub Domain pages in Production
-- **Symptom**: The homepage (`/`) or hub pages (`/about`, `/contact`) load correctly locally but return 404 on Cloudflare Pages preview/production domains.
-- **Cause**: Middleware is explicitly rewriting the path to the internal route group `/(hub)` (e.g. `NextResponse.rewrite('/(hub)/about')`). Since route groups are transparent, they do not exist in Cloudflare Pages' production routing table.
-- **Resolution**: Change the middleware return value to `NextResponse.next()` for the Hub domain. Let Next.js handle the transparent route group mapping naturally.
+```typescript
+export interface SubdomainRoutingConfig {
+  rootDomain: string;
+  spokeSubdomains: readonly ['pju', 'solarcell', 'alatpetir', 'baterai'];
+  dashboardSubdomain: 'dashboard';
+}
+
+export type CleanDomainClass = 'hub' | 'dashboard' | 'spoke' | 'unknown';
+
+export interface EvaluatedSubdomainContext {
+  hostname: string;
+  cleanDomain: CleanDomainClass;
+  subdomain: string | null;
+  pathname: string;
+}
+```
+
+---
+
+## Section VI: OpenSpec Behavioral Contracts
+
+### Requirement: REQ-ARCH-LIFE-001-SUBDOMAIN-ROUTING
+The Edge Middleware SHALL resolve incoming request hostnames dynamically at the Edge and MUST route requests transparently without database dependencies or legacy redirect engine lookups.
+
+#### Scenario: Hub Request Resolution
+- GIVEN an incoming HTTP request for `dayaberkah.id/about`
+- WHEN Edge Middleware processes the request header
+- THEN it SHALL identify the host as a Hub domain
+- AND it MUST pass execution to `NextResponse.next()` while attaching `x-middleware-subdomain: hub`.
+
+#### Scenario: Spoke Subdomain Rewrite
+- GIVEN an incoming HTTP request for `pju.dayaberkah.id/products`
+- WHEN Edge Middleware processes the request header
+- THEN it SHALL extract the spoke subdomain `pju`
+- AND it MUST rewrite the request internally to `/pju/products` with `x-middleware-subdomain: pju`.
+
+---
+
+## Section VII: Knowledge Graph Anchoring
+
+- **Graphify Node**: `doc:docs/system/architecture/execution-lifecycle.md`
+- **Community**: `community_architecture`
+- **Authoritative Anchor**: [`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80)

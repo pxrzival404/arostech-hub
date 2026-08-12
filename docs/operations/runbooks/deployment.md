@@ -1,10 +1,41 @@
-# Cloudflare Pages Deployment Guide
+---
+id: RUN-DEP-001
+title: Greenfield Cloudflare Pages Deployment Runbook
+version: 4.0.0
+status: LOCKED_BASELINE
+target_domain: dayaberkah.id
+graphify_community: "community_ops"
+authoritative_references:
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35"
+  security_policy: "file:///d:/dev/arostech-hub/docs/operations/security/security-policy.md#L1-L35"
+  dns_cutover: "file:///d:/dev/arostech-hub/docs/operations/runbooks/dns-cutover.md#L1-L35"
+---
 
-This guide details the deployment pipeline, custom domain routing, and environment configurations for the DBSN central Next.js application on Cloudflare Pages.
+# Greenfield Cloudflare Pages Deployment Runbook
 
-## Deployment Architecture
+> **Authoritative Baseline Reference**: This runbook documents build commands, environment variable schemas, edge configuration, and deployment pipelines for the **DBSN Centralized Digital Ecosystem** on Cloudflare Pages, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35)).
 
-The application is built and compiled into a worker and static assets using `@cloudflare/next-on-pages`. It routes requests dynamically at the edge based on hostnames.
+---
+
+## OpenSpec Delta (M3 / SQ-OPS)
+
+### [ADDED]
+- Declarative Zod schema (`DeploymentEnvConfigSchema`) for production environment variables and encrypted secret validation.
+- Mandatory Edge runtime verification step using `wrangler pages dev` preview isolate.
+- OpenSpec Behavioral Contracts (`REQ-DEP-001-BUILD-PIPELINE`, `REQ-DEP-002-ENVIRONMENT-BINDINGS`, `REQ-DEP-003-PREVIEW-VERIFICATION`).
+
+### [MODIFIED]
+- Locked build pipeline strictly to `@cloudflare/next-on-pages` with static output targeted to `.vercel/output/static`.
+- Updated domain mapping to 7 canonical hostnames anchored to Cloudflare Pages `dayaberkah.pages.dev`.
+
+### [REMOVED]
+- Eliminated all legacy database, in-memory caching, and redirect engine migration notes.
+
+---
+
+## 1. Deployment Architecture & Domain Topology
+
+The greenfield platform compiles a single Next.js 16 application via `@cloudflare/next-on-pages` and deploys it to Cloudflare Pages edge network. Incoming HTTP requests SHALL be processed by Edge Middleware and routed across 7 canonical hostnames.
 
 ```
                   ┌──────────────────────┐
@@ -24,87 +55,115 @@ The application is built and compiled into a worker and static assets using `@cl
                  └───────────────────────┘
 ```
 
----
+### Domain & Route Mapping Table
 
-## 1. Custom Domains Setup
-
-The hub-and-spoke routing maps 6 domains to a single Cloudflare Pages deployment.
-
-### A. Subdomain Mapping Table
-
-| Subdomain Hostname | Route Group Mapped | Purpose |
-|--------------------|--------------------|---------|
-| `dayaberkah.id` (apex) | `/(hub)` | Corporate trust hub site |
-| `www.dayaberkah.id` | `/(hub)` | Corporate trust hub site alias |
-| `pju.dayaberkah.id` | `/(spokes)/pju` | Product spoke for PJU Street Lights |
-| `solarcell.dayaberkah.id` | `/(spokes)/solarcell` | Product spoke for Solar Cells |
-| `alatpetir.dayaberkah.id` | `/(spokes)/alatpetir` | Product spoke for Lightning Protection |
-| `baterai.dayaberkah.id` | `/(spokes)/baterai` | Product spoke for Batteries |
-| `dashboard.dayaberkah.id` | `/(dashboard)` | Secure authenticated client portal |
-
-### B. DNS CNAME Configuration
-
-For each subdomain, configure a `CNAME` record in your Cloudflare DNS zone:
-
-1. **Type**: `CNAME`
-2. **Name**: (e.g., `pju`, `solarcell`, `dashboard`, or `@` for apex)
-3. **Target**: Your Cloudflare Pages URL (e.g., `dayaberkah.pages.dev`)
-4. **Proxy status**: **Proxied** (orange cloud enabled) - required for edge middleware headers execution.
+| Subdomain Hostname | App Router Mapping | Surface Type |
+|--------------------|--------------------|--------------|
+| `dayaberkah.id` (apex) | `(hub)` | Corporate trust hub site |
+| `www.dayaberkah.id` | `(hub)` | Apex alias |
+| `pju.dayaberkah.id` | `(spokes)/pju` | Product spoke: Street Lighting |
+| `solarcell.dayaberkah.id` | `(spokes)/solarcell` | Product spoke: Solar Cell Systems |
+| `alatpetir.dayaberkah.id` | `(spokes)/alatpetir` | Product spoke: Lightning Protection |
+| `baterai.dayaberkah.id` | `(spokes)/baterai` | Product spoke: Energy Storage |
+| `dashboard.dayaberkah.id` | `dashboard/` | Flat route: Client Tracking Portal |
 
 ---
 
-## 2. Environment Variables & Secrets Configuration
+## 2. Environment Variable Schema & Encrypted Secrets
 
-All environments variables from `.env.example` must be set up in Cloudflare to enable build-time and runtime executions.
+### Requirement: REQ-DEP-002-ENVIRONMENT-BINDINGS
+All production environment variables MUST conform to `DeploymentEnvConfigSchema` and SHALL be configured in Cloudflare Dashboard under **Workers & Pages > Settings > Variables and Secrets**.
 
-### Setup Steps in Dashboard:
-1. Navigate to **Workers & Pages** > Select your project `dayaberkah`.
-2. Go to **Settings** > **Variables and Secrets**.
-3. Add the following variables under both **Production** and **Preview** environments:
+#### Scenario: Production Variable and Secret Injection
+- GIVEN a new Cloudflare Pages deployment environment
+- WHEN configuring environment bindings
+- THEN all required public variables and encrypted secrets MUST validate against `DeploymentEnvConfigSchema` before execution.
 
-| Key | Example Value / Setup | Description |
-|-----|----------------------|-------------|
-| `NEXT_PUBLIC_ROOT_DOMAIN` | `dayaberkah.id` | Root domain for extracting subdomains |
-| `NEXTAUTH_URL` | `https://dayaberkah.id` | NextAuth callback base URL |
-| `SANITY_PROJECT_ID` | `3h4k8dye` | Sanity project identifier |
-| `SANITY_DATASET` | `production` | Active Sanity dataset name |
-| `SANITY_API_VERSION` | `v2026-05-21` | Version for queries |
-| `RESEND_FROM_EMAIL` | `onboarding@resend.dev` | Email verified sender |
-| `TELEGRAM_CHAT_ID` | `-1001234567890` | Notification chat ID |
-| `WHATSAPP_SALES_NUMBER` | `6281234567890` | Dev / fallback whatsapp prefill |
+### Declarative Environment Schema
 
-> [!CAUTION]
-> **Secrets**: Add the following keys as **Encrypted Secrets** to prevent access or leaks:
-> - `DATABASE_URL` (Neon Postgres URL)
-> - `NEXTAUTH_SECRET` (JWT Token encoder)
-> - `SANITY_API_READ_TOKEN` (Sanity client auth)
-> - `RESEND_API_KEY` (Email provider token)
-> - `TELEGRAM_BOT_TOKEN` (Telegram alert sender)
-> - `SUPABASE_ACCESS_TOKEN` / `SUPABASE_PROJECT_REF`
+```typescript
+import { z } from 'zod';
+
+export const DeploymentEnvConfigSchema = z.object({
+  // Public Variables
+  NEXT_PUBLIC_ROOT_DOMAIN: z.literal('dayaberkah.id'),
+  NEXTAUTH_URL: z.string().url().default('https://dayaberkah.id'),
+  SANITY_PROJECT_ID: z.string().min(1),
+  SANITY_DATASET: z.string().default('production'),
+  SANITY_API_VERSION: z.string().default('v2025-05-21'),
+  RESEND_FROM_EMAIL: z.string().email(),
+  TELEGRAM_CHAT_ID: z.string(),
+  WHATSAPP_SALES_NUMBER: z.string(),
+
+  // Encrypted Production Secrets
+  DATABASE_URL: z.string().startsWith('postgresql://'),
+  DIRECT_URL: z.string().startsWith('postgresql://'),
+  NEXTAUTH_SECRET: z.string().min(32),
+  SANITY_API_READ_TOKEN: z.string().min(1),
+  RESEND_API_KEY: z.string().min(1),
+  TELEGRAM_BOT_TOKEN: z.string().min(1),
+});
+
+export type DeploymentEnvConfig = z.infer<typeof DeploymentEnvConfigSchema>;
+```
+
+### Public & Standard Variables
+| Key | Mandatory Value | Description |
+|-----|-----------------|-------------|
+| `NEXT_PUBLIC_ROOT_DOMAIN` | `dayaberkah.id` | Root domain for subdomain extraction |
+| `NEXTAUTH_URL` | `https://dayaberkah.id` | Auth.js callback base URL |
+| `SANITY_PROJECT_ID` | `3h4k8dye` | Sanity CMS project identifier |
+| `SANITY_DATASET` | `production` | Active Sanity dataset |
+| `SANITY_API_VERSION` | `v2025-05-21` | Locked Sanity API version |
+| `RESEND_FROM_EMAIL` | `noreply@dayaberkah.id` | Verified transactional email sender |
+| `TELEGRAM_CHAT_ID` | `-1001234567890` | Internal sales alerts channel ID |
+| `WHATSAPP_SALES_NUMBER` | `6281330066767` | Fallback WhatsApp contact |
+
+### Encrypted Production Secrets
+The following credentials MUST be injected exclusively as **Encrypted Secrets** via Wrangler CLI or Cloudflare UI:
+- `DATABASE_URL` (Neon Postgres pooled connection string)
+- `DIRECT_URL` (Neon Postgres direct connection string for migrations)
+- `NEXTAUTH_SECRET` (JWT encryption secret)
+- `SANITY_API_READ_TOKEN` (Sanity content reader token)
+- `RESEND_API_KEY` (Resend email API key)
+- `TELEGRAM_BOT_TOKEN` (Telegram alert bot token)
 
 ---
 
-## 3. Local Development & Build Command Workflow
+## 3. Build & Deployment Commands
 
-Before shipping changes, build and run previews locally using `wrangler`.
+### Requirement: REQ-DEP-001-BUILD-PIPELINE
+The deployment pipeline SHALL build the Next.js application using `@cloudflare/next-on-pages` and output static assets to `.vercel/output/static`.
 
-### A. Local Build Step
-Compiles Next.js app to Pages-compatible format:
+#### Scenario: Production Build & Deploy Execution
+- GIVEN a clean working directory on `refactor/reorganize-project-documentation`
+- WHEN executing the build command `pnpm pages:build` followed by `pnpm pages:deploy`
+- THEN the static assets MUST compile without type errors and deploy to Cloudflare Pages.
+
+### Requirement: REQ-DEP-003-PREVIEW-VERIFICATION
+The engineering team MUST verify edge compilation locally using Wrangler preview before promoting builds to production.
+
+#### Scenario: Local Edge Preview Verification
+- GIVEN a completed local build in `.vercel/output/static`
+- WHEN running `pnpm pages:preview`
+- THEN the application MUST serve locally via Wrangler edge isolate without throwing unhandled runtime exceptions.
+
 ```bash
+# 1. Local Type Check & Build
 pnpm pages:build
-```
-*Outputs compiled assets to `.vercel/output/static`.*
 
-### B. Local Preview Step
-Spawns a mock wrangler server simulating Pages edge environment:
-```bash
+# 2. Local Preview Verification (Simulates Cloudflare Edge)
 pnpm pages:preview
-```
-*Served at `http://localhost:8788`. You can test subdomains by editing your local `/etc/hosts` file (e.g. mapping `pju.lvh.me` to `127.0.0.1` and loading `http://pju.lvh.me:8788`).*
 
-### C. Manual Deployment Step
-Deploys the static assets directly using wrangler:
-```bash
-pnpm pages:deploy
+# 3. Production Deploy to Cloudflare Pages
+npx wrangler pages deploy .vercel/output/static --project-name dayaberkah
 ```
-*Uploads `.vercel/output/static` directly to Cloudflare Pages.*
+
+---
+
+## 4. GRAPHIFY ANCHORING & REFERENCES
+
+- Knowledge Graph Node ID: `doc:docs/operations/runbooks/deployment.md`
+- Graphify Community: `community_ops`
+- Security Policy: [`security-policy.md`](file:///d:/dev/arostech-hub/docs/operations/security/security-policy.md#L1-L35)
+- DNS Cutover Runbook: [`dns-cutover.md`](file:///d:/dev/arostech-hub/docs/operations/runbooks/dns-cutover.md#L1-L35)
