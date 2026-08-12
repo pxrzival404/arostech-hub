@@ -4,7 +4,6 @@
 **Branch**: `refactor/reorganize-project-documentation`  
 **Platform**: Antigravity AI Agent
 **Date**: 2026-08-09  
-**Supersedes**: `SYSTEM_BLUEPRINT_MIGRATION_PLAN.md` (v1, 2026-08-07)  
 **Classification**: Internal — Engineering Architecture  
 
 ---
@@ -402,18 +401,18 @@ The SDD cycle from Section 2.1 makes verification operational at two levels:
 
 | # | Task | Output | Owner Agent | Duration |
 |---|---|---|---|---|
-| 0.1 | Rewrite `docs/strategy/prd.md`: remove all `sentradaya.com` → `dayaberkah.id`, remove Supabase/OpenAI/`NEXTAUTH_SECRET` hallucinated env vars (use `configuration-schema.md` as authoritative source), align auth endpoints to Auth.js v5 catch-all pattern, align RFQ schema to composite cart model, align API response envelope to `{success, data, error, meta}` | Corrected PRD | `architect` | 2h |
+| 0.1 | **[COMPLETE]** Rewrite `docs/strategy/prd.md`: PRD v4.0 AI-Ready Baseline complete. Sanitized domains (`dayaberkah.id`), removed hallucinated env vars, aligned Auth.js v5 catch-all pattern, established Universal RFQ Form architecture (`rfqSubmissionSchema`), established Greenfield Platform Baseline (removed 301 redirect engine), and enforced 7 Pillars AI-Friendly Standard | Corrected PRD v4.0 | `architect` | 2h |
 | 0.2 | Rewrite `docs/strategy/vision.md`: add SUPERSEDED header to Section II (GTM domain recommendations overridden), remove "200+ projects" unverified claim, remove duplicate compatibility matrix (points to `compatibility-matrix.md`) | Corrected vision | `architect` | 1h |
-| 0.3 | Rewrite `docs/system/api/reference.md`: replace flat RFQ schema with composite Zod schema, align auth endpoints to Auth.js v5, standardize response envelope | Corrected API reference | `architect` | 1.5h |
-| 0.4 | Rewrite `docs/engineering/playbooks/testing/strategy.md`: remove all Redis references, fix `sentradaya.com` → `dayaberkah.id`, fix `/404` rewrite to `new NextResponse(null, {status: 404})`, align middleware code with actual helper pattern (`cleanHostname`, `isHubDomain`), align timeline with `roadmap.md` | Corrected TDD strategy | `tdd-guide` | 3h |
+| 0.3 | Rewrite `docs/system/api/reference.md`: replace dual B2B/B2G schemas with single Universal RFQ Zod schema (`rfqSubmissionSchema` without B2B/B2G discrimination or `segment` field), align auth endpoints to Auth.js v5 catch-all pattern, standardize response envelope to `{success, data, error, meta}` without `version` | Corrected API reference | `architect` | 1.5h |
+| 0.4 | Rewrite `docs/engineering/playbooks/testing/strategy.md`: remove all Redis references, remove legacy 301 redirect migration engine tests, add Greenfield SEO Architecture tests (canonical tags, sitemaps, robots, JSON-LD) & Universal RFQ Form tests, align timeline with `roadmap.md` | Corrected TDD strategy | `tdd-guide` | 3h |
 | 0.5 | Rewrite `docs/operations/security/security-policy.md`: remove AI placeholder tokens, add incident response procedure, add CVE disclosure process | Completed security policy | `security-reviewer` | 1h |
-| 0.6 | Fix `docs/operations/runbooks/deployment.md`: remove Supabase secrets, fix Sanity API version to `v2025-05-21`, fix dashboard route to `dashboard/` (flat), fix `RESEND_FROM_EMAIL` | Corrected deployment runbook | `architect` | 0.5h |
-| 0.7 | Fix all `/(dashboard)` → `dashboard/` in: `dns-cutover.md`, `ai-agent-rules.md`, `extensibility.md` | Consistent dashboard routing across docs | `architect` | 0.5h |
+| 0.6 | Fix `docs/operations/runbooks/deployment.md`: remove Supabase secrets and legacy 301 redirect Worker/table references, lock greenfield Cloudflare Pages deployment for `dayaberkah.id` and 5 subdomains (`pju.`, `solarcell.`, `alatpetir.`, `baterai.`, `dashboard.`), fix Sanity API version to `v2025-05-21`, fix dashboard route to `dashboard/` (flat), fix `RESEND_FROM_EMAIL` | Corrected deployment runbook | `architect` | 0.5h |
+| 0.7 | Fix all `/(dashboard)` → `dashboard/` in: `dns-cutover.md`, `ai-agent-rules.md`, `extensibility.md`; update `dns-cutover.md` to greenfield subdomain DNS provisioning | Consistent dashboard routing & greenfield DNS across docs | `architect` | 0.5h |
 | 0.8 | Fix `docs/strategy/roadmap.md`: align Phase Status (Phase 3 COMPLETE, Phase 4 NOT STARTED), fix date inconsistency | Corrected roadmap | `architect` | 0.5h |
 | 0.9 | Fix `docs/system/architecture/overview.md`: update Phase Status table to match roadmap.md | Corrected overview | `architect` | 0.25h |
 | 0.10 | Fix `docs/strategy/segments.md`: correct `prd-v3.md` → `prd.md` reference, fix section numbering (4.2 duplicate → 4.3) | Corrected segments | `architect` | 0.25h |
 | 0.11 | Fix `docs/engineering/playbooks/quickstart.md`: fix all stale relative paths, fix Method B hosts file from `sentradaya.com` → `dayaberkah.id` | Corrected quickstart | `architect` | 0.5h |
-| 0.12 | Cross-reference validation pass: grep all docs for stale paths, verify no broken links remain | Validation report | `architect` | 0.5h |
+| 0.12 | Cross-reference validation pass: grep all docs for stale paths, run `.agents/scripts/validate-ai-docs.cjs` & `graphify update .` to ensure 100% compliance with 7 Pillars AI-Friendly Standard and sync knowledge graph | Validation report | `architect` | 0.5h |
 
 **Fase 0 Total Estimate**: ~12 hours
 

@@ -39,6 +39,16 @@ When retrieving context, documentation is organized into 4 top-level domains:
 - **Engineering & Governance**: `docs/engineering/` — AI agent rules, testing strategy, tech stack
 - **Operations & Security**: `docs/operations/` — Deployment, monitoring, security policies
 
+**AI-Friendly Documentation Invariant (7 Pillars Standard)**:
+All documentation created or updated under `docs/` MUST comply with [.agents/rules/ai-friendly-docs.md](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md):
+1. **YAML Frontmatter**: Machine-readable metadata (`id`, `title`, `version`, `status`, `graphify_community`, `authoritative_references`).
+2. **Behavioral Contracts**: OpenSpec `Requirement:` & `Scenario:` format (GIVEN-WHEN-THEN).
+3. **RFC 2119 Precision**: Normative keywords (`SHALL`, `MUST`, `MUST NOT`, `SHOULD`).
+4. **Declarative Schemas**: Concrete Zod/Prisma/TypeScript interfaces over vague prose.
+5. **Graphify Anchoring**: Node ID mapping (`doc:<path>`) & GraphRAG sub-graph queries.
+6. **OpenSpec Lifecycle**: Explicit spec delta headers (`ADDED`, `MODIFIED`, `REMOVED`).
+7. **Anchored URIs**: `file:///` URIs with exact line range anchors & zero redundancy.
+
 ### 2.2 OpenSpec Workflow (openspec/)
 
 All code changes follow the OpenSpec SDD lifecycle:

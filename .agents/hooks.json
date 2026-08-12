@@ -105,6 +105,18 @@
         ],
         "description": "Fact-forcing gate: block first Edit/Write/MultiEdit per file and demand investigation (importers, data schemas, user instruction) before allowing",
         "id": "pre:edit-write:gateguard-fact-force"
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .agents/scripts/run-with-flags.js pre:write-ai-doc-guard .agents/scripts/pre-write-ai-doc-guard.cjs standard,strict",
+            "timeout": 5
+          }
+        ],
+        "description": "AI Doc Guard: Reminds agent to include YAML frontmatter and follow 7 Pillars when editing docs/",
+        "id": "pre:write-ai-doc-guard"
       }
     ],
     "PreCompact": [
@@ -219,6 +231,18 @@
         ],
         "description": "Check for console.log in modified files after each response",
         "id": "stop:check-console-log"
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .agents/scripts/run-with-flags.js stop:validate-ai-docs .agents/scripts/validate-ai-docs.cjs standard,strict --modified-only",
+            "timeout": 15
+          }
+        ],
+        "description": "Validate modified documentation files against AI-Friendly 7 Pillars at Stop",
+        "id": "stop:validate-ai-docs"
       },
       {
         "matcher": "*",
