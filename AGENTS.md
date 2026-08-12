@@ -81,14 +81,14 @@ Six platform-specific rule files enforce constraints that generic ECC rules cann
 
 | Rule File | Scope | Status |
 |-----------|-------|--------|
-| `cloudflare-edge-runtime.md` | Edge Runtime constraints, `@cloudflare/next-on-pages` compatibility | **DRAFT / STUB — Authoring Planned for Fase 2** |
-| `cloudflare-pages-deploy.md` | Build pipeline, `ignoreBuildErrors`, static export rules | **DRAFT / STUB — Authoring Planned for Fase 2** |
-| `sanity-cms-federation.md` | GROQ patterns, ISR cache tags, Stega visual editing, schema registration | **DRAFT / STUB — Authoring Planned for Fase 2** |
-| `monorepo-workspace.md` | Turborepo workspace rules, package boundaries, shared config | **DRAFT / STUB — Authoring Planned for Fase 2** |
-| `tailwind-v4.md` | Tailwind CSS v4 migration constraints, utility patterns | **DRAFT / STUB — Authoring Planned for Fase 2** |
-| `prisma-neon-edge.md` | Prisma/Neon Proxy lazy init, Edge-compatible query patterns | **DRAFT / STUB — Authoring Planned for Fase 2** |
+| [`cloudflare-edge-runtime.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-edge-runtime.md) | Edge Runtime constraints, `@cloudflare/next-on-pages` compatibility | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
+| [`cloudflare-pages-deploy.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-pages-deploy.md) | Build pipeline, `ignoreBuildErrors`, static export rules | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
+| [`sanity-cms-federation.md`](file:///d:/dev/arostech-hub/.agents/rules/sanity-cms-federation.md) | GROQ patterns, ISR cache tags, Stega visual editing, schema registration | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
+| [`monorepo-workspace.md`](file:///d:/dev/arostech-hub/.agents/rules/monorepo-workspace.md) | Turborepo workspace rules, package boundaries, shared config | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
+| [`tailwind-v4.md`](file:///d:/dev/arostech-hub/.agents/rules/tailwind-v4.md) | Tailwind CSS v4 migration constraints, utility patterns | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
+| [`prisma-neon-edge.md`](file:///d:/dev/arostech-hub/.agents/rules/prisma-neon-edge.md) | Prisma/Neon Proxy lazy init, Edge-compatible query patterns | **ACTIVE — Fully Specced & Enforced (v2.1.0)** |
 
-**Gating**: Before any code change in the relevant domain, the agent MUST read and comply with the corresponding rule file. If the file is in draft/stub status, the agent MUST follow standard platform patterns and treat draft guidelines as advisory until authored.
+**Gating**: Before any code change in the relevant domain, the agent MUST read and comply with the corresponding rule file. All 6 platform rule files are active and authoritative.
 
 ---
 

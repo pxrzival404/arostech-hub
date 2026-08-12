@@ -17,7 +17,7 @@ module.exports = {
     '**/src/**/*.{test,spec}.{js,jsx,ts,tsx}',
     '**/src/**/*.test.{js,jsx,ts,tsx}',
   ],
-  testPathIgnorePatterns: ['/\\.next/', '/node_modules/'],
+  testPathIgnorePatterns: ['/\\.next/', '/node_modules/', '/fixtures\\.ts$'],
   testTimeout: 15000,
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',

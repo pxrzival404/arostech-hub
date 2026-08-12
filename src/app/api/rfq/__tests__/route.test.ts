@@ -26,6 +26,11 @@ jest.mock('../../../../lib/api/notifications/queue', () => ({
   NotificationQueue: {
     enqueue: jest.fn(),
   },
+  NotificationType: {
+    EMAIL_ACK: 'EMAIL_ACK',
+    EMAIL_INTERNAL: 'EMAIL_INTERNAL',
+    TELEGRAM: 'TELEGRAM',
+  },
 }))
 
 // Mock Notification services
