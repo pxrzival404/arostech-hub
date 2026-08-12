@@ -1,32 +1,41 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+# Project context
+context: |
+  Project: PT Daya Berkah Sentosa Nusantara (DBSN) — arostech-hub
+  Platform Topology: Next.js 16.2.6 (App Router) on Cloudflare Pages Edge (@cloudflare/next-on-pages)
+  CMS: Sanity CMS (GROQ + ISR + Stega Visual Editing)
+  Database: Neon (PostgreSQL) via Prisma ORM (Proxy lazy init)
+  Auth: Auth.js v5 (JWT strategy, role-based token expiry)
+  Styling: Tailwind CSS v4
+  Monorepo: Turborepo
+  Testing: Jest (unit/integration) + Playwright (E2E)
+  Documentation Hierarchy:
+    - HLA Strategy & Scope: docs/strategy/
+    - HLA System Architecture & API: docs/system/
+    - HLA Engineering & Governance: docs/engineering/
+    - HLA Operations & Security: docs/operations/
+  Platform Rule Constraints: .agents/rules/
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+# Per-artifact rules
+rules:
+  proposal:
+    - Ensure clear motivation, non-goals, and impact analysis
+    - Validate alignment with docs/ architecture and AGENTS.md
+  specs:
+    - Every requirement MUST contain at least 2 concrete scenarios (WHEN/THEN format)
+    - Enforce immutability and schema boundary validation
+  tasks:
+    - Break implementation into atomic, testable TDD steps (RED-GREEN-REFACTOR)
+    - Require 80%+ test coverage verification
 
-# Per-operation guidance (optional)
-# Add advisory guidance for how apply and archive work should be conducted.
-# This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+# Per-operation guidance
+operations:
+  apply:
+    guidance:
+      - Implement tasks strictly sequentially following TDD cycles
+      - Validate implementation against .agents/rules/ constraints
+  archive:
+    guidance:
+      - Archive completed changes within 24 hours of task closure
+      - Summarize changes and update baseline specifications

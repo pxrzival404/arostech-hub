@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "C:\\Users\\Windows 10\\AppData\\Roaming\\uv\\tools\\graphifyy\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "D:\\dev\\arostech-hub\\graphify-out\\graph.json"
+      ]
+    }
+  }
+}

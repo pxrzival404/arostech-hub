@@ -86,3 +86,4 @@ Skipped:  docs/API.md (no changes detected)
 - **Preserve manual sections**: Only update generated sections; leave hand-written prose intact
 - **Mark generated content**: Use `<!-- AUTO-GENERATED -->` markers around generated sections
 - **Don't create docs unprompted**: Only create new doc files if the command explicitly requests it
+- **Enforce 7 Pillars Standard**: All updated/created documentation files under `docs/` MUST comply with [.agents/rules/ai-friendly-docs.md](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md) and pass `node .agents/scripts/validate-ai-docs.js <file>`
