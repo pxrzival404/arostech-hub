@@ -6,15 +6,15 @@ description: Agent delegation protocol — roster, parallel execution, and compl
 # Agent Orchestration
 
 > **Workflow context**: This rule governs **Layer 4 (Agent Delegation)** of the 8-Layer Workflow.
-> Agent roster authority: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) Section 3.1 (28 project-specific agents with auto-gating matrix).
-> Do NOT reference agent names from this file for routing — use the auto-gating matrix in AGENTS.md Section 3.2.
+> Agent routing authority: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) ("Domain Glob Routing Matrix") and [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) (Layer 4).
+> Do NOT reference hardcoded agent names from this file for routing — follow the Layer 4 Delegation matrix.
 
 ## Available Agents
 
-> **SSOT**: Full 28-agent roster with file-type auto-gating is in [`AGENTS.md Section 3.1`](file:///d:/dev/arostech-hub/AGENTS.md#L104-L135).
+> **SSOT**: Agent roster and domain routing is defined in [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) and [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md).
 > This file contains delegation **protocol** only, not the roster.
 
-**Quick delegation triggers** (see AGENTS.md Section 3.2 for full auto-gating matrix):
+**Quick delegation triggers** (see common-extended-workflow.md Layer 4 for routing flow):
 - Complex feature (3+ files) → `planner` → `architect` → `tdd-guide`
 - Code just written → `code-reviewer`
 - Bug fix / new feature → `tdd-guide`

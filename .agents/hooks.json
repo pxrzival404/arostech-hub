@@ -7,6 +7,12 @@
         "description": "Fact-forcing gate for pre-tool execution validation",
         "handler": "./scripts/hooks/gateguard-fact-force.js",
         "events": ["PreToolUse", "beforeSubmitPrompt"]
+      },
+      {
+        "id": "pre:platform-rule-gate",
+        "description": "Enforces AGENTS.md §2.3 Rule File Gating before domain file edits",
+        "handler": "./scripts/pre-edit-rule-gate.cjs",
+        "events": ["PreToolUse"]
       }
     ]
   }

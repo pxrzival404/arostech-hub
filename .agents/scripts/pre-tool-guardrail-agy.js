@@ -124,8 +124,9 @@ function main() {
   for (const p of paths) {
     if (isReadonlyViolation(p)) {
       if (isModifyingTool || isReadonlyViolation(p)) {
+        const readonlyTarget = process.env.AGY_READONLY_REPO || 'workspace';
         process.stderr.write(
-          "AGY Guardrail Violation: Target repository ('d:/CLAUDE-PROJECT/website') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/.\n"
+          "AGY Guardrail Violation: Target repository ('" + readonlyTarget + "') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/.\n"
         );
         process.exit(2);
       }

@@ -273,8 +273,8 @@ CHANGE LIFECYCLE
 | L1 | [`ai-friendly-docs.md`](./ai-friendly-docs.md) — 7-Pillars standard |
 | L2 | [`search-first`](../skills/search-first/SKILL.md) skill |
 | L3 | [`openspec-propose`](../skills/openspec-propose/SKILL.md) skill |
-| L4 | [`AGENTS.md`](../../AGENTS.md) Section 2.3 & 3.2 — auto-gating matrix |
-| L5 | [`common-testing.md`](./common-testing.md) + [`common-coding-style.md`](./common-coding-style.md) + domain rules |
+| L4 | [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) — auto-gating matrix |
+| L5 | [`common-testing.md`](./common-testing.md) + [`typescript-coding-style.md`](./typescript-coding-style.md) + domain rules |
 | L6 | [`graphify.md`](./graphify.md) — `graphify update .` |
 | L7 | [`teamwork-squad-orchestration.md`](./teamwork-squad-orchestration.md) — merge gate |
 | L8 | [`common-git-workflow.md`](./common-git-workflow.md) — conventional commits |

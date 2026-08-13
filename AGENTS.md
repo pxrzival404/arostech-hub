@@ -5,7 +5,7 @@ version: 2.3.0
 status: authoritative
 graphify_community: engineering
 authoritative_references:
-  - file:///d:/dev/arostech-hub/docs/engineering/ai-agent-rules.md
+  - file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60
 ---
 
 # arostech-hub — Agent Instructions
