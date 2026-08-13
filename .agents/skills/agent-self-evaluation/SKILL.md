@@ -11,11 +11,55 @@ After completing a complex task, the agent pauses to rate its own output against
 ## When to Activate
 
 - After writing code that spans 3+ files or 50+ lines
-- After completing a multi-step workflow (implement → test → review)
+- After completing a multi-step workflow (implement -> test -> review)
 - After a debugging session that involved 3+ attempts
 - After producing a design document, architecture decision, or written analysis
 - When the user asks "how good was that?" or "rate yourself"
-- At the end of any session Stop hook (if configured — see `references/hook-integration.md`)
+- At the end of any session Stop hook (if configured — see below)
+
+### Session Hook Integration
+
+To configure an automated reminder at session end, add the following snippet to hooks/hooks.json:
+
+`json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[Self-Eval] Session complete. Consider running agent-self-evaluation to rate your output.'"
+          }
+        ],
+        "description": "Remind agent to self-evaluate at session end"
+      }
+    ]
+  }
+}
+`
+
+### Session Hook Integration
+
+To configure an automated reminder at session end, add the following snippet to `hooks/hooks.json`:
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[Self-Eval] Session complete. Consider running agent-self-evaluation to rate your output.'"
+          }
+        ],
+        "description": "Remind agent to self-evaluate at session end"
+      }
+    ]
+  }
+}
+```
 
 ## Core Concepts
 
@@ -69,14 +113,45 @@ Do NOT average the scores in your head first and then work backwards. Score each
 
 ### Step 3: Produce the Evaluation Report
 
-Use the template from `templates/evaluation-report.md`. The report must include:
+Format your report using the template below (matches scripts/evaluate.py output):
+
+`scripts/evaluate.py` output):
 
 ```
-- One-line summary
-- 5-axis scorecard (score + evidence per axis)
-- Overall score (simple average, rounded to 1 decimal)
-- 1-3 specific improvements ranked by impact
-- Self-check: "Would the user agree with this assessment?"
+============================================================
+AGENT SELF-EVALUATION REPORT
+============================================================
+Summary: Overall score X.X/5 across 5 quality axes.
+
+  Accuracy         █████ 5/5
+    + [Evidence: passing tests, verified claims]  (no → when score = 5)
+
+  Completeness      ████░ 4/5
+    + [What's covered]
+    → [Improvement: only shown when score < 5]
+
+  Clarity           █████ 5/5
+    + [Structure signals]  (no → when score = 5)
+
+  Actionability     █████ 5/5
+    + [User can act immediately]  (no → when score = 5)
+
+  Conciseness       █████ 5/5
+    + [Information density]  (no → when score = 5)
+
+  OVERALL           X.X/5
+
+CRITICAL ISSUES (axes ≤ 2):
+  [Axis] Score N/5 — specific fix needed
+  (or "None" if no axis ≤ 2)
+
+Self-check: Would the user agree with this assessment? [Yes/No + brief justification]
+
+TOP IMPROVEMENTS:
+  1. [Highest impact fix]
+  2. [Second highest]
+
+VERDICT: [Deliver as-is / Fix N issues then deliver / Redo from scratch]
 ```
 
 ### Step 4: Apply the Improvement

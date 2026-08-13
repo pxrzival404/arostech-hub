@@ -79,7 +79,8 @@ function isEnabled(hook, env) {
 
 function extractToolName(raw) {
   try {
-    return String(JSON.parse(raw)?.tool_name || '');
+    const obj = JSON.parse(raw);
+    return String(obj?.toolName || obj?.tool_name || obj?.tool || '');
   } catch {
     return '';
   }
@@ -88,8 +89,9 @@ function extractToolName(raw) {
 function buildDryRunPreview(hook, raw) {
   let target = '';
   try {
-    const input = JSON.parse(raw)?.tool_input || {};
-    target = String(input.file_path || input.path || input.command || '');
+    const parsed = JSON.parse(raw) || {};
+    const input = parsed.tool_input || parsed;
+    target = String(input.CommandLine || input.commandLine || input.file_path || input.path || input.command || '');
   } catch {
     target = '';
   }
@@ -147,8 +149,11 @@ function mergeHookStdout(outputs) {
   if (outputs.length === 0) return { stdout: '', warning: '' };
   if (outputs.length === 1) return { stdout: outputs[0].stdout, warning: '' };
 
-  const contexts = outputs.map(output => parseAdditionalContext(output.stdout));
-  if (contexts.every(context => context !== null)) {
+  const contexts = outputs
+    .map(output => parseAdditionalContext(output.stdout) || String(output.stdout || '').trim())
+    .filter(Boolean);
+
+  if (contexts.length > 0) {
     return {
       stdout: JSON.stringify({
         hookSpecificOutput: {
@@ -160,15 +165,7 @@ function mergeHookStdout(outputs) {
     };
   }
 
-  const kept = outputs[outputs.length - 1];
-  const dropped = outputs
-    .slice(0, -1)
-    .map(output => output.id)
-    .join(', ');
-  return {
-    stdout: kept.stdout,
-    warning: `[Hook] stdout from ${dropped} dropped in favor of ${kept.id}; raw stdout cannot be merged`
-  };
+  return { stdout: '', warning: '' };
 }
 
 function runHooks(raw, hooks, options = {}) {

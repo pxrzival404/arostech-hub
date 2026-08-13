@@ -44,6 +44,21 @@ function main() {
     }
   }
 
+  // Pass-through if payload is already schema-formatted or a standard observation envelope
+  if (payload && typeof payload === 'object') {
+    if (
+      payload.schema_version ||
+      payload.schemaVersion ||
+      payload.$schema ||
+      payload.json_schema ||
+      payload.skip_envelope ||
+      (payload.status && payload.summary && payload.next_actions)
+    ) {
+      process.stdout.write(inputRaw.endsWith('\n') ? inputRaw : inputRaw + '\n');
+      process.exit(0);
+    }
+  }
+
   // Determine if error occurred
   const isError = Boolean(
     payload.is_error ||

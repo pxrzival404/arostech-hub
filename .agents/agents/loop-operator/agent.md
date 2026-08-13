@@ -10,6 +10,7 @@ tools:
 mcpServers: []
 skills:
   - agentic-engineering
+max_iterations: 10
 color: orange
 ---
 

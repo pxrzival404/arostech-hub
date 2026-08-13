@@ -256,6 +256,13 @@ If `ECC_MODE=legacy` were detected, the same step would be emitted as a single u
 
 The two examples above illustrate **the two possible outputs** for two different environments. A single skill invocation produces only one of them, end to end.
 
+## Delegation Completion Contract
+
+When generated `/orchestrate custom` chains are executed:
+- Parent orchestrator agents MUST wait synchronously for all chained sub-agents (`agent1, agent2, ...`) to complete their step before proceeding to the next step.
+- Fire-and-forget sub-agent invocation is strictly prohibited — an orchestrator cannot mark a plan step complete while chained sub-agents are in flight.
+- Synthesize all deliverables and validation results from the agent chain before emitting step completion.
+
 ## Notes
 
 - Generative only. Never invoke `/orchestrate` from inside this skill.

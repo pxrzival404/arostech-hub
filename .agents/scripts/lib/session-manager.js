@@ -1,5 +1,5 @@
 /**
- * Session Manager Library for Claude Code
+ * Session Manager Library for Agent Harness (Antigravity / Claude Code)
  * Provides core session CRUD operations for listing, loading, and managing sessions
  *
  * Sessions are stored as markdown files in ~/.claude/session-data/ with

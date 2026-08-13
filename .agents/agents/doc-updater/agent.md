@@ -9,7 +9,8 @@ tools:
   - grep_search
   - list_dir
 mcpServers: []
-skills: []
+skills:
+  - graphify
 ---
 
 ## Prompt Defense Baseline

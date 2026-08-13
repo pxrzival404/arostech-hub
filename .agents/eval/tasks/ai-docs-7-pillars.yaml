@@ -1,0 +1,19 @@
+name: ai-docs-7-pillars
+description: Benchmark task for 7-Pillars AI-Friendly Documentation validation
+repo: .
+files:
+  - docs/**/*.md
+  - AGENTS.md
+prompt: |
+  Ensure documentation under docs/ adheres strictly to the 7-Pillars Standard:
+  1. YAML Frontmatter with machine-readable metadata.
+  2. OpenSpec Requirement & Scenario contracts (GIVEN-WHEN-THEN).
+  3. RFC 2119 Precision (MUST, SHALL, SHOULD).
+  4. Declarative Zod/Prisma/TS schemas over prose.
+  5. Graphify Anchoring (doc:<path>).
+  6. OpenSpec Lifecycle headers.
+  7. Anchored URIs with file:/// scheme.
+judge:
+  - type: command
+    command: node .agents/scripts/validate-ai-docs.cjs
+commit: "HEAD"

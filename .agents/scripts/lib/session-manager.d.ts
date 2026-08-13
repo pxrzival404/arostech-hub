@@ -1,5 +1,5 @@
 /**
- * Session Manager Library for Claude Code.
+ * Session Manager Library for Agent Harness.
  * Provides CRUD operations for session files stored as markdown in
  * ~/.claude/session-data/ with legacy read compatibility for ~/.claude/sessions/.
  */

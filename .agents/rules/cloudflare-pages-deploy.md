@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Cloudflare Pages Deployment & Build Pipeline Governance Rule
 
 > **Rule ID**: `RULE-DEPLOY-001`  

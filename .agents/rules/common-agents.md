@@ -1,26 +1,24 @@
 ---
 trigger: always_on
+description: Agent delegation protocol — roster, parallel execution, and completion contract.
 ---
 
 # Agent Orchestration
 
+> **Workflow context**: This rule governs **Layer 4 (Agent Delegation)** of the 8-Layer Workflow.
+> Agent roster authority: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) Section 3.1 (28 project-specific agents with auto-gating matrix).
+> Do NOT reference agent names from this file for routing — use the auto-gating matrix in AGENTS.md Section 3.2.
+
 ## Available Agents
 
-Located in `~/.claude/agents/`:
+> **SSOT**: Full 28-agent roster with file-type auto-gating is in [`AGENTS.md Section 3.1`](file:///d:/dev/arostech-hub/AGENTS.md#L104-L135).
+> This file contains delegation **protocol** only, not the roster.
 
-| Agent | Purpose | When to Use |
-|-------|---------|-------------|
-| planner | Implementation planning | Complex features, refactoring |
-| architect | System design | Architectural decisions |
-| tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code review | After writing code |
-| security-reviewer | Security analysis | Before commits |
-| build-error-resolver | Fix build errors | When build fails |
-| e2e-runner | E2E testing | Critical user flows |
-| refactor-cleaner | Dead code cleanup | Code maintenance |
-| doc-updater | Documentation | Updating docs |
-| rust-reviewer | Rust code review | Rust projects |
-| harmonyos-app-resolver | HarmonyOS app development | HarmonyOS/ArkTS projects |
+**Quick delegation triggers** (see AGENTS.md Section 3.2 for full auto-gating matrix):
+- Complex feature (3+ files) → `planner` → `architect` → `tdd-guide`
+- Code just written → `code-reviewer`
+- Bug fix / new feature → `tdd-guide`
+- Architectural decision → `architect`
 
 ## Immediate Agent Usage
 

@@ -14,7 +14,7 @@
         "id": "pre:agy-guardrail"
       },
       {
-        "matcher": "Bash",
+        "matcher": "Bash|run_command",
         "hooks": [
           {
             "type": "command",
@@ -25,7 +25,7 @@
         "id": "pre:bash:dispatcher"
       },
       {
-        "matcher": "Write",
+        "matcher": "Write|write_to_file",
         "hooks": [
           {
             "type": "command",
@@ -36,7 +36,7 @@
         "id": "pre:write:doc-file-warning"
       },
       {
-        "matcher": "Edit|Write",
+        "matcher": "Edit|Write|write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
@@ -60,7 +60,7 @@
         "id": "pre:observe:continuous-learning"
       },
       {
-        "matcher": "Bash|Write|Edit|MultiEdit",
+        "matcher": "Bash|Write|Edit|MultiEdit|run_command|write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
@@ -72,7 +72,7 @@
         "id": "pre:governance-capture"
       },
       {
-        "matcher": "Write|Edit|MultiEdit",
+        "matcher": "Write|Edit|MultiEdit|write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
@@ -95,7 +95,7 @@
         "id": "pre:mcp-health-check"
       },
       {
-        "matcher": "Edit|Write|MultiEdit",
+        "matcher": "Edit|Write|MultiEdit|write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
@@ -107,7 +107,7 @@
         "id": "pre:edit-write:gateguard-fact-force"
       },
       {
-        "matcher": "Write|Edit|MultiEdit",
+        "matcher": "Write|Edit|MultiEdit|write_to_file|replace_file_content|multi_replace_file_content",
         "hooks": [
           {
             "type": "command",
@@ -117,6 +117,18 @@
         ],
         "description": "AI Doc Guard: Reminds agent to include YAML frontmatter and follow 7 Pillars when editing docs/",
         "id": "pre:write-ai-doc-guard"
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit|write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .agents/scripts/run-with-flags.js pre:platform-rule-gate .agents/scripts/pre-edit-rule-gate.cjs standard,strict",
+            "timeout": 5
+          }
+        ],
+        "description": "Platform Rule Gate: Reminds agent of governing platform rule file and owner agent according to §2.3",
+        "id": "pre:platform-rule-gate"
       }
     ],
     "PreCompact": [

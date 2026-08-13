@@ -4,6 +4,7 @@ const { createClaudeHistoryAdapter } = require('./claude-history');
 const { createDmuxTmuxAdapter } = require('./dmux-tmux');
 const { createCodexWorktreeAdapter } = require('./codex-worktree');
 const { createOpencodeAdapter } = require('./opencode');
+const { createAntigravityAdapter } = require('./antigravity');
 
 const TARGET_TYPE_TO_ADAPTER_ID = Object.freeze({
   plan: 'dmux-tmux',
@@ -13,7 +14,9 @@ const TARGET_TYPE_TO_ADAPTER_ID = Object.freeze({
   'session-file': 'claude-history',
   'codex-worktree': 'codex-worktree',
   codex: 'codex-worktree',
-  opencode: 'opencode'
+  opencode: 'opencode',
+  antigravity: 'antigravity',
+  agy: 'antigravity'
 });
 
 function buildDefaultAdapterOptions(options, adapterId) {
@@ -37,7 +40,8 @@ function createDefaultAdapters(options = {}) {
     createClaudeHistoryAdapter(buildDefaultAdapterOptions(options, 'claude-history')),
     createDmuxTmuxAdapter(buildDefaultAdapterOptions(options, 'dmux-tmux')),
     createCodexWorktreeAdapter(buildDefaultAdapterOptions(options, 'codex-worktree')),
-    createOpencodeAdapter(buildDefaultAdapterOptions(options, 'opencode'))
+    createOpencodeAdapter(buildDefaultAdapterOptions(options, 'opencode')),
+    createAntigravityAdapter(buildDefaultAdapterOptions(options, 'antigravity'))
   ];
 }
 

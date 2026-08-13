@@ -35,3 +35,10 @@ Only report issues with confidence >= 80:
 - Critical: bugs, security, data loss
 - Important: missing tests, quality problems, style violations
 - Advisory: suggestions only when explicitly requested
+
+## Delegation Completion Contract
+
+When invoking sub-agents to perform reviews (e.g. `code-reviewer`, `comment-analyzer`, `pr-test-analyzer`):
+- The parent agent MUST wait synchronously for all sub-agents to finish and return their outputs.
+- Never end your turn with "waiting for background agents" — fire-and-forget delegation is strictly forbidden.
+- Synthesize all sub-agent deliverables into a single unified report before completing your turn.

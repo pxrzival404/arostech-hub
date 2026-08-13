@@ -1,3 +1,13 @@
+---
+id: doc:AGENTS.md
+title: arostech-hub — AI Agent Operating Rules & Harness Governance
+version: 2.2.0
+status: authoritative
+graphify_community: engineering
+authoritative_references:
+  - file:///d:/dev/arostech-hub/docs/engineering/ai-agent-rules.md
+---
+
 # arostech-hub — AI Agent Operating Rules & Harness Governance
 
 > **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
@@ -16,6 +26,7 @@
 5. **Agent-First** — Delegate to domain-specialized agents. Execute independent tasks in parallel.
 6. **Immutability** — Always return new object copies; never mutate existing state.
 7. **Plan Before Execute** — Architect complex features prior to writing production code.
+8. **Memory-Anchored** — Every session begins with Graphify context boot (Layer 0). Implementation without knowledge graph context is prohibited.
 
 ---
 
@@ -89,6 +100,25 @@ Before inspecting or modifying files in any specific domain, agents **MUST** rea
 
 ---
 
+### 2.4 Unified 8-Layer Development Workflow
+
+All development, regardless of complexity, **MUST** follow this 8-layer execution sequence.
+Skipping any layer is a governance violation. See [`.agents/rules/common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) for full specification, gate conditions, Ponytail checks, and agent invocations.
+
+```
+L0: Context Boot      → graphify query "<task>" BEFORE any work begins
+L1: HLA Alignment     → Validate PRD scope in docs/ before committing to a spec
+L2: Research & Reuse  → GitHub search → Context7 → npm registry (adopt > build)
+L3: SDD Proposal      → /opsx-propose: proposal.md + specs/ + design.md + tasks.md
+L4: Agent Delegation  → Auto-gate by file type (see Section 3.2 matrix)
+L5: TDD Execution     → RED → GREEN → REFACTOR → VERIFY [per task, inner loop]
+L6: Memory Sync       → graphify update . after each task [x]
+L7: Change Verify     → /opsx-verify + pnpm lint + test --coverage + pages:build
+L8: Commit & Archive  → conventional commit + /opsx-archive + /pr + graphify update .
+```
+
+---
+
 ## 3. Agent Roster & Delegation Rules
 
 ### 3.1 Installed Agent Roster (28 Agents)
@@ -152,17 +182,41 @@ Independent operations MUST be executed in parallel:
 
 ## 4. SDD x TDD Execution Workflow
 
-Every OpenSpec task is executed using the nested TDD cycle:
+Every OpenSpec change (Layer 3) is implemented through the nested **SDD × TDD execution model**:
 
 ```
-OpenSpec Task ──► RED (failing test) ──► GREEN (minimal impl) ──► REFACTOR ──► Coverage Gate (80%+) ──► Next Task
+SDD Outer Loop:
+  /opsx-propose (L3) ──► tasks.md (atomic checklist)
+       │
+       └── For each task [ ] in tasks.md:
+             │
+             ├── L4: Auto-gate → correct domain agent
+             │
+             ├── L5 TDD Inner Loop:
+             │     RED      → Failing test derived from WHEN/THEN spec clause
+             │     GREEN    → Minimal implementation (Ponytail: laziest that works)
+             │     REFACTOR → Apply domain rules + Ponytail dead-code review
+             │     VERIFY   → pnpm lint + test --changedSince=main + tsc --noEmit
+             │
+             └── L6: graphify update .   ← after each task [x]
+       │
+       └── All tasks [x] → L7: /opsx-verify + full pipeline → L8: /opsx-archive
 ```
+
+**Ponytail Complexity Brake** (active at every gate):
+- **L0**: Does this feature already exist in graph? → Reuse first, do not re-implement.
+- **L1**: Is this in PRD scope? → If not, propose PRD change first. YAGNI.
+- **L2**: Does a proven library/pattern exist? → Adopt > port > build net-new.
+- **L3**: Can spec be split into smaller atomic changes? → Prefer smaller changes.
+- **L5 GREEN**: Laziest solution that works. Zero speculative code.
+- **L5 REFACTOR**: Delete unused exports, dead flexibility, premature abstractions.
 
 ### 4.1 Test-Driven Development Rules
 1. **RED**: Write failing test first. The test MUST fail before production code is written.
 2. **GREEN**: Write minimal code to pass the test.
 3. **REFACTOR**: Clean code while maintaining 80%+ test coverage.
 4. **MANDATORY**: Never delete failing tests or lower coverage thresholds to pass build gates.
+5. **SDD Pre-Condition**: Tests MUST be derived from OpenSpec WHEN/THEN behavioral contracts (Layer 3). Running TDD without an existing spec is a governance violation.
 
 ---
 
@@ -206,6 +260,35 @@ Types: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`, `perf`, `ci`
 
 ## 9. Verification & Knowledge Graph Sync Protocol
 
+Graphify operates at **3 tiers** across the 8-Layer Workflow:
+
+**Tier 2 — Query (Layer 0: Session Boot)**
+At the start of every session, BEFORE any work begins:
+```bash
+graphify query "<task>"       # BFS traversal — affected nodes, existing patterns
+graphify path "<A>" "<B>"     # dependency chain and impact radius
+# Via MCP (preferred for multi-agent): query_graph, get_node, shortest_path
+```
+If `graphify-out/wiki/index.md` exists, navigate wiki FIRST (not raw files).
+
+**Tier 1 — Incremental Update (Layers 3, 6, 8: Sync Points)**
+After each of these events, run:
+```bash
+graphify update .   # AST-only extraction — no API cost
+```
+- Layer 3: After creating OpenSpec spec files in `openspec/`
+- Layer 6: After each completed task `[x]` in `tasks.md`
+- Layer 8: After archiving a change (final session sync)
+
+**Tier 3 — Serve (Multi-Agent Context Injection)**
+MCP Server for persistent structured access across agent sessions:
+```bash
+uv tool install --upgrade "graphifyy[mcp]"   # install
+# Register in .agents/mcp.json
+```
+Available MCP tools: `query_graph`, `get_node`, `get_neighbors`, `get_community`, `god_nodes`, `graph_stats`, `shortest_path`, `list_prs`, `get_pr_impact`, `triage_prs`
+
+**Documentation & Code Validation:**
 After modifying any rule file, documentation artifact, or production code, agents **MUST**:
 1. **Validate Documentation Standard**: `node .agents/scripts/validate-ai-docs.cjs`
 2. **Update Knowledge Graph AST**: `graphify update .`

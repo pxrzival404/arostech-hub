@@ -243,7 +243,7 @@ async function main() {
     messages.push(`[StrategicCompact] ${count} tool calls - good checkpoint for /compact if context is stale`);
   }
 
-  // log() writes to stderr (debug log). Per the Claude Code hooks guide,
+  // log() writes to stderr (debug log). Per the agent harness hooks guide,
   // non-blocking PreToolUse stderr (exit 0) is only written to the debug log;
   // it does not reach the model. To inject a user-facing suggestion without
   // blocking the tool call, emit structured JSON to stdout with
