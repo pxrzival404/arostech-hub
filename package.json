@@ -93,7 +93,7 @@
     "jest-environment-jsdom": "^30.4.1",
     "lru-cache": "^11.5.1",
     "prisma": "^6.19.3",
-    "puppeteer": "^25.2.1",
+    "puppeteer": "^25.5.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.10",
     "typescript": "^5",
