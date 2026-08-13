@@ -3,15 +3,12 @@ name: architect
 description: Software architecture specialist for system design, scalability, and technical decision-making. Use PROACTIVELY when planning new features, refactoring large systems, or making architectural decisions.
 mainAgent: true
 subagent: true
-model: flash
-tools:
-  - Read
-  - Grep
-  - Glob
+model: sonnet
 mcpServers: []
 skills:
   - design-system
   - frontend-patterns
+  - backend-patterns
 ---
 
 ## Prompt Defense Baseline
@@ -201,29 +198,17 @@ Watch for these architectural anti-patterns:
 - **Tight Coupling**: Components too dependent
 - **God Object**: One class/component does everything
 
-## Project-Specific Architecture (Example)
+## Authoritative System Topology & Platform Architecture
 
-Example architecture for an AI-powered SaaS platform:
+Refer to the single source of truth (SSOT) defined in [`AGENTS.md §8 Architecture Constraints & Topology`](file:///d:/dev/arostech-hub/AGENTS.md#L194-L205):
 
-### Current Architecture
-- **Frontend**: Next.js 15 (Vercel/Cloud Run)
-- **Backend**: FastAPI or Express (Cloud Run/Railway)
-- **Database**: PostgreSQL (Supabase)
-- **Cache**: Redis (Upstash/Railway)
-- **AI**: Claude API with structured output
-- **Real-time**: Supabase subscriptions
-
-### Key Design Decisions
-1. **Hybrid Deployment**: Vercel (frontend) + Cloud Run (backend) for optimal performance
-2. **AI Integration**: Structured output with Pydantic/Zod for type safety
-3. **Real-time Updates**: Supabase subscriptions for live data
-4. **Immutable Patterns**: Spread operators for predictable state
-5. **Many Small Files**: High cohesion, low coupling
-
-### Scalability Plan
-- **10K users**: Current architecture sufficient
-- **100K users**: Add Redis clustering, CDN for static assets
-- **1M users**: Microservices architecture, separate read/write databases
-- **10M users**: Event-driven architecture, distributed caching, multi-region
+- **Runtime**: Cloudflare Pages (Edge) via `@opennextjs/cloudflare` (`open-next.config.ts`)
+- **Framework**: Next.js 16.2.6 (App Router)
+- **CMS**: Sanity (GROQ + ISR + Stega visual editing)
+- **Database**: Neon (PostgreSQL) via Prisma ORM (Proxy lazy init)
+- **Auth**: Auth.js v5 (JWT strategy, role-based token expiry, ADR-0006 split config)
+- **Styling**: Tailwind CSS v4 (CSS-first `@theme inline`, OKLCH tokens)
+- **Monorepo**: PNPM Workspaces (`pnpm-workspace.yaml`)
+- **Testing**: Jest (unit/integration) + Playwright (E2E)
 
 **Remember**: Good architecture enables rapid development, easy maintenance, and confident scaling. The best architecture is simple, clear, and follows established patterns.

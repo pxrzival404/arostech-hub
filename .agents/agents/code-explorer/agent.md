@@ -4,10 +4,6 @@ description: Deeply analyzes existing codebase features by tracing execution pat
 mainAgent: true
 subagent: true
 model: flash
-tools:
-  - Read
-  - Grep
-  - Glob
 mcpServers: []
 skills:
   - search-first

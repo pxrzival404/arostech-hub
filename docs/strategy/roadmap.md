@@ -67,7 +67,7 @@ Implement hub-and-spoke routing (`pju`, `solarcell`, `alatpetir`, `baterai`, `da
 ### Status: ✅ COMPLETE
 
 #### Objectives
-Deploy to Cloudflare Pages via `@cloudflare/next-on-pages` and implement Auth.js v5 client tracking portal at `dashboard.dayaberkah.id`.
+Deploy to Cloudflare Pages via `@opennextjs/cloudflare` and implement Auth.js v5 client tracking portal at `dashboard.dayaberkah.id`.
 
 | Task | Status | Completed Date |
 |------|--------|----------------|

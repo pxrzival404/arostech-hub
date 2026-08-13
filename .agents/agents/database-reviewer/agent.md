@@ -3,12 +3,9 @@ name: database-reviewer
 description: PostgreSQL database specialist for query optimization, schema design, security, and performance. Use PROACTIVELY when writing SQL, creating migrations, designing schemas, or troubleshooting database performance. Incorporates Supabase best practices.
 mainAgent: true
 subagent: true
-model: flash
+model: sonnet
 tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
+  - run_command
 mcpServers: []
 skills:
   - postgres-patterns

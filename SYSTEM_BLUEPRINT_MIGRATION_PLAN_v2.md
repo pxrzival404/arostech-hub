@@ -22,9 +22,9 @@ Every row below was verified against the live state of the `refactor/reorganize-
 | 2 | **Subdomain Topology** | Docs use `solarcell`, `alatpetir` as spoke names | Code uses `solarpanel`, `penangkalpetir` as canonical with aliases `{solarcell→solarpanel, alatpetir→penangkalpetir}` in `pages-host.ts` | No spec | **DOC MISMATCH** | No drift — unchanged |
 | 3 | **Dashboard Route Group** | 4 files say `/(dashboard)` route group (`deployment.md`, `dns-cutover.md`, `ai-agent-rules.md`, `extensibility.md`) | Flat `dashboard/` route (no route group). Confirmed by `execution-lifecycle.md` | No spec | **DOC MISMATCH** — 4 files contradict execution-lifecycle.md | **[NEW]** — v1 did not flag this internal doc inconsistency |
 | 4 | **Prisma Schema** | Overview.md documents 3 core models (Lead, User, RedirectMap) | 7 models (added: Account, Session, VerificationToken, NotificationJob) + 7 enums. Extras are Auth.js adapter boilerplate + notification queue — legitimate | No spec | **DOC INCOMPLETE** — 4 models undocumented | No drift |
-| 5 | **Sanity CMS Studio Schema** | Overview.md lists 5 content types | `studio/schemaTypes/index.ts` registers only 3: `spokeConfig`, `product`, `portfolioEntry`. Missing: `certification`, `page`. Code also queries `article` type (undocumented) | No spec | **CRITICAL** — Studio registration incomplete | No drift |
+| 5 | **Sanity CMS Studio Schema** | Overview.md lists 5 content types | `studio/schemaTypes/index.ts` registers only 3: `spokeConfig`, `product`, `portfolioEntry`. Missing: `certification`, `page`. Code also queries `article` type (undocumented) | No spec | **POLICY DEFINED** — Missing 3 local schemas (`certification`, `page`, `article`); authoring scheduled in Wave 3 | No drift |
 | 6 | **Sanity CMS Field Gaps** | Overview.md describes product fields including datasheets, SEO | GROQ queries reference fields (`datasheetFile`, `relatedCertifications`, `seoMeta`) not defined in studio schema files | No spec | **HIGH** — Field-level schema divergence | No drift |
-| 7 | **Auth.js v5 JWT** | `reference.md`, `overview.md` — JWT strategy, role-based expiry, cookie config | Match. Includes Google OAuth, password reset, auth guards. `runtime = 'edge'` declared with PrismaAdapter eager import | No spec | **OK with RISK** — Edge runtime + PrismaAdapter incompatibility | No drift |
+| 7 | **Auth.js v5 JWT** | `reference.md`, `overview.md` — JWT strategy, role-based expiry, cookie config | Match. Includes Google OAuth, password reset, auth guards. `runtime = 'edge'` declared with PrismaAdapter eager import | No spec | **ADR-0006 ACCEPTED** — Option B (Split Auth Config) scheduled for Wave 1 execution | No drift |
 | 8 | **RFQ Pipeline (`POST /api/rfq`)** | `reference.md` shows simple flat schema (6 fields) | Implementation uses composite Zod schemas: `contactInfoSchema`, `rfqMetaSchema`, `rfqCartItemSchema` → `rfqB2BSchema`/`rfqB2GSchema` with cart array + UTM tracking | No spec | **DOC STALE** — reference.md schema is pre-cart version | No drift |
 | 9 | **Notification Pipeline** | Resend, Telegram, WhatsApp (wa.me fallback) | Match + exceeds: DB-backed queue, optimistic concurrency, exponential backoff, 3 retries. Missing: provisioning email, revocation audit alert | No spec | **OK** — 2 minor triggers missing | No drift |
 | 10 | **ISR Revalidation** | Webhook HMAC-SHA256, tag-based | Match | No spec | **OK** | No drift |
@@ -34,18 +34,18 @@ Every row below was verified against the live state of the `refactor/reorganize-
 | 14 | **Analytics: GA4** | Documented as active | Implemented | No spec | **OK** | No drift |
 | 15 | **Analytics: PostHog** | PRD line 97: "Phase 2: Sentry + PostHog" | Fully integrated: `posthog-js` in deps, `src/lib/analytics/posthog.ts`, `useAnalytics` hook | No spec | **PHASE CREEP** — Doc says Phase 2, code says active | No drift |
 | 16 | **Error Tracking: Sentry** | PRD: Phase 2 | Fully integrated: `@sentry/nextjs`, 3 config files, `sentry-example-page` route | No spec | **PHASE CREEP** | No drift |
-| 17 | **21st SDK Agent Chat** | Not in AGENTS.md, PRD, or roadmap. Brief mention in overview.md codemap | Complete: 4 npm packages, `/api/an-token`, `src/app/chat/page.tsx` (30 lines), Vercel AI SDK | No spec | **HIGH SCOPE CREEP** — Full module undocumented | No drift |
+| 17 | **21st SDK Agent Chat** | Not in AGENTS.md, PRD, or roadmap. Brief mention in overview.md codemap | Complete: 4 npm packages, `/api/an-token`, `src/app/chat/page.tsx` (30 lines), Vercel AI SDK | No spec | **CONFIRMED SCOPE CREEP** — 6 files, 4 deps; total purge scheduled in Wave 4 | No drift |
 | 18 | **Hardcoded Articles** | Not in HLA | `src/lib/api/articles.ts` = 174 lines of inline HTML in 6 Article objects. Duplicates Sanity `article` type | No spec | **MEDIUM** — Duplicate content source | Minor — v1 said 170 lines, now 174 |
 | 19 | **Leaflet Maps** | Not documented | `leaflet` ^1.9.4, `react-leaflet` in deps, 2 map components | No spec | **LOW** — Undocumented dependency | No drift |
 | 20 | **Framer Motion** | Not documented | `framer-motion` ^12.40.0 in deps | No spec | **LOW** | No drift |
 | 21 | **Embla Carousel** | Not documented | `embla-carousel-react` ^8.6.0 in deps | No spec | **LOW** | No drift |
 | 22 | **next-themes** | Not documented | `next-themes` ^0.4.6 in deps, ThemeProvider + ThemeToggle components | No spec | **LOW** | No drift |
 | 23 | **sentry-example-page** | Not documented | `src/app/sentry-example-page/page.tsx` exists in production routes | No spec | **MEDIUM** — Dev artifact in production | No drift |
-| 24 | **tailwind.config.ts** | Not documented | Exists, 53 lines of theme config. **Dead code** — Tailwind v4 uses CSS-first config | No spec | **MEDIUM** — Dead config file | No drift |
+| 24 | **tailwind.config.ts** | Not documented | Exists, 53 lines of theme config. **Dead code** — Tailwind v4 uses CSS-first config | No spec | **CONFIRMED DEAD CODE** — Tailwind v4 CSS-first complete; deletion scheduled in Wave 4 | No drift |
 | 25 | **`ignoreBuildErrors: true`** | Not documented | Present with comment: "Run tsc separately; skip during Turbopack build to avoid OOM on Windows" | No spec | **HIGH RISK** — Type errors silently skipped | No drift |
 | 26 | **`tsconfig.json` target ES2017** | Not documented | Confirmed ES2017 | No spec | **LOW** — Conservative target | No drift |
 | 27 | **`package.json` name 'my-website'** | Not documented | Confirmed | No spec | **LOW** — Template residue | No drift |
-| 28 | **Six Custom Rule Files** | Not in HLA | `.agents/rules/` contains `cloudflare-edge-runtime.md`, `cloudflare-pages-deploy.md`, `sanity-cms-federation.md`, `monorepo-workspace.md`, `tailwind-v4.md`, `prisma-neon-edge.md` — all **5 lines each, stub content only** (1 heading + 2 bullet points of generic guidance) | No spec | **HIGH** — Stub rules provide no enforcement | **[NEW]** — v1 planned these as "Custom Additions" but did not track their empty state |
+| 28 | **Six Custom Rule Files** | Not in HLA | `.agents/rules/` contains `cloudflare-edge-runtime.md`, `cloudflare-pages-deploy.md`, `sanity-cms-federation.md`, `monorepo-workspace.md`, `tailwind-v4.md`, `prisma-neon-edge.md` — all **5 lines each, stub content only** (1 heading + 2 bullet points of generic guidance) | No spec | **READY FOR FASE 2** — Inputs fully defined by Fase 1 audit | **[NEW]** — v1 planned these as "Custom Additions" but did not track their empty state |
 | 29 | **AGENTS.md** | Points to `docs/engineering/governance/ai-agent-rules.md` | Still a thin 17-line pointer. **Not updated** with ECC agent roster, gating rules, or OpenSpec workflow requirements | N/A | **HIGH** — No harness coordination instructions | **[NEW]** — v1's Fase 3 planned an AGENTS.md update that was not executed |
 | 30 | **ECC Agents Installed** | Not in HLA | `.agents/agents/` contains 29 agent definitions (architect, code-reviewer, tdd-guide, refactor-cleaner, typescript-reviewer, react-reviewer, planner, e2e-runner, harness-optimizer, + 20 others) | N/A | **OK** — Agents present | **[NEW]** |
 | 31 | **ECC Skills Installed** | Not in HLA | `.agents/skills/` contains 35 skill definitions including `react-patterns`, `nextjs-turbopack`, `tdd-workflow` (manually migrated per v1 plan) | N/A | **OK** — Skills present | **[NEW]** |
@@ -136,10 +136,11 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 - **Purpose**: Govern Edge/Node API boundaries for all code running on Cloudflare Workers Edge Runtime.
 - **Must Enforce**:
   - No Node.js-only APIs (`fs`, `path`, `child_process`, `net`, `tls`) in files with `export const runtime = 'edge'` or in `src/middleware.ts`.
-  - No Prisma Client import in middleware or edge routes — must use API loopback pattern with `AbortController` timeout.
+  - Prohibit eager `PrismaAdapter` and `bcryptjs` imports in Edge modules per **ADR-0006** (Option B Split Auth Config: `auth.config.ts` Edge-safe JWT vs `auth.ts` Node-runtime NextAuth handler).
+  - Prohibit 2000ms loopback `fetch('/api/redirects/lookup')` calls inside Next.js Edge Middleware (`src/middleware.ts`).
+  - Enforce `'preview'` domain class handling in `CleanDomainClass` interface.
   - Response body streaming required for payloads >1 MB (V8 isolate memory limit).
   - CPU time limit: 30 seconds for Workers, 50 ms for middleware subrequests (Cloudflare Pages constraint).
-  - `wrangler.json` configuration patterns for binding KV, D1, R2 if added.
 - **Owner Agent**: `typescript-reviewer` (Edge boundary is a type-safety and runtime-compatibility concern) + `code-reviewer` (general enforcement).
 - **Acceptance Criterion**: Rule contains ≥5 specific forbidden API patterns with file-matcher scopes, ≥3 approved alternative patterns, and a table of Cloudflare Workers runtime limits applicable to this project.
 
@@ -147,9 +148,10 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 
 - **Purpose**: Govern Cloudflare Pages deployment pipeline, build output structure, and preview deployment behavior.
 - **Must Enforce**:
-  - Build command: `pnpm pages:build` producing `.vercel/output/static`.
-  - Deploy command: `npx wrangler pages deploy .vercel/output/static --project-name dbsn-website`.
-  - No Vercel-specific APIs (`vercel.json`, `@vercel/og`, `vercel-analytics`).
+  - Build command: `pnpm pages:build` (`npx opennextjs-cloudflare build`) producing `.open-next/assets`.
+  - Deploy command: `npx opennextjs-cloudflare deploy` (or `npx wrangler pages deploy .open-next/assets --project-name dbsn-website`).
+  - Enforce `isCloudflareBuild` flag in `next.config.ts` to disable Sentry source-map bundling during Pages builds (preserving 25MB worker bundle limit).
+  - Prohibit unlinked development artifacts (e.g. `sentry-example-page/`) in production deployments.
   - Preview deployment domain resolution: `<branch>.dbsn-website.pages.dev` with subdomain prefix support.
   - `_routes.json` inclusion rules for Edge vs static routing.
 - **Owner Agent**: `architect` (deployment architecture decisions).
@@ -159,10 +161,10 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 
 - **Purpose**: Govern GROQ query conventions, Sanity content type schema synchronization, and ISR cache tag naming.
 - **Must Enforce**:
+  - Mandatory local schema files in `studio/schemaTypes/` for all 6 queried types (`spokeConfig`, `product`, `portfolioEntry`, `certification`, `page`, `article`) — zero unmanaged cloud-only types permitted.
   - Cache tag format: `sanity:{type}`, `sanity:{type}:{id}`, `sanity:spoke:{subdomain}`, `sanity:all`.
   - GROQ queries must use `defineQuery()` from `next-sanity` — no raw string queries.
   - All query functions must follow null-on-error convention (return `null` on failure, never throw in production).
-  - Studio schema types registered in `studio/schemaTypes/index.ts` must match all types queried in `src/lib/api/sanity/queries.ts`.
   - ISR revalidation via `revalidateTag()` only — no `revalidatePath()` for Sanity-driven pages.
   - Stega visual editing toggle: enabled in dev/preview, disabled in production.
 - **Owner Agent**: `typescript-reviewer` (query type safety) + `react-reviewer` (RSC data fetching patterns).
@@ -173,9 +175,9 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 - **Purpose**: Govern PNPM workspace structure, cross-package dependency management, and shared configuration.
 - **Must Enforce**:
   - Workspace protocol (`workspace:*`) for intra-monorepo dependencies.
+  - Prohibit unapproved scope-creep dependencies (mandating purge of 4 `@21st-sdk/*` packages).
+  - Enforce Cloudflare Pages 25MB total worker bundle budget limit.
   - `pnpm-workspace.yaml` packages list must match actual directories.
-  - No circular workspace dependencies.
-  - Shared configs (`tsconfig.json`, `tailwind.config.ts`, `eslint.config.mjs`) live at root; workspace packages extend them.
   - Build order: studio (independent) → main app (depends on studio schemas at design-time only).
 - **Owner Agent**: `typescript-reviewer` (type-aware dependency management).
 - **Acceptance Criterion**: Rule contains the workspace structure diagram, ≥3 forbidden patterns (circular deps, non-workspace cross-references), and the build order specification.
@@ -184,7 +186,7 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 
 - **Purpose**: Govern Tailwind CSS v4 usage patterns, replacing v3 conventions that no longer apply.
 - **Must Enforce**:
-  - CSS-first configuration via `@theme` directive in `src/app/globals.css` — no `tailwind.config.ts` usage.
+  - CSS-first configuration via `@theme` directive in `src/app/globals.css` — explicit deletion and prohibition of `tailwind.config.ts`.
   - OKLCH design tokens for color system.
   - No `@apply` in production component files (allowed in `globals.css` only).
   - Mobile-first responsive design.
@@ -196,12 +198,11 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 
 - **Purpose**: Govern Prisma ORM usage with Neon Postgres serverless driver, including Edge compatibility patterns.
 - **Must Enforce**:
+  - Composite lead structure (`RfqSubmission` + `RfqLineItem`) replacing single-table `Lead` and purging legacy `RedirectMap`.
   - Prisma Client must use `@prisma/adapter-neon` for serverless pooled connections.
   - Lazy initialization via Proxy pattern (current `prisma.ts` approach) — no eager singleton in Edge-compatible modules.
   - `DATABASE_URL` for pooled connections, `DIRECT_URL` for migrations only.
-  - No Prisma Client import in Edge runtime routes — use API loopback pattern.
-  - Seed scripts run via `pnpm prisma db seed` with `DIRECT_URL`; never in Edge context.
-  - Schema changes require: `schema.prisma` edit → `prisma generate` → migration → verify type generation.
+  - No Prisma Client import in Edge runtime routes — use Node-runtime handlers (`export const runtime = 'nodejs'`) per **ADR-0006**.
 - **Owner Agent**: `typescript-reviewer` (ORM type safety) + `database-reviewer` (query patterns).
 - **Acceptance Criterion**: Rule contains the Proxy lazy-init pattern, the Edge/API-loopback decision matrix, the env var mapping (`DATABASE_URL` vs `DIRECT_URL`), and a schema migration checklist.
 
@@ -238,27 +239,26 @@ These tasks must complete before any wave begins. They have no code impact.
 Each wave produces OpenSpec changes that follow the full SDD lifecycle (Proposal → Design → Spec → Tasks). Each task within a change executes the nested TDD sub-cycle from Section 2.1.
 
 #### Wave 1: Foundation — Core Middleware & Edge Runtime
-**Depends on**: Fase 0 (doc rewrite complete), Fase 1 (codebase-to-docs audit complete), 3.PH-1 through 3.PH-4
+**Depends on**: Fase 0 (doc rewrite complete), Fase 1 (codebase-to-docs audit complete), **ADR-0006**
 
 | # | OpenSpec Change | Task Summary | Priority | TDD Trigger |
 |---|---|---|---|---|
-| 3.1.1 | `middleware-edge-compatibility` | Audit and fix Edge Runtime compatibility in middleware and auth routes. If PrismaAdapter cannot run on Edge, refactor to API loopback. | Critical | Test: middleware chain for all 5 domain classes (hub, spoke, dashboard, unknown, preview) + Edge runtime constraint validation |
-| 3.1.2 | `subdomain-naming-alignment` | Resolve `solarcell`/`alatpetir` (docs) vs `solarpanel`/`penangkalpetir` (code) mismatch. Decision: update docs or update code. | High | Test: `SPOKE_SUBDOMAINS` and `SUBDOMAIN_ALIASES` consistent with Fase 0 docs |
-| 3.1.3 | `redirect-engine-hardening` | Validate and test LRU cache behavior, loopback timeout, concurrent request handling. | High | Test: Cache hit/miss, timeout at 2s, concurrent requests, fallback behavior |
-| 3.1.4 | `build-configuration-hardening` | Set `ignoreBuildErrors: false`, update `tsconfig.json` target, fix resulting type errors, correct `package.json` name. | High | Test: `tsc --noEmit` passes clean, `pnpm pages:build` succeeds |
+| 3.1.1 | `auth-edge-refactor` | Execute **ADR-0006** Option B: split `auth.config.ts` (Edge-safe JWT) and `auth.ts` (Node-runtime NextAuth handler), set `export const runtime = 'nodejs'` on `/api/auth/*` routes. | Critical | Test: Edge middleware stateless JWT verification + Node route authentication flow |
+| 3.1.2 | `subdomain-naming-alignment` | Resolve `solarcell`/`alatpetir` (docs) vs `solarpanel`/`penangkalpetir` (code) mismatch. Decision: update code to match greenfield docs. | High | Test: `SPOKE_SUBDOMAINS` and `SUBDOMAIN_ALIASES` consistent with Fase 0 docs |
+| 3.1.3 | `middleware-greenfield-alignment` | Remove 2000ms loopback `fetch('/api/redirects/lookup')` from hot-path, add `'preview'` domain class to `CleanDomainClass`, remove hot-path `console.log`. | High | Test: Zero sub-requests in Edge middleware, query param `?subdomain=preview` routing success |
+| 3.1.4 | `api-response-envelope-alignment` | Standardize 100% of API route responses to `{success, data, error, meta}` envelope format; set `ignoreBuildErrors: false`. | High | Test: Zod response envelope validation across all endpoints; `tsc --noEmit` clean |
 
-**Specs to create**: `hub-and-spoke-routing`, `edge-runtime-compatibility`
+**Specs to create**: `hub-and-spoke-routing`, `edge-runtime-compatibility`, `api-response-envelope`
 
 #### Wave 2: Database, Auth & Missing APIs
 **Depends on**: Wave 1 (Edge runtime stable), Fase 0 (PRD auth endpoints corrected), 3.PH-3 (`prisma-neon-edge.md` rule active)
 
 | # | OpenSpec Change | Task Summary | Priority | TDD Trigger |
 |---|---|---|---|---|
-| 3.2.1 | `dashboard-tracking-api` | Implement `GET /api/dashboard/tracking` with CLIENT role authorization, `linkedLeadId` scope filtering. | Critical | Test: Authorization enforcement (wrong role → 403), scope filtering (only linked leads), error responses |
-| 3.2.2 | `admin-leads-api` | Implement `GET /api/admin/leads` (search/filter) and `PATCH /api/admin/leads/:id/status` (status transition). | Critical | Test: Admin-only access, search parameters, status transition validation (RECEIVED→CONTACTED→QUALIFIED/DISQUALIFIED) |
+| 3.2.1 | `prisma-rfq-schema-migration` | Refactor single-table `Lead` into composite `RfqSubmission` + `RfqLineItem`, purge legacy `RedirectMap`. | Critical | Test: Prisma schema generation + migration test suite for composite RFQ submissions |
+| 3.2.2 | `admin-tracking-endpoints-creation` | Create absent endpoints: `GET /api/admin/leads`, `PATCH /api/admin/leads/:id/status`, and `GET /api/dashboard/tracking`. | Critical | Test: Authorization enforcement (wrong role → 403), scope filtering (only linked leads), status transition validation |
 | 3.2.3 | `dashboard-tracking-ui` | Replace dashboard stub with actual tracking cards, project status, auth-gated layout. | Critical | Test: Dashboard renders tracking data, redirects unauthenticated users, respects scope |
-| 3.2.4 | `prisma-schema-docs-sync` | Update docs to reflect all 7 Prisma models and 7 enums. | Medium | Test: Schema introspection matches documented model/field names |
-| 3.2.5 | `notification-provisioning` | Implement dashboard provisioning email and revocation audit Telegram alert. | Medium | Test: Email sent on access grant, Telegram alert on revocation |
+| 3.2.4 | `notification-provisioning` | Implement dashboard provisioning email and revocation audit Telegram alert. | Medium | Test: Email sent on access grant, Telegram alert on revocation |
 
 **Specs to create**: `dashboard-api-authorization`, `rfq-api-contract`, `auth-session-management`
 
@@ -267,21 +267,19 @@ Each wave produces OpenSpec changes that follow the full SDD lifecycle (Proposal
 
 | # | OpenSpec Change | Task Summary | Priority | TDD Trigger |
 |---|---|---|---|---|
-| 3.3.1 | `sanity-schema-reconciliation` | Audit studio schema vs GROQ queries vs TypeScript types. Add missing types (`certification`, `page`) or confirm they are cloud-managed. | Critical | Test: Every GROQ-queried field has a corresponding studio schema definition or documented cloud-managed exception |
-| 3.3.2 | `hardcoded-articles-migration` | Migrate 6 hardcoded articles from `src/lib/api/articles.ts` to Sanity CMS `article` type. | High | Test: Articles fetched from Sanity; graceful empty state when Sanity unavailable; no inline HTML in source |
-| 3.3.3 | `api-reference-update` | Rewrite `reference.md` RFQ schema to match composite Zod schema. Align auth endpoints with Auth.js v5 pattern. Standardize response envelope. | High | Test (docs): Cross-reference validation between reference.md and actual route handler signatures |
-| 3.3.4 | `sanity-isr-revalidation-spec` | Document and test ISR revalidation webhook. | Medium | Test: HMAC signature verification, tag parsing, revalidateTag invocation, error responses |
+| 3.3.1 | `sanity-schema-reconciliation` | Author local schema files in `studio/schemaTypes/` for missing types (`certification.ts`, `page.ts`, `article.ts`) and register in `index.ts`. | Critical | Test: Every GROQ-queried type has a corresponding local studio schema definition |
+| 3.3.2 | `sanity-isr-revalidation-spec` | Document and test ISR revalidation webhook using `revalidateTag()` only. | Medium | Test: HMAC signature verification, tag parsing, revalidateTag invocation, error responses |
 
 **Specs to create**: `sanity-content-federation`, `content-migration`
 
-#### Wave 4: API Surface & Notifications
+#### Wave 4: API Surface, Scope Creep & Cleanup
 **Depends on**: Wave 2 (admin APIs needed for notification triggers), Wave 3 (Sanity stable)
 
 | # | OpenSpec Change | Task Summary | Priority | TDD Trigger |
 |---|---|---|---|---|
-| 3.4.1 | `notification-pipeline-spec` | Document notification pipeline behavioral contract. | Medium | Test: All trigger→channel mappings verified |
-| 3.4.2 | `api-surface-contract` | Document all API endpoints with request/response schemas. | Medium | Test (docs): Endpoint inventory matches codebase |
-| 3.4.3 | `an-token-decision` | Decide fate of 21st SDK Agent Chat: document as feature, branch off, or remove. | High | Test (if retained): Token endpoint auth + rate limit. Test (if removed): No 21st SDK imports remain |
+| 3.4.1 | `posthog-sentry-prd-sync` | Update `docs/strategy/prd.md` status for PostHog & Sentry to "Active Phase 1"; enforce `isCloudflareBuild` in `next.config.ts`. | Medium | Test: Sentry disabled in Cloudflare build; PostHog client-isolated |
+| 3.4.2 | `sdk-footprint-purge` | Purge 21st SDK Agent Chat completely (6 files, 4 npm packages `@21st-sdk/*`, `/chat`, `/api/an-token`). | High | Test: Zero `@21st-sdk` imports in codebase; bundle size check |
+| 3.4.3 | `dead-code-purge` | Delete `tailwind.config.ts` & `sentry-example-page/`; seed 6 inline HTML articles from `articles.ts` into Sanity CMS, update `ArticlesSection.tsx`, delete `articles.ts`. | High | Test: `pnpm pages:build` clean; articles rendered from Sanity CMS |
 
 **Specs to create**: `notification-pipeline`, `api-surface-contract`
 
@@ -395,41 +393,48 @@ The SDD cycle from Section 2.1 makes verification operational at two levels:
 
 ## 5. Execution Timeline
 
-### 5.1 Fase 0 — Fundamental Alignment
+### 5.1 Fase 0 — Fundamental Alignment **[COMPLETE]**
 
 **Rationale**: The team no longer trusts the high-level documentation because it was generated during a period of non-deterministic scope creep and hallucinated architecture. This phase rewrites `docs/` starting from the PRD and cascading through every file, making them internally consistent with each other. Codebase reality is deliberately excluded as an input — Fase 0 produces the doc set that Fase 1 will later audit the code against.
 
 | # | Task | Output | Owner Agent | Duration |
 |---|---|---|---|---|
 | 0.1 | **[COMPLETE]** Rewrite `docs/strategy/prd.md`: PRD v4.0 AI-Ready Baseline complete. Sanitized domains (`dayaberkah.id`), removed hallucinated env vars, aligned Auth.js v5 catch-all pattern, established Universal RFQ Form architecture (`rfqSubmissionSchema`), established Greenfield Platform Baseline (removed 301 redirect engine), and enforced 7 Pillars AI-Friendly Standard | Corrected PRD v4.0 | `architect` | 2h |
-| 0.2 | Rewrite `docs/strategy/vision.md`: add SUPERSEDED header to Section II (GTM domain recommendations overridden), remove "200+ projects" unverified claim, remove duplicate compatibility matrix (points to `compatibility-matrix.md`) | Corrected vision | `architect` | 1h |
-| 0.3 | Rewrite `docs/system/api/reference.md`: replace dual B2B/B2G schemas with single Universal RFQ Zod schema (`rfqSubmissionSchema` without B2B/B2G discrimination or `segment` field), align auth endpoints to Auth.js v5 catch-all pattern, standardize response envelope to `{success, data, error, meta}` without `version` | Corrected API reference | `architect` | 1.5h |
-| 0.4 | Rewrite `docs/engineering/playbooks/testing/strategy.md`: remove all Redis references, remove legacy 301 redirect migration engine tests, add Greenfield SEO Architecture tests (canonical tags, sitemaps, robots, JSON-LD) & Universal RFQ Form tests, align timeline with `roadmap.md` | Corrected TDD strategy | `tdd-guide` | 3h |
-| 0.5 | Rewrite `docs/operations/security/security-policy.md`: remove AI placeholder tokens, add incident response procedure, add CVE disclosure process | Completed security policy | `security-reviewer` | 1h |
-| 0.6 | Fix `docs/operations/runbooks/deployment.md`: remove Supabase secrets and legacy 301 redirect Worker/table references, lock greenfield Cloudflare Pages deployment for `dayaberkah.id` and 5 subdomains (`pju.`, `solarcell.`, `alatpetir.`, `baterai.`, `dashboard.`), fix Sanity API version to `v2025-05-21`, fix dashboard route to `dashboard/` (flat), fix `RESEND_FROM_EMAIL` | Corrected deployment runbook | `architect` | 0.5h |
-| 0.7 | Fix all `/(dashboard)` → `dashboard/` in: `dns-cutover.md`, `ai-agent-rules.md`, `extensibility.md`; update `dns-cutover.md` to greenfield subdomain DNS provisioning | Consistent dashboard routing & greenfield DNS across docs | `architect` | 0.5h |
-| 0.8 | Fix `docs/strategy/roadmap.md`: align Phase Status (Phase 3 COMPLETE, Phase 4 NOT STARTED), fix date inconsistency | Corrected roadmap | `architect` | 0.5h |
-| 0.9 | Fix `docs/system/architecture/overview.md`: update Phase Status table to match roadmap.md | Corrected overview | `architect` | 0.25h |
-| 0.10 | Fix `docs/strategy/segments.md`: correct `prd-v3.md` → `prd.md` reference, fix section numbering (4.2 duplicate → 4.3) | Corrected segments | `architect` | 0.25h |
-| 0.11 | Fix `docs/engineering/playbooks/quickstart.md`: fix all stale relative paths, fix Method B hosts file from `sentradaya.com` → `dayaberkah.id` | Corrected quickstart | `architect` | 0.5h |
-| 0.12 | Cross-reference validation pass: grep all docs for stale paths, run `.agents/scripts/validate-ai-docs.cjs` & `graphify update .` to ensure 100% compliance with 7 Pillars AI-Friendly Standard and sync knowledge graph | Validation report | `architect` | 0.5h |
+| 0.2 | **[COMPLETE]** Rewrite `docs/strategy/vision.md`: add SUPERSEDED header to Section II (GTM domain recommendations overridden), remove "200+ projects" unverified claim, remove duplicate compatibility matrix (points to `compatibility-matrix.md`) | Corrected vision | `architect` | 1h |
+| 0.3 | **[COMPLETE]** Rewrite `docs/system/api/reference.md`: replace dual B2B/B2G schemas with single Universal RFQ Zod schema (`rfqSubmissionSchema` without B2B/B2G discrimination or `segment` field), align auth endpoints to Auth.js v5 catch-all pattern, standardize response envelope to `{success, data, error, meta}` without `version` | Corrected API reference | `architect` | 1.5h |
+| 0.4 | **[COMPLETE]** Rewrite `docs/engineering/playbooks/testing/strategy.md`: remove all Redis references, remove legacy 301 redirect migration engine tests, add Greenfield SEO Architecture tests (canonical tags, sitemaps, robots, JSON-LD) & Universal RFQ Form tests, align timeline with `roadmap.md` | Corrected TDD strategy | `tdd-guide` | 3h |
+| 0.5 | **[COMPLETE]** Rewrite `docs/operations/security/security-policy.md`: remove AI placeholder tokens, add incident response procedure, add CVE disclosure process | Completed security policy | `security-reviewer` | 1h |
+| 0.6 | **[COMPLETE]** Fix `docs/operations/runbooks/deployment.md`: remove Supabase secrets and legacy 301 redirect Worker/table references, lock greenfield Cloudflare Pages deployment for `dayaberkah.id` and 5 subdomains (`pju.`, `solarcell.`, `alatpetir.`, `baterai.`, `dashboard.`), fix Sanity API version to `v2025-05-21`, fix dashboard route to `dashboard/` (flat), fix `RESEND_FROM_EMAIL` | Corrected deployment runbook | `architect` | 0.5h |
+| 0.7 | **[COMPLETE]** Fix all `/(dashboard)` → `dashboard/` in: `dns-cutover.md`, `ai-agent-rules.md`, `extensibility.md`; update `dns-cutover.md` to greenfield subdomain DNS provisioning | Consistent dashboard routing & greenfield DNS across docs | `architect` | 0.5h |
+| 0.8 | **[COMPLETE]** Fix `docs/strategy/roadmap.md`: align Phase Status (Phase 3 COMPLETE, Phase 4 NOT STARTED), fix date inconsistency | Corrected roadmap | `architect` | 0.5h |
+| 0.9 | **[COMPLETE]** Fix `docs/system/architecture/overview.md`: update Phase Status table to match roadmap.md | Corrected overview | `architect` | 0.25h |
+| 0.10 | **[COMPLETE]** Fix `docs/strategy/segments.md`: correct `prd-v3.md` → `prd.md` reference, fix section numbering (4.2 duplicate → 4.3) | Corrected segments | `architect` | 0.25h |
+| 0.11 | **[COMPLETE]** Fix `docs/engineering/playbooks/quickstart.md`: fix all stale relative paths, fix Method B hosts file from `sentradaya.com` → `dayaberkah.id` | Corrected quickstart | `architect` | 0.5h |
+| 0.12 | **[COMPLETE]** Cross-reference validation pass: grep all docs for stale paths, run `.agents/scripts/validate-ai-docs.cjs` & `graphify update .` to ensure 100% compliance with 7 Pillars AI-Friendly Standard and sync knowledge graph | Validation report | `architect` | 0.5h |
 
 **Fase 0 Total Estimate**: ~12 hours
 
-### 5.2 Fase 1 — High-Level Alignment: Codebase-to-Docs
+### 5.2 Fase 1 — High-Level Alignment: Codebase-to-Docs **[COMPLETE]**
 
-**Rationale**: Using the Fase 0 docs as the now-trusted baseline, audit the actual codebase against them. This inverts v1's original Fase 1, which audited assuming docs were already correct.
+**Rationale**: Using the Fase 0 docs as the now-trusted baseline, audit the actual codebase against them. This inverts v1’s original Fase 1, which audited assuming docs were already correct. Each task produces structured findings that feed the single consolidated audit report compiled in 1.9.
 
-| # | Task | Output | Owner Agent | Duration |
-|---|---|---|---|---|
-| 1.1 | Audit middleware implementation against Fase 0 `execution-lifecycle.md`: verify chain, test all 5 domain classes, check for anti-patterns | Middleware conformance report | `code-reviewer` + `typescript-reviewer` | 2h |
-| 1.2 | Audit Prisma schema against Fase 0 docs: verify all 7 models and 7 enums are now documented | Schema conformance report | `database-reviewer` | 1h |
-| 1.3 | Audit Sanity CMS: verify studio schema registration vs GROQ queries vs TypeScript types. Determine which types are cloud-managed | CMS conformance report | `code-reviewer` | 2h |
-| 1.4 | Audit API routes against Fase 0 `reference.md`: verify all endpoints exist, request/response schemas match | API conformance report | `typescript-reviewer` | 1.5h |
-| 1.5 | Audit auth implementation against Fase 0 docs: verify JWT strategy, role-based expiry, Edge compatibility | Auth conformance report | `typescript-reviewer` | 1.5h |
-| 1.6 | Compile findings into actionable gap list, cross-referenced to Wave assignments in Fase 3 | Gap list (input to Fase 3) | `architect` | 1h |
+**Gating**: Fase 1 must fully complete (including 1.9 gap list) before Fase 2 begins. The gap list is a hard prerequisite for correctly authoring the 6 rule files.
 
-**Fase 1 Total Estimate**: ~9 hours
+**Execution Model**: Tasks 1.1–1.8 run as a **teamwork-preview** squad. Each task has exactly **one Main Agent** (accountable owner), optional Subagents (parallel reviewers or domain specialists), Skills loaded for the main agent, and Workflows invoked during execution.
+
+| # | Task | Main Agent | Subagents | Skills | Workflows | Duration |
+|---|---|---|---|---|---|---|
+| 1.1 | **[COMPLETE]** Audit middleware chain against `execution-lifecycle.md`: verify all 5 domain classes (hub, spoke, dashboard, unknown, preview), short-circuit order, LRU cache, query param preview, anti-patterns. Output: middleware conformance findings (`docs/audit/middleware-findings.md`). | `code-reviewer` | `typescript-reviewer` (Edge boundary check) | `graphify`, `gateguard` | `/code-review` | 2h |
+| 1.2 | **[COMPLETE]** Audit Prisma schema against Fase 0 `data-model.md`: verify all 7 models, 7 enums, field-level accuracy, Auth.js adapter models (Account, Session, VerificationToken) are documented. Output: schema conformance findings (`docs/audit/prisma-findings.md`). | `database-reviewer` | `typescript-reviewer` (type generation check) | `prisma-patterns`, `graphify` | `/code-review` | 1h |
+| 1.3 | **[COMPLETE]** Audit Sanity CMS: verify `studio/schemaTypes/` registration vs `queries.ts` GROQ-queried types vs TypeScript types. **Policy**: all queried types (`certification`, `article`, `page`) MUST be added to repo. Determine cloud-managed status. Output: CMS conformance findings + missing schema list (`docs/audit/sanity-findings.md`). | `spec-miner` | `typescript-reviewer` (type accuracy), `code-reviewer` (GROQ pattern review) | `graphify`, `gateguard` | — | 2h |
+| 1.4 | **[COMPLETE]** Audit all API routes against Fase 0 `reference.md`: inventory every `route.ts` handler, verify request/response schemas match Zod contracts, flag absent endpoints (`GET /api/admin/leads`, `GET /api/dashboard/tracking`). Output: API conformance findings (`docs/audit/api-findings.md`). | `typescript-reviewer` | `spec-miner` (contract extraction) | `api-design`, `graphify`, `gateguard` | `/code-review` | 1.5h |
+| 1.5 | **[COMPLETE]** Audit auth against Fase 0 docs. **Extended scope**: confirm `PrismaAdapter(prisma)` eager import in `auth.config.ts` is Edge-incompatible; **decide refactor pattern** (API loopback vs separate Node-runtime handler); draft ADR-0006 for Wave 1 task 3.1.1. Output: auth conformance findings (`docs/audit/auth-findings.md`) + ADR-0006 (`docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md`). | `typescript-reviewer` | `security-reviewer` (auth security audit), `architect` (ADR decision co-sign) | `security-review`, `graphify`, `gateguard` | `/code-review` | 2.5h |
+| 1.6 | **[COMPLETE]** Audit PostHog + Sentry integrations: initialization patterns, event name consistency with docs, GDPR/LGPD compliance, confirm intentional Phase-1-active status (PRD says Phase 2). Output: analytics audit findings (`docs/audit/analytics-findings.md`). | `security-reviewer` | `code-reviewer` (event consistency check) | `security-review`, `graphify` | `/code-review` | 1h |
+| 1.7 | **[COMPLETE]** Audit 21st SDK Agent Chat: enumerate all files, routes (`/chat`, `/api/an-token`), npm packages (4 deps), auth model. Produce characterization report for Wave 4 task 3.4.3 (document / branch off / remove). Output: 21st SDK footprint report (`docs/audit/sdk-footprint-findings.md`). | `code-reviewer` | `spec-miner` (spec extraction if retained), `security-reviewer` (token endpoint audit) | `graphify`, `gateguard` | — | 1h |
+| 1.8 | **[COMPLETE]** Audit dead code surface: `tailwind.config.ts` (v4 CSS-first, confirm no consumers), `sentry-example-page/` (confirm no production use), `src/lib/api/articles.ts` (174-line inline HTML, map dependency graph). Output: dead code findings + removability risk map (`docs/audit/dead-code-findings.md`). | `refactor-cleaner` | `code-reviewer` (impact analysis) | `graphify`, `gateguard` | `/refactor-clean` | 1h |
+| 1.9 | **[COMPLETE]** **[Integrator Gate]** Compile all findings from 1.1–1.8 into single consolidated Fase 1 Audit Report at `docs/audit/fase-1-report.md`. Cross-reference each finding to its Wave assignment in Fase 3. Trigger merge gate: `validate-ai-docs.cjs` + `graphify update .` | `architect` | `code-reviewer` (review report), `planner` (wave cross-ref), `spec-miner` (gap → spec mapping) | `graphify`, `team-agent-orchestration` | `/update-docs`, `/graphify` | 1.5h |
+
+**Fase 1 Total Estimate**: ~13.5 hours
 
 ### 5.3 Fase 2 — SDD x TDD Collaboration Strategy
 
@@ -488,17 +493,17 @@ Carried forward from v1 and updated. v1 risk IDs preserved for traceability.
 
 | ID | Risk | Likelihood | Impact | Mitigation | v1 Mapping | Status on Branch |
 |---|---|---|---|---|---|---|
-| R1 | Auth Edge Runtime incompatibility — PrismaAdapter import is eager, not Edge-compatible | High | Critical | Wave 1 task 3.1.1 — test on Edge; if fails, refactor to API loopback pattern | v1 R1 | **UNCHANGED** — Still present |
-| R2 | Sanity schema managed in cloud, not in repo — studio/schemaTypes/ may not reflect production | High | Medium | Wave 3 task 3.3.1 — audit and document; if cloud-managed, update docs to reflect | v1 R2 | **UNCHANGED** — Still 3/6 types in studio |
-| R3 | `ignoreBuildErrors: true` hides type errors that will surface when flipped | High | Medium | Wave 1 task 3.1.4 — fix type errors incrementally before flip | v1 R3 | **UNCHANGED** — Still true, now with comment explaining rationale |
-| R4 | 21st SDK agent chat adds undocumented complexity | Medium | Medium | Fase 0 decision + Wave 4 task 3.4.3 | v1 R4 | **UNCHANGED** — Still present, still undocumented |
-| R5 | OpenSpec specs for 6+ modules require significant effort before coding | Medium | Low | Fase 3 produces all specs upfront; architect agent handles bulk creation | v1 R5 | **PARTIALLY ADDRESSED** — Fase 3 now explicitly schedules spec creation |
-| R6 | ECC Antigravity adapter does not support hooks — scope creep prevention relies on rules alone | Medium | Medium | Kompensated by 6 custom rule files (once authored in Fase 2) and AGENTS.md gating | v1 R6 | **PARTIALLY ADDRESSED** — Rules installed but empty; Fase 2 authors them |
-| R7 | Dashboard tracking portal is a large feature, entirely unstarted | High | High | Wave 2 (API) + Wave 5 (UI) — specs first, then incremental implementation | v1 R7 | **UNCHANGED** — Still a stub |
-| **R8** | **[NEW]** HLA docs contain hallucinated content (Redis, Supabase, OpenAI, custom auth endpoints, stale domains) that mislead AI agents | **High** | **High** | **Fase 0 rewrites all affected docs before any code audit** | N/A | **Root cause of the Fase 0 addition** |
-| **R9** | **[NEW]** 6 custom rule files are stubs (5 lines each) — no enforcement until Fase 2 completes | **Medium** | **Medium** | **Fase 2 authors all 6 files with specific enforcement criteria** | N/A | **New finding on this branch** |
-| **R10** | **[NEW]** AGENTS.md has no harness coordination instructions — agents may operate without gating | **Medium** | **Medium** | **Fase 2 task 2.7 updates AGENTS.md with roster, delegation, and gating rules** | N/A | **New finding on this branch** |
-| **R11** | **[NEW]** `testing/strategy.md` (1,153 lines) contains fabricated technical content that could pollute agent context | **High** | **Medium** | **Fase 0 task 0.4 rewrites this file** | N/A | **New finding on this branch** |
+| R1 | Auth Edge Runtime incompatibility — PrismaAdapter import is eager, not Edge-compatible | High | Critical | Wave 1 task 3.1.1 — execute **ADR-0006** Option B (Split Auth Config: `auth.config.ts` Edge-safe JWT vs `auth.ts` Node NextAuth) | v1 R1 | **RESOLVED BY ADR-0006** (Option B selected) |
+| R2 | Sanity schema managed in cloud, not in repo — studio/schemaTypes/ may not reflect production | High | Medium | Wave 3 task 3.3.1 — author local schema files (`certification.ts`, `page.ts`, `article.ts`) per Fase 1 Policy | v1 R2 | **RESOLVED BY FASE 1 POLICY** (Must author local schemas in Wave 3) |
+| R3 | `ignoreBuildErrors: true` hides type errors that will surface when flipped | High | Medium | Wave 1 task 3.1.4 — fix type errors incrementally before flip | v1 R3 | **UNCHANGED** — Scheduled for Wave 1 flip |
+| R4 | 21st SDK agent chat adds undocumented complexity | Medium | Medium | Wave 4 task 3.4.2 — purge 21st SDK Agent Chat completely (6 files, 4 deps) | v1 R4 | **CONFIRMED SCOPE CREEP** — Purge scheduled in Wave 4 |
+| R5 | OpenSpec specs for 6+ modules require significant effort before coding | Medium | Low | Fase 3 produces all specs upfront; architect agent handles bulk creation | v1 R5 | **PARTIALLY ADDRESSED** — Fase 3 explicitly schedules spec creation |
+| R6 | ECC Antigravity adapter does not support hooks — scope creep prevention relies on rules alone | Medium | Medium | Compensated by 6 custom rule files (authored in Fase 2) and AGENTS.md gating | v1 R6 | **PARTIALLY ADDRESSED** — Fase 1 inputs ready for Fase 2 authoring |
+| R7 | Dashboard tracking portal is a large feature, entirely unstarted | High | High | Wave 2 (API) + Wave 5 (UI) — specs first, then incremental implementation | v1 R7 | **SCHEDULED** — Wave 2 API + Wave 5 UI |
+| **R8** | **[NEW]** HLA docs contain hallucinated content (Redis, Supabase, OpenAI, custom auth endpoints, stale domains) that mislead AI agents | **High** | **High** | **Fase 0 rewrites all affected docs before any code audit** | N/A | **COMPLETED IN FASE 0** |
+| **R9** | **[NEW]** 6 custom rule files are stubs (5 lines each) — no enforcement until Fase 2 completes | **Medium** | **Medium** | **Fase 2 authors all 6 files with specific enforcement criteria** | N/A | **INPUTS READY FROM FASE 1** (Ready for Fase 2 authoring) |
+| **R10** | **[NEW]** AGENTS.md has no harness coordination instructions — agents may operate without gating | **Medium** | **Medium** | **Fase 2 task 2.7 updates AGENTS.md with roster, delegation, and gating rules** | N/A | **INPUTS READY FROM FASE 1 & ADR-0006** (Ready for Fase 2 authoring) |
+| **R11** | **[NEW]** `testing/strategy.md` (1,153 lines) contains fabricated technical content that could pollute agent context | **High** | **Medium** | **Fase 0 task 0.4 rewrites this file** | N/A | **COMPLETED IN FASE 0** |
 
 ### 5.7 Success Criteria
 
@@ -513,11 +518,11 @@ Carried forward from v1 and updated.
 | SC5 | Build Health | 0 type errors | `ignoreBuildErrors: false`, `tsc --noEmit` clean | v1 SC5 | **Not yet achieved** |
 | SC6 | PSI Mobile | 90+ | Lighthouse CI after Fase 4 | v1 SC6 | **Not yet measured** |
 | SC7 | Documentation Currency | 0 stale references | No `sentradaya.com`, no Supabase, no OpenAI, no broken relative links, consistent dashboard route representation | v1 SC7 | **11 stale domain refs, 6 route group inconsistencies, 5 broken paths** |
-| **SC8** | **[NEW]** Rule File Completeness | 6/6 rules authored | Each rule file has ≥5 enforcement items and assigned owner agent | N/A | **0/6 currently** (all stubs) |
-| **SC9** | **[NEW]** AGENTS.md Harness Coordination | Contains agent roster, delegation rules, gating rules, OpenSpec workflow requirement | Meets acceptance criteria in Section 2.4 | N/A | **Not met** (thin pointer only) |
-| **SC10** | **[NEW]** Fase 0 Doc Trustworthiness | 0 files in "Needs Fase 0 Rewrite" category | All 25 HLA docs pass cross-reference validation | N/A | **5 files need rewrite** (PRD, vision, testing/strategy, security-policy, reference.md) |
+| **SC8** | **[NEW]** Rule File Completeness | 6/6 rules authored | Each rule file has ≥5 enforcement items and assigned owner agent | N/A | **Fase 1 inputs ready; authoring scheduled in Fase 2** |
+| **SC9** | **[NEW]** AGENTS.md Harness Coordination | Contains agent roster, delegation rules, gating rules, OpenSpec workflow requirement | Meets acceptance criteria in Section 2.4 | N/A | **Fase 1 inputs ready; authoring scheduled in Fase 2** |
+| **SC10** | **[NEW]** Fase 0 Doc Trustworthiness | 0 files in "Needs Fase 0 Rewrite" category | All 25 HLA docs pass cross-reference validation | N/A | **COMPLETED** (All 25 HLA docs pass 7-Pillars validation) |
 
 ---
 
 *End of System Blueprint & Migration Plan v2*
-*Next Step: Review and approve Fase 0 scope, then begin doc rewrite*
+*Next Step: Proceed with Fase 2 (Authoring the 6 platform rule files & updating AGENTS.md)*

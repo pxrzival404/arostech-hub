@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "description": "Rule gate matcher map enforcing AGENTS.md §2.3 rule file reads before domain edits",
+  "gates": [
+    {
+      "id": "cloudflare-edge-runtime",
+      "rule_file": ".agents/rules/cloudflare-edge-runtime.md",
+      "patterns": [
+        "src/middleware.ts",
+        "src/app/api/**"
+      ],
+      "owner_agent": "typescript-reviewer"
+    },
+    {
+      "id": "cloudflare-pages-deploy",
+      "rule_file": ".agents/rules/cloudflare-pages-deploy.md",
+      "patterns": [
+        "next.config.ts",
+        "next.config.js",
+        "next.config.mjs"
+      ],
+      "owner_agent": "architect"
+    },
+    {
+      "id": "sanity-cms-federation",
+      "rule_file": ".agents/rules/sanity-cms-federation.md",
+      "patterns": [
+        "studio/**",
+        "src/lib/sanity/**"
+      ],
+      "owner_agent": "react-reviewer"
+    },
+    {
+      "id": "monorepo-workspace",
+      "rule_file": ".agents/rules/monorepo-workspace.md",
+      "patterns": [
+        "pnpm-workspace.yaml",
+        "package.json"
+      ],
+      "owner_agent": "typescript-reviewer"
+    },
+    {
+      "id": "tailwind-v4",
+      "rule_file": ".agents/rules/tailwind-v4.md",
+      "patterns": [
+        "src/app/globals.css"
+      ],
+      "owner_agent": "react-reviewer"
+    },
+    {
+      "id": "prisma-neon-edge",
+      "rule_file": ".agents/rules/prisma-neon-edge.md",
+      "patterns": [
+        "prisma/schema.prisma",
+        "prisma.ts",
+        "src/lib/prisma.ts"
+      ],
+      "owner_agent": "database-reviewer"
+    }
+  ]
+}

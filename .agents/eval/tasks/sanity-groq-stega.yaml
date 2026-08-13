@@ -1,0 +1,18 @@
+name: sanity-groq-stega
+description: Validate Sanity CMS GROQ defineQuery and visual editing Stega contracts
+repo: .
+files:
+  - studio/**
+  - src/lib/api/sanity/**
+prompt: |
+  Verify Sanity CMS GROQ query pattern and ISR revalidation:
+  1. All GROQ queries must use defineQuery() helper for type safety.
+  2. Implement null-on-error fetching for RSC resilience.
+  3. Visual editing Stega encoding must be environment-aware.
+judge:
+  - type: grep
+    pattern: "defineQuery"
+    files: "src/lib/api/sanity/queries.ts"
+  - type: command
+    command: node .agents/scripts/validate-ai-docs.cjs --modified-only
+commit: "HEAD"

@@ -86,7 +86,25 @@ function extractConversationText(transcriptPath) {
 
   const recent = turns.slice(-MAX_TURNS);
   const formatted = recent.map(t => `**${t.role}:** ${t.text}`).join('\n\n');
-  return formatted.length > MAX_TRANSCRIPT_CHARS ? '...(前略)\n\n' + formatted.slice(-MAX_TRANSCRIPT_CHARS) : formatted;
+  return formatted.length > MAX_TRANSCRIPT_CHARS ? '[...truncated previous turns...]\n\n' + formatted.slice(-MAX_TRANSCRIPT_CHARS) : formatted;
+}
+
+/**
+ * Pure-JS deterministic fallback summary generator when LLM subprocess is unavailable.
+ */
+function getDeterministicFallbackSummary(conversation) {
+  return [
+    '## Session Summary',
+    '',
+    '### Tasks',
+    'Session context extracted via deterministic transcript processing.',
+    '',
+    '### Extracted Conversation Log',
+    conversation,
+    '',
+    '### Note',
+    '*(Generated via pure-JS deterministic transcript extraction)*'
+  ].join('\n');
 }
 
 /**
@@ -106,8 +124,8 @@ function getContextRemainingPct(transcriptPath) {
 }
 
 /**
- * Generate a session summary using `claude -p`.
- * Returns the summary string, or null on failure or when recursion guard is active.
+ * Generate a session summary using `claude -p` or deterministic pure-JS fallback.
+ * Returns the summary string, or deterministic fallback when LLM is unavailable.
  */
 function generateSessionSummary(transcriptPath) {
   if (process.env.ECC_SKIP_LLM_SUMMARY) return null;
@@ -122,7 +140,7 @@ function generateSessionSummary(transcriptPath) {
     '## Prioritize including',
     '- Design decisions and technology choices made this session',
     '- Bugs and problems solved',
-    '- Files changed or created, with a brief description of changes',
+    '- Files changed or created, formatted strictly as clickable file:/// URIs with line range anchors (e.g. [basename](file:///d:/dev/...#L10-L40))',
     '- Unfinished tasks and work to continue in the next session',
     '- Important context the next session needs to know',
     '',
@@ -140,7 +158,7 @@ function generateSessionSummary(transcriptPath) {
     '(design decisions and technology choices)',
     '',
     '### Files Modified',
-    '(files changed or created)',
+    '(files changed or created with valid file:/// URIs)',
     '',
     '### Unresolved Issues',
     '(unfinished tasks and work to continue)',
@@ -156,21 +174,30 @@ function generateSessionSummary(transcriptPath) {
       env: {
         ...process.env,
         CLAUDECODE: '',
-        ECC_SKIP_LLM_SUMMARY: '1'
+        ECC_SKIP_LLM_SUMMARY: '1',
+        PYTHONIOENCODING: 'utf-8'
       },
       timeout: LLM_TIMEOUT_MS,
       shell: process.platform === 'win32'
     });
 
     if (result.error || result.status !== 0) {
-      return null;
+      const reason = result.error ? result.error.message : `exit code ${result.status}`;
+      try {
+        process.stderr.write(`[llm-summary] Warning: LLM subprocess summary unavailable (${reason}). Falling back to deterministic transcript summary.\n`);
+      } catch (_) {}
+      return getDeterministicFallbackSummary(conversation);
     }
 
     const output = (result.stdout || '').trim();
-    return output || null;
-  } catch {
-    return null;
+    if (output) return output;
+  } catch (err) {
+    try {
+      process.stderr.write(`[llm-summary] Warning: LLM subprocess spawn error (${err ? err.message : 'unknown'}). Falling back to deterministic transcript summary.\n`);
+    } catch (_) {}
   }
+
+  return getDeterministicFallbackSummary(conversation);
 }
 
 module.exports = { generateSessionSummary, extractConversationText, getContextRemainingPct, getContextThreshold, getLLMModel };

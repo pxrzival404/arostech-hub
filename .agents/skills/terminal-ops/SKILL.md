@@ -35,6 +35,15 @@ Pull these ECC-native skills into the workflow when relevant:
 - do not claim fixed until the proving command was rerun
 - do not claim pushed unless the branch actually moved upstream
 
+
+## Repository Terminal Standard: Git Bash
+
+This repository mandates **Git Bash** (`bash` / POSIX shell) as the single canonical terminal execution environment across all operating systems:
+- **Canonical Shell**: All terminal operations, build scripts, git commands, and verification loops MUST execute using Git Bash / POSIX shell syntax.
+- **POSIX Scripting & Execution**: Use standard POSIX single quotes ('...') for inline scripts (`python -c '...'` or `node -e '...'`) to prevent shell variable expansion and line-ending corruption.
+- **No PowerShell Cmdlets**: Do NOT use PowerShell-specific cmdlets (`Set-Content`, `Get-ChildItem`, `@""@` heredocs) or CMD syntax in repository scripts or tool invocations.
+- **Forward Slash Paths**: Always use POSIX forward slashes (`/`) for directory paths across all commands and script invocations.
+
 ## Workflow
 
 ### 1. Resolve the working surface

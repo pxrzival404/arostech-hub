@@ -9,7 +9,7 @@ globs: "**/*.{ts,tsx}"
 
 ## PostToolUse Hooks
 
-Configure in `~/.claude/settings.json`:
+Configure in `<harness-home>/settings.json`:
 
 - **Prettier**: Auto-format JS/TS files after edit
 - **TypeScript check**: Run `tsc` after editing `.ts`/`.tsx` files

@@ -5,13 +5,13 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Grep
   - mcp__context7__resolve-library-id
   - mcp__context7__query-docs
 mcpServers:
   - context7
-skills: []
+skills:
+  - graphify
+  - search-first
 ---
 
 ## Prompt Defense Baseline

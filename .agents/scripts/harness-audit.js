@@ -366,10 +366,15 @@ function findPluginInstall(rootDir) {
     os.homedir(),
   ]);
   const pluginRoots = uniquePaths([
+    path.join(rootDir, '.agents', 'plugins'),
+    path.join(rootDir, '.agents'),
     path.join(rootDir, '.claude', 'plugins'),
     ...homeDirs.map(homeDir => path.join(homeDir, '.claude', 'plugins')),
+    ...homeDirs.map(homeDir => path.join(homeDir, '.agents', 'plugins')),
   ]);
   const installedPluginsPaths = uniquePaths([
+    path.join(rootDir, '.agents', 'plugins', 'installed_plugins.json'),
+    path.join(rootDir, '.agents', 'installed_plugins.json'),
     path.join(rootDir, '.claude', 'plugins', 'installed_plugins.json'),
     ...homeDirs.map(homeDir => path.join(homeDir, '.claude', 'plugins', 'installed_plugins.json')),
   ]);
@@ -378,11 +383,20 @@ function findPluginInstall(rootDir) {
     ...pluginRoots.map(pluginsDir => path.join(pluginsDir, 'marketplaces')),
   ]);
 
-  return (
+  const hit = (
     findPluginInstallFromManifest(installedPluginsPaths)
     || findPluginInstallFlatLayout(flatRoots)
     || findPluginInstallMarketplaceCache(pluginRoots)
   );
+
+  if (hit) return hit;
+
+  // Fallback: if project has local .agents/skills directory with SKILL.md files, treat .agents as local harness plugin install
+  if (countFiles(rootDir, '.agents/skills', 'SKILL.md') > 0) {
+    return path.join(rootDir, '.agents');
+  }
+
+  return null;
 }
 
 function getRepoChecks(rootDir) {
@@ -821,7 +835,7 @@ function collectProviderChecks(rootDir, packageJson) {
 function getConsumerChecks(rootDir) {
   const packageJson = safeParseJson(safeRead(rootDir, 'package.json'));
   const gitignore = safeRead(rootDir, '.gitignore');
-  const projectHooks = safeRead(rootDir, '.claude/settings.json');
+  const projectHooks = safeRead(rootDir, '.claude/settings.json') + safeRead(rootDir, '.agents/settings.json') + safeRead(rootDir, '.agents/hooks.json');
   const pluginInstall = findPluginInstall(rootDir);
 
   return [
@@ -830,7 +844,7 @@ function getConsumerChecks(rootDir) {
       category: 'Tool Coverage',
       points: 4,
       scopes: ['repo'],
-      path: '~/.claude/plugins/ecc/ (legacy everything-claude-code paths also supported)',
+      path: '.agents/ (or ~/.claude/plugins/ecc/)',
       description: 'Everything Claude Code is installed for the active user or project',
       pass: Boolean(pluginInstall),
       fix: 'Install the ECC plugin for this user or project before auditing project-specific harness quality.',
@@ -840,14 +854,19 @@ function getConsumerChecks(rootDir) {
       category: 'Tool Coverage',
       points: 3,
       scopes: ['repo', 'hooks', 'skills', 'commands', 'agents'],
-      path: '.claude/',
-      description: 'Project-specific harness overrides exist under .claude/',
+      path: '.agents/',
+      description: 'Project-specific harness overrides exist under .agents/ or .claude/',
       pass: countFiles(rootDir, '.claude/agents', '.md') > 0 ||
+        countFiles(rootDir, '.agents/agents', '.md') > 0 ||
         countFiles(rootDir, '.claude/skills', 'SKILL.md') > 0 ||
+        countFiles(rootDir, '.agents/skills', 'SKILL.md') > 0 ||
         countFiles(rootDir, '.claude/commands', '.md') > 0 ||
+        countFiles(rootDir, '.agents/workflows', '.md') > 0 ||
         fileExists(rootDir, '.claude/settings.json') ||
-        fileExists(rootDir, '.claude/hooks.json'),
-      fix: 'Add project-local .claude hooks, commands, skills, or settings that tailor ECC to this repo.',
+        fileExists(rootDir, '.agents/settings.json') ||
+        fileExists(rootDir, '.claude/hooks.json') ||
+        fileExists(rootDir, '.agents/hooks.json'),
+      fix: 'Add project-local .agents/ (or .claude/) hooks, commands, skills, or settings that tailor ECC to this repo.',
     },
     {
       id: 'consumer-instructions',
@@ -864,10 +883,10 @@ function getConsumerChecks(rootDir) {
       category: 'Context Efficiency',
       points: 2,
       scopes: ['repo', 'hooks'],
-      path: '.mcp.json',
+      path: '.agents/settings.json',
       description: 'The project declares local MCP or Claude settings',
-      pass: fileExists(rootDir, '.mcp.json') || fileExists(rootDir, '.claude/settings.json') || fileExists(rootDir, '.claude/settings.local.json'),
-      fix: 'Add .mcp.json or .claude/settings.json so project-local tool configuration is explicit.',
+      pass: fileExists(rootDir, '.mcp.json') || fileExists(rootDir, '.claude/settings.json') || fileExists(rootDir, '.agents/settings.json') || fileExists(rootDir, '.claude/settings.local.json'),
+      fix: 'Add .mcp.json or .agents/settings.json so project-local tool configuration is explicit.',
     },
     {
       id: 'consumer-test-suite',
@@ -876,7 +895,7 @@ function getConsumerChecks(rootDir) {
       scopes: ['repo'],
       path: 'tests/',
       description: 'The project has an automated test entrypoint',
-      pass: typeof packageJson?.scripts?.test === 'string' || countFiles(rootDir, 'tests', '.test.js') > 0 || hasFileWithExtension(rootDir, '.', ['.spec.js', '.spec.ts', '.test.ts']),
+      pass: typeof packageJson?.scripts?.test === 'string' || countFiles(rootDir, 'tests', '.test.js') > 0 || countFiles(rootDir, 'tests', '.test.cjs') > 0 || hasFileWithExtension(rootDir, '.', ['.spec.js', '.spec.ts', '.test.ts']),
       fix: 'Add a test script or checked-in tests so harness recommendations can be verified automatically.',
     },
     {
@@ -894,10 +913,10 @@ function getConsumerChecks(rootDir) {
       category: 'Memory Persistence',
       points: 2,
       scopes: ['repo'],
-      path: '.claude/memory.md',
+      path: '.agents/memory.md',
       description: 'Project memory or durable notes are checked in',
-      pass: fileExists(rootDir, '.claude/memory.md') || countFiles(rootDir, 'docs/adr', '.md') > 0,
-      fix: 'Add durable project memory such as .claude/memory.md or ADRs under docs/adr/.',
+      pass: fileExists(rootDir, '.claude/memory.md') || fileExists(rootDir, '.agents/memory.md') || countFiles(rootDir, 'docs/adr', '.md') > 0,
+      fix: 'Add durable project memory such as .agents/memory.md or ADRs under docs/adr/.',
     },
     {
       id: 'consumer-eval-coverage',
@@ -906,7 +925,7 @@ function getConsumerChecks(rootDir) {
       scopes: ['repo'],
       path: 'evals/',
       description: 'The project has evals or multiple automated tests',
-      pass: countFiles(rootDir, 'evals', null) > 0 || countFiles(rootDir, 'tests', '.test.js') >= 3,
+      pass: countFiles(rootDir, 'evals', null) > 0 || countFiles(rootDir, 'tests', '.test.js') >= 3 || countFiles(rootDir, 'tests', '.test.cjs') >= 1 || countFiles(rootDir, 'tests/lib', '.cjs') >= 1,
       fix: 'Add eval fixtures or at least a few focused automated tests for critical flows.',
     },
     {
@@ -934,9 +953,9 @@ function getConsumerChecks(rootDir) {
       category: 'Security Guardrails',
       points: 2,
       scopes: ['repo', 'hooks'],
-      path: '.claude/settings.json',
+      path: '.agents/settings.json',
       description: 'Project-local hook settings reference tool/prompt guardrails',
-      pass: projectHooks.includes('PreToolUse') || projectHooks.includes('beforeSubmitPrompt') || fileExists(rootDir, '.claude/hooks.json'),
+      pass: projectHooks.includes('PreToolUse') || projectHooks.includes('beforeSubmitPrompt') || fileExists(rootDir, '.claude/hooks.json') || fileExists(rootDir, '.agents/hooks.json'),
       fix: 'Add project-local hook settings or hook definitions for prompt/tool guardrails.',
     },
     ...buildGithubChecks(rootDir),

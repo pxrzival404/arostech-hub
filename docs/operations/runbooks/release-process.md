@@ -50,7 +50,7 @@ sequenceDiagram
 If manual deployment is required from a verified local environment:
 
 ```bash
-# 1. Compile Edge Bundle (@cloudflare/next-on-pages)
+# 1. Compile Edge Bundle (@opennextjs/cloudflare)
 pnpm pages:build
 
 # 2. Preview Edge Build locally via Wrangler

@@ -492,8 +492,8 @@ function extractCommand(rawInput) {
     const cmd = parsed.tool_input?.command;
     if (typeof cmd === 'string') return cmd;
 
-    // Generic JSON formats
-    for (const key of ['command', 'cmd', 'input', 'shell', 'script']) {
+    // Harness-agnostic / Antigravity / Generic JSON formats
+    for (const key of ['CommandLine', 'commandLine', 'command', 'cmd', 'input', 'shell', 'script']) {
       if (typeof parsed[key] === 'string') return parsed[key];
     }
 

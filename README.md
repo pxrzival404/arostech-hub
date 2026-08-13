@@ -33,7 +33,7 @@ graph TD
 
 <!-- AUTO-GENERATED START -->
 > **Deployment Platform:** Cloudflare Pages (`dayaberkah.id`) — Unified Production & Staging
-> **Architecture:** Next.js 16 Edge Runtime (`@cloudflare/next-on-pages`)
+> **Architecture:** Next.js 16 Edge Runtime (`@opennextjs/cloudflare`)
 <!-- AUTO-GENERATED END -->
 
 ---
@@ -42,7 +42,7 @@ graph TD
 
 | Layer | Technology | Description |
 | :--- | :--- | :--- |
-| **Hosting Platform** | Cloudflare Pages | 100% Edge hosting on `@cloudflare/next-on-pages` |
+| **Hosting Platform** | Cloudflare Pages | 100% Edge hosting on `@opennextjs/cloudflare` (`open-next.config.ts`) |
 | **Runtime & Core** | Next.js 16.2.6 & React 19 | App Router, server components, and Edge middleware routing. |
 | **Content CMS** | Sanity.io | Headless CMS for product catalog, portfolios, and custom templates. |
 | **Database** | Neon Postgres | Scalable serverless database managed via Prisma ORM. |
@@ -118,7 +118,7 @@ Execute these scripts during development and testing:
 
 * `pnpm dev` — Starts the Next.js development server.
 * `pnpm build` — Compiles the Next.js build bundle for production.
-* `pnpm pages:build` — Compiles edge bundle for Cloudflare Pages (`@cloudflare/next-on-pages`). *Note for Windows:* Requires `bash` in `PATH` (run via Git Bash, WSL, or ensure `bash.exe` is in `PATH`; Cloudflare Pages CI runs natively on Linux).
+* `pnpm pages:build` — Compiles edge bundle for Cloudflare Pages via OpenNext (`@opennextjs/cloudflare`).
 * `pnpm pages:preview` — Runs local Wrangler Cloudflare Pages preview server.
 * `pnpm pages:deploy` — Deploys project build bundle to Cloudflare Pages.
 * `pnpm start` — Runs the compiled production application.

@@ -5,7 +5,7 @@
  * Displays: model | task | $cost Nt Nf Nm | dir ██░░ N%
  *
  * Registered in settings.json under "statusLine", not in hooks.json.
- * Reads bridge file from ecc-metrics-bridge.js and stdin from Claude Code runtime.
+ * Reads bridge file from ecc-metrics-bridge.js and stdin from agent harness runtime.
  */
 
 'use strict';
@@ -37,7 +37,7 @@ function formatDuration(isoTimestamp) {
 
 /**
  * Build context progress bar with ANSI colors.
- * @param {number} remaining - Raw remaining percentage from Claude Code
+ * @param {number} remaining - Raw remaining percentage from agent harness
  * @returns {string} Colored bar string
  */
 function buildContextBar(remaining) {

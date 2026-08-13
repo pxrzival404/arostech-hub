@@ -33,7 +33,7 @@ const DEFAULT_SKILL_PROBE = path.join('skills', 'continuous-learning-v2');
  * Resolve the ECC source root directory.
  *
  * Tries, in order:
- *   1. CLAUDE_PLUGIN_ROOT env var (set by Claude Code for hooks, or by user)
+ *   1. CLAUDE_PLUGIN_ROOT env var (set by harness for hooks, or by user)
  *   2. Standard install location (~/.claude/) — when scripts exist there
  *   3. Known plugin roots under ~/.claude/plugins/ (current + legacy slugs)
  *   4. Plugin cache auto-detection — scans ~/.claude/plugins/cache/{ecc,everything-claude-code}/
@@ -135,7 +135,7 @@ function resolveEccRoot(options = {}) {
  *
  * This minified form contains no spread, no nested array literals, and no
  * escaped double quotes, so it survives `node -e "..."` quoting on every shell.
- * When CLAUDE_PLUGIN_ROOT is set (as Claude Code does for plugin hooks and
+ * When CLAUDE_PLUGIN_ROOT is set (as agent harness does for plugin hooks and
  * commands) it is used directly. Otherwise the inline probes the same set of
  * locations resolveEccRoot() knows about — ~/.claude, the exact plugin roots
  * under ~/.claude/plugins/, and the versioned plugin cache — only far enough to

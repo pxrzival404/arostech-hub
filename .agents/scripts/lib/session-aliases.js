@@ -1,5 +1,5 @@
 /**
- * Session Aliases Library for Claude Code
+ * Session Aliases Library for Agent Harness (Antigravity / Claude Code)
  * Manages session aliases stored in $ECC_AGENT_DATA_HOME/session-aliases.json (default ~/.claude).
  */
 

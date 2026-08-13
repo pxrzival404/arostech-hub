@@ -153,7 +153,7 @@ Developers MUST execute build type-checking and unit testing scripts prior to co
 ```bash
 pnpm dev              # Local dev server (lvh.me:3000)
 pnpm build            # Production Next.js build
-pnpm pages:build      # Cloudflare Pages edge build (requires bash in PATH)
+pnpm pages:build      # OpenNext Cloudflare edge build (@opennextjs/cloudflare)
 pnpm pages:preview    # Local Wrangler edge preview
 pnpm test             # Run Jest unit/integration test suite
 pnpm test:coverage    # Run Jest coverage report

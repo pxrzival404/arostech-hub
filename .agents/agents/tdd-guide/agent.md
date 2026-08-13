@@ -5,11 +5,8 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Grep
+  - run_command
+  - grep_search
 mcpServers: []
 skills:
   - tdd-workflow

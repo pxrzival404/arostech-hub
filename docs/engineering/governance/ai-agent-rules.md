@@ -28,7 +28,7 @@ authoritative_references:
 
 ### 2.1 Tech Stack
 - **Framework**: Next.js 16.2.6 (App Router + Edge Middleware)
-- **Deployment Platform**: Cloudflare Pages (via `@cloudflare/next-on-pages` edge runtime)
+- **Deployment Platform**: Cloudflare Pages (via `@opennextjs/cloudflare` edge runtime)
 - **Language**: TypeScript 5.7+
 - **Styling**: Tailwind CSS v4 + Design Tokens
 - **Database / ORM**: Neon Postgres + Prisma ORM (Edge driver `@neondatabase/serverless`)

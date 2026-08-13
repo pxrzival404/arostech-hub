@@ -1,26 +1,24 @@
 ---
-trigger: always_on
+trigger: model_decision
+description: Agent delegation protocol — roster, parallel execution, and completion contract.
 ---
 
 # Agent Orchestration
 
+> **Workflow context**: This rule governs **Layer 4 (Agent Delegation)** of the 8-Layer Workflow.
+> Agent routing authority: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) ("Domain Glob Routing Matrix") and [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) (Layer 4).
+> Do NOT reference hardcoded agent names from this file for routing — follow the Layer 4 Delegation matrix.
+
 ## Available Agents
 
-Located in `~/.claude/agents/`:
+> **SSOT**: Agent roster and domain routing is defined in [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) and [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md).
+> This file contains delegation **protocol** only, not the roster.
 
-| Agent | Purpose | When to Use |
-|-------|---------|-------------|
-| planner | Implementation planning | Complex features, refactoring |
-| architect | System design | Architectural decisions |
-| tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code review | After writing code |
-| security-reviewer | Security analysis | Before commits |
-| build-error-resolver | Fix build errors | When build fails |
-| e2e-runner | E2E testing | Critical user flows |
-| refactor-cleaner | Dead code cleanup | Code maintenance |
-| doc-updater | Documentation | Updating docs |
-| rust-reviewer | Rust code review | Rust projects |
-| harmonyos-app-resolver | HarmonyOS app development | HarmonyOS/ArkTS projects |
+**Quick delegation triggers** (see common-extended-workflow.md Layer 4 for routing flow):
+- Complex feature (3+ files) → `planner` → `architect` → `tdd-guide`
+- Code just written → `code-reviewer`
+- Bug fix / new feature → `tdd-guide`
+- Architectural decision → `architect`
 
 ## Immediate Agent Usage
 

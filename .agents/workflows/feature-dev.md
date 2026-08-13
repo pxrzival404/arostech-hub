@@ -2,9 +2,18 @@
 description: Guided feature development with codebase understanding and architecture focus
 ---
 
+> [!IMPORTANT]
+> **8-Layer Workflow Compliance**: For any production code changes, this workflow MUST invoke
+> `/opsx-propose` (Layer 3 SDD) before implementation begins.
+> Direct code generation without an OpenSpec spec (`proposal.md` + `specs/*.md` + `tasks.md`) is
+> a governance violation per [`AGENTS.md Section 2.4`](file:///d:/dev/arostech-hub/AGENTS.md).
+> See [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md)
+> for the complete 8-layer sequence with gate conditions.
+
 A structured feature-development workflow that emphasizes understanding existing code before writing new code.
 
 ## Phases
+
 
 ### 1. Discovery
 
@@ -47,3 +56,10 @@ A structured feature-development workflow that emphasizes understanding existing
 - summarize what was built
 - list follow-up items or limitations
 - provide testing instructions
+
+## Delegation Completion Contract
+
+When invoking sub-agents (`code-explorer`, `code-architect`, `code-reviewer`):
+- The orchestrating agent MUST wait synchronously for all sub-agents to complete and return their findings.
+- Fire-and-forget delegation is forbidden; ending a turn with background sub-agents running orphans their deliverables.
+- Synthesize all sub-agent responses before presenting the phase output to the user.

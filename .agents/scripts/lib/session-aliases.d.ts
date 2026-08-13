@@ -1,5 +1,5 @@
 /**
- * Session Aliases Library for Claude Code.
+ * Session Aliases Library for Agent Harness.
  * Manages named aliases for session files, stored in $ECC_AGENT_DATA_HOME/session-aliases.json (default ~/.claude).
  */
 

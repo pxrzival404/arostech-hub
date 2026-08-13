@@ -31,10 +31,10 @@ Identify the project's build tool and run the build:
 
 For each error:
 
-1. **Read the file** — Use Read tool to see error context (10 lines around the error)
+1. **Read the file** — Use `view_file` (or `Read`) tool to see error context (10 lines around the error)
 2. **Diagnose** — Identify root cause (missing import, wrong type, syntax error)
-3. **Fix minimally** — Use Edit tool for the smallest change that resolves the error
-4. **Re-run build** — Verify the error is gone and no new errors introduced
+3. **Fix minimally** — Use `replace_file_content` / `multi_replace_file_content` (or `Edit` / `Write`) tool for the smallest change that resolves the error
+4. **Re-run build** — Use `run_command` (or `Bash`) to verify the error is gone and no new errors introduced
 5. **Move to next** — Continue with remaining errors
 
 ## Step 4: Guardrails

@@ -226,6 +226,16 @@ function getCursorSessionEnvPayload(options = {}) {
   };
 }
 
+function getSpecificationPatterns() {
+  return ['docs/**/*.md', 'openspec/**/*.md'];
+}
+
+function isSpecificationFile(filePath) {
+  if (!filePath || typeof filePath !== 'string') return false;
+  const normalized = filePath.replace(/\\/g, '/');
+  return normalized.startsWith('docs/') || normalized.startsWith('openspec/');
+}
+
 module.exports = {
   AGENT_DATA_HOME_ENV,
   DEFAULT_CLAUDE_DIR_NAME,
@@ -242,4 +252,7 @@ module.exports = {
   resolveAgentDataHome,
   ensureAgentDataHomeEnv,
   getCursorSessionEnvPayload,
+  getSpecificationPatterns,
+  isSpecificationFile,
 };
+

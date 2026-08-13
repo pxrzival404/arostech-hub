@@ -1,5 +1,6 @@
 ---
-trigger: manual
+trigger: model_decision
+description: Deep-thinking, context management, and prompt engineering rules for autonomous agents — applies at L3 (SDD Proposal) and L5 (RED phase).
 ---
 
 # Non-Prescriptive Deep-Thinking & Context Management Prompt Engineering Rules
@@ -22,7 +23,7 @@ This rule defines mandatory behavioral guidelines, prompt engineering patterns, 
 
 ## 3. Context Boundary Governance & Token Optimization
 - **Explicit Deliverable Scoping**: Prompts MUST explicitly restrict file deliverables to target directories (e.g., scoping proposal generation strictly to `docs/OBJ-XX/artifacts/` when directed) to prevent context window clutter and unnecessary file churn.
-- **Persistent Knowledge Graph Retrieval**: Prefer querying persistent knowledge graphs ([graphify-out/graph.json](file:///d:/dev/agy-os/graphify-out/graph.json)) or session persistence (`/save-session`, `/resume-session`) over dumping raw codebase files into active prompt memory.
+- **Persistent Knowledge Graph Retrieval**: Prefer querying persistent knowledge graphs ([graphify-out/graph.json](file:///d:/dev/arostech-hub/graphify-out/graph.json)) or session persistence (`/save-session`, `/resume-session`) over dumping raw codebase files into active prompt memory.
 - **Safe Token Footprint**: Structure prompts to maintain custom prompt token utilization strictly within the safe governance threshold of **85.0%–95.0%**.
 
 ---
@@ -57,7 +58,7 @@ Produce fully populated, spec-driven deliverables:
 
 ## MANDATORY INVARIANTS
 - Strictly use forward slashes (/) and clickable file:/// URIs.
-- Target repository (`d:/CLAUDE-PROJECT/website`) is READ-ONLY.
+- Target repository (`<target-project-root>`) is READ-ONLY.
 ```
 
 ---

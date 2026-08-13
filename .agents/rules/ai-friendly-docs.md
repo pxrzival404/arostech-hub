@@ -1,7 +1,13 @@
+---
+trigger: model_decision
+description: 7-Pillars AI-Friendly Documentation standard for all docs/ artifacts. Enforced at Layer 1 (HLA Alignment) and Layer 8 (Post-Archive Documentation Sync).
+---
+
 # AI-Friendly Documentation Rule (7 Pillars Standard)
 
 > **Scope**: All documentation files under `docs/` in the `arostech-hub` repository.
 > **Standard**: AI-Agent & LLM-Optimized Documentation Baseline v4.0.0
+> **Workflow context**: This rule enforces **Layer 1 (HLA Alignment)** standards for `docs/`. Apply at Layer 8 post-archive when syncing updated documentation.
 
 ---
 
@@ -54,6 +60,12 @@ Include concrete TypeScript interfaces, Zod schemas, or Prisma definitions inste
 
 ### 5. Graphify Knowledge Graph Anchoring
 Link documentation sections directly to Graphify Node IDs (e.g. `doc:docs/strategy/prd.md`) and God Nodes. Agents SHOULD use GraphRAG tools (`graphify query`, `graphify path`) before raw file dumping.
+
+After any `docs/` modification, run:
+```bash
+graphify update .  # sync AST — no API cost
+```
+Then verify node IDs are resolvable: `graphify explain "doc:<path>"`
 
 ### 6. OpenSpec SDD Lifecycle Mapping
 Align document changes with OpenSpec lifecycle artifacts (`proposal.md` -> `specs/` -> `design.md` -> `tasks.md`). Use explicit Delta headers (`## ADDED Requirements`, `## MODIFIED Requirements`, `## REMOVED Requirements`).

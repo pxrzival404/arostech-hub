@@ -30,6 +30,13 @@ Intercept the response flow to offer the user a choice about response depth **be
 
 **Do not trigger** when: user already set a level this session (maintain it silently), or the answer is trivially one line.
 
+
+## Context Load & Instinct Threshold Guardrails
+
+- **Initial Session Context Cap**: Capped to DEFAULT_SESSION_START_CONTEXT_MAX_CHARS = 4000 to avoid initial prompt context bloat.
+- **Instinct Confidence Threshold**: Enforce DEFAULT_INSTINCT_CONFIDENCE_THRESHOLD = 0.85 for admitting project instincts into active context.
+- **Token Budget Preservation**: Prefer concise, high-density responses over repetitive narrative summaries.
+
 ## How It Works
 
 ### Step 1 — Estimate input tokens

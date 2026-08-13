@@ -377,6 +377,15 @@ Report to user:
 
 ---
 
+## Delegation Completion Contract
+
+When invoking sub-agents during execution (e.g. `tdd-guide`, `code-reviewer`, `typescript-reviewer`):
+- The parent agent MUST wait synchronously for all sub-agent tool calls to finish and report back.
+- Fire-and-forget sub-agent invocation is strictly prohibited.
+- Integrate all sub-agent validation results before concluding any implementation step.
+
+---
+
 ## Next Steps
 
 - Run `/code-review` to review changes before committing

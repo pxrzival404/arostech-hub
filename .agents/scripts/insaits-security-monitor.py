@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-InsAIts Security Monitor -- PreToolUse Hook for Claude Code
+InsAIts Security Monitor -- PreToolUse Hook for Agent Harness
 ============================================================
 
-Real-time security monitoring for Claude Code tool inputs.
+Real-time security monitoring for agent harness tool inputs.
 Detects credential exposure, prompt injection, behavioral anomalies,
 hallucination chains, and 20+ other anomaly types -- runs 100% locally.
 
@@ -31,7 +31,7 @@ Setup:
   }
 
 How it works:
-  Claude Code passes tool input as JSON on stdin.
+  Agent harness passes tool input as JSON on stdin.
   This script runs InsAIts anomaly detection on the content.
   Exit code 0 = clean (pass through).
   Exit code 2 = critical issue found (blocks tool execution).
@@ -256,7 +256,7 @@ def main() -> None:
     feedback: str = format_feedback(anomalies)
 
     if has_critical:
-        # stdout feedback -> Claude Code shows to the model
+        # stdout feedback -> Agent harness shows to the model
         sys.stdout.write(feedback + "\n")
         sys.exit(2)  # PreToolUse exit 2 = block tool execution
     else:

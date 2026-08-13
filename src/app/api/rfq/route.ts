@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rfqB2BSchema, rfqB2GSchema } from '@/lib/schema/rfq-schemas'
 import { prisma } from '@/lib/db/prisma'
-import { Segment, NotificationType } from '@prisma/client'
-import { NotificationQueue } from '../../../lib/api/notifications/queue'
+import type { Segment } from '@prisma/client'
+import { NotificationQueue, NotificationType } from '@/lib/api/notifications/queue'
 import { alertRfqFailure } from '@/lib/api/notifications/telegram'
 import { buildWhatsAppFallbackUrl } from '@/lib/api/notifications/whatsapp'
 import { getClientIp, createRateLimiter } from '@/lib/rate-limiter'
@@ -12,7 +12,7 @@ const limiter = createRateLimiter({
   maxRequests: 5,
 })
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 
 /**

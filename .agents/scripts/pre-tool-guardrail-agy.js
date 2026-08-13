@@ -82,27 +82,28 @@ function main() {
 
   const { paths, commands } = extractPathsAndCommands(toolName, toolInput);
 
-  // Check 1: Windows backslash ('\') in file paths or tool arguments
+  // Check 1: Windows backslash ('\') warning / strict enforcement
+  const strictSlash = process.env.AGY_ENFORCE_FORWARD_SLASH_STRICT === '1';
   for (const p of paths) {
-    if (hasWindowsBackslash(p)) {
+    if (hasWindowsBackslash(p) && strictSlash) {
       process.stderr.write(
-        "AGY Guardrail Violation: Windows backslashes ('\\') are strictly prohibited per AGENTS.md Section 0. Path argument: '" + p + "'. All file paths must use forward slashes ('/').\n"
+        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited when AGY_ENFORCE_FORWARD_SLASH_STRICT=1. Path: '" + p + "'.\n"
       );
       process.exit(2);
     }
   }
 
-  // Check 2: Windows backslash ('\') or destructive operations in command strings
+  // Check 2: Destructive operations in command strings
   for (const cmd of commands) {
-    if (hasWindowsBackslash(cmd)) {
+    if (hasWindowsBackslash(cmd) && strictSlash) {
       process.stderr.write(
-        "AGY Guardrail Violation: Windows backslashes ('\\') are strictly prohibited in shell execution strings per AGENTS.md Section 0.\n"
+        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited in shell execution strings when AGY_ENFORCE_FORWARD_SLASH_STRICT=1.\n"
       );
       process.exit(2);
     }
     if (isDestructiveCommand(cmd)) {
       process.stderr.write(
-        "AGY Guardrail Violation: Destructive command or unauthorized modification targeting READ-ONLY target repository ('d:/CLAUDE-PROJECT/website') is strictly prohibited per AGENTS.md Section 1. All modifications must be produced as patch files saved in harness/patches/.\n"
+        "AGY Guardrail Violation: Destructive command targeting READ-ONLY target repository is prohibited. All modifications must be produced as patch files saved in harness/patches/.\n"
       );
       process.exit(2);
     }
@@ -123,8 +124,9 @@ function main() {
   for (const p of paths) {
     if (isReadonlyViolation(p)) {
       if (isModifyingTool || isReadonlyViolation(p)) {
+        const readonlyTarget = process.env.AGY_READONLY_REPO || 'workspace';
         process.stderr.write(
-          "AGY Guardrail Violation: Target repository ('d:/CLAUDE-PROJECT/website') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/.\n"
+          "AGY Guardrail Violation: Target repository ('" + readonlyTarget + "') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/.\n"
         );
         process.exit(2);
       }

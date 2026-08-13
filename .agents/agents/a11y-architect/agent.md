@@ -4,12 +4,6 @@ description: Accessibility Architect specializing in WCAG 2.2 compliance for Web
 mainAgent: true
 subagent: true
 model: flash
-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
 mcpServers: []
 skills:
   - accessibility

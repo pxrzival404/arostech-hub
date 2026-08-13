@@ -5,14 +5,12 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - Edit
+  - run_command
+  - replace_file_content
 mcpServers: []
 skills:
   - agentic-engineering
+max_iterations: 10
 color: orange
 ---
 

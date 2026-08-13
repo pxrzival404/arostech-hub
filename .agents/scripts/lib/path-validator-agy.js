@@ -15,8 +15,8 @@ function hasWindowsBackslash(str) {
 }
 
 /**
- * Checks if a path targets the READ-ONLY target repository (d:/CLAUDE-PROJECT/website)
- * or relative website/ target path outside of harness/patches/.
+ * Checks if a path targets the READ-ONLY target repository (configured via AGY_READONLY_REPO)
+ * outside of harness/patches/.
  * @param {string} pathStr - Path string to inspect
  * @returns {boolean} True if path violates the READ-ONLY boundary
  */
@@ -30,15 +30,8 @@ function isReadonlyViolation(pathStr) {
     return false;
   }
 
-  // Absolute or normalized path checks targeting website repo
-  if (
-    normalized === 'd:/claude-project/website' ||
-    normalized.startsWith('d:/claude-project/website/') ||
-    normalized === 'website' ||
-    normalized.startsWith('website/') ||
-    normalized.endsWith('/website') ||
-    normalized.includes('/website/')
-  ) {
+  const readonlyRepo = (process.env.AGY_READONLY_REPO || '').replace(/\\/g, '/').toLowerCase();
+  if (readonlyRepo && (normalized === readonlyRepo || normalized.startsWith(readonlyRepo + '/'))) {
     return true;
   }
 

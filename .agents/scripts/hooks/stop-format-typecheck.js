@@ -55,10 +55,11 @@ function formatBatch(projectRoot, files, timeoutMs) {
   const existingFiles = files.filter(f => fs.existsSync(f));
   if (existingFiles.length === 0) return;
 
+  const writeMode = process.env.ECC_FORMAT_WRITE === '1';
   const fileArgs =
     formatter === 'biome'
-      ? [...resolved.prefix, 'check', '--write', ...existingFiles]
-      : [...resolved.prefix, '--write', ...existingFiles];
+      ? [...resolved.prefix, 'check', ...(writeMode ? ['--write'] : []), ...existingFiles]
+      : [...resolved.prefix, ...(writeMode ? ['--write'] : ['--check']), ...existingFiles];
 
   try {
     if (process.platform === 'win32' && resolved.bin.endsWith('.cmd')) {
@@ -67,12 +68,22 @@ function formatBatch(projectRoot, files, timeoutMs) {
         return;
       }
       const result = spawnSync(resolved.bin, fileArgs, { cwd: projectRoot, shell: true, stdio: 'pipe', timeout: timeoutMs });
-      if (result.error) throw result.error;
+      if (result.status !== 0 && (result.stderr || result.stdout)) {
+        const msg = (result.stderr || result.stdout).toString().trim();
+        if (msg) {
+          process.stderr.write(`[Hook] stop-format-typecheck: format notice:\n${msg.slice(0, 500)}\n`);
+        }
+      }
     } else {
       execFileSync(resolved.bin, fileArgs, { cwd: projectRoot, stdio: ['pipe', 'pipe', 'pipe'], timeout: timeoutMs });
     }
-  } catch {
-    // Formatter not installed or failed — non-blocking
+  } catch (err) {
+    if (err.stderr || err.stdout) {
+      const msg = (err.stderr || err.stdout).toString().trim();
+      if (msg) {
+        process.stderr.write(`[Hook] stop-format-typecheck: format notice:\n${msg.slice(0, 500)}\n`);
+      }
+    }
   }
 }
 

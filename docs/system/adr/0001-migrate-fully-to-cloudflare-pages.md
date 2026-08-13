@@ -2,17 +2,20 @@
 id: ADR-0001
 title: "ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure"
 version: 4.0.0
-status: ACCEPTED
+status: "SUPERSEDED (by ADR-0007)"
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L28-L38"
+  adr_0007: "file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md#L1-L50"
 ---
 
 # ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure
 
-> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
+> **SUPERSEDED NOTICE**: This decision record regarding legacy `@cloudflare/next-on-pages` build configuration is **SUPERSEDED** by [`ADR-0007: Adopt OpenNext for Cloudflare Adapter`](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md). The build adapter and output directory have been migrated to `@opennextjs/cloudflare` (`.open-next/assets`).
+
+> **OpenSpec SDD Lifecycle Mapping**: `SUPERSEDED: 2026-08-13 Superceded by ADR-0007`  
 > **Authoritative Baseline Reference**: Architectural Decision Record governing the consolidation of preview, staging, and production hosting environments onto **Cloudflare Pages**, synchronized with PRD v4.0.0 ([`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L28-L38)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md`
 

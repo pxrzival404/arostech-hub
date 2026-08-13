@@ -20,7 +20,7 @@ authoritative_references:
 
 ## OpenSpec Delta
 
-- `MODIFIED`: Updated decision log matrix to include Greenfield Subdomain Routing (ADR-0003), Universal RFQ Cart Schema (ADR-0004), and Auth.js v5 Client Tracking Portal Integration (ADR-0005).
+- `MODIFIED`: Updated decision log matrix to mark ADR-0001 and ADR-0002 as Superseded by ADR-0007, and added ADR-0007 for OpenNext Cloudflare Adapter adoption.
 
 ---
 
@@ -40,11 +40,13 @@ All architectural decisions governing system topology, data schemas, routing, de
 
 | ADR # | Title | Status | Date | Target Area | Link |
 | :--- | :--- | :---: | :---: | :--- | :--- |
-| **ADR-0001** | Migrate Fully to Cloudflare Pages Infrastructure | Accepted | 2026-07-20 | Edge Deployment | [`0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50) |
-| **ADR-0002** | Explicit Cloudflare Pages Deploy Target in Monorepo Workspace | Accepted | 2026-07-21 | CI/CD & Scripts | [`0002`](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50) |
+| **ADR-0001** | Migrate Fully to Cloudflare Pages Infrastructure | Superseded | 2026-07-20 | Edge Deployment | [`0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50) |
+| **ADR-0002** | Explicit Cloudflare Pages Deploy Target in Monorepo Workspace | Superseded | 2026-07-21 | CI/CD & Scripts | [`0002`](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50) |
 | **ADR-0003** | Greenfield Hub-and-Spoke Subdomain Routing Architecture | Accepted | 2026-08-12 | Edge Routing & SEO | [`0003`](file:///d:/dev/arostech-hub/docs/system/adr/0003-greenfield-hub-and-spoke-subdomain-routing.md#L1-L50) |
 | **ADR-0004** | Universal RFQ Cart Schema & Post-RFQ Lead Classification | Accepted | 2026-08-12 | Data Model & API | [`0004`](file:///d:/dev/arostech-hub/docs/system/adr/0004-universal-rfq-cart-schema-and-post-rfq-lead-classification.md#L1-L50) |
-| **ADR-0005** | Auth.js v5 JWT Session Model & Client Tracking Portal Integration | Accepted | 2026-08-12 | Security & Auth | [`0005`](file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L50) |
+| **ADR-0005** | Auth.js v5 JWT Session Model & Client Tracking Portal Integration | Accepted | 2026-08-12 | Security & Auth | [`0005`](file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L116) |
+| **ADR-0006** | Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture | Accepted | 2026-08-13 | Security & Edge Auth | [`0006`](file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md#L1-L50) |
+| **ADR-0007** | Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`) | Accepted | 2026-08-13 | Edge Deployment & Build | [`0007`](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md#L1-L50) |
 
 ---
 

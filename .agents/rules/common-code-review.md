@@ -5,9 +5,15 @@ description: Code review standards, review checklists, mandatory triggers, revie
 
 # Code Review Standards
 
+> **Workflow context**: This rule enforces the **Layer 5 REFACTOR Gate** (code quality after GREEN phase)
+> and contributes to the **Layer 7 VERIFY Gate** (pre-merge validation and coverage check).
+> Agent routing: see [`AGENTS.md Section 3.2`](file:///d:/dev/arostech-hub/AGENTS.md) for domain-specific
+> reviewer auto-gating at Layer 4 (e.g. `.tsx` → `react-reviewer`, `.ts` → `typescript-reviewer`).
+
 ## Purpose
 
 Code review ensures quality, security, and maintainability before code is merged. This rule defines when and how to conduct code reviews.
+
 
 ## When to Review
 

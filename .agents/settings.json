@@ -1,0 +1,42 @@
+{
+  "harness": "antigravity",
+  "version": "1.0.0",
+  "home": "./.agents",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "name": "gateguard-fact-force",
+        "script": "./.agents/scripts/hooks/gateguard-fact-force.js",
+        "enabled": true
+      },
+      {
+        "name": "pre-edit-rule-gate",
+        "script": "./.agents/scripts/pre-edit-rule-gate.cjs",
+        "enabled": true
+      },
+      {
+        "name": "block-no-verify",
+        "script": "./.agents/scripts/hooks/block-no-verify.js",
+        "enabled": true
+      }
+    ],
+    "PostToolUse": [
+      {
+        "name": "post-edit-typecheck",
+        "script": "./.agents/scripts/hooks/post-edit-typecheck.js",
+        "enabled": true
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "name": "pre-tool-guardrail-agy",
+        "script": "./.agents/scripts/pre-tool-guardrail-agy.js",
+        "enabled": true
+      }
+    ]
+  },
+  "security": {
+    "secretHygiene": true,
+    "preventNoVerify": true
+  }
+}

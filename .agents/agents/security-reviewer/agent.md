@@ -3,12 +3,9 @@ name: security-reviewer
 description: Security vulnerability detection and remediation specialist. Use PROACTIVELY after writing code that handles user input, authentication, API endpoints, or sensitive data. Flags secrets, SSRF, injection, unsafe crypto, and OWASP Top 10 vulnerabilities.
 mainAgent: true
 subagent: true
-model: flash
+model: sonnet
 tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
+  - run_command
 mcpServers: []
 skills:
   - security-review

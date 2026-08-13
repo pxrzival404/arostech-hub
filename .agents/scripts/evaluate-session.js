@@ -4,8 +4,8 @@
  *
  * Cross-platform (Windows, macOS, Linux)
  *
- * Runs on Stop hook to extract reusable patterns from Claude Code sessions.
- * Reads transcript_path from stdin JSON (Claude Code hook input).
+ * Runs on Stop hook to extract reusable patterns from agent harness sessions.
+ * Reads transcript_path from stdin JSON (agent harness hook input).
  *
  * Why Stop hook instead of UserPromptSubmit:
  * - Stop runs once at session end (lightweight)

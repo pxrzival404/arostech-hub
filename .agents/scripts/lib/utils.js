@@ -1,5 +1,5 @@
 /**
- * Cross-platform utility functions for Claude Code hooks and scripts
+ * Cross-platform utility functions for agent harness hooks and scripts (Antigravity / Claude Code)
  * Works on Windows, macOS, and Linux
  */
 
@@ -361,7 +361,7 @@ async function readStdinJson(options = {}) {
 }
 
 /**
- * Log to stderr (visible to user in Claude Code)
+ * Log to stderr (visible to user in agent harness terminal)
  */
 function log(message) {
   console.error(message);

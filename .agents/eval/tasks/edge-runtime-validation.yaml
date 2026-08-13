@@ -1,0 +1,18 @@
+name: edge-runtime-validation
+description: Verify Cloudflare Edge Runtime constraints (no Node OS APIs in Edge routes, ADR-0006 split auth config)
+repo: .
+files:
+  - src/middleware.ts
+  - src/app/api/**/route.ts
+prompt: |
+  Ensure all Cloudflare Edge routes and middleware strictly conform to Edge Runtime constraints:
+  1. No Node OS native modules (fs, path, os, child_process) imported in runtime paths.
+  2. Middleware execution completes within 50ms CPU budget.
+  3. Auth.js v5 configuration follows ADR-0006 split config pattern.
+judge:
+  - type: command
+    command: node .agents/scripts/run-with-flags.js pre:platform-rule-gate .agents/scripts/pre-edit-rule-gate.cjs standard,strict
+  - type: grep
+    pattern: "Edge Runtime"
+    files: "src/middleware.ts"
+commit: "HEAD"

@@ -1,0 +1,18 @@
+name: prisma-neon-edge
+description: Verify Prisma Neon Edge adapter, lazy proxy initialization, and composite lead models
+repo: .
+files:
+  - prisma/schema.prisma
+  - src/lib/db/prisma.ts
+prompt: |
+  Ensure Prisma ORM configuration operates seamlessly on Cloudflare Edge:
+  1. Prisma client uses @prisma/adapter-neon for WebSocket/HTTP pooling.
+  2. Implement Lazy Proxy initialization pattern to avoid global cold-start penalty.
+  3. Validate composite RFQ lead data models in schema.prisma.
+judge:
+  - type: grep
+    pattern: "@prisma/adapter-neon"
+    files: "src/lib/db/prisma.ts"
+  - type: command
+    command: npx prisma validate
+commit: "HEAD"

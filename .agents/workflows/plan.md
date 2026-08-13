@@ -196,6 +196,25 @@ After planning:
 >
 > **Need the legacy PRP flow?** Use `/prp-plan` for deep PRP planning with `.claude/PRPs/` artifacts. Use `/prp-implement` to execute those plans with rigorous validation loops.
 
+## Integration with 8-Layer Workflow
+
+> [!IMPORTANT]
+> For **production code changes**, a `/plan` output SHOULD be followed by `/opsx-propose` (Layer 3 SDD)
+> to generate behavioral contracts (GIVEN-WHEN-THEN specs) before TDD execution begins.
+> Plans that result in code modifications without OpenSpec specs violate the Layer 3 gate
+> defined in [`AGENTS.md Section 2.4`](file:///d:/dev/arostech-hub/AGENTS.md) and
+> [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md).
+>
+> This plan workflow is appropriate for:
+> - PRD/HLA planning (Layers 1-2) — no SDD gate required
+> - Exploratory planning before `/opsx-propose`
+> - Documentation changes (no code modification gate)
+>
+> This plan workflow requires `/opsx-propose` follow-up for:
+> - Any `src/`, `studio/`, `prisma/` file modifications
+> - New component, API route, schema, or utility creation
+
+
 ## Optional Planner Agent
 
 ECC also provides a `planner` agent for manual installs that include agent files. Use it only when the local runtime already exposes that subagent and the user explicitly asks you to delegate planning.

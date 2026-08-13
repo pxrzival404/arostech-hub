@@ -5,14 +5,12 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Grep
-  - Glob
+  - run_command
+  - grep_search
+  - list_dir
 mcpServers: []
-skills: []
+skills:
+  - graphify
 ---
 
 ## Prompt Defense Baseline

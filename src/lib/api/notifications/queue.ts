@@ -1,7 +1,22 @@
 import { prisma } from '../../db/prisma'
-import { NotificationType, JobStatus, NotificationJob } from '@prisma/client'
+import type { NotificationJob } from '@prisma/client'
 import { sendRfqAcknowledgment, sendInternalNotification } from './resend'
 import { alertNewRfq, alertQueueFailure } from './telegram'
+
+export const JobStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+} as const
+export type JobStatus = typeof JobStatus[keyof typeof JobStatus]
+
+export const NotificationType = {
+  EMAIL_ACK: 'EMAIL_ACK',
+  EMAIL_INTERNAL: 'EMAIL_INTERNAL',
+  TELEGRAM: 'TELEGRAM',
+} as const
+export type NotificationType = typeof NotificationType[keyof typeof NotificationType]
 
 export class NotificationQueue {
   /**

@@ -44,6 +44,21 @@ function main() {
     }
   }
 
+  // Pass-through if payload is already schema-formatted or a standard observation envelope
+  if (payload && typeof payload === 'object') {
+    if (
+      payload.schema_version ||
+      payload.schemaVersion ||
+      payload.$schema ||
+      payload.json_schema ||
+      payload.skip_envelope ||
+      (payload.status && payload.summary && payload.next_actions)
+    ) {
+      process.stdout.write(inputRaw.endsWith('\n') ? inputRaw : inputRaw + '\n');
+      process.exit(0);
+    }
+  }
+
   // Determine if error occurred
   const isError = Boolean(
     payload.is_error ||
@@ -87,6 +102,10 @@ function main() {
   // Extract artifacts
   const artifacts = extractArtifacts(payload);
 
+  // Check for truncation or output file redirect
+  const rawText = JSON.stringify(payload);
+  const isTruncated = rawText.includes('TRUNCATED') || rawText.includes('output.txt');
+
   // Construct standard envelope
   const envelope = {
     status,
@@ -94,6 +113,14 @@ function main() {
     next_actions: nextActions,
     artifacts
   };
+
+  if (isTruncated) {
+    envelope.slice_recommendation = {
+      notice: 'Output was truncated or redirected to file.',
+      recommended_action: 'Use view_file with explicit line ranges (e.g. StartLine: 1, EndLine: 100) or inspect output file.',
+      default_slice: { StartLine: 1, EndLine: 100 }
+    };
+  }
 
   // Attach error recovery contract if status is error
   if (isError) {

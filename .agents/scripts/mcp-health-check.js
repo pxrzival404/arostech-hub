@@ -4,7 +4,7 @@
 /**
  * MCP health-check hook.
  *
- * Compatible with Claude Code's existing hook events:
+ * Compatible with agent harness existing hook events:
  * - PreToolUse: probe MCP server health before MCP tool execution
  * - PostToolUseFailure: mark unhealthy servers, attempt reconnect, and re-probe
  *

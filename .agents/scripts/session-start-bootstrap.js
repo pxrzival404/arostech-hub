@@ -10,20 +10,20 @@
  * `node -e "..."` string inside hooks.json. Characters like `!` (used in
  * `!org.isDirectory()`) can trigger bash history expansion or other shell
  * interpretation issues depending on the environment, causing
- * "SessionStart:startup hook error" to appear in the Claude Code CLI header.
+ * "SessionStart:startup hook error" to appear in the agent harness CLI header.
  *
  * By extracting to a standalone file, the shell never sees the JavaScript
  * source and the `!` characters are safe. Behaviour is otherwise identical.
  *
  * How it works:
- *   1. Reads the raw JSON event from stdin (passed by Claude Code).
+ *   1. Reads the raw JSON event from stdin (passed by agent harness).
  *   2. Resolves the ECC plugin root directory (via CLAUDE_PLUGIN_ROOT env var
  *      or a set of well-known fallback paths).
  *   3. Delegates to `scripts/hooks/run-with-flags.js` with the `session:start`
  *      event, which applies hook-profile gating and then runs session-start.js.
  *   4. Passes stdout/stderr through and forwards the child exit code.
  *   5. If the plugin root cannot be found, emits a warning and passes stdin
- *      through unchanged so Claude Code can continue normally.
+ *      through unchanged so agent harness can continue normally.
  */
 
 const fs = require('fs');

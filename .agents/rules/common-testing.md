@@ -14,6 +14,23 @@ Test Types (ALL required):
 
 ## Test-Driven Development
 
+> **Workflow context**: This rule enforces **Layer 5 (TDD Inner Loop)** of the 8-Layer Workflow.
+> SDD Pre-Condition must pass before entering the TDD cycle.
+> See [`common-extended-workflow.md`](./common-extended-workflow.md) for the full 8-layer sequence.
+
+## Pre-Condition (SDD Spec Required)
+
+Before entering the TDD cycle, the following MUST be verified:
+
+1. An OpenSpec spec file EXISTS in `openspec/` with GIVEN-WHEN-THEN scenarios for this task
+2. The task is listed in `tasks.md` and has passed atomicity gate (single responsibility)
+3. Test cases are derived from the spec's WHEN/THEN clauses — not invented independently
+
+**If no spec exists**: Run `/opsx-propose` (Layer 3 SDD) first. Do NOT enter TDD without a spec.
+Entering TDD without an OpenSpec behavioral contract is a governance violation per AGENTS.md Section 4.
+
+
+
 MANDATORY workflow:
 1. Write test first (RED)
 2. Run test - it should FAIL

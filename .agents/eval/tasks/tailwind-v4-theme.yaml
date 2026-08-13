@@ -1,0 +1,15 @@
+name: tailwind-v4-theme
+description: Verify Tailwind v4 @theme inline CSS-first configuration and OKLCH color token rules
+repo: .
+files:
+  - src/app/globals.css
+prompt: |
+  Ensure styling conforms strictly to Tailwind CSS v4 standards:
+  1. Use CSS-first @theme inline configuration inside src/app/globals.css.
+  2. Legacy tailwind.config.ts must not exist or be deleted.
+  3. Use OKLCH color space tokens for design system themes.
+judge:
+  - type: grep
+    pattern: "@theme inline"
+    files: "src/app/globals.css"
+commit: "HEAD"

@@ -4,7 +4,7 @@ description: Use when the user asks for repeated rollouts, marked decision proce
 license: MIT
 metadata:
   origin: ECC
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: run_command, write_to_file, replace_file_content, multi_replace_file_content, view_file, grep_search, Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # Recursive Decision Ledger

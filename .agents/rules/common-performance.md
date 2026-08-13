@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: model_decision
+description: Model selection strategy (Haiku, Sonnet, Opus), context window hygiene, and build troubleshooting guidelines.
 ---
 
 # Performance Optimization
@@ -40,7 +41,7 @@ Extended thinking is enabled by default, reserving up to 31,999 tokens for inter
 
 Control extended thinking via:
 - **Toggle**: Option+T (macOS) / Alt+T (Windows/Linux)
-- **Config**: Set `alwaysThinkingEnabled` in `~/.claude/settings.json`
+- **Config**: Set `alwaysThinkingEnabled` in `<harness-home>/settings.json`
 - **Budget cap**: `export MAX_THINKING_TOKENS=10000` (bash) or `$env:MAX_THINKING_TOKENS = "10000"` (PowerShell)
 - **Verbose mode**: Ctrl+O to see thinking output
 

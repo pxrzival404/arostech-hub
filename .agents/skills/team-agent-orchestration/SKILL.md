@@ -100,6 +100,13 @@ When a card needs dynamic workflow mode:
 - **Overlapping writes**: parallel agents edit the same files without worktrees.
 - **No product artifact**: the process produces docs but no runnable or publishable surface.
 
+## Delegation Completion Contract
+
+When managing or dispatching squad agents:
+- The orchestrating agent MUST wait synchronously for all assigned sub-agents to complete their work items and return execution results.
+- Fire-and-forget sub-agent invocation is strictly prohibited — an orchestrator cannot mark a card as reviewed or completed while sub-agents are still running.
+- Collect, synthesize, and verify evidence from all sub-agents before handoff.
+
 ## Output Standard
 
 Finish each orchestration pass with:

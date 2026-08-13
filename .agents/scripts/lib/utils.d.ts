@@ -1,5 +1,5 @@
 /**
- * Cross-platform utility functions for Claude Code hooks and scripts.
+ * Cross-platform utility functions for agent harness hooks and scripts.
  * Works on Windows, macOS, and Linux.
  */
 
@@ -164,7 +164,7 @@ export interface ReadStdinJsonOptions {
  */
 export function readStdinJson(options?: ReadStdinJsonOptions): Promise<Record<string, unknown>>;
 
-/** Log a message to stderr (visible to user in Claude Code terminal) */
+/** Log a message to stderr (visible to user in agent harness terminal) */
 export function log(message: string): void;
 
 /** Output data to stdout (returned to Claude's context) */

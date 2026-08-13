@@ -25,7 +25,7 @@ authoritative_references:
 - OpenSpec Behavioral Contracts (`REQ-DEP-001-BUILD-PIPELINE`, `REQ-DEP-002-ENVIRONMENT-BINDINGS`, `REQ-DEP-003-PREVIEW-VERIFICATION`).
 
 ### [MODIFIED]
-- Locked build pipeline strictly to `@cloudflare/next-on-pages` with static output targeted to `.vercel/output/static`.
+- Locked build pipeline strictly to `@opennextjs/cloudflare` (`open-next.config.ts`) with output targeted to `.open-next/assets`.
 - Updated domain mapping to 7 canonical hostnames anchored to Cloudflare Pages `dayaberkah.pages.dev`.
 
 ### [REMOVED]
@@ -49,10 +49,10 @@ The greenfield platform compiles a single Next.js 16 application via `@cloudflar
          │                   │                   │
          └───────────────────┼───────────────────┘
                              ▼
-                 ┌───────────────────────┐
-                 │ Cloudflare Pages App  │
-                 │   (next-on-pages)     │
-                 └───────────────────────┘
+                  ┌───────────────────────┐
+                  │ Cloudflare Pages App  │
+                  │ (opennext-cloudflare) │
+                  └───────────────────────┘
 ```
 
 ### Domain & Route Mapping Table
@@ -133,30 +133,30 @@ The following credentials MUST be injected exclusively as **Encrypted Secrets** 
 ## 3. Build & Deployment Commands
 
 ### Requirement: REQ-DEP-001-BUILD-PIPELINE
-The deployment pipeline SHALL build the Next.js application using `@cloudflare/next-on-pages` and output static assets to `.vercel/output/static`.
+The deployment pipeline SHALL build the Next.js application using `@opennextjs/cloudflare` (`open-next.config.ts`) and output assets to `.open-next/assets`.
 
 #### Scenario: Production Build & Deploy Execution
-- GIVEN a clean working directory on `refactor/reorganize-project-documentation`
+- GIVEN a clean working directory on `main` branch with `open-next.config.ts`
 - WHEN executing the build command `pnpm pages:build` followed by `pnpm pages:deploy`
-- THEN the static assets MUST compile without type errors and deploy to Cloudflare Pages.
+- THEN static and worker assets MUST compile under `.open-next/` and deploy to Cloudflare Pages.
 
 ### Requirement: REQ-DEP-003-PREVIEW-VERIFICATION
-The engineering team MUST verify edge compilation locally using Wrangler preview before promoting builds to production.
+The engineering team MUST verify edge compilation locally using OpenNext preview before promoting builds to production.
 
 #### Scenario: Local Edge Preview Verification
-- GIVEN a completed local build in `.vercel/output/static`
-- WHEN running `pnpm pages:preview`
-- THEN the application MUST serve locally via Wrangler edge isolate without throwing unhandled runtime exceptions.
+- GIVEN a completed local build under `.open-next/`
+- WHEN running `pnpm pages:preview` (`npx opennextjs-cloudflare preview`)
+- THEN the application MUST serve locally via OpenNext preview runner without throwing unhandled runtime exceptions.
 
 ```bash
-# 1. Local Type Check & Build
+# 1. Local Type Check & OpenNext Build
 pnpm pages:build
 
 # 2. Local Preview Verification (Simulates Cloudflare Edge)
 pnpm pages:preview
 
-# 3. Production Deploy to Cloudflare Pages
-npx wrangler pages deploy .vercel/output/static --project-name dayaberkah
+# 3. Production Deploy to Cloudflare Pages via OpenNext CLI
+pnpm pages:deploy
 ```
 
 ---

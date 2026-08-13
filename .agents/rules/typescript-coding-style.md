@@ -1,197 +1,97 @@
 ---
 trigger: glob
-globs: "**/*.{ts,tsx,js,jsx}"
+globs: "**/*.{ts,js}"
 ---
 
-# TypeScript/JavaScript Coding Style
+# TypeScript/JavaScript Coding Style Standard
 
-> This file extends [common/coding-style.md](../common/coding-style.md) with TypeScript/JavaScript specific content.
+This document defines the canonical coding style standard for TypeScript and JavaScript code in `arostech-hub`.
+
+## Core Invariants
+
+### 1. Immutability (CRITICAL)
+- **ALWAYS** return new object/array copies, **NEVER** mutate existing state.
+- Use object/array spread syntax (`...`) or `Readonly<T>` types.
+
+```typescript
+// WRONG: In-place mutation
+function updateUser(user: User, name: string): User {
+  user.name = name; // MUTATION!
+  return user;
+}
+
+// CORRECT: Immutable update
+function updateUser(user: Readonly<User>, name: string): User {
+  return { ...user, name };
+}
+```
+
+### 2. Core Principles: KISS, DRY, YAGNI
+- **KISS**: Reach for the simplest standard library or language feature first.
+- **DRY**: Extract repeated logic into focused helpers once repetition occurs in >2 places.
+- **YAGNI**: No speculative abstractions, premature generalizations, or unused parameter flags.
+
+### 3. Module & File Boundaries
+- **Function Limit**: Keep functions under 50 lines.
+- **Module Limit**: Module files target 200–400 lines, maximum 800 lines absolute limit.
+- **Organization**: Group by feature or domain, not by generic technical type.
+
+---
 
 ## Types and Interfaces
 
-Use types to make public APIs, shared models, and component props explicit, readable, and reusable.
-
 ### Public APIs
-
-- Add parameter and return types to exported functions, shared utilities, and public class methods
-- Let TypeScript infer obvious local variable types
-- Extract repeated inline object shapes into named types or interfaces
+- Add explicit parameter and return types to all exported functions, utilities, and API methods.
+- Let TypeScript infer obvious local variable initializations.
+- Extract repeated object shapes into named interfaces or type aliases.
 
 ```typescript
-// WRONG: Exported function without explicit types
-export function formatUser(user) {
-  return `${user.firstName} ${user.lastName}`
-}
-
-// CORRECT: Explicit types on public APIs
 interface User {
-  firstName: string
-  lastName: string
+  id: string;
+  email: string;
 }
 
 export function formatUser(user: User): string {
-  return `${user.firstName} ${user.lastName}`
+  return `${user.email} (${user.id})`;
 }
 ```
 
 ### Interfaces vs. Type Aliases
-
-- Use `interface` for object shapes that may be extended or implemented
-- Use `type` for unions, intersections, tuples, mapped types, and utility types
-- Prefer string literal unions over `enum` unless an `enum` is required for interoperability
+- Use `interface` for object contracts that are extensible.
+- Use `type` for unions, intersections, primitives, and utility transformations.
+- Prefer string literal unions over enums.
 
 ```typescript
-interface User {
-  id: string
-  email: string
-}
-
-type UserRole = 'admin' | 'member'
-type UserWithRole = User & {
-  role: UserRole
-}
+type UserRole = 'admin' | 'member';
+type UserWithRole = User & { role: UserRole };
 ```
 
-### Avoid `any`
-
-- Avoid `any` in application code
-- Use `unknown` for external or untrusted input, then narrow it safely
-- Use generics when a value's type depends on the caller
+### Type Safety & `unknown`
+- Avoid `any` in application code.
+- Use `unknown` for untrusted inputs (API responses, event data) and narrow safely using type guards or Zod.
 
 ```typescript
-// WRONG: any removes type safety
-function getErrorMessage(error: any) {
-  return error.message
-}
-
-// CORRECT: unknown forces safe narrowing
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message
-  }
-
-  return 'Unexpected error'
+  if (error instanceof Error) return error.message;
+  return 'Unexpected error';
 }
 ```
 
-### React Props
+---
 
-- Define component props with a named `interface` or `type`
-- Type callback props explicitly
-- Do not use `React.FC` unless there is a specific reason to do so
+## Input Validation & Error Handling
+
+- **Zod Boundary Validation**: Validate external data (HTTP body, query params, CMS payload) at system boundaries using Zod schemas.
+- **Fail Fast & Explicit**: Handle errors explicitly; log server context, present friendly errors on UI.
+- **Zero Swallowed Exceptions**: Never silently swallow exceptions without handling or rethrowing.
 
 ```typescript
-interface User {
-  id: string
-  email: string
-}
-
-interface UserCardProps {
-  user: User
-  onSelect: (id: string) => void
-}
-
-function UserCard({ user, onSelect }: UserCardProps) {
-  return <button onClick={() => onSelect(user.id)}>{user.email}</button>
-}
-```
-
-### JavaScript Files
-
-- In `.js` and `.jsx` files, use JSDoc when types improve clarity and a TypeScript migration is not practical
-- Keep JSDoc aligned with runtime behavior
-
-```javascript
-/**
- * @param {{ firstName: string, lastName: string }} user
- * @returns {string}
- */
-export function formatUser(user) {
-  return `${user.firstName} ${user.lastName}`
-}
-```
-
-## Immutability
-
-Use spread operator for immutable updates:
-
-```typescript
-interface User {
-  id: string
-  name: string
-}
-
-// WRONG: Mutation
-function updateUser(user: User, name: string): User {
-  user.name = name // MUTATION!
-  return user
-}
-
-// CORRECT: Immutability
-function updateUser(user: Readonly<User>, name: string): User {
-  return {
-    ...user,
-    name
-  }
-}
-```
-
-## Error Handling
-
-Use async/await with try-catch and narrow unknown errors safely:
-
-```typescript
-interface User {
-  id: string
-  email: string
-}
-
-declare function riskyOperation(userId: string): Promise<User>
-
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message
-  }
-
-  return 'Unexpected error'
-}
-
-const logger = {
-  error: (message: string, error: unknown) => {
-    // Replace with your production logger (for example, pino or winston).
-  }
-}
-
-async function loadUser(userId: string): Promise<User> {
-  try {
-    const result = await riskyOperation(userId)
-    return result
-  } catch (error: unknown) {
-    logger.error('Operation failed', error)
-    throw new Error(getErrorMessage(error))
-  }
-}
-```
-
-## Input Validation
-
-Use Zod for schema-based validation and infer types from the schema:
-
-```typescript
-import { z } from 'zod'
+import { z } from 'zod';
 
 const userSchema = z.object({
   email: z.string().email(),
-  age: z.number().int().min(0).max(150)
-})
+  age: z.number().int().min(0)
+});
 
-type UserInput = z.infer<typeof userSchema>
-
-const validated: UserInput = userSchema.parse(input)
+type UserInput = z.infer<typeof userSchema>;
 ```
-
-## Console.log
-
-- No `console.log` statements in production code
-- Use proper logging libraries instead
-- See hooks for automatic detection

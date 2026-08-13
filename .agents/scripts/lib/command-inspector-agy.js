@@ -23,13 +23,9 @@ function isDestructiveCommand(cmdStr) {
     return true;
   }
 
-  // Pattern 2: Destructive operations targeting website repo
-  const targetsWebsite =
-    normalized.includes('d:/claude-project/website') ||
-    normalized.includes('website/') ||
-    /\bwebsite\b/.test(normalized);
-
-  if (targetsWebsite) {
+  // Pattern 2: Destructive operations targeting configured readonly repo
+  const readonlyRepo = (process.env.AGY_READONLY_REPO || '').replace(/\\/g, '/').toLowerCase();
+  if (readonlyRepo && normalized.includes(readonlyRepo)) {
     const isWriteOrDeleteOp =
       /\b(rm|rmdir|unlink|echo\s*>|cat\s*>|touch|cp|mv|rsync)\b/.test(normalized) ||
       />+/g.test(normalized) ||
@@ -40,8 +36,8 @@ function isDestructiveCommand(cmdStr) {
     }
   }
 
-  // Pattern 3: Direct file redirects or destructive deletes targeting website
-  if (/>\s*.*website/i.test(normalized) || /\brm\b.*website/i.test(normalized)) {
+  // Pattern 3: Direct file redirects or destructive deletes targeting readonly repo
+  if (readonlyRepo && (new RegExp(`>\\s*.*${readonlyRepo}`, 'i').test(normalized) || new RegExp(`\\brm\\b.*${readonlyRepo}`, 'i').test(normalized))) {
     if (!normalized.includes('harness/patches/')) {
       return true;
     }

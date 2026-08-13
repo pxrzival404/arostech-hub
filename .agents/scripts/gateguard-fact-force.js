@@ -1065,6 +1065,17 @@ function editGateMsg(filePath) {
     '3. If this file reads/writes data files, show field names, structure, and date format (use redacted or synthetic values, not raw production data)',
     "4. Quote the user's current instruction verbatim",
     '',
+    'Required Facts Schema:',
+    '```json',
+    '{',
+    '  "target_file": "' + safe + '",',
+    '  "importers": ["path/to/importer.ts"],',
+    '  "affected_symbols": ["functionOrClass"],',
+    '  "data_schemas": ["schemaDetailsOrNone"],',
+    '  "verbatim_instruction": "Exact user prompt text"',
+    '}',
+    '```',
+    '',
     'Present the facts, then retry the same operation.'
   ].join('\n');
 }
@@ -1080,6 +1091,17 @@ function writeGateMsg(filePath) {
     '2. Confirm no existing file serves the same purpose (search the tree — Glob/Grep, or find/grep via Bash)',
     '3. If this file reads/writes data files, show field names, structure, and date format (use redacted or synthetic values, not raw production data)',
     "4. Quote the user's current instruction verbatim",
+    '',
+    'Required Facts Schema:',
+    '```json',
+    '{',
+    '  "target_file": "' + safe + '",',
+    '  "calling_sites": ["path/to/caller.ts#L12"],',
+    '  "duplicate_check_confirmed": true,',
+    '  "data_schemas": ["schemaDetailsOrNone"],',
+    '  "verbatim_instruction": "Exact user prompt text"',
+    '}',
+    '```',
     '',
     'Present the facts, then retry the same operation.'
   ].join('\n');

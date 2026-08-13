@@ -5,10 +5,7 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
+  - run_command
 mcpServers: []
 skills:
   - error-handling
