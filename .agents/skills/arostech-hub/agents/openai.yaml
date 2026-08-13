@@ -1,0 +1,6 @@
+interface:
+  display_name: "Arostech Hub"
+  short_description: "Repo-specific patterns and workflows for arostech-hub"
+  default_prompt: "Use the arostech-hub repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
