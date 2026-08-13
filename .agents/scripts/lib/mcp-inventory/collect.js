@@ -11,6 +11,24 @@ const DEFAULT_READERS = Object.freeze({
   opencode: readOpencodeMcp
 });
 
+function filterRedundantMcpServers(inventory) {
+  if (!inventory || !Array.isArray(inventory.servers)) return inventory;
+  const filteredServers = inventory.servers.map(server => {
+    if (server.name === 'filesystem' || server.name === 'file-system') {
+      return {
+        ...server,
+        enabled: false,
+        disabledReason: 'Suppressed in favor of native Antigravity IDE file tools (view_file, write_to_file, replace_file_content).'
+      };
+    }
+    return server;
+  });
+  return {
+    ...inventory,
+    servers: filteredServers
+  };
+}
+
 // Collect MCP server configs from every harness reader, normalize each raw
 // entry to ecc.mcp.v1, then merge into a single deduplicated inventory with a
 // fragmentation report. Secrets are stripped during normalization (only env
@@ -38,10 +56,12 @@ function collectMcpInventory(options = {}) {
   }
 
   const normalized = rawRecords.map(normalizeServerEntry);
-  return buildInventory(normalized);
+  const inventory = buildInventory(normalized);
+  return filterRedundantMcpServers(inventory);
 }
 
 module.exports = {
   collectMcpInventory,
+  filterRedundantMcpServers,
   DEFAULT_READERS
 };

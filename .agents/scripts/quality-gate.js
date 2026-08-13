@@ -70,6 +70,18 @@ function maybeRunQualityGate(filePath) {
     const projectRoot = findProjectRoot(path.dirname(filePath));
     const formatter = detectFormatter(projectRoot);
 
+    // JS/TS files: run lightweight type check if TypeScript is present
+    if (['.ts', '.tsx'].includes(ext)) {
+      const projectRoot = findProjectRoot(path.dirname(filePath));
+      const tscPath = path.join(projectRoot, 'node_modules', '.bin', process.platform === 'win32' ? 'tsc.cmd' : 'tsc');
+      if (fs.existsSync(tscPath)) {
+        const r = exec(tscPath, ['--noEmit'], projectRoot);
+        if (r.status !== 0) {
+          log(`[QualityGate] TypeScript typecheck failed during TDD inner loop for ${filePath}`);
+        }
+      }
+    }
+
     if (formatter === 'biome') {
       // JS/TS already handled by post-edit-format via `biome check --write`
       if (['.ts', '.tsx', '.js', '.jsx'].includes(ext)) {

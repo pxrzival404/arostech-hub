@@ -102,6 +102,10 @@ function main() {
   // Extract artifacts
   const artifacts = extractArtifacts(payload);
 
+  // Check for truncation or output file redirect
+  const rawText = JSON.stringify(payload);
+  const isTruncated = rawText.includes('TRUNCATED') || rawText.includes('output.txt');
+
   // Construct standard envelope
   const envelope = {
     status,
@@ -109,6 +113,14 @@ function main() {
     next_actions: nextActions,
     artifacts
   };
+
+  if (isTruncated) {
+    envelope.slice_recommendation = {
+      notice: 'Output was truncated or redirected to file.',
+      recommended_action: 'Use view_file with explicit line ranges (e.g. StartLine: 1, EndLine: 100) or inspect output file.',
+      default_slice: { StartLine: 1, EndLine: 100 }
+    };
+  }
 
   // Attach error recovery contract if status is error
   if (isError) {

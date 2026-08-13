@@ -1,0 +1,25 @@
+{
+  "harness": "antigravity",
+  "version": "1.0.0",
+  "home": "./.agents",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "name": "gateguard-fact-force",
+        "script": "./.agents/scripts/hooks/gateguard-fact-force.js",
+        "enabled": true
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "name": "pre-tool-guardrail-agy",
+        "script": "./.agents/scripts/pre-tool-guardrail-agy.js",
+        "enabled": true
+      }
+    ]
+  },
+  "security": {
+    "secretHygiene": true,
+    "preventNoVerify": true
+  }
+}

@@ -209,7 +209,7 @@ This enables the next agent (or next session) to boot context correctly at L0.
 # 2. Full pre-merge pipeline (must all pass)
 pnpm lint                    # ✓
 pnpm test --coverage         # ✓  (≥80% coverage threshold — hard gate)
-pnpm pages:build             # ✓  (Cloudflare Pages build, <25MB bundle)
+rm -rf .open-next && pnpm pages:build # ✓  (Fresh Cloudflare Pages build, <25MB bundle)
 
 # 3. Docs validation (if any docs/ were modified)
 node .agents/scripts/validate-ai-docs.cjs

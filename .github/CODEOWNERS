@@ -1,0 +1,9 @@
+# Global owners
+*       @pxrzival404
+
+# Platform & Architecture
+/src/   @pxrzival404
+/docs/  @pxrzival404
+
+# Agent Harness
+/.agents/ @pxrzival404

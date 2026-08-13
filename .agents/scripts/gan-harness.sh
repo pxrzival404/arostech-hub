@@ -1,5 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # gan-harness.sh — GAN-Style Generator-Evaluator Harness Orchestrator
+#
+# Git Bash path conversion normalization for Windows environments
+export MSYS_NO_PATHCONV=${MSYS_NO_PATHCONV:-0}
 #
 # Inspired by Anthropic's "Harness Design for Long-Running Application Development"
 # https://www.anthropic.com/engineering/harness-design-long-running-apps

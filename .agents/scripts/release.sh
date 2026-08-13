@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Git Bash path conversion normalization for Windows environments
+export MSYS_NO_PATHCONV=${MSYS_NO_PATHCONV:-0}
+
 # Release script for bumping plugin version
 # Usage: ./scripts/release.sh VERSION
 
