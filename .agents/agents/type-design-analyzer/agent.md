@@ -4,10 +4,6 @@ description: Analyze type design for encapsulation, invariant expression, useful
 mainAgent: true
 subagent: true
 model: flash
-tools:
-  - Read
-  - Grep
-  - Glob
 mcpServers: []
 skills: []
 ---

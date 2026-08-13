@@ -4,10 +4,6 @@ description: Software architecture specialist for system design, scalability, an
 mainAgent: true
 subagent: true
 model: flash
-tools:
-  - Read
-  - Grep
-  - Glob
 mcpServers: []
 skills:
   - design-system

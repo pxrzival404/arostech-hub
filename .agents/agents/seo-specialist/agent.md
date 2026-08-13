@@ -5,11 +5,8 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Grep
-  - Glob
-  - WebSearch
-  - WebFetch
+  - search_web
+  - read_url_content
 mcpServers: []
 skills:
   - frontend-a11y

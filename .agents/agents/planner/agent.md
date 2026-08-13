@@ -5,9 +5,9 @@ mainAgent: true
 subagent: true
 model: flash
 tools:
-  - Read
-  - Grep
-  - Glob
+  - view_file
+  - grep_search
+  - list_dir
 mcpServers: []
 skills:
   - plan-orchestrate
