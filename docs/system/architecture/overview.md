@@ -32,7 +32,7 @@ The DBSN platform SHALL operate as a Greenfield Hub-and-Spoke Sub-domain Archite
 - **UI System:** Tailwind CSS v4 + Radix UI with shadcn/ui patterns (shared tokenized design system)
 - **Transactional Data Layer:** Neon Postgres via Prisma ORM (type-safe migrations)
 - **Authentication:** Auth.js v5 (role-based access: `admin`, `viewer`, `client`)
-- **Hosting / Edge:** Cloudflare Pages (via `@cloudflare/next-on-pages` edge runtime)
+- **Hosting / Edge:** Cloudflare Pages (via `@opennextjs/cloudflare` adapter and `open-next.config.ts`)
 - **Notifications:** Resend (email), Telegram Bot API (internal ops alerting)
 - **Telemetry:** GA4 + GSC + Cloudflare Analytics
 - **Messaging Fallback:** WhatsApp `wa.me` pre-filled fallback for RFQ failure path

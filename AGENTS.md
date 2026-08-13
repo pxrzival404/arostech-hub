@@ -8,327 +8,80 @@ authoritative_references:
   - file:///d:/dev/arostech-hub/docs/engineering/ai-agent-rules.md
 ---
 
-# arostech-hub — AI Agent Operating Rules & Harness Governance
+# arostech-hub — Agent Instructions
 
-> **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
-> **Platform**: Antigravity AI Agent (z.ai) + ECC v2.2.0 + OpenSpec SDD  
-> **Branch**: `refactor/reorganize-project-documentation`  
-> **Supersedes**: All prior AGENTS.md versions  
+## Overview
+PT Daya Berkah Sentosa Nusantara (`arostech-hub`) platform built on Next.js 16.2.6 (App Router), Cloudflare Pages Edge Runtime, Sanity CMS (GROQ/ISR), Neon PostgreSQL (Prisma ORM), Auth.js v5, and Tailwind CSS v4. Governed by OpenSpec SDD, TDD, and Graphify Knowledge Graph.
 
----
+## Build & Run
 
-## 1. Core Operating Principles
+pnpm dev            # Start Next.js development server
+pnpm build          # Standard Next.js production build
+pnpm generate       # Generate Prisma client bindings
+pnpm pages:build    # Compile Cloudflare Pages output (.open-next/assets via @opennextjs/cloudflare)
+pnpm pages:preview  # Local Cloudflare Pages preview via Wrangler
+pnpm lint           # Run ESLint on critical auth and middleware files
 
-1. **Docs-First** — Documentation is the single source of truth. Code MUST conform to docs, never the reverse.
-2. **Spec-Driven** — Every code change outside `docs/` MUST have a corresponding OpenSpec task. No spec, no code.
-3. **Test-Driven** — Write failing tests before implementation (RED-GREEN-REFACTOR). 80%+ test coverage required.
-4. **Security-First** — Validate inputs at all boundaries. Zero hardcoded secrets permitted.
-5. **Agent-First** — Delegate to domain-specialized agents. Execute independent tasks in parallel.
-6. **Immutability** — Always return new object copies; never mutate existing state.
-7. **Plan Before Execute** — Architect complex features prior to writing production code.
-8. **Memory-Anchored** — Every session begins with Graphify context boot (Layer 0). Implementation without knowledge graph context is prohibited.
+## Testing
 
----
+pnpm test                          # Run Jest unit/integration test suite
+pnpm test:watch                    # Run Jest in watch mode
+pnpm test:coverage                 # Run test suite with 80%+ coverage report
+pnpm test:e2e                      # Execute Playwright E2E browser tests
+npx jest src/__tests__/rate-limiter.test.ts  # Run specific test file
 
-## 2. Source of Truth Hierarchy
+## Project Structure
 
-| Priority | Layer | Location | Purpose |
-|----------|-------|----------|---------|
-| 1 (Highest) | **High-Level Architecture (HLA)** | `docs/` | Strategy, system architecture, engineering governance, operations |
-| 2 | **Low-Level Architecture (LLA)** | `openspec/` | Spec-driven change proposals, requirements, design, tasks |
-| 3 | **Enforcement Rules** | `.agents/rules/` | Platform constraints (Edge Runtime, CMS, Deploy, Workspace, Style, DB) |
-| 3.1 | **Squad Orchestration** | `.agents/rules/teamwork-squad-orchestration.md` | Teamwork-Preview, Draft-First, PRD SSOT Cascade, Dynamic Expansion |
-| 4 (Lowest) | **Implementation** | `src/`, `studio/`, `prisma/` | Production code — MUST conform to all layers above |
+src/
+├── app/            # Next.js App Router pages, API routes, and layouts
+├── lib/            # Shared utilities (auth, db/prisma, edge middleware)
+└── __tests__/      # Jest unit and integration test suites
+studio/             # Sanity CMS Studio schema configurations
+prisma/             # Prisma schema, migrations, and Neon seed scripts
+docs/               # HLA Documentation (Strategy, System, Engineering, Ops)
+openspec/           # LLA OpenSpec SDD change proposals (proposal, specs, tasks)
+.agents/            # Antigravity agent roster, skills, and platform rules
 
-**Conflict Resolution**: When layers disagree, the higher-priority layer wins. Implementation that contradicts docs is a bug in the implementation.
+## Extended Development Workflow
 
----
-
-### 2.0 Teamwork-Preview & Draft-First Workflow
-When performing multi-agent operations or executing `/teamwork-preview`:
-1. **Draft-First Alignment**: Always generate a structured Draft Plan / Prompt first for user review before execution.
-2. **PRD-First SSOT Cascade**: All document modifications MUST cascade top-down from `docs/strategy/prd.md` (Root SSOT).
-3. **Dynamic Task Expansion**: Squad agents have decision autonomy to dynamically add new Kanban work items when gap discovery reveals missing HLA artifacts or schemas.
-4. **Merge Gates**: Every updated document MUST pass static 7-Pillars validation (`node .agents/scripts/validate-ai-docs.cjs`) and Knowledge Graph update (`graphify update .`).
-
----
-
-### 2.1 Documentation Architecture & 7-Pillars Standard (`docs/`)
-
-Documentation under `docs/` is organized into 4 top-level domains:
-- **Strategy & Scope**: `docs/strategy/` — PRD, business rules, domain model
-- **System Architecture & API**: `docs/system/` — Overview, middleware, API reference, data model
-- **Engineering & Governance**: `docs/engineering/` — AI agent rules, testing strategy, tech stack
-- **Operations & Security**: `docs/operations/` — Deployment, monitoring, security policies
-
-**AI-Friendly Documentation Invariant (7-Pillars Standard)**:
-All documentation created or updated under `docs/` MUST comply with the 7-Pillars standard:
-1. **YAML Frontmatter**: Machine-readable metadata (`id`, `title`, `version`, `status`, `graphify_community`, `authoritative_references`).
-2. **Behavioral Contracts**: OpenSpec `Requirement:` & `Scenario:` format (GIVEN-WHEN-THEN).
-3. **RFC 2119 Precision**: Normative keywords (`SHALL`, `MUST`, `MUST NOT`, `SHOULD`).
-4. **Declarative Schemas**: Concrete Zod/Prisma/TypeScript interfaces over vague prose.
-5. **Graphify Anchoring**: Node ID mapping (`doc:<path>`) & GraphRAG sub-graph queries.
-6. **OpenSpec Lifecycle**: Explicit spec delta headers (`ADDED`, `MODIFIED`, `REMOVED`).
-7. **Anchored URIs**: `file:///` URIs with exact line range anchors & zero redundancy.
-
----
-
-### 2.2 OpenSpec SDD Workflow (`openspec/`)
-
-All code changes follow the OpenSpec SDD lifecycle:
-1. **Explore** (`/opsx:explore`) — Analyze requirements and existing code.
-2. **Propose** (`/opsx:propose`) — Generate change artifacts: `proposal.md`, `specs/`, `design.md`, `tasks.md`.
-3. **Review** — Human approves specs before implementation begins.
-4. **Apply** (`/opsx:apply`) — Implement tasks one by one using TDD.
-5. **Verify** (`/opsx:verify`) — Confirm implementation matches specs.
-6. **Archive** (`/opsx:archive`) — Move completed changes to archive within 24 hours.
-
----
-
-### 2.3 Custom Platform Rule File Gating (`.agents/rules/`)
-
-Before inspecting or modifying files in any specific domain, agents **MUST** read and comply with the governing platform rule file:
-
-| Rule File | File Matcher Scope | Owner Agent | Key Constraints Enforced | Status |
-|-----------|--------------------|-------------|--------------------------|--------|
-| [`cloudflare-edge-runtime.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-edge-runtime.md) | `src/middleware.ts`, Edge routes | `typescript-reviewer` | No Node OS APIs on Edge, ADR-0006 split auth config, 50ms middleware CPU limit, Web Streams for >1MB payloads, no loopback fetch | **AUTHORITATIVE — v2.2.0** |
-| [`cloudflare-pages-deploy.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-pages-deploy.md) | `next.config.ts`, deploy scripts | `architect` | `pnpm pages:build`, disable Sentry source maps during Cloudflare build (25MB limit), `_routes.json`, `parseCloudflarePagesHost()` | **AUTHORITATIVE — v2.2.0** |
-| [`sanity-cms-federation.md`](file:///d:/dev/arostech-hub/.agents/rules/sanity-cms-federation.md) | `studio/**`, `src/lib/sanity/**` | `react-reviewer` | GROQ `defineQuery()` mandatory, 6 local schema types, null-on-error fetching, ISR `revalidateTag()`, env-aware Stega | **AUTHORITATIVE — v2.2.0** |
-| [`monorepo-workspace.md`](file:///d:/dev/arostech-hub/.agents/rules/monorepo-workspace.md) | `pnpm-workspace.yaml`, `package.json` | `typescript-reviewer` | PNPM `workspace:*` protocol, purge `@21st-sdk/*`, build order (`studio` -> `web`), no circular dependencies, `package-lock.json` purge | **AUTHORITATIVE — v2.2.0** |
-| [`tailwind-v4.md`](file:///d:/dev/arostech-hub/.agents/rules/tailwind-v4.md) | `src/app/globals.css`, `.tsx` | `react-reviewer` | `@theme inline` CSS-first config, delete `tailwind.config.ts`, `@tailwindcss/postcss`, OKLCH tokens, no inline `@apply` in JSX | **AUTHORITATIVE — v2.2.0** |
-| [`prisma-neon-edge.md`](file:///d:/dev/arostech-hub/.agents/rules/prisma-neon-edge.md) | `prisma/schema.prisma`, `prisma.ts` | `database-reviewer` | Lazy Proxy init, `@prisma/adapter-neon`, composite RFQ leads, `DATABASE_URL` vs `DIRECT_URL`, Node runtime | **AUTHORITATIVE — v2.2.0** |
-
----
-
-### 2.4 Unified 8-Layer Development Workflow
-
-All development, regardless of complexity, **MUST** follow this 8-layer execution sequence.
-Skipping any layer is a governance violation. See [`.agents/rules/common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) for full specification, gate conditions, Ponytail checks, and agent invocations.
+All development MUST follow the 8-layer sequence defined in [`.agents/rules/common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md):
 
 ```
-L0: Context Boot      → graphify query "<task>" BEFORE any work begins
-L1: HLA Alignment     → Validate PRD scope in docs/ before committing to a spec
-L2: Research & Reuse  → GitHub search → Context7 → npm registry (adopt > build)
-L3: SDD Proposal      → /opsx-propose: proposal.md + specs/ + design.md + tasks.md
-L4: Agent Delegation  → Auto-gate by file type (see Section 3.2 matrix)
-L5: TDD Execution     → RED → GREEN → REFACTOR → VERIFY [per task, inner loop]
-L6: Memory Sync       → graphify update . after each task [x]
-L7: Change Verify     → /opsx-verify + pnpm lint + test --coverage + pages:build
-L8: Commit & Archive  → conventional commit + /opsx-archive + /pr + graphify update .
+L0: Context Boot (graphify query) -> L1: HLA Alignment (docs/) -> L2: Research & Reuse (Context7) -> L3: SDD Proposal (/opsx-propose) -> L4: Agent Delegation -> L5: TDD Execution (RED-GREEN-REFACTOR) -> L6: Memory Sync (graphify update .) -> L7: Change Verify (/opsx-verify + lint + test + build) -> L8: Commit & Archive (/opsx-archive + /pr).
 ```
+- **Governing Rules**:
+  - [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) — Unified 8-Layer execution sequence & gate conditions
+  - [`teamwork-squad-orchestration.md`](file:///d:/dev/arostech-hub/.agents/rules/teamwork-squad-orchestration.md) — Squad orchestration, Draft-First, PRD cascade
+  - [`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md) — 7-Pillars documentation standard (validated via `node .agents/scripts/validate-ai-docs.cjs`)
+  - [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md) — Knowledge Graph boot (Layer 0) & sync protocol (Layer 3/6/8)
+  - [`prompt-deep-thinking-context.md`](file:///d:/dev/arostech-hub/.agents/rules/prompt-deep-thinking-context.md) — Deep-thinking prompt engineering & context management
 
----
+## Code Style & Platform Standards
 
-## 3. Agent Roster & Delegation Rules
+- **Core Principles**: Immutability mandatory (return new object copies, never mutate existing state). Component < 200 lines, module < 400 lines, max 800 lines absolute limit.
+- **Platform Code Style References**:
+  - **Cloudflare Edge Runtime**: Zero Node OS APIs in `src/middleware.ts`; 50ms CPU limit; Web Streams for >1MB payloads. See [`cloudflare-edge-runtime.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-edge-runtime.md).
+  - **Cloudflare Deployment**: Compile output to `.open-next/assets` via `pnpm pages:build` (`@opennextjs/cloudflare`); disable Sentry maps to enforce 25MB worker bundle limit. See [`cloudflare-pages-deploy.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-pages-deploy.md).
+  - **Next.js & React RSC**: Server Component data fetching with null-on-error helpers; strict hook discipline; zero inline `@apply` in JSX. See [`react-coding-style.md`](file:///d:/dev/arostech-hub/.agents/rules/react-coding-style.md) & [`react-patterns.md`](file:///d:/dev/arostech-hub/.agents/rules/react-patterns.md).
+  - **Sanity CMS Federation**: GROQ queries wrapped in `defineQuery()`; null-on-error fetching; ISR `revalidateTag()`. See [`sanity-cms-federation.md`](file:///d:/dev/arostech-hub/.agents/rules/sanity-cms-federation.md).
+  - **Prisma & Neon Database**: Lazy Proxy instance init; `@prisma/adapter-neon` serverless pool; composite RFQ lead models. See [`prisma-neon-edge.md`](file:///d:/dev/arostech-hub/.agents/rules/prisma-neon-edge.md).
+  - **Tailwind CSS v4**: `@theme inline` CSS-first configuration in `src/app/globals.css`; OKLCH color tokens; delete `tailwind.config.ts`. See [`tailwind-v4.md`](file:///d:/dev/arostech-hub/.agents/rules/tailwind-v4.md).
+  - **TypeScript & Monorepo**: Strict type safety; Zod boundary schemas; PNPM `workspace:*` protocol; purge `@21st-sdk/*`. See [`typescript-coding-style.md`](file:///d:/dev/arostech-hub/.agents/rules/typescript-coding-style.md) & [`monorepo-workspace.md`](file:///d:/dev/arostech-hub/.agents/rules/monorepo-workspace.md).
 
-### 3.1 Installed Agent Roster (28 Agents)
+## Boundaries
 
-| # | Agent | Category / Role | When to Invoke |
-|---|-------|-----------------|----------------|
-| 1 | `architect` | System Design & Governance | High-level system design, AGENTS.md updates, ADR creation, deployment pipelines |
-| 2 | `code-architect` | Code Module Architecture | Complex module refactoring, circular dependency resolution, interface bounds |
-| 3 | `planner` | Strategic Task Planning | Feature breakdown (3+ files), wave sequencing, multi-file execution plans |
-| 4 | `tdd-guide` | TDD Specialist | Authoring Jest/Playwright tests, enforcing RED-GREEN-REFACTOR cycle |
-| 5 | `code-reviewer` | Code Quality Auditor | Post-implementation review, maintainability, naming and structure audit |
-| 6 | `code-simplifier` | Code Complexity Reduction | Refactoring nested logic, breaking down large components (<200 lines) |
-| 7 | `code-explorer` | Codebase Architecture Analyst | Execution path tracing, dependency mapping, impact analysis |
-| 8 | `security-reviewer` | Security & Vulnerability Auditor | Pre-commit security scans, Auth.js audits, secret leak detection |
-| 9 | `typescript-reviewer` | TypeScript & Edge Specialist | Any `.ts` file edit, type definition check, Edge boundary verification |
-| 10 | `react-reviewer` | React RSC & Component Specialist | Any `.tsx` file edit, RSC data fetching patterns, Tailwind v4 styling |
-| 11 | `react-build-resolver` | Next.js Build Resolver | Fix React hydration, Server Component boundary, and bundler errors |
-| 12 | `spec-miner` | Brownfield Spec Extractor | Extracting OpenSpec behavioral specs from legacy code |
-| 13 | `refactor-cleaner` | Scope Creep Purger | Removing unused exports, purging unauthorized packages (`@21st-sdk/*`) |
-| 14 | `doc-updater` | Documentation & Graphify Specialist | Updating `docs/`, generating codemaps, maintaining 7-Pillars standard |
-| 15 | `docs-lookup` | Documentation Search Specialist | Searching internal `docs/` and external vendor documentation |
-| 16 | `e2e-runner` | Playwright E2E Testing Specialist | Subdomain routing verification, auth flow testing, critical path tests |
-| 17 | `build-error-resolver` | Build & Compilation Resolver | Fix TypeScript compilation and build failures with minimal diffs |
-| 18 | `database-reviewer` | PostgreSQL & Prisma Specialist | `prisma/schema.prisma` edits, Neon proxy optimization, RFQ lead models |
-| 19 | `loop-operator` | Autonomous Loop Executor | Managing background task queues, long-running agent workflows |
-| 20 | `harness-optimizer` | Harness & Prompt Tuning Agent | Optimizing `.agents/` configuration, hook execution, token budget |
-| 21 | `performance-optimizer` | Web Vitals & Edge Analyst | Latency reduction, Web Streams streaming optimization, 25MB bundle size |
-| 22 | `a11y-architect` | Accessibility Auditor | ARIA landmark reviews, keyboard navigation, WCAG 2.1 AA color contrast |
-| 23 | `seo-specialist` | Search Engine Optimization Specialist | OpenGraph tags, JSON-LD structured data, metadata generation |
-| 24 | `comment-analyzer` | JSDoc & Comment Auditor | Cleaning outdated comments, preserving authoritative docstrings |
-| 25 | `pr-test-analyzer` | PR Test Suite Auditor | Verifying test coverage thresholds (80%+ target), flaky test detection |
-| 26 | `type-design-analyzer` | Advanced Type Designer | Complex generic interface design, Zod schema alignment |
-| 27 | `silent-failure-hunter` | Error Handling Auditor | Finding swallowed exceptions, missing catch blocks, silent fallbacks |
-| 28 | `agent-evaluator` | AI Agent Performance Evaluator | Benchmarking agent outputs against OpenSpec criteria |
+- ✅ **Always do:** Run `graphify query "<task>"` at Layer 0 boot. Derive tests from OpenSpec specs. Enforce 80%+ test coverage. Return new immutable copies. Validate docs with `node .agents/scripts/validate-ai-docs.cjs`.
+- ⚠️ **Ask first:** Modifying `prisma/schema.prisma`. Adding new npm dependencies. Altering Auth.js split config. Modifying deployment pipelines.
+- 🚫 **Never do:** Commit hardcoded secrets or API keys. Set `ignoreBuildErrors: true` in `next.config.ts`. Use Node OS APIs in Edge middleware. Delete failing unit tests. Exceed 25 MB Worker bundle limit (`_worker.js`).
 
----
+## Governance & Rules Reference (`.agents/rules/`)
 
-### 3.2 Delegation Rules (Auto-Gating Matrix)
+All development MUST comply with project rules in [`.agents/rules/`](file:///d:/dev/arostech-hub/.agents/rules/) governed by SSOT Hierarchy: HLA (`docs/`) > LLA (`openspec/`) > Enforcement Rules (`.agents/rules/`) > Code (`src/`).
 
-```
-[ Incoming Task / Edit ]
-        │
-        ├── Modifying `.tsx` file ─────────► `react-reviewer` ──► `typescript-reviewer`
-        ├── Modifying `.ts` file ──────────► `typescript-reviewer`
-        ├── Schema / Prisma edit ──────────► `database-reviewer` ──► `typescript-reviewer`
-        ├── Auth / Security file ──────────► `security-reviewer`
-        ├── Fix build failure ─────────────► `build-error-resolver` / `react-build-resolver`
-        ├── Multi-file feature ────────────► `planner` ──► `architect` ──► `tdd-guide`
-        └── Documentation edit ────────────► `doc-updater` (verifies 7-Pillars standard)
-```
-
----
-
-### 3.3 Parallel Execution Protocol
-Independent operations MUST be executed in parallel:
-- Multiple file reads across unrelated domains
-- Multiple test suites that don't share state
-- Agent reviews on unrelated file sets (e.g. `code-reviewer` + `security-reviewer` simultaneously)
-
----
-
-## 4. SDD x TDD Execution Workflow
-
-Every OpenSpec change (Layer 3) is implemented through the nested **SDD × TDD execution model**:
-
-```
-SDD Outer Loop:
-  /opsx-propose (L3) ──► tasks.md (atomic checklist)
-       │
-       └── For each task [ ] in tasks.md:
-             │
-             ├── L4: Auto-gate → correct domain agent
-             │
-             ├── L5 TDD Inner Loop:
-             │     RED      → Failing test derived from WHEN/THEN spec clause
-             │     GREEN    → Minimal implementation (Ponytail: laziest that works)
-             │     REFACTOR → Apply domain rules + Ponytail dead-code review
-             │     VERIFY   → pnpm lint + test --changedSince=main + tsc --noEmit
-             │
-             └── L6: graphify update .   ← after each task [x]
-       │
-       └── All tasks [x] → L7: /opsx-verify + full pipeline → L8: /opsx-archive
-```
-
-**Ponytail Complexity Brake** (active at every gate):
-- **L0**: Does this feature already exist in graph? → Reuse first, do not re-implement.
-- **L1**: Is this in PRD scope? → If not, propose PRD change first. YAGNI.
-- **L2**: Does a proven library/pattern exist? → Adopt > port > build net-new.
-- **L3**: Can spec be split into smaller atomic changes? → Prefer smaller changes.
-- **L5 GREEN**: Laziest solution that works. Zero speculative code.
-- **L5 REFACTOR**: Delete unused exports, dead flexibility, premature abstractions.
-
-### 4.1 Test-Driven Development Rules
-1. **RED**: Write failing test first. The test MUST fail before production code is written.
-2. **GREEN**: Write minimal code to pass the test.
-3. **REFACTOR**: Clean code while maintaining 80%+ test coverage.
-4. **MANDATORY**: Never delete failing tests or lower coverage thresholds to pass build gates.
-5. **SDD Pre-Condition**: Tests MUST be derived from OpenSpec WHEN/THEN behavioral contracts (Layer 3). Running TDD without an existing spec is a governance violation.
-
----
-
-## 5. Coding Standards
-
-1. **Immutability**: Always return new object copies; never mutate existing state.
-2. **File Scope & Size**: Keep components < 200 lines, modules < 400 lines. Max 800 lines absolute limit.
-3. **Error Handling**: Implement structured error handling; use null-on-error for RSC data fetching helpers.
-4. **Input Validation**: Validate inputs at all boundaries using Zod schemas.
-
----
-
-## 6. Security Guidelines
-
-1. **Pre-Commit Scan**: Check for hardcoded API keys, tokens, or passwords before committing.
-2. **SQL & XSS Prevention**: Use Prisma ORM parameterized queries; sanitize HTML inputs.
-3. **Secret Rotation Protocol**: If a secret is exposed, immediately revoke and rotate via environment variables.
-
----
-
-## 7. Git Workflow & Conventional Commits
-
-Format: `<type>(<scope>): <subject>`
-
-Types: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`, `perf`, `ci`
-
----
-
-## 8. Architecture Constraints & Topology
-
-- **Runtime**: Cloudflare Pages (Edge) via `@cloudflare/next-on-pages`
-- **Framework**: Next.js 16.2.6 (App Router)
-- **CMS**: Sanity (GROQ + ISR + Stega visual editing)
-- **Database**: Neon (PostgreSQL) via Prisma ORM (Proxy lazy init)
-- **Auth**: Auth.js v5 (JWT strategy, role-based token expiry, ADR-0006 split config)
-- **Styling**: Tailwind CSS v4 (CSS-first `@theme inline`, OKLCH tokens)
-- **Monorepo**: PNPM Workspaces (`pnpm-workspace.yaml`)
-- **Testing**: Jest (unit/integration) + Playwright (E2E)
-
----
-
-## 9. Verification & Knowledge Graph Sync Protocol
-
-Graphify operates at **3 tiers** across the 8-Layer Workflow:
-
-**Tier 2 — Query (Layer 0: Session Boot)**
-At the start of every session, BEFORE any work begins:
-```bash
-graphify query "<task>"       # BFS traversal — affected nodes, existing patterns
-graphify path "<A>" "<B>"     # dependency chain and impact radius
-# Via MCP (preferred for multi-agent): query_graph, get_node, shortest_path
-```
-If `graphify-out/wiki/index.md` exists, navigate wiki FIRST (not raw files).
-
-**Tier 1 — Incremental Update (Layers 3, 6, 8: Sync Points)**
-After each of these events, run:
-```bash
-graphify update .   # AST-only extraction — no API cost
-```
-- Layer 3: After creating OpenSpec spec files in `openspec/`
-- Layer 6: After each completed task `[x]` in `tasks.md`
-- Layer 8: After archiving a change (final session sync)
-
-**Tier 3 — Serve (Multi-Agent Context Injection)**
-MCP Server for persistent structured access across agent sessions:
-```bash
-uv tool install --upgrade "graphifyy[mcp]"   # install
-# Register in .agents/mcp.json
-```
-Available MCP tools: `query_graph`, `get_node`, `get_neighbors`, `get_community`, `god_nodes`, `graph_stats`, `shortest_path`, `list_prs`, `get_pr_impact`, `triage_prs`
-
-**Documentation & Code Validation:**
-After modifying any rule file, documentation artifact, or production code, agents **MUST**:
-1. **Validate Documentation Standard**: `node .agents/scripts/validate-ai-docs.cjs`
-2. **Update Knowledge Graph AST**: `graphify update .`
-
----
-
-## 10. ECC Skill Loading Order (57 Skills)
-
-### Auto-Loaded Skills (Always Active)
-- `tdd-workflow`, `verification-loop`, `git-workflow`, `coding-standards`, `react-patterns`, `nextjs-turbopack`, `search-first`, `error-handling`
-
-### On-Demand Skills
-- Prisma/DB: `prisma-patterns`, `database-migrations`, `postgres-patterns`
-- Security: `the-security-guard`, `security-review`, `security-scan`, `security-bounty-hunter`
-- UI/Styling: `frontend-patterns`, `frontend-design-direction`, `design-system`, `motion-foundations`
-- Accessibility: `frontend-a11y`, `accessibility`
-- Performance: `react-performance`, `web-perf`
-- E2E: `e2e-testing`, `react-testing`
-
----
-
-## 11. Workflow Surface Policy
-
-- `skills/` is the canonical workflow surface for ECC.
-- `openspec/` is the canonical spec surface — all change proposals live here.
-- Workspace-scoped MCP configurations belong in `.agents/mcp.json` or `.agents/mcp_config.json`.
-
----
-
-## 12. Context Management Rules
-
-- Avoid using the last 20% of context window for multi-file refactorings.
-- Maintain context hygiene by clearing unused state before launching major task waves.
-
----
-
-## 13. Success Metrics
-
-- All tests pass with 80%+ coverage.
-- Zero `ignoreBuildErrors: true` in production builds.
-- Worker bundle size strictly < 25 MB (`.vercel/output/static/_worker.js`).
-- All 6 custom rule files authored, authoritative, and enforced.
-- OpenSpec changes archived within 24 hours of completion.
+| Rule Domain | Files & Scope | Trigger Mode | Key Invariants Enforced |
+|---|---|---|---|
+| **Platform & Infra** | [`cloudflare-edge-runtime.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-edge-runtime.md), [`cloudflare-pages-deploy.md`](file:///d:/dev/arostech-hub/.agents/rules/cloudflare-pages-deploy.md), [`sanity-cms-federation.md`](file:///d:/dev/arostech-hub/.agents/rules/sanity-cms-federation.md), [`prisma-neon-edge.md`](file:///d:/dev/arostech-hub/.agents/rules/prisma-neon-edge.md), [`tailwind-v4.md`](file:///d:/dev/arostech-hub/.agents/rules/tailwind-v4.md), [`monorepo-workspace.md`](file:///d:/dev/arostech-hub/.agents/rules/monorepo-workspace.md) | `glob` / `model_decision` | Edge runtime limits, ADR-0006 split auth, 25MB worker bundle limit, GROQ `defineQuery()`, `@theme inline`, Lazy Neon Proxy |
+| **Workflow & Squad** | [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md), [`teamwork-squad-orchestration.md`](file:///d:/dev/arostech-hub/.agents/rules/teamwork-squad-orchestration.md), [`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md), [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md), [`prompt-deep-thinking-context.md`](file:///d:/dev/arostech-hub/.agents/rules/prompt-deep-thinking-context.md) | `model_decision` | 8-Layer execution (L0-L8), Draft-First PRD cascade, 7-Pillars docs standard, Graphify context boot (Layer 0) |
+| **Common Standards** | `common-coding-style.md`, `common-patterns.md`, `common-security.md`, `common-testing.md`, `common-code-review.md`, `common-git-workflow.md`, `common-hooks.md`, `common-agents.md`, `common-performance.md` | `model_decision` | Immutability, AAA test structure, zero hardcoded secrets, conventional commits, auto-gating 28 agent roster |
+| **React & Web UI** | `react-coding-style.md`, `react-hooks.md`, `react-patterns.md`, `react-security.md`, `react-testing.md`, `web-*.md` | `glob` (`*.tsx`) / `model_decision` | RSC boundaries, hook discipline, Tailwind v4 OKLCH, WCAG 2.1 AA a11y, null-on-error data fetching |
+| **TypeScript** | `typescript-coding-style.md`, `typescript-hooks.md`, `typescript-patterns.md`, `typescript-security.md`, `typescript-testing.md` | `glob` (`*.ts`) / `model_decision` | Strict type safety, Zod schema validation, async/await error handling, Edge boundary verification |

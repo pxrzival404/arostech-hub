@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 description: >
   Unified 8-Layer Development Workflow — Graphify-Anchored, SDD-Governed, TDD-Verified.
   Supersedes: common-development-workflow.md (deleted).

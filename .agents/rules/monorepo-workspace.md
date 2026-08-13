@@ -201,7 +201,7 @@ ignoredBuiltDependencies:
 | 1 | `pnpm install --frozen-lockfile` | Workspace Root | Resolve all workspace dependencies via PNPM |
 | 2 | `pnpm generate` | Root (`.`) | Generate `@prisma/client` from `schema.prisma` |
 | 3 | `pnpm build` | Root (`.`) | Next.js compilation & asset creation |
-| 4 | `pnpm pages:build` | Root (`.`) | `@cloudflare/next-on-pages` → `.vercel/output/static` |
+| 4 | `pnpm pages:build` | Root (`.`) | `@opennextjs/cloudflare` → `.open-next/assets` |
 | — | `pnpm -F website-studio build` | Studio (`studio/`) | Independent; triggered separately for Studio deploy |
 
 ---

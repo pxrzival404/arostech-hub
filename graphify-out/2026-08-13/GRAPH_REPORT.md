@@ -1,16 +1,16 @@
 # Graph Report - arostech-hub  (2026-08-13)
 
 ## Corpus Check
-- 803 files · ~730,923 words
+- 805 files · ~734,723 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 7616 nodes · 11723 edges · 798 communities (564 shown, 234 thin omitted)
-- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 928 edges (avg confidence: 0.52)
+- 7684 nodes · 11797 edges · 808 communities (575 shown, 233 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 936 edges (avg confidence: 0.52)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4c15300c`
+- Built from commit: `1069591f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -21,7 +21,7 @@
 - scripts/gateguard-fact-force.js
 - (hub)/page.tsx
 - install-lifecycle.js
-- claude-skill-migration.js
+- apply.js
 - hooks/gateguard-fact-force.js
 - contact-client.tsx
 - install-executor.js
@@ -48,7 +48,7 @@
 - operator-readiness-dashboard.js
 - queries.ts
 - install-apply.js
-- cn
+- ThemeToggle.tsx
 - hooks/mcp-health-check.js
 - plan-canvas.js
 - scripts/mcp-health-check.js
@@ -88,7 +88,7 @@
 - ADR-0006: Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture
 - Backend Development Patterns
 - memory-vault-format.js
-- log
+- session-manager.js
 - codex-worktree.js
 - How It Works
 - install-plan.js
@@ -98,7 +98,7 @@
 - openspec-onboard/SKILL.md
 - Card 1.2 Prisma Schema & Data Model Audit Findings
 - rfq/route.ts
-- redirects/route.ts
+- redirect-engine.ts
 - products/[slug]/page.tsx
 - cursor-project.js
 - portfolio/[slug]/page.tsx
@@ -122,7 +122,7 @@
 - preview-pack-smoke.js
 - Card 1.7 21st SDK Footprint Audit & Recommendation Report
 - vars
-- rfq-schemas.ts
+- claude-skill-migration.js
 - TransformStream
 - Console
 - URL
@@ -137,24 +137,24 @@
 - SkillCreateOutput
 - Card 1.8 Dead Code Audit Findings Report
 - package.json
-- auth.config.ts
+- redirects/route.ts
 - Evaluation Criteria — Detailed Scoring Guide
 - auto-update.js
 - check-plugin-cache.js
 - doctor.js
-- buildPreToolUseAdditionalContext
+- AGENTS.md Generator
 - scripts/session-start-bootstrap.js
 - dashboard.js
 - ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine
 - prisma.ts
-- NotificationQueue
+- store.js
 - openspec-explore/SKILL.md
-- agent-compress.js
+- gemini-adapt-agents.js
 - Agent Output
 - Operational 5-Step Incident Response Protocol Runbook
 - ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration
 - scripts
-- orchestration-status.js
+- executeRepairOperation
 - merge-mcp-config.js
 - certifications/page.tsx
 - hooks/ecc-context-monitor.js
@@ -177,7 +177,7 @@
 - observability-readiness.js
 - DurableObjectStorage
 - validate-hooks.js
-- gemini-adapt-agents.js
+- check-unicode-safety.js
 - hooks/observe-runner.js
 - hooks/pre-bash-dev-server-block.js
 - hooks/stop-format-typecheck.js
@@ -206,9 +206,9 @@
 - Container
 - FormData
 - URLPattern
-- p
+- FAQSection.tsx
 - metadata.ts
-- list-installed.js
+- getOptimizedImageUrl
 - Low-Score Example: Adding Retry Logic
 - validate-no-personal-paths.js
 - github-discussions.js
@@ -217,26 +217,26 @@
 - main
 - uninstall.js
 - opencode-home.js
-- observations.js
+- scripts/ecc-context-monitor.js
 - Agent Self-Evaluation Report Template
 - pre-edit-rule-gate.cjs
 - Hook Integration for Session-Stop Self-Evaluation
 - ai
 - scripts/package.json
-- (hub)/layout.tsx
+- scripts/catalog.js
 - next-themes
 - Auth.js v5 Edge Security & Client Portal Access Codemap
 - an-token/route.ts
-- schema.js
-- articles/[slug]/page.tsx
+- rfq-schemas.ts
+- articles/page.tsx
 - DurableObjectState
 - ExtendableEvent
 - WorkerEntrypoint
 - opsx-explore.md
-- ThemeToggle.tsx
+- ecc.js
 - @ai-sdk/react
 - eslint-config-next
-- The 7 Pillars Breakdown
+- Extended Development Workflow (8-Layer)
 - validate-workflow-security.js
 - scripts/cost-tracker.js
 - scripts/desktop-notify.js
@@ -248,25 +248,33 @@
 - main
 - sessions-cli.js
 - validate-ai-docs.cjs
-- @hookform/resolvers
+- buildControlPaneSnapshot
 - Minimal Working Example: Adding a Client Tracking Portal Route Handler
 - app/layout.tsx
-- PortfolioSection.tsx
+- cn
 - StreamError
 - ServiceWorkerGlobalScope
 - hooks
-- Mandate & Operating Invariants
+- articles/[slug]/page.tsx
 - check-codex-global-state.sh
 - scripts/design-quality-check.js
 - gan-harness.sh
 - hooks/design-quality-check.js
+- buildSkillHealthReport
 - Standardize Documentation (7 Pillars Standard)
 - preserve-manifest.js
+- scripts/ecc-statusline.js
 - redirects.test.ts
 - schemaTypes/index.ts
 - EventSource
 - Flagship
 - R2ObjectBody
+- session-bridge.js
+- isDestructiveBash
+- harness-adapter.js
+- antigravity.js
+- dmux-tmux.js
+- scripts/github-coordination.js
 - validate-commands.js
 - hooks/ecc-statusline.js
 - hooks/post-bash-command-log.js
@@ -274,6 +282,11 @@
 - hooks/quality-gate.js
 - hooks/session-start-bootstrap.js
 - scripts/post-bash-command-log.js
+- ArticlesSection.tsx
+- auth.config.ts
+- repair.js
+- gh-api.js
+- @hookform/resolvers
 - 2. Declarative Zod Schemas & TypeScript Interfaces
 - leaflet-map.tsx
 - AgentMemoryProfile
@@ -308,7 +321,6 @@
 - session-manager.d.ts
 - utils.d.ts
 - gemini-adapt-ecc.js
-- about/page.tsx
 - AbortSignal
 - Ai
 - AiSearchNamespace
@@ -326,7 +338,7 @@
 - ArtifactsRepo
 - D1Database
 - D1PreparedStatement
-- ErrorEvent
+- message-sink.js
 - EventTarget
 - KVNamespace
 - ReadableByteStreamController
@@ -554,68 +566,64 @@
 ## Import Cycles
 - None detected.
 
-## Communities (798 total, 234 thin omitted)
+## Communities (808 total, 233 thin omitted)
 
 ### Community 0 - "RFC-2253"
 Cohesion: 0.00
 Nodes (834): RFC-2253, RFC-3339, RFC-5246, RFC-9440, AgentMemoryGetSummaryOptions, AgentMemoryGetSummaryResponse, AgentMemoryIncomingMemory, AgentMemoryIngestOptions (+826 more)
 
 ### Community 1 - "github-coordination/actions.js"
-Cohesion: 0.07
-Nodes (80): {
-  applyClaim,
-  applyDecompose,
-  applyPublish,
-  applyReview,
-  applySync,
-  applyUnblock,
-  applyValidate,
-  formatCollection,
-  formatSummary,
-  loadPolicy,
-  normalizeIssueNumber,
-  openStore,
-}, BOOL_FLAGS, dispatchCommand(), formatOutput(), main(), os, parseArgs(), readValue() (+72 more)
+Cohesion: 0.18
+Nodes (41): applyClaim(), applyDecompose(), applyPublish(), applyReview(), applySync(), applyUnblock(), applyValidate(), {
+  assertIssueClaimable,
+  buildIssueComment,
+  buildIssueStateFromAction,
+  desiredLabelsForState,
+  getCoordinationState,
+  summarizeStateForOutput,
+  syncIssueLabels,
+  verifyDependenciesClosed,
+} (+33 more)
 
 ### Community 2 - "RfqB2GForm.tsx"
 Cohesion: 0.06
-Nodes (50): RfqB2BForm(), RfqB2BFormProps, RfqB2GForm(), RfqB2GFormProps, mockCartItems, mockClearCart, mockRemoveItem, mockUpdateItemNotes (+42 more)
+Nodes (54): runtime, RfqB2BForm(), RfqB2BFormProps, RfqB2GForm(), RfqB2GFormProps, mockCartItems, mockClearCart, mockRemoveItem (+46 more)
 
 ### Community 3 - "scripts/gateguard-fact-force.js"
 Cohesion: 0.06
 Nodes (71): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+63 more)
 
 ### Community 4 - "(hub)/page.tsx"
-Cohesion: 0.07
-Nodes (31): CompanyStatCounter(), dynamic, runtime, CompanyStatCounter(), certBodies, CertificationItem, CertificationsSection(), CertificationsSectionProps (+23 more)
+Cohesion: 0.05
+Nodes (52): AboutPage(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, AboutPage(), metadata (+44 more)
 
 ### Community 5 - "install-lifecycle.js"
-Cohesion: 0.07
-Nodes (65): analyzeRecord(), areFilesEqual(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildIssue(), buildRecordedStatePreview() (+57 more)
-
-### Community 6 - "claude-skill-migration.js"
 Cohesion: 0.08
-Nodes (55): applyInstallPlan(), {
+Nodes (46): analyzeRecord(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildDoctorReport(), buildIssue(), buildRecordedStatePreview() (+38 more)
+
+### Community 6 - "apply.js"
+Cohesion: 0.12
+Nodes (28): applyInstallPlan(), {
   assertSafeClaudeSkillOperation,
   prepareClaudeSkillMigration,
   removeLegacyClaudeSkillFiles,
-}, { buildInstallIndex, rewriteRelativeLinks }, buildLinkIndexForPlan(), buildResolvedClaudeHooks(), cloneJsonValue(), deepMergeJson(), { filterMcpConfig, parseDisabledMcpServers } (+47 more)
+}, { buildInstallIndex, rewriteRelativeLinks }, buildLinkIndexForPlan(), buildResolvedClaudeHooks(), cloneJsonValue(), deepMergeJson(), { filterMcpConfig, parseDisabledMcpServers } (+20 more)
 
 ### Community 7 - "hooks/gateguard-fact-force.js"
-Cohesion: 0.08
-Nodes (54): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+46 more)
+Cohesion: 0.11
+Nodes (38): allowWithStateWarning(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES, ECC_ENABLE_VALUES, editGateMsg() (+30 more)
 
 ### Community 8 - "contact-client.tsx"
-Cohesion: 0.08
-Nodes (38): AboutPage(), companyMilestones, companyStats, getInitials(), managementTeam, ContactPage(), isValidEmail(), isValidPhone() (+30 more)
+Cohesion: 0.10
+Nodes (29): categoryColors, ContactPage(), isValidEmail(), isValidPhone(), ContactPage(), metadata, runtime, productSegments (+21 more)
 
 ### Community 9 - "install-executor.js"
 Cohesion: 0.09
-Nodes (44): path, toCursorAgentFileName(), toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations() (+36 more)
+Nodes (41): path, toCursorAgentFileName(), toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations() (+33 more)
 
 ### Community 10 - "single_worker.js"
-Cohesion: 0.13
-Nodes (36): applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at(), checkPhase(), checkRoute() (+28 more)
+Cohesion: 0.11
+Nodes (46): a, applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at(), c() (+38 more)
 
 ### Community 11 - "collect.js"
 Cohesion: 0.07
@@ -645,16 +653,12 @@ Nodes (33): path, run(), { spawnSync }, {
 }, { isHookEnabled }, main(), normalizeHookResult(), POST_BASH_HOOKS (+25 more)
 
 ### Community 16 - "install-manifests.js"
-Cohesion: 0.09
-Nodes (40): FAMILY_ALIASES, {
-  getInstallComponent,
-  listInstallComponents,
-  listInstallProfiles,
-}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+32 more)
+Cohesion: 0.11
+Nodes (29): addSyntheticSkillComponents(), assertKnownModuleIds(), COMPONENT_FAMILY_PREFIXES, dedupeStrings(), DEFAULT_REPO_ROOT, expandComponentIdsToModuleIds(), fs, { getInstallTargetAdapter, planInstallTargetScaffold } (+21 more)
 
 ### Community 17 - "scripts/session-end.js"
 Cohesion: 0.10
-Nodes (37): extractConversationText(), fs, generateSessionSummary(), getContextRemainingPct(), getContextThreshold(), getLLMModel(), { spawnSync }, getDateString() (+29 more)
+Nodes (41): extractConversationText(), fs, generateSessionSummary(), getContextRemainingPct(), getContextThreshold(), getLLMModel(), { spawnSync }, getSessionPath() (+33 more)
 
 ### Community 18 - "loop-status.js"
 Cohesion: 0.11
@@ -666,7 +670,7 @@ Nodes (37): addFinding(), claudePermissionDenyRanges(), CRITICAL_TEXT_INDICATORS
 
 ### Community 20 - "scripts/session-start.js"
 Cohesion: 0.10
-Nodes (34): findFiles(), collapseWhitespace(), collectLearnedSkillFiles(), dedupeRecentSessions(), { detectProjectType }, extractFirstParagraph(), extractInstinctAction(), extractMarkdownHeading() (+26 more)
+Nodes (37): getSelectionPrompt(), findFiles(), log(), collapseWhitespace(), collectLearnedSkillFiles(), dedupeRecentSessions(), { detectProjectType }, extractFirstParagraph() (+29 more)
 
 ### Community 21 - "Coding Standards & Best Practices"
 Cohesion: 0.05
@@ -698,11 +702,11 @@ Nodes (36): doctorMemoryVault(), appendOption(), assertMutationAllowed(), BOOLEA
 
 ### Community 27 - "scripts/session-activity-tracker.js"
 Cohesion: 0.11
-Nodes (38): appendFile(), actionForFileKey(), {
+Nodes (37): actionForFileKey(), {
   appendFile,
   getClaudeDir,
   stripAnsi,
-}, buildActivityRow(), buildCreationPreview(), buildDiffPreviewFromPatchPreview(), buildPatchPreviewFromContent(), buildPatchPreviewFromReplacement() (+30 more)
+}, buildActivityRow(), buildCreationPreview(), buildDiffPreviewFromPatchPreview(), buildPatchPreviewFromContent(), buildPatchPreviewFromReplacement(), buildReplacementPreview() (+29 more)
 
 ### Community 28 - "dashboard-web.js"
 Cohesion: 0.09
@@ -717,16 +721,24 @@ Cohesion: 0.11
 Nodes (35): agentShieldEnterpriseEvidence(), agentShieldEnterpriseGap(), buildGrowthSummary(), buildReport(), { buildReport: buildPlatformReport }, buildRequirement(), buildRequirements(), DEFAULT_THRESHOLDS (+27 more)
 
 ### Community 31 - "queries.ts"
-Cohesion: 0.10
-Nodes (28): generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate, runtime, SpokePortfolioPage() (+20 more)
+Cohesion: 0.16
+Nodes (13): generateMetadata(), revalidate, runtime, SpokeDynamicPage(), articleFields, certificationFields, getAllSpokeConfigs(), getPageBySlug() (+5 more)
 
 ### Community 32 - "install-apply.js"
-Cohesion: 0.10
-Nodes (31): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+23 more)
+Cohesion: 0.20
+Nodes (17): { getComputeSponsorCopy }, getHelpText(), {
+  LEGACY_INSTALL_TARGETS,
+  normalizeInstallRequest,
+  parseInstallArgs,
+}, main(), os, printHumanPlan(), showHelp(), {
+  SUPPORTED_INSTALL_TARGETS,
+  listLegacyCompatibilityLanguages,
+  listSupportedLocales,
+} (+9 more)
 
-### Community 33 - "cn"
-Cohesion: 0.13
-Nodes (20): SelectField(), SelectFieldProps, Avatar(), AvatarFallback(), AvatarImage(), Button(), buttonVariants, Tabs() (+12 more)
+### Community 33 - "ThemeToggle.tsx"
+Cohesion: 0.43
+Nodes (6): Button(), buttonVariants, getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
 
 ### Community 34 - "hooks/mcp-health-check.js"
 Cohesion: 0.12
@@ -754,8 +766,8 @@ Cohesion: 0.06
 Nodes (34): esnext, everything-claude-code, extracted_workspace, jest, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts (+26 more)
 
 ### Community 39 - "hooks/session-start.js"
-Cohesion: 0.05
-Nodes (55): allowedSymbolCodePoints, changedFiles, collectDangerousInvisibleMatches(), collectMatches(), fs, ignoredDirs, isAllowedEmojiLikeSymbol(), isDangerousInvisibleCodePoint() (+47 more)
+Cohesion: 0.11
+Nodes (33): collapseWhitespace(), collectLearnedSkillFiles(), dedupeRecentSessions(), { detectProjectType }, extractFirstParagraph(), extractInstinctAction(), extractMarkdownHeading(), extractSection() (+25 more)
 
 ### Community 40 - "release-video-suite.js"
 Cohesion: 0.11
@@ -784,12 +796,12 @@ Cohesion: 0.12
 Nodes (32): assertMemoryDirectorySafe(), assertMemoryMatchesLocation(), assertMemoryRootSafe(), { assertWithinTrustedRoot, realpathNearestExisting }, buildExcerpt(), countOccurrences(), crypto, defaultMemoryId() (+24 more)
 
 ### Community 45 - "control-pane/state.js"
-Cohesion: 0.12
-Nodes (41): { buildControlPaneActions }, buildControlPaneSnapshot(), classifyAssignee(), connectorStatus(), deepMerge(), DEFAULT_STATE_STORE_RELATIVE_PATH, defaultConfigPaths(), defaultDbPath() (+33 more)
+Cohesion: 0.13
+Nodes (28): { buildControlPaneActions }, classifyAssignee(), deepMerge(), DEFAULT_STATE_STORE_RELATIVE_PATH, defaultConfigPaths(), defaultDbPath(), defaultStateDbPath(), fs (+20 more)
 
 ### Community 46 - "package-manager.js"
-Cohesion: 0.11
-Nodes (30): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+22 more)
+Cohesion: 0.12
+Nodes (29): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+21 more)
 
 ### Community 47 - "canonical-session.js"
 Cohesion: 0.12
@@ -839,11 +851,11 @@ Cohesion: 0.09
 Nodes (26): CertificationsGridProps, mockCertification(), mockPage(), mockPortfolioEntry(), mockProduct(), mockSpokeConfig(), mockFetch, Article (+18 more)
 
 ### Community 56 - "hooks/bash-hook-dispatcher.js"
-Cohesion: 0.09
-Nodes (24): path, run(), { spawnSync }, {
+Cohesion: 0.07
+Nodes (38): path, run(), { spawnSync }, {
   buildPreToolUseAdditionalContext,
   combineAdditionalContext,
-}, { isHookEnabled }, main(), POST_BASH_HOOKS, PRE_BASH_HOOKS (+16 more)
+}, { isHookEnabled }, main(), normalizeHookResult(), POST_BASH_HOOKS (+30 more)
 
 ### Community 57 - "plan-canvas/server.js"
 Cohesion: 0.11
@@ -872,8 +884,8 @@ Nodes (24): DEFAULT_RECALL_SCOPES, Ajv, assertScopesAuthorized(), createMemoryMc
 }, executeMemoryTool(), { fileURLToPath }, fs (+16 more)
 
 ### Community 60 - "session-inspect.js"
-Cohesion: 0.13
-Nodes (25): createAdapterRegistry(), inspectSessionTarget(), { buildSkillHealthReport }, createProposalId(), proposeSkillAmendment(), summarizePatchPreview(), buildSkillEvaluationScaffold(), roundRate() (+17 more)
+Cohesion: 0.11
+Nodes (25): buildSkillEvaluationScaffold(), roundRate(), summarize(), appendSkillObservation(), createObservationId(), createSkillObservation(), ensureString(), fs (+17 more)
 
 ### Community 61 - "release-approval-gate.js"
 Cohesion: 0.13
@@ -925,7 +937,7 @@ Nodes (16): cleanupAliases(), deleteAlias(), fs, getAliasesForSession(), getAlia
 
 ### Community 69 - "scripts/suggest-compact.js"
 Cohesion: 0.14
-Nodes (25): computeContextBucket(), extractUsageTokens(), formatWindowLabel(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens() (+17 more)
+Nodes (24): computeContextBucket(), extractUsageTokens(), formatWindowLabel(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens() (+16 more)
 
 ### Community 70 - "ADR-0006: Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture"
 Cohesion: 0.08
@@ -939,9 +951,9 @@ Nodes (25): API Design Patterns, Authentication & Authorization, Backend Develop
 Cohesion: 0.15
 Nodes (24): asNonEmptyString(), FATAL_UTF8_DECODER, FRONTMATTER_FIELDS, FRONTMATTER_KEYS, hasUnsafeControlCharacters(), MEMORY_KINDS, MEMORY_SCOPES, MEMORY_STATUSES (+16 more)
 
-### Community 73 - "log"
+### Community 73 - "session-manager.js"
 Cohesion: 0.11
-Nodes (31): fs, hydrateSessionFromPath(), isSessionFileTarget(), { normalizeClaudeHistorySession, persistCanonicalSnapshot }, parseClaudeTarget(), path, resolveSessionRecord(), sessionAliases (+23 more)
+Nodes (28): fs, hydrateSessionFromPath(), isSessionFileTarget(), { normalizeClaudeHistorySession, persistCanonicalSnapshot }, parseClaudeTarget(), path, resolveSessionRecord(), sessionAliases (+20 more)
 
 ### Community 74 - "codex-worktree.js"
 Cohesion: 0.14
@@ -972,8 +984,8 @@ Cohesion: 0.14
 Nodes (22): collectSkillHealth(), discoverSkills(), filterRecordsWithinDays(), formatHealthReport(), formatRate(), fs, getFailureTrend(), getLastRun() (+14 more)
 
 ### Community 79 - "Agent Self-Evaluation"
-Cohesion: 0.09
-Nodes (21): Agent Self-Evaluation, Anti-Patterns, Best Practices, Code Examples, Core Concepts, "Everything is a 5", Example: Good Evaluation (Score 4+), Example: Weak Evaluation (Score 2-3) (+13 more)
+Cohesion: 0.08
+Nodes (23): Agent Self-Evaluation, Anti-Patterns, Best Practices, Code Examples, Core Concepts, "Everything is a 5", Example: Good Evaluation (Score 4+), Example: Weak Evaluation (Score 2-3) (+15 more)
 
 ### Community 80 - "openspec-onboard/SKILL.md"
 Cohesion: 0.10
@@ -985,15 +997,15 @@ Nodes (23): 1. Executive Summary, 2.1 Model Reconciliation Table, 2.2 Deep Dive 
 
 ### Community 82 - "rfq/route.ts"
 Cohesion: 0.14
-Nodes (15): limiter, POST(), runtime, mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest (+7 more)
+Nodes (12): limiter, POST(), runtime, mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest (+4 more)
 
-### Community 83 - "redirects/route.ts"
-Cohesion: 0.20
-Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, requireAuth(), cache, CacheEntry (+6 more)
+### Community 83 - "redirect-engine.ts"
+Cohesion: 0.33
+Nodes (7): cache, CacheEntry, getFromCache(), lookupRedirect(), normalizePath(), setToCache(), mockFetch
 
 ### Community 84 - "products/[slug]/page.tsx"
-Cohesion: 0.10
-Nodes (26): faqData, FAQPage(), FAQPage(), metadata, runtime, generateMetadata(), ProductDetailPage(), revalidate (+18 more)
+Cohesion: 0.13
+Nodes (20): faqData, FAQPage(), FAQPage(), metadata, runtime, generateMetadata(), ProductDetailPage(), revalidate (+12 more)
 
 ### Community 85 - "cursor-project.js"
 Cohesion: 0.31
@@ -1035,8 +1047,8 @@ Nodes (19): {
 }, buildPayload(), main(), parseArgs(), path, printHelp(), renderText(), ADAPTER_RECORDS (+11 more)
 
 ### Community 92 - "session-adapters/registry.js"
-Cohesion: 0.13
-Nodes (19): createClaudeHistoryAdapter(), createCodexWorktreeAdapter(), buildSourceTarget(), { collectSessionSnapshot }, createDmuxTmuxAdapter(), fs, isPlanFileTarget(), { normalizeDmuxSnapshot, persistCanonicalSnapshot } (+11 more)
+Cohesion: 0.12
+Nodes (23): createAntigravityAdapter(), createClaudeHistoryAdapter(), createCodexWorktreeAdapter(), createDmuxTmuxAdapter(), createOpencodeAdapter(), buildDefaultAdapterOptions(), coerceTargetValue(), createAdapterRegistry() (+15 more)
 
 ### Community 93 - "compilerOptions"
 Cohesion: 0.09
@@ -1047,8 +1059,8 @@ Cohesion: 0.31
 Nodes (8): { execSync }, findFilesMatching(), fs, parseSimpleYaml(), path, runBenchmark(), runJudge(), TASKS_DIR
 
 ### Community 95 - "state-store/index.js"
-Cohesion: 0.15
-Nodes (19): openStore(), { applyMigrations, getAppliedMigrations }, { assertValidEntity, validateEntity }, { createQueryApi }, createStateStore(), DEFAULT_STATE_STORE_RELATIVE_PATH, fs, initSqlJs (+11 more)
+Cohesion: 0.09
+Nodes (31): openStore(), { applyMigrations, getAppliedMigrations }, { assertValidEntity, validateEntity }, { createQueryApi }, createStateStore(), DEFAULT_STATE_STORE_RELATIVE_PATH, fs, initSqlJs (+23 more)
 
 ### Community 96 - "session-adapters/opencode.js"
 Cohesion: 0.17
@@ -1068,7 +1080,7 @@ Nodes (20): 1. Executive Summary, 2. Complete Endpoint Inventory Matrix, 3.1 RFQ
 
 ### Community 100 - "env.ts"
 Cohesion: 0.07
-Nodes (30): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, FetchOptions (+22 more)
+Nodes (31): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, FetchOptions (+23 more)
 
 ### Community 101 - "orchestration-session.js"
 Cohesion: 0.18
@@ -1079,8 +1091,8 @@ Cohesion: 0.16
 Nodes (15): buildAdvisorySourceReport(), buildLinearStatus(), createCheck(), DEFAULT_ADVISORY_SOURCES, DEFAULT_GENERATED_AT(), defaultFetchSource(), fs, http (+7 more)
 
 ### Community 103 - "proximity-tick.js"
-Cohesion: 0.15
-Nodes (18): buildSendArgs(), createEccMessageSink(), { execFileSync }, fs, KIND_BY_TYPE, path, resolveEccBin(), createProximityDispatcher() (+10 more)
+Cohesion: 0.26
+Nodes (11): createProximityDispatcher(), runProximityTick(), readTomlConfig(), resolveControlPaneConfig(), { createEccMessageSink }, { createProximityDispatcher, runProximityTick }, main(), parseArgs() (+3 more)
 
 ### Community 104 - "preview-pack-smoke.js"
 Cohesion: 0.16
@@ -1094,9 +1106,9 @@ Nodes (19): 1. Executive Summary, 2.1 Dedicated File Inventory, 2.2 Shared Confi
 Cohesion: 0.10
 Nodes (19): nodejs_compat, assets, directory, compatibility_date, compatibility_flags, main, name, observability (+11 more)
 
-### Community 107 - "rfq-schemas.ts"
-Cohesion: 0.14
-Nodes (17): b2GSpecificFieldsSchema, ContactInfo, contactInfoSchema, PROCUREMENT_TYPES, ProcurementType, rfqB2BSchema, rfqB2GSchema, rfqCartItemSchema (+9 more)
+### Community 107 - "claude-skill-migration.js"
+Cohesion: 0.17
+Nodes (27): assertSafeClaudeSkillOperation(), assertSafeSkillPath(), { assertWithinTrustedRoot }, buildMigrationStates(), buildState(), classifyPreviousOperations(), classifySkillConflicts(), classifySkillGroup() (+19 more)
 
 ### Community 108 - "TransformStream"
 Cohesion: 0.10
@@ -1146,9 +1158,9 @@ Nodes (18): 1. Executive Summary, 2. Removability Risk Matrix, 3.1 `tailwind.con
 Cohesion: 0.11
 Nodes (18): author, bugs, url, description, directories, doc, test, homepage (+10 more)
 
-### Community 122 - "auth.config.ts"
-Cohesion: 0.16
-Nodes (14): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User, checkDashboardAccess() (+6 more)
+### Community 122 - "redirects/route.ts"
+Cohesion: 0.22
+Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, checkDashboardAccess(), getServerSession(), requireAuth() (+6 more)
 
 ### Community 123 - "Evaluation Criteria — Detailed Scoring Guide"
 Cohesion: 0.17
@@ -1163,12 +1175,12 @@ Cohesion: 0.19
 Nodes (17): checkCache(), collectManifestRefs(), fs, listInstalledVersions(), log(), main(), manifestPathFor(), os (+9 more)
 
 ### Community 126 - "doctor.js"
-Cohesion: 0.14
-Nodes (18): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS } (+10 more)
+Cohesion: 0.16
+Nodes (16): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS } (+8 more)
 
-### Community 127 - "buildPreToolUseAdditionalContext"
-Cohesion: 0.17
-Nodes (14): normalizeHookResult(), runHooks(), { buildPreToolUseAdditionalContext }, isSuspiciousDocPath(), main(), path, run(), { buildPreToolUseAdditionalContext } (+6 more)
+### Community 127 - "AGENTS.md Generator"
+Cohesion: 0.07
+Nodes (29): a) Build & Run Commands — PUT FIRST, AGENTS.md Generator, Always generate for:, Always skip:, Anti-Patterns to Avoid, b) Testing Instructions, c) Project Structure, CLAUDE.md Companion File (+21 more)
 
 ### Community 128 - "scripts/session-start-bootstrap.js"
 Cohesion: 0.12
@@ -1183,20 +1195,20 @@ Cohesion: 0.11
 Nodes (17): 1. Behavioral Contracts & Requirements, 2. Context & Problem Statement, 3. Decision & Declarative Routing Schemas, 4. Alternatives Considered, 5. Consequences & Impact Analysis, ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine, Alternative 1: Edge Worker 301 Redirect Engine with Database Lookups, Alternative 2: Separate Next.js Applications per Subdomain (+9 more)
 
 ### Community 131 - "prisma.ts"
-Cohesion: 0.14
-Nodes (12): runtime, GET(), runtime, globalForPrisma, prisma, AuditOptions, auditRedirects(), AuditReport (+4 more)
+Cohesion: 0.16
+Nodes (11): GET(), runtime, globalForPrisma, prisma, AuditOptions, auditRedirects(), AuditReport, BrokenTarget (+3 more)
 
-### Community 132 - "NotificationQueue"
-Cohesion: 0.24
-Nodes (6): dynamic, GET(), runtime, NotificationQueue, mockNextResponse, mockProcessAllPending
+### Community 132 - "store.js"
+Cohesion: 0.08
+Nodes (24): ghApi, actions, parsing, policy, state, store, { DEFAULT_POLICY, DEFAULT_SCHEMA_VERSION, DEFAULT_SECTION_MARKER }, escapeRegExp() (+16 more)
 
 ### Community 133 - "openspec-explore/SKILL.md"
 Cohesion: 0.18
 Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
 
-### Community 134 - "agent-compress.js"
-Cohesion: 0.21
-Nodes (15): allowedModes, buildAgentCatalog(), compressToCatalog(), compressToSummary(), extractSummary(), fs, lazyLoadAgent(), loadAgent() (+7 more)
+### Community 134 - "gemini-adapt-agents.js"
+Cohesion: 0.11
+Nodes (28): adaptAgents(), adaptFrontmatter(), adaptToolName(), ensureDirectory(), formatToolLine(), fs, main(), { normalizeAgentTools } (+20 more)
 
 ### Community 135 - "Agent Output"
 Cohesion: 0.18
@@ -1214,9 +1226,9 @@ Nodes (16): 1. Behavioral Contracts & Requirements, 2. Context & Architecture, 3
 Cohesion: 0.12
 Nodes (17): scripts, build, clean:pages, _comment_pages_build, db:seed:users, dev, generate, lint (+9 more)
 
-### Community 139 - "orchestration-status.js"
-Cohesion: 0.38
-Nodes (6): fs, { inspectSessionTarget }, main(), parseArgs(), path, usage()
+### Community 139 - "executeRepairOperation"
+Cohesion: 0.15
+Nodes (26): areFilesEqual(), cloneJsonValue(), copyContainedFile(), deepMergeJson(), deepRemoveJsonSubset(), ensureContainedParentDir(), executeRepairOperation(), executeUninstallOperation() (+18 more)
 
 ### Community 140 - "merge-mcp-config.js"
 Cohesion: 0.17
@@ -1251,8 +1263,8 @@ Cohesion: 0.25
 Nodes (15): applyEmphasis(), buildList(), buildListBlock(), cellAlign(), classifyUrl(), isAlignmentRow(), listTag(), renderInline() (+7 more)
 
 ### Community 148 - "scripts/ecc-metrics-bridge.js"
-Cohesion: 0.07
-Nodes (47): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+39 more)
+Cohesion: 0.19
+Nodes (15): crypto, extractFilePaths(), fs, { getClaudeDir }, getCostWarningCachePath(), hashToolCall(), os, path (+7 more)
 
 ### Community 149 - "Auth & ADR Audit Findings"
 Cohesion: 0.12
@@ -1267,8 +1279,8 @@ Cohesion: 0.12
 Nodes (15): 1. Behavioral Contracts & Requirements, 2. Context & Problem Statement, 3. Decision & Declarative Data Schemas, 4. Alternatives Considered, 5. Consequences & Risk Mitigation, ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture, Alternative 1: Discriminated Union Form Segregation (`z.discriminatedUnion`), Alternative 2: Separate Form Endpoints per Product Spoke (+7 more)
 
 ### Community 152 - "password-reset.test.ts"
-Cohesion: 0.15
-Nodes (13): limiter, POST(), runtime, POST(), sendPasswordResetEmail(), mockNextResponse, mockSendEmail, mockTokenCreate (+5 more)
+Cohesion: 0.14
+Nodes (14): limiter, POST(), runtime, POST(), runtime, sendPasswordResetEmail(), mockNextResponse, mockSendEmail (+6 more)
 
 ### Community 154 - "discussion-audit.js"
 Cohesion: 0.22
@@ -1302,9 +1314,9 @@ Nodes (14): buildChecks(), buildReport(), fileExists(), fs, hasObjectKeys(), inc
 Cohesion: 0.19
 Nodes (13): Ajv, EVENTS_WITHOUT_MATCHER, fs, HOOKS_FILE, HOOKS_SCHEMA_PATH, isNonEmptyString(), isNonEmptyStringArray(), path (+5 more)
 
-### Community 162 - "gemini-adapt-agents.js"
-Cohesion: 0.23
-Nodes (13): adaptAgents(), adaptFrontmatter(), adaptToolName(), ensureDirectory(), formatToolLine(), fs, main(), { normalizeAgentTools } (+5 more)
+### Community 162 - "check-unicode-safety.js"
+Cohesion: 0.12
+Nodes (21): allowedSymbolCodePoints, changedFiles, collectDangerousInvisibleMatches(), collectMatches(), fs, ignoredDirs, isAllowedEmojiLikeSymbol(), isDangerousInvisibleCodePoint() (+13 more)
 
 ### Community 163 - "hooks/observe-runner.js"
 Cohesion: 0.22
@@ -1356,16 +1368,16 @@ Cohesion: 0.27
 Nodes (13): release.sh script, update_agent_yaml_version(), update_agents_version(), update_codex_marketplace_version(), update_latest_release_heading(), update_marketplace_plugin_version(), update_opencode_hook_banner_version(), update_package_lock_version() (+5 more)
 
 ### Community 172 - "queue.test.ts"
-Cohesion: 0.19
-Nodes (11): sendInternalNotification(), sendRfqAcknowledgment(), mockSend, mockAlertNew, mockAlertQueueFailure, mockJobCreate, mockJobFindMany, mockJobFindUnique (+3 more)
+Cohesion: 0.11
+Nodes (21): dynamic, GET(), runtime, JobStatus, NotificationQueue, sendInternalNotification(), sendRfqAcknowledgment(), alertNewRfq() (+13 more)
 
 ### Community 176 - "dependencies"
 Cohesion: 0.15
 Nodes (13): @21st-sdk/agent, @21st-sdk/nextjs, @auth/prisma-adapter, class-variance-authority, next, dependencies, @21st-sdk/agent, @21st-sdk/nextjs (+5 more)
 
 ### Community 177 - "AboutSection.tsx"
-Cohesion: 0.09
-Nodes (33): categoryColors, categoryIcons, categoryLabels, FAQItem, AboutSection(), companyMilestones, companyStats, getInitials() (+25 more)
+Cohesion: 0.16
+Nodes (17): AboutSection(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, misiIcons, visiMisiItems (+9 more)
 
 ### Community 178 - "generate.ts"
 Cohesion: 0.27
@@ -1399,17 +1411,17 @@ Nodes (12): 1. Overview & Portal Architecture, 2. Onboarding Workflow Steps, 3. 
 Cohesion: 0.15
 Nodes (3): Body, Request, Response
 
-### Community 191 - "p"
-Cohesion: 0.29
-Nodes (10): a, c(), ct(), e(), n(), o(), ot(), p() (+2 more)
+### Community 191 - "FAQSection.tsx"
+Cohesion: 0.21
+Nodes (12): categoryIcons, categoryLabels, FAQItem, categoryIcons, categoryLabels, FAQ, faqCategories, FAQSection() (+4 more)
 
 ### Community 192 - "metadata.ts"
-Cohesion: 0.33
-Nodes (7): generateMetadata(), createHubHomeMetadata(), createHubPageMetadata(), createSpokeProductMetadata(), PAGE_TITLE_MAP, slugify(), SpokeProduct
+Cohesion: 0.31
+Nodes (8): generateMetadata(), createHubHomeMetadata(), createHubPageMetadata(), createSpokeHomeMetadata(), createSpokeProductMetadata(), PAGE_TITLE_MAP, slugify(), SpokeProduct
 
-### Community 193 - "list-installed.js"
-Cohesion: 0.25
-Nodes (10): discoverInstalledStates(), normalizeTargets(), listInstallTargetAdapters(), { discoverInstalledStates }, main(), os, parseArgs(), printHuman() (+2 more)
+### Community 193 - "getOptimizedImageUrl"
+Cohesion: 0.17
+Nodes (17): generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate, runtime, SpokePortfolioPage() (+9 more)
 
 ### Community 194 - "Low-Score Example: Adding Retry Logic"
 Cohesion: 0.33
@@ -1452,9 +1464,9 @@ Nodes (11): buildValidationIssue(), defaultValidateAdapterInput(), {
   createInstallTargetAdapter,
 }, COMPILED_PLUGIN_DIST_DIR, defaultValidateOpencodeHome(), fs, isExpectedType(), MISSING_ARTEFACT_ERROR_CODES (+3 more)
 
-### Community 202 - "observations.js"
-Cohesion: 0.26
-Nodes (11): appendSkillObservation(), createObservationId(), createSkillObservation(), ensureString(), fs, getSkillObservationsPath(), getSkillTelemetryRoot(), os (+3 more)
+### Community 202 - "scripts/ecc-context-monitor.js"
+Cohesion: 0.20
+Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
 
 ### Community 203 - "Agent Self-Evaluation Report Template"
 Cohesion: 0.40
@@ -1468,25 +1480,29 @@ Nodes (7): fs, loadGateMap(), main(), MAP_PATH, matchPattern(), path, run()
 Cohesion: 0.50
 Nodes (3): Hook Integration for Session-Stop Self-Evaluation, Integration with the Python Evaluator, Manual Usage (Recommended)
 
-### Community 208 - "(hub)/layout.tsx"
-Cohesion: 0.38
-Nodes (3): runtime, BackToTop(), ScrollProgress()
+### Community 208 - "scripts/catalog.js"
+Cohesion: 0.25
+Nodes (13): FAMILY_ALIASES, {
+  getInstallComponent,
+  listInstallComponents,
+  listInstallProfiles,
+}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+5 more)
 
 ### Community 210 - "Auth.js v5 Edge Security & Client Portal Access Codemap"
 Cohesion: 0.17
 Nodes (11): 1. Behavioral Contracts & Requirements, 2. Declarative Security & Authorization Schemas, 3.1 Edge Security Subsystem Flow, 3. System Security Terrain & Code Architecture, 4. Role-Based Access Control (RBAC) Matrix, 5. Security Practices & Controls, Auth.js v5 Edge Security & Client Portal Access Codemap, OpenSpec Delta (+3 more)
 
 ### Community 211 - "an-token/route.ts"
-Cohesion: 0.27
-Nodes (9): getTokenHandler(), limiter, POST(), runtime, getANSDKEnv(), validateANSDKEnv(), createRateLimiter(), getClientIp() (+1 more)
+Cohesion: 0.31
+Nodes (8): getTokenHandler(), limiter, POST(), runtime, validateANSDKEnv(), createRateLimiter(), getClientIp(), RateLimiterOptions
 
-### Community 212 - "schema.js"
-Cohesion: 0.22
-Nodes (12): Ajv, assertValidEntity(), cachedValidators, ENTITY_DEFINITIONS, formatValidationErrors(), fs, getAjv(), getEntityValidator() (+4 more)
+### Community 212 - "rfq-schemas.ts"
+Cohesion: 0.14
+Nodes (16): b2GSpecificFieldsSchema, ContactInfo, contactInfoSchema, PROCUREMENT_TYPES, ProcurementType, rfqB2GSchema, rfqCartItemSchema, rfqItemsArraySchema (+8 more)
 
-### Community 213 - "articles/[slug]/page.tsx"
-Cohesion: 0.11
-Nodes (20): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, ArticleDetailPage() (+12 more)
+### Community 213 - "articles/page.tsx"
+Cohesion: 0.23
+Nodes (10): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, getArticles() (+2 more)
 
 ### Community 215 - "ExtendableEvent"
 Cohesion: 0.17
@@ -1496,13 +1512,13 @@ Nodes (6): EmailEvent, ExtendableEvent, FetchEvent, QueueEvent, ScheduledEvent, 
 Cohesion: 0.20
 Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
 
-### Community 218 - "ThemeToggle.tsx"
-Cohesion: 0.70
-Nodes (4): getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
+### Community 218 - "ecc.js"
+Cohesion: 0.19
+Nodes (13): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+5 more)
 
-### Community 224 - "The 7 Pillars Breakdown"
-Cohesion: 0.18
-Nodes (10): 1. Machine-Readable YAML Frontmatter, 2. OpenSpec Behavioral Contracts, 3. RFC 2119 Normative Precision, 4. Declarative Machine Code & Schemas, 5. Graphify Knowledge Graph Anchoring, 6. OpenSpec SDD Lifecycle Mapping, 7. Anchored URIs & Zero Redundancy Invariants, AI-Friendly Documentation Rule (7 Pillars Standard) (+2 more)
+### Community 224 - "Extended Development Workflow (8-Layer)"
+Cohesion: 0.05
+Nodes (35): 1. Machine-Readable YAML Frontmatter, 2. OpenSpec Behavioral Contracts, 3. RFC 2119 Normative Precision, 4. Declarative Machine Code & Schemas, 5. Graphify Knowledge Graph Anchoring, 6. OpenSpec SDD Lifecycle Mapping, 7. Anchored URIs & Zero Redundancy Invariants, AI-Friendly Documentation Rule (7 Pillars Standard) (+27 more)
 
 ### Community 225 - "validate-workflow-security.js"
 Cohesion: 0.25
@@ -1548,6 +1564,10 @@ Nodes (10): { createStateStore }, main(), os, parseArgs(), printDecisions(), pri
 Cohesion: 0.27
 Nodes (10): { execSync }, fs, getModifiedDocFiles(), main(), parseFrontmatter(), path, REQUIRED_FRONTMATTER_KEYS, run() (+2 more)
 
+### Community 243 - "buildControlPaneSnapshot"
+Cohesion: 0.38
+Nodes (13): buildControlPaneSnapshot(), connectorStatus(), execRows(), normalizeSession(), parseJson(), readConnectorCheckpointRows(), readEntities(), readObservations() (+5 more)
+
 ### Community 244 - "Minimal Working Example: Adding a Client Tracking Portal Route Handler"
 Cohesion: 0.18
 Nodes (10): 1. Behavioral Contracts & Requirements, 2. Declarative Route Handler Schemas, 3. Step-by-Step Implementation, 4. Security & Access Verification, Minimal Working Example: Adding a Client Tracking Portal Route Handler, OpenSpec Delta, Requirement: REQ-MWE-CLIENT-PORTAL-001 Row-Level Scoped Route Handler Execution, Scenario: Authenticated Client Query (+2 more)
@@ -1556,9 +1576,9 @@ Nodes (10): 1. Behavioral Contracts & Requirements, 2. Declarative Route Handler
 Cohesion: 0.24
 Nodes (7): metadata, runtime, GoogleAnalytics(), RouteChangeListener(), ThemeProvider(), GA_TRACKING_ID, pageview()
 
-### Community 246 - "PortfolioSection.tsx"
-Cohesion: 0.09
-Nodes (26): LeafletMap, ProjectMapDynamic(), ArticlesSection(), categoryColors, categoryFilters, formatDate(), getInitialSavedIds(), useSavedArticles() (+18 more)
+### Community 246 - "cn"
+Cohesion: 0.08
+Nodes (32): SelectField(), SelectFieldProps, LeafletMap, ProjectMapDynamic(), categoryAccentColors, categoryColors, categoryLabels, cityCards (+24 more)
 
 ### Community 247 - "StreamError"
 Cohesion: 0.18
@@ -1568,9 +1588,9 @@ Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError
 Cohesion: 0.20
 Nodes (9): hooks, PostToolUse, PostToolUseFailure, PreCompact, PreToolUse, SessionEnd, SessionStart, Stop (+1 more)
 
-### Community 254 - "Mandate & Operating Invariants"
-Cohesion: 0.22
-Nodes (8): 1. Draft-First Alignment, 2. PRD-First Root SSOT Cascade, 3. Dynamic Task Expansion & Decision Autonomy, 4. Squad Role Breakdown, 5. Strict Merge Gate Requirements, 6. Token Limit Continuation Pattern, Mandate & Operating Invariants, Teamwork Squad Orchestration & Dynamic Cascade Rule
+### Community 254 - "articles/[slug]/page.tsx"
+Cohesion: 0.19
+Nodes (11): ArticleDetailPage(), generateMetadata(), revalidate, runtime, PortableText(), Props, Props, ShareButtons() (+3 more)
 
 ### Community 255 - "check-codex-global-state.sh"
 Cohesion: 0.53
@@ -1588,6 +1608,10 @@ Nodes (7): fail(), log(), ok(), phase(), score_passes(), gan-harness.sh script, 
 Cohesion: 0.29
 Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
 
+### Community 261 - "buildSkillHealthReport"
+Cohesion: 0.33
+Nodes (9): { buildSkillHealthReport }, createProposalId(), proposeSkillAmendment(), summarizePatchPreview(), buildSkillHealthReport(), deriveSkillStatus(), rankCounts(), roundRate() (+1 more)
+
 ### Community 265 - "Standardize Documentation (7 Pillars Standard)"
 Cohesion: 0.20
 Nodes (9): 🏛️ Mapping of the 7 Pillars, Standardize Documentation (7 Pillars Standard), Step 1: Scan & Audit Document (Pillar 5 - Graph Exploration), Step 2: Inject Machine-Readable YAML Frontmatter (Pillar 1), Step 3: Refactor Requirements & Normative Precision (Pillar 2 & 3), Step 4: Add Declarative Schemas & Graphify Anchors (Pillar 4 & 5), Step 5: Map OpenSpec SDD Spec Deltas (Pillar 6), Step 6: Anchor URIs & Enforce Zero Redundancy (Pillar 7) (+1 more)
@@ -1596,6 +1620,10 @@ Nodes (9): 🏛️ Mapping of the 7 Pillars, Standardize Documentation (7 Pillar
 Cohesion: 0.20
 Nodes (9): backupBuildIdPath, backupDir, backupManifestPath, buildIdPath, filesToBackup, manifestPath, nextDir, pagesManifestPath (+1 more)
 
+### Community 267 - "scripts/ecc-statusline.js"
+Cohesion: 0.31
+Nodes (9): buildContextBar(), formatDuration(), fs, os, path, readCurrentTask(), runStatusline(), { sanitizeSessionId, readBridge, writeBridgeAtomic } (+1 more)
+
 ### Community 268 - "redirects.test.ts"
 Cohesion: 0.20
 Nodes (8): mockClearCache, mockCreate, mockDelete, mockFindMany, mockFindUnique, mockNextResponse, mockRequireAuth, mockUpdate
@@ -1603,6 +1631,43 @@ Nodes (8): mockClearCache, mockCreate, mockDelete, mockFindMany, mockFindUnique,
 ### Community 269 - "schemaTypes/index.ts"
 Cohesion: 0.29
 Nodes (4): schemaTypes, portfolioEntry, product, spokeConfig
+
+### Community 273 - "session-bridge.js"
+Cohesion: 0.27
+Nodes (9): crypto, fs, getBridgePath(), os, path, readBridge(), renameWithRetry(), resolveSessionId() (+1 more)
+
+### Community 274 - "isDestructiveBash"
+Cohesion: 0.22
+Nodes (16): collectExecutableBodies(), commandBasename(), explodeSubshells(), findGitSubcommand(), getExtraDestructiveRegex(), isDestructiveBash(), isDestructiveFindExec(), isDestructiveGit() (+8 more)
+
+### Community 275 - "harness-adapter.js"
+Cohesion: 0.25
+Nodes (5): fs, getHarnessDataDir(), getHarnessType(), os, path
+
+### Community 276 - "antigravity.js"
+Cohesion: 0.25
+Nodes (5): ANTIGRAVITY_TARGET_PREFIXES, fs, { normalizeCanonicalSession, persistCanonicalSnapshot }, os, path
+
+### Community 277 - "dmux-tmux.js"
+Cohesion: 0.29
+Nodes (6): buildSourceTarget(), { collectSessionSnapshot }, fs, isPlanFileTarget(), { normalizeDmuxSnapshot, persistCanonicalSnapshot }, path
+
+### Community 278 - "scripts/github-coordination.js"
+Cohesion: 0.27
+Nodes (10): {
+  applyClaim,
+  applyDecompose,
+  applyPublish,
+  applyReview,
+  applySync,
+  applyUnblock,
+  applyValidate,
+  formatCollection,
+  formatSummary,
+  loadPolicy,
+  normalizeIssueNumber,
+  openStore,
+}, BOOL_FLAGS, dispatchCommand(), formatOutput(), main(), os, parseArgs(), readValue() (+2 more)
 
 ### Community 279 - "validate-commands.js"
 Cohesion: 0.25
@@ -1631,6 +1696,22 @@ Nodes (8): fs, path, raw, rel, { resolveEccRoot }, root, script, { spawnSync }
 ### Community 285 - "scripts/post-bash-command-log.js"
 Cohesion: 0.31
 Nodes (8): appendLine(), fs, main(), MODE_CONFIG, os, path, run(), sanitizeCommand()
+
+### Community 286 - "ArticlesSection.tsx"
+Cohesion: 0.27
+Nodes (8): ArticlesSection(), categoryColors, categoryFilters, formatDate(), getInitialSavedIds(), useSavedArticles(), Article, articles
+
+### Community 287 - "auth.config.ts"
+Cohesion: 0.22
+Nodes (7): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User
+
+### Community 288 - "repair.js"
+Cohesion: 0.36
+Nodes (7): main(), os, parseArgs(), printHuman(), { repairInstalledStates }, showHelp(), { SUPPORTED_INSTALL_TARGETS }
+
+### Community 289 - "gh-api.js"
+Cohesion: 0.38
+Nodes (5): normalizeLabelValue(), runCommand(), runGh(), runGhJson(), { spawnSync }
 
 ### Community 292 - "2. Declarative Zod Schemas & TypeScript Interfaces"
 Cohesion: 0.22
@@ -1725,10 +1806,6 @@ Nodes (6): CommandResult, FileMatch, FindFilesOptions, GrepMatch, ReadStdinJsonO
 Cohesion: 0.29
 Nodes (4): fs, path, targetDir, toolMappings
 
-### Community 353 - "about/page.tsx"
-Cohesion: 0.50
-Nodes (3): AboutPage(), metadata, runtime
-
 ### Community 360 - "validate-rules.js"
 Cohesion: 0.40
 Nodes (5): collectRuleFiles(), fs, path, RULES_DIR, validateRules()
@@ -1748,6 +1825,10 @@ Nodes (5): dashboard, health, provenance, tracker, versioning
 ### Community 364 - "gsc-verify.ts"
 Cohesion: 0.53
 Nodes (3): nextConfig, getDnsTxtRecord(), writeHtmlVerificationFile()
+
+### Community 371 - "message-sink.js"
+Cohesion: 0.16
+Nodes (8): buildSendArgs(), createEccMessageSink(), { execFileSync }, fs, KIND_BY_TYPE, path, resolveEccBin(), ErrorEvent
 
 ### Community 380 - "hooks/check-console-log.js"
 Cohesion: 0.40
@@ -1818,24 +1899,24 @@ Cohesion: 0.67
 Nodes (3): BasicImageTransformations, RequestInitCfPropertiesImage, RequestInitCfPropertiesImageDraw
 
 ## Knowledge Gaps
-- **2871 isolated node(s):** `type`, `fs`, `path`, `{ execSync }`, `TASKS_DIR` (+2866 more)
+- **2920 isolated node(s):** `type`, `fs`, `path`, `{ execSync }`, `TASKS_DIR` (+2915 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **234 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **233 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Console` connect `Console` to `RFC-2253`?**
-  _High betweenness centrality (0.090) - this node is a cross-community bridge._
+- **Why does `Console` connect `Console` to `RFC-2253`, `scripts/ecc-context-monitor.js`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
 - **Why does `event()` connect `RfqB2GForm.tsx` to `scripts/session-activity-tracker.js`, `hooks/session-activity-tracker.js`, `scripts/governance-capture.js`, `hooks/governance-capture.js`?**
-  _High betweenness centrality (0.080) - this node is a cross-community bridge._
-- **Why does `p()` connect `p` to `isForeignPlatformPath`, `normalizeRelativePath`, `single_worker.js`, `proximity.js`, `hooks/ecc-metrics-bridge.js`, `scripts/ecc-metrics-bridge.js`, `cursor-project.js`, `inspection.js`, `pre-tool-guardrail-agy.js`, `dashboard-web.js`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+  _High betweenness centrality (0.084) - this node is a cross-community bridge._
+- **Why does `p()` connect `single_worker.js` to `isForeignPlatformPath`, `normalizeRelativePath`, `proximity.js`, `hooks/ecc-metrics-bridge.js`, `scripts/ecc-metrics-bridge.js`, `cursor-project.js`, `inspection.js`, `pre-tool-guardrail-agy.js`, `dashboard-web.js`?**
+  _High betweenness centrality (0.072) - this node is a cross-community bridge._
 - **What connects `type`, `fs`, `path` to the rest of the system?**
-  _2871 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2920 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `RFC-2253` be split into smaller, more focused modules?**
   _Cohesion score 0.002386634844868735 - nodes in this community are weakly interconnected._
-- **Should `github-coordination/actions.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.0661729574773053 - nodes in this community are weakly interconnected._
 - **Should `RfqB2GForm.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0636523266022827 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.056140350877192984 - nodes in this community are weakly interconnected._
+- **Should `scripts/gateguard-fact-force.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.05765765765765766 - nodes in this community are weakly interconnected._

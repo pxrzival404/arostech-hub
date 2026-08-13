@@ -147,7 +147,7 @@ Peta jalan implementasi untuk ekosistem terpadu `dayaberkah.id` terbagi ke dalam
 - Integrasi CMS Sanity.io dan alur notifikasi otomatis via Resend Email & Telegram Bot.
 
 ### 5.3 Fase 3: Infrastruktur & Portal Pelayanan Klien (Selesai — Juni 2026)
-- Peluncuran greenfield ke Cloudflare Pages via `@cloudflare/next-on-pages`.
+- Peluncuran greenfield ke Cloudflare Pages via `@opennextjs/cloudflare`.
 - Pembangunan Portal Pelacakan Klien di `dashboard.dayaberkah.id` menggunakan Auth.js v5.
 - Instrumentasi pengoperasian GA4 & Cloudflare Telemetry.
 

@@ -9,6 +9,7 @@ authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L753-L797"
   api_ref: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L194-L241"
   adr_0005: "file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L116"
+  adr_0007: "file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md#L1-L50"
   auth_findings: "file:///d:/dev/arostech-hub/docs/audit/auth-findings.md#L1-L150"
 ---
 
@@ -30,7 +31,7 @@ authoritative_references:
 
 ## 1. Context & Problem Statement
 
-The **DBSN Centralized Digital Ecosystem** deploys to Cloudflare Pages via `@cloudflare/next-on-pages`. The platform relies on Next.js 16 Edge Middleware (`src/middleware.ts`) for host mapping, subdomain rewriting (`dashboard.dayaberkah.id`, `pju`, `solarcell`, etc.), and session security enforcement.
+The **DBSN Centralized Digital Ecosystem** deploys to Cloudflare Pages via `@opennextjs/cloudflare` (superseding legacy `@cloudflare/next-on-pages` per [`ADR-0007`](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md)). The platform relies on Next.js 16 Edge Middleware (`src/middleware.ts`) for host mapping, subdomain rewriting (`dashboard.dayaberkah.id`, `pju`, `solarcell`, etc.), and session security enforcement.
 
 During the Card 1.5 Auth + ADR Audit ([`auth-findings.md`](file:///d:/dev/arostech-hub/docs/audit/auth-findings.md#L1-L150)), a critical architectural defect was confirmed:
 1. `src/lib/auth/auth.config.ts` eagerly instantiates `PrismaAdapter(prisma)` and imports `bcryptjs` at the top-level module root.

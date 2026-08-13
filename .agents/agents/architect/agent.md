@@ -202,7 +202,7 @@ Watch for these architectural anti-patterns:
 
 Refer to the single source of truth (SSOT) defined in [`AGENTS.md §8 Architecture Constraints & Topology`](file:///d:/dev/arostech-hub/AGENTS.md#L194-L205):
 
-- **Runtime**: Cloudflare Pages (Edge) via `@cloudflare/next-on-pages`
+- **Runtime**: Cloudflare Pages (Edge) via `@opennextjs/cloudflare` (`open-next.config.ts`)
 - **Framework**: Next.js 16.2.6 (App Router)
 - **CMS**: Sanity (GROQ + ISR + Stega visual editing)
 - **Database**: Neon (PostgreSQL) via Prisma ORM (Proxy lazy init)

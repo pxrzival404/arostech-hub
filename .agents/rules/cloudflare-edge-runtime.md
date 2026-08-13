@@ -4,7 +4,7 @@
 > **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
 > **Target Scope**: Cloudflare Workers V8 Edge Runtime (`export const runtime = 'edge'`), Next.js Edge Middleware (`src/middleware.ts`), and Edge API Routes.  
 > **Owner Agents**: `typescript-reviewer` (type safety & runtime compatibility), `code-reviewer` (pattern enforcement).  
-> **Primary Authority**: [ADR-0006](file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md) & [Coding Standards](file:///d:/dev/arostech-hub/docs/engineering/governance/coding-standards.md)
+> **Primary Authority**: [ADR-0007](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md) (OpenNext Adapter), [ADR-0006](file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md) & [Coding Standards](file:///d:/dev/arostech-hub/docs/engineering/governance/coding-standards.md)
 
 ---
 

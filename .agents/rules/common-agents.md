@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 description: Agent delegation protocol — roster, parallel execution, and completion contract.
 ---
 

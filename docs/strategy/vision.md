@@ -29,7 +29,7 @@ Legacy setups suffered from fragmented content management, slow page load speeds
 
 #### Core Value Proposition
 - **Unified Infrastructure**: Single Next.js codebase serving Hub (`dayaberkah.id`), Product Spokes (`pju.dayaberkah.id`, `solarcell.dayaberkah.id`, `alatpetir.dayaberkah.id`, `baterai.dayaberkah.id`), and Client Dashboard (`dashboard.dayaberkah.id`).
-- **Edge Performance**: 100% Edge hosting on Cloudflare Pages via `@cloudflare/next-on-pages`.
+- **Edge Performance**: 100% Edge hosting on Cloudflare Pages via `@opennextjs/cloudflare`.
 - **Resilient RFQ**: Automated failover quote submission engine guaranteeing zero lost customer leads.
 
 ---

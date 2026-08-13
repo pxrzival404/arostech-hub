@@ -118,7 +118,7 @@ export type SubdomainConfig = z.infer<typeof SubdomainConfigSchema>;
 
 ### Positive
 - Zero database query overhead for routing decisions; rewrites are evaluated in sub-millisecond time at Cloudflare Edge.
-- Single codebase deployment to Cloudflare Pages via `@cloudflare/next-on-pages`.
+- Single codebase deployment to Cloudflare Pages via `@opennextjs/cloudflare`.
 - Clean, maintainable SEO architecture utilizing Next.js 16 native Metadata API and dynamic XML sitemaps.
 
 ### Negative & Mitigations

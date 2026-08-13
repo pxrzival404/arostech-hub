@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 description: Graphify knowledge graph — context boot, memory sync, navigation priority, and MCP integration across the 8-Layer Workflow.
 ---
 

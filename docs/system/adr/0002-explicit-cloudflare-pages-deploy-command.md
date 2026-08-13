@@ -2,17 +2,20 @@
 id: ADR-0002
 title: "ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace"
 version: 4.0.0
-status: ACCEPTED
+status: "SUPERSEDED (by ADR-0007)"
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
   adr_0001: "file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50"
   config_schema: "file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L1-L50"
+  adr_0007: "file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md#L1-L50"
 ---
 
 # ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace
 
-> **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
+> **SUPERSEDED NOTICE**: This decision record regarding explicit `.vercel/output/static` deploy target parameters is **SUPERSEDED** by [`ADR-0007: Adopt OpenNext for Cloudflare Adapter`](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md). Deployment commands now execute native `opennextjs-cloudflare deploy` targeting `.open-next/assets`.
+
+> **OpenSpec SDD Lifecycle Mapping**: `SUPERSEDED: 2026-08-13 Superceded by ADR-0007`  
 > **Authoritative Baseline Reference**: Architectural Decision Record establishing explicit build target paths for Cloudflare Pages deployment scripts in the monorepo workspace, adhering to PRD v4.0.0 ([`adr_0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md`
 

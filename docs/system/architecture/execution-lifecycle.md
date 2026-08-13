@@ -17,7 +17,7 @@ authoritative_references:
 > The Next.js Edge Middleware logic SHALL execute pure Edge subdomain resolution without database calls, external loopbacks, or legacy 301 redirect tables.
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document describes the subdomain-based routing architecture for the DBSN platform, mapping request hostnames to internal Next.js App Router route groups on Cloudflare Pages via `@cloudflare/next-on-pages`.
+> **Authoritative Baseline Reference**: This document describes the subdomain-based routing architecture for the DBSN platform, mapping request hostnames to internal Next.js App Router route groups on Cloudflare Pages via `@opennextjs/cloudflare`.
 
 ---
 
@@ -30,7 +30,7 @@ authoritative_references:
 
 ## Section I: Subdomain Mapping System
 
-PT Daya Berkah Sentosa Nusantara uses a multi-tenant hub-and-spoke domain routing model. The routing logic runs inside the Next.js Middleware (on the Cloudflare Pages Edge Runtime via `@cloudflare/next-on-pages`) and maps hostnames to internal Next.js App Router paths as follows:
+PT Daya Berkah Sentosa Nusantara uses a multi-tenant hub-and-spoke domain routing model. The routing logic runs inside the Next.js Middleware (on the Cloudflare Pages Edge Runtime via `@opennextjs/cloudflare`) and maps hostnames to internal Next.js App Router paths as follows:
 
 | Hostname Variation | Clean Domain Class | Target Route Group / Path | Subdomain Header |
 | :--- | :--- | :--- | :--- |

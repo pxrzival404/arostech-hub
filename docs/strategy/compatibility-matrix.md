@@ -32,7 +32,7 @@ The system SHALL enforce strict runtime version constraints across development, 
 | :--- | :--- | :--- | :--- | :--- |
 | **Runtime** | Node.js | `v20.x` (LTS) | `>= 20.0.0` | Required for local build toolchain (`pnpm dev`). |
 | **Package Manager** | pnpm | `v9.x` | `>= 9.0.0` | Enforced package manager; strict workspace resolution. |
-| **Framework** | Next.js | `16.2.6` | `16.x` | App Router + Edge Runtime (`@cloudflare/next-on-pages`). |
+| **Framework** | Next.js | `16.2.6` | `16.x` | App Router + Edge Runtime (`@opennextjs/cloudflare`). |
 | **UI Library** | React | `19.x` | `19.x` | React Server Components & Server Actions. |
 | **Language** | TypeScript | `5.7.3` | `>= 5.7.0` | Strict mode enabled (`tsconfig.json`). |
 | **Styling** | Tailwind CSS | `v4.x` | `v4.x` | PostCSS + design token CSS utilities. |
@@ -45,7 +45,7 @@ The application architecture MUST compile and execute against the following Clou
 
 | Service | Driver / SDK | Version | Target Environment |
 | :--- | :--- | :--- | :--- |
-| **Edge Hosting** | Cloudflare Pages | `@cloudflare/next-on-pages 1.13.x` | Edge Runtime (`CF_PAGES=1`). Requires `bash` in Windows PATH. |
+| **Edge Hosting** | Cloudflare Pages | `@opennextjs/cloudflare ^1.0.0` | Edge Runtime (`CF_PAGES=1`) via OpenNext (.open-next/). |
 | **Database** | Neon Serverless Postgres | `@neondatabase/serverless 1.1.x` | Serverless pooled connection with WebSocket fallback. |
 | **ORM** | Prisma ORM | `@prisma/client 6.19.x` | Prisma Neon Adapter (`@prisma/adapter-neon 7.8.x`). |
 | **CMS** | Sanity CMS | `next-sanity 12.4.x` | GROQ query client, Stega visual editing & ISR handler. |

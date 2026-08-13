@@ -148,8 +148,8 @@ The six custom rule files in `.agents/rules/` are currently **5-line stubs**. Ea
 
 - **Purpose**: Govern Cloudflare Pages deployment pipeline, build output structure, and preview deployment behavior.
 - **Must Enforce**:
-  - Build command: `pnpm pages:build` producing `.vercel/output/static`.
-  - Deploy command: `npx wrangler pages deploy .vercel/output/static --project-name dbsn-website`.
+  - Build command: `pnpm pages:build` (`npx opennextjs-cloudflare build`) producing `.open-next/assets`.
+  - Deploy command: `npx opennextjs-cloudflare deploy` (or `npx wrangler pages deploy .open-next/assets --project-name dbsn-website`).
   - Enforce `isCloudflareBuild` flag in `next.config.ts` to disable Sentry source-map bundling during Pages builds (preserving 25MB worker bundle limit).
   - Prohibit unlinked development artifacts (e.g. `sentry-example-page/`) in production deployments.
   - Preview deployment domain resolution: `<branch>.dbsn-website.pages.dev` with subdomain prefix support.

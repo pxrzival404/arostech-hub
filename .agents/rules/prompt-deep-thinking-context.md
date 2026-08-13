@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 description: Deep-thinking, context management, and prompt engineering rules for autonomous agents — applies at L3 (SDD Proposal) and L5 (RED phase).
 ---
 

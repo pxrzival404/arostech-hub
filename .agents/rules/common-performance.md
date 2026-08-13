@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: model_decision
+description: Model selection strategy (Haiku, Sonnet, Opus), context window hygiene, and build troubleshooting guidelines.
 ---
 
 # Performance Optimization

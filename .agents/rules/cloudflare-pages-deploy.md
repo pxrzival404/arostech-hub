@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: glob
+globs: "next.config.ts, scripts/pages-build.js, wrangler.*, .wrangler.toml, wrangler.jsonc, src/lib/utils/pages-host.ts, src/**/middleware*.ts, src/**/middleware*.tsx, package.json, .github/workflows/**/*.yml"
 ---
 
 # Cloudflare Pages Deployment & Build Pipeline Governance Rule
@@ -7,10 +8,10 @@ trigger: always_on
 > **Rule ID**: `RULE-DEPLOY-001`  
 > **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
 > **Deployment Target**: Cloudflare Pages (NOT Vercel)  
-> **Build Tool**: `@cloudflare/next-on-pages` ^1.13.16  
+> **Build Tool**: `@opennextjs/cloudflare ^1.0.0` (with `open-next.config.ts`)  
 > **Framework**: Next.js 16.2.6 (App Router)  
 > **Owner Agent**: `architect` (deployment architecture & pipeline governance)  
-> **Primary Authority**: [ADR-0001](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md) & [ADR-0002](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md)
+> **Primary Authority**: [ADR-0007](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md) (Supersedes [ADR-0001](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md) & [ADR-0002](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md))
 
 ---
 
@@ -42,12 +43,12 @@ Additionally, any PR that modifies `package.json` build scripts, Cloudflare envi
 Before modifying any deployment configuration or build script, agents MUST evaluate the following 3 vectors:
 
 1. **Vector A — Trade-offs & Isolation Dynamics**:
-   - Cloudflare Pages deployments require output adapter compilation via `@cloudflare/next-on-pages`. The target deployment directory is strictly `.vercel/output/static`.
+   - Cloudflare Pages deployments require output adapter compilation via `@opennextjs/cloudflare`. The target deployment directory is strictly `.open-next/assets`.
    - Enforce total compressed worker bundle size limit of **25 MB**. Sentry source map generation MUST be conditionally disabled during Cloudflare builds using `isCloudflareBuild`.
 
 2. **Vector B — System Invariants & Spec Compliance**:
-   - Build command MUST strictly execute `pnpm pages:build` (which calls `npx @cloudflare/next-on-pages`).
-   - Deploy command MUST strictly execute `npx wrangler pages deploy .vercel/output/static --project-name dbsn-website`.
+   - Build command MUST strictly execute `pnpm pages:build` (which calls `npx opennextjs-cloudflare build`).
+   - Deploy command MUST strictly execute `npx opennextjs-cloudflare deploy` (or `npx wrangler pages deploy .open-next/assets --project-name dbsn-website`).
    - Prohibit Vercel-specific runtime imports (`@vercel/analytics`, `@vercel/og`, `@vercel/kv`, `@vercel/blob`) and Vercel environment variables (`VERCEL_URL`, `VERCEL_ENV`).
 
 3. **Vector C — Edge Cases & Verification Strategy**:
@@ -59,9 +60,9 @@ Before modifying any deployment configuration or build script, agents MUST evalu
 ## 3. Normative Enforcement Rules (RFC 2119)
 
 1. Next.js build configuration **MUST NOT** retain `ignoreBuildErrors: true` or `ignoreDuringBuilds: true` in `next.config.ts`.
-2. All Cloudflare Pages deployment artifacts **MUST** be produced under `.vercel/output/static` using `pnpm pages:build`.
+2. All Cloudflare Pages deployment artifacts **MUST** be produced under `.open-next/` using `pnpm pages:build` (`open-next.config.ts` required).
 3. Sentry source-map bundling **MUST** be toggled off when `isCloudflareBuild` is true to preserve the 25 MB Worker bundle limit.
-4. Deployment scripts **MUST** validate that `.vercel/output/static/_worker.js` exists and is **< 25 MiB** uncompressed before completing.
+4. Deployment scripts **MUST** validate that `.open-next/worker.js` exists and is **< 25 MiB** uncompressed before completing.
 5. Source code **MUST NOT** import `@vercel/analytics`, `@vercel/og`, or rely on `VERCEL_*` environment variables.
 6. Middleware files **MUST NOT** import `headers` from `next/headers`; request headers **MUST** be read directly from `NextRequest`.
 7. Production deployments **MUST NOT** include unlinked development routes or test endpoints (`/sentry-example-page`).
@@ -73,7 +74,7 @@ Before modifying any deployment configuration or build script, agents MUST evalu
 Cloudflare Pages CI executes the following build command:
 
 ```bash
-npx @cloudflare/next-on-pages
+npx opennextjs-cloudflare build
 ```
 
 The project provides `scripts/pages-build.js` which wraps this with environment validation and size enforcement:
@@ -89,10 +90,10 @@ node scripts/pages-build.js
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "pnpm pages:build && wrangler pages dev .vercel/output/static",
-    "deploy:preview": "pnpm pages:build && wrangler pages deploy .vercel/output/static --project-name dbsn-website --branch preview",
-    "deploy:prod": "pnpm pages:build && wrangler pages deploy .vercel/output/static --project-name dbsn-website --branch main"
+    "pages:build": "npx opennextjs-cloudflare build",
+    "preview": "npx opennextjs-cloudflare preview",
+    "deploy:preview": "npx opennextjs-cloudflare deploy",
+    "deploy:prod": "npx opennextjs-cloudflare deploy"
   }
 }
 ```
@@ -333,23 +334,20 @@ Generated or static `public/_routes.json` structure MUST follow:
 
 ## 8. Build Output Structure
 
-The deployable artifact produced by `@cloudflare/next-on-pages` is located at:
+The deployable artifact produced by `@opennextjs/cloudflare` is located at:
 
 ```
-.vercel/output/static/
-├── _worker.js          # Compiled Worker bundle (MUST be < 25 MiB)
-├── _routes.json        # Edge vs static routing rules (auto-generated)
-├── _next/              # Next.js client assets
-│   └── static/         # Static JS/CSS chunks
-├── favicon.ico         # Static files
-└── index.html          # Static pages
+.open-next/
+├── assets/             # Static site assets (HTML, CSS, JS, images)
+├── worker.js           # Compiled Worker bundle (MUST be < 25 MiB)
+└── middleware/         # Middleware Edge bundle
 ```
 
 **Invariants**:
-1. `.vercel/output/static/` is the deployable directory.
-2. `_worker.js` MUST exist at `.vercel/output/static/_worker.js`.
-3. `_worker.js` uncompressed size MUST be < 25 MiB.
-4. `images.unoptimized: true` MUST be set in `next.config.ts`.
+1. `.open-next/assets/` is the static deployable directory.
+2. `worker.js` MUST exist at `.open-next/worker.js`.
+3. `worker.js` uncompressed size MUST be < 25 MiB.
+4. `open-next.config.ts` MUST exist at project root.
 
 ---
 
