@@ -50,12 +50,23 @@ function appendPath(filePath) {
 function run(rawInput) {
   try {
     const input = JSON.parse(rawInput);
-    // Edit / Write: single file_path
-    appendPath(input.tool_input?.file_path);
-    // MultiEdit: array of edits, each with its own file_path
-    const edits = input.tool_input?.edits;
+    const toolInput = input.tool_input || input.toolInput || input.input || input.toolCall?.args || input.args || input;
+    const target = toolInput.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath;
+    
+    // Single file edit / write
+    if (target) {
+      appendPath(target);
+    }
+
+    // Multi-edit / batch edits
+    const edits = toolInput.edits || toolInput.ReplacementChunks;
     if (Array.isArray(edits)) {
-      for (const edit of edits) appendPath(edit?.file_path);
+      for (const edit of edits) {
+        const editTarget = edit?.file_path || edit?.TargetFile || edit?.target_file || edit?.filePath || target;
+        if (editTarget) {
+          appendPath(editTarget);
+        }
+      }
     }
   } catch {
     // Invalid input — pass through

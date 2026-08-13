@@ -20,14 +20,17 @@ Rules:
 Graphify MUST be invoked at specific layers of the 8-Layer Development Workflow:
 
 - **L0 (Session Boot)**: `graphify query "<task>"` BEFORE any work begins — establish context bubble
-- **L3 (After SDD Spec)**: `graphify update .` after creating OpenSpec spec files in `openspec/`
+- **L3 (After SDD Spec)**: Run `node .agents/scripts/validate-ai-docs.cjs` first, then `graphify update .` after creating OpenSpec spec files in `openspec/`
 - **L6 (After each task [x])**: `graphify update .` after every completed TDD inner loop task
-- **L8 (Post-archive)**: `graphify update .` as the final sync after `/opsx-archive`
+- **L8 (Post-archive)**: Run `node .agents/scripts/validate-ai-docs.cjs`, then `graphify update .` as the final sync after `/opsx-archive`
 
 ```bash
 # L0 — Session Boot
 graphify query "<task being worked on>"
 graphify path "<module A>" "<module B>"   # if touching specific modules
+
+# Pre-Sync Validation Gate (Prevents unvalidated docs from poisoning graph memory)
+node .agents/scripts/validate-ai-docs.cjs
 
 # L3/L6/L8 — Incremental sync (AST-only, no API cost)
 graphify update .

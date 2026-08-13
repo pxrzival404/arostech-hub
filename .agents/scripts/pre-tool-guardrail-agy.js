@@ -1,7 +1,7 @@
 /**
  * AGY Guardrail Hook: PreToolUse Validation
  * Enforces:
- * 1. Target repository (d:/CLAUDE-PROJECT/website) READ-ONLY invariant per AGENTS.md Section 1.
+ * 1. Target repository workspace boundaries and invariants per AGENTS.md.
  * 2. Strict forward-slash file path format per AGENTS.md Section 0.
  * 3. Command string inspection for destructive shell operations.
  */

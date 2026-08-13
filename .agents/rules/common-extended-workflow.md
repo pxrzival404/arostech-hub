@@ -17,6 +17,8 @@ version: 1.0.0
 Every development session MUST follow this 8-layer sequence.
 **Skipping a layer is a governance violation.** Each layer has explicit gate conditions.
 
+> **Terminal & Shell Standard**: All CLI commands, verification loops, build steps, and automation scripts across all 8 layers MUST be executed within **Git Bash** (`bash`) using POSIX syntax and forward-slash (`/`) path separators. PowerShell and `cmd.exe` proprietary syntax are prohibited.
+
 ---
 
 ## Sequence Overview

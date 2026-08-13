@@ -27,7 +27,8 @@ process.stdin.on("data", (chunk) => {
 process.stdin.on("end", () => {
   try {
     const input = JSON.parse(data);
-    const filePath = input.tool_input?.file_path;
+    const toolInput = input.tool_input || input.toolInput || input.input || input.toolCall?.args || input.args || input;
+    const filePath = toolInput.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath;
 
     if (filePath && /\.(ts|tsx)$/.test(filePath)) {
       const resolvedPath = path.resolve(filePath);

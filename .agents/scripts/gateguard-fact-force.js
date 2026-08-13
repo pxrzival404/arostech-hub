@@ -25,7 +25,13 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { extractCommandSubstitutions, extractSubshellGroups, extractBraceGroups } = require('./lib/shell-substitution');
+let shellSub;
+try {
+  shellSub = require('./lib/shell-substitution');
+} catch {
+  shellSub = require('../lib/shell-substitution');
+}
+const { extractCommandSubstitutions, extractSubshellGroups, extractBraceGroups } = shellSub;
 
 // Session state — scoped per session to avoid cross-session races.
 const STATE_DIR = process.env.GATEGUARD_STATE_DIR || path.join(process.env.HOME || process.env.USERPROFILE || '/tmp', '.gateguard');
@@ -1204,15 +1210,26 @@ function run(rawInput) {
   activeStateFile = null;
   getStateFile(data);
 
-  const rawToolName = data.tool_name || '';
-  const toolInput = data.tool_input || {};
-  // Normalize: case-insensitive matching via lookup map
-  const TOOL_MAP = { edit: 'Edit', write: 'Write', multiedit: 'MultiEdit', bash: 'Bash' };
+  const rawToolName = data.tool_name || data.toolName || data.name || data.toolCall?.name || '';
+  const toolInput = data.tool_input || data.toolInput || data.input || data.toolCall?.args || {};
+  // Normalize: case-insensitive matching via lookup map supporting Claude Code & Antigravity
+  const TOOL_MAP = {
+    edit: 'Edit',
+    write: 'Write',
+    multiedit: 'MultiEdit',
+    bash: 'Bash',
+    replace_file_content: 'Edit',
+    write_to_file: 'Write',
+    multi_replace_file_content: 'MultiEdit',
+    edit_file: 'Edit',
+    write_file: 'Write',
+    run_command: 'Bash'
+  };
   const toolName = TOOL_MAP[rawToolName.toLowerCase()] || rawToolName;
   const inSubagent = isSubagentInvocation(data);
 
   if (toolName === 'Edit' || toolName === 'Write') {
-    const filePath = toolInput.file_path || '';
+    const filePath = toolInput.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath || '';
     if (!filePath || isClaudeSettingsPath(filePath) || isExemptPath(filePath)) {
       return rawInput; // allow
     }
@@ -1241,9 +1258,9 @@ function run(rawInput) {
       return rawInput; // parent session already passed the first-touch file gate
     }
 
-    const edits = toolInput.edits || [];
+    const edits = toolInput.edits || toolInput.ReplacementChunks || [];
     for (const edit of edits) {
-      const filePath = edit.file_path || '';
+      const filePath = edit.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath || '';
       if (filePath && !isClaudeSettingsPath(filePath) && !isExemptPath(filePath) && !isChecked(filePath)) {
         const { ok, denials } = markCheckedAndCountDenial(filePath);
         if (!ok) {
@@ -1259,7 +1276,7 @@ function run(rawInput) {
   }
 
   if (toolName === 'Bash') {
-    const command = toolInput.command || '';
+    const command = toolInput.command || toolInput.CommandLine || toolInput.cmd || '';
     if (isReadOnlyGitIntrospection(command)) {
       return rawInput;
     }
@@ -1298,3 +1315,33 @@ function run(rawInput) {
 }
 
 module.exports = { run };
+
+if (require.main === module) {
+  const MAX_STDIN = 1024 * 1024;
+  let data = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', chunk => {
+    if (data.length < MAX_STDIN) {
+      const remaining = MAX_STDIN - data.length;
+      data += chunk.substring(0, remaining);
+    }
+  });
+  process.stdin.on('end', () => {
+    const result = run(data);
+    if (typeof result === 'string') {
+      process.stdout.write(result);
+      process.exit(0);
+    } else if (result && typeof result === 'object') {
+      if (result.stderr) {
+        process.stderr.write(result.stderr + '\n');
+      }
+      if (result.stdout) {
+        process.stdout.write(result.stdout);
+      }
+      process.exit(result.exitCode || 0);
+    } else {
+      process.stdout.write(data);
+      process.exit(0);
+    }
+  });
+}

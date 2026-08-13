@@ -1,18 +1,13 @@
-# Graph Report - arostech-hub  (2026-08-13)
+# Graph Report - .  (2026-08-14)
 
 ## Corpus Check
-- 806 files · ~735,414 words
+- 223 files · ~732,329 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 7700 nodes · 11812 edges · 803 communities (569 shown, 234 thin omitted)
-- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 936 edges (avg confidence: 0.52)
+- 7642 nodes · 11603 edges · 797 communities (573 shown, 224 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 922 edges (avg confidence: 0.52)
 - Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `1069591f`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - RFC-2253
@@ -236,6 +231,9 @@
 - ecc.js
 - @ai-sdk/react
 - schema.js
+- opsx-apply.md
+- opsx-archive.md
+- opsx-bulk-archive.md
 - Extended Development Workflow (8-Layer)
 - validate-workflow-security.js
 - NotificationQueue
@@ -248,19 +246,35 @@
 - main
 - sessions-cli.js
 - validate-ai-docs.cjs
+- opsx-continue.md
+- opsx-ff.md
+- opsx-new.md
+- opsx-propose.md
+- opsx-sync.md
+- opsx-update.md
+- opsx-verify.md
 - doctor.js
 - Minimal Working Example: Adding a Client Tracking Portal Route Handler
 - useTrackEvent
 - cn
 - StreamError
 - ServiceWorkerGlobalScope
+- openspec-apply-change/SKILL.md
+- openspec-archive-change/SKILL.md
+- openspec-bulk-archive-change/SKILL.md
 - hooks
+- openspec-continue-change/SKILL.md
 - Cache
 - check-codex-global-state.sh
 - scripts/design-quality-check.js
 - gan-harness.sh
 - hooks/design-quality-check.js
+- openspec-ff-change/SKILL.md
+- openspec-new-change/SKILL.md
 - buildSkillHealthReport
+- openspec-sync-specs/SKILL.md
+- openspec-update-change/SKILL.md
+- openspec-verify-change/SKILL.md
 - Standardize Documentation (7 Pillars Standard)
 - preserve-manifest.js
 - scripts/ecc-statusline.js
@@ -274,6 +288,7 @@
 - harness-adapter.js
 - antigravity.js
 - dmux-tmux.js
+- Community 278
 - validate-commands.js
 - hooks/ecc-statusline.js
 - hooks/post-bash-command-log.js
@@ -282,8 +297,13 @@
 - hooks/session-start-bootstrap.js
 - scripts/post-bash-command-log.js
 - PortfolioSection.tsx
+- Community 287
+- Community 288
+- Community 289
 - @hookform/resolvers
+- Community 291
 - 2. Declarative Zod Schemas & TypeScript Interfaces
+- Community 293
 - leaflet-map.tsx
 - AgentMemoryProfile
 - ByteLengthQueuingStrategy
@@ -293,6 +313,7 @@
 - ReadableStream
 - Socket
 - WritableStreamDefaultWriter
+- Community 303
 - validate-agents.js
 - validate-skills.js
 - release-announce.mjs
@@ -303,11 +324,20 @@
 - assertWithinTrustedRoot
 - scripts/plan-canvas-sessions.js
 - scripts/post-edit-accumulator.js
+- Community 314
+- Community 315
+- Community 316
+- Community 317
 - AiSearchInstance
 - DurableObjectNamespace
 - R2Bucket
 - SqlStorageCursor
 - Vectorize
+- Community 323
+- Community 324
+- Community 325
+- Community 326
+- Community 327
 - build-opencode.js
 - pre-push
 - scripts/config-protection.js
@@ -316,7 +346,24 @@
 - antigravity-project.js
 - session-manager.d.ts
 - utils.d.ts
+- Community 336
+- Community 337
+- Community 338
+- Community 339
+- Community 340
+- Community 341
+- Community 342
+- Community 343
+- Community 344
+- Community 345
+- Community 346
+- Community 347
+- Community 348
+- Community 349
+- Community 350
+- Community 351
 - gemini-adapt-ecc.js
+- Community 353
 - AbortSignal
 - Ai
 - AiSearchNamespace
@@ -341,21 +388,27 @@
 - ReadableStreamDefaultReader
 - TextDecoder
 - WebSocket
+- Community 378
+- Community 379
 - hooks/check-console-log.js
 - hooks/evaluate-session.js
 - hooks/post-edit-format.js
 - observation-envelope-agy.js
 - orchestrate-codex-worker.sh
+- Community 385
+- Community 386
+- Community 387
+- Community 388
 - seed-redirects.ts
 - chat/page.tsx
 - AiGateway
 - Comment
 - ForwardableEmailMessage
 - HTMLRewriter
+- Community 395
 - ImageHandle
 - MessagePort
 - ReadableStreamBYOBRequest
-- ReadableStreamDefaultController
 - StreamScopedCaptions
 - StreamVideoHandle
 - StreamWatermarks
@@ -364,6 +417,8 @@
 - Text
 - TextEncoder
 - TransformStreamDefaultController
+- Community 408
+- Community 409
 - install-global-git-hooks.sh
 - hooks/cursor-session-env.js
 - hooks/insaits-security-wrapper.js
@@ -371,6 +426,12 @@
 - hooks/session-end-marker.js
 - scripts/insaits-security-wrapper.js
 - scripts/post-edit-typecheck.js
+- Community 417
+- Community 418
+- Community 419
+- Community 420
+- Community 421
+- Community 422
 - jest-environment.js
 - jest.setup-after-env.cjs
 - konfirmasi-reset/page.tsx
@@ -388,9 +449,6 @@
 - DurableObjectFacets
 - EndTag
 - HostedImagesBinding
-- HTMLRewriterElementContentHandlers
-- ImageTransformationResult
-- ImageTransformer
 - MediaTransformationResult
 - Module
 - Performance
@@ -401,8 +459,22 @@
 - WebSocketRequestResponsePair
 - Workflow
 - WorkflowEntrypoint
+- Community 453
+- Community 454
+- Community 455
+- Community 456
+- Community 457
 - pre-commit
 - cost-estimate.js
+- Community 460
+- Community 461
+- Community 462
+- Community 463
+- Community 464
+- Community 465
+- Community 466
+- Community 467
+- Community 468
 - CustomJSDOMEnvironment
 - next-auth-mock.js
 - seed-users.ts
@@ -413,14 +485,10 @@
 - dashboard/page.tsx
 - not-found.tsx
 - sentry-example-page/page.tsx
+- rfq-cart-store.test.ts
 - AgentMemoryNamespace
-- BasicImageTransformations
-- BrowserRun
-- ColoLocalActorNamespace
 - StubBase
 - DOMException
-- DurableObjectId
-- ExecutionContext
 - Global
 - HelloWorldBinding
 - ImagesBinding
@@ -436,115 +504,40 @@
 - WorkerStub
 - WorkflowStep
 - WritableStreamDefaultController
+- Community 503
 - @21st-sdk/node
 - @21st-sdk/react
-- register-commands.mjs
-- hooks/check-hook-enabled.js
-- hooks/run-with-flags-shell.sh
-- scripts/run-with-flags-shell.sh
-- bcryptjs
-- clsx
-- cross-env
-- embla-carousel-react
-- eslint.config.mjs
-- framer-motion
-- @jest/globals
-- jest.setup.cjs
-- leaflet
-- lru-cache
-- lucide-react
-- motion-dom
-- @neondatabase/serverless
-- next-auth
-- next-sanity
-- @next/swc-win32-x64-msvc
-- @portabletext/react
-- posthog-js
-- @prisma/adapter-neon
-- @prisma/client
-- @radix-ui/react-accordion
-- @radix-ui/react-avatar
-- @radix-ui/react-dialog
-- @radix-ui/react-select
-- @radix-ui/react-slot
-- @radix-ui/react-tabs
-- @radix-ui/react-tooltip
-- react
-- react-dom
-- @react-email/render
-- react-hook-form
-- react-leaflet
-- resend
-- @sanity/client
-- @sanity/image-url
-- @sentry/nextjs
-- tailwind-merge
-- tw-animate-css
-- zod
-- zustand
-- eslint
-- @playwright/test
-- @swc/jest
-- tailwindcss
-- @tailwindcss/postcss
-- @testing-library/jest-dom
-- @testing-library/user-event
-- ts-jest
-- @types/bcryptjs
-- @types/leaflet
-- @types/node
-- wrangler
-- postcss.config.mjs
-- client.test.ts
-- image.test.ts
-- an-token.test.ts
-- tailwind.config.ts
-- AnalyticsEngineDataset
-- __BaseEnv_Env
-- CacheContext
-- CacheStorage
-- CompileError
-- DispatchNamespace
-- DocumentEnd
-- EventListenerObject
-- Hyperdrive
-- IncomingRequestCfPropertiesBotManagement
-- Instance
-- JsonWebKey
-- MediaBinding
-- MediaTransformationGenerator
-- MessageChannel
-- Navigator
-- NonRetryableError
-- Pipeline
-- ProcessEnv
-- R2Checksums
-- RateLimit
-- ResponseFunctionToolCall
-- RpcTarget
-- RuntimeError
-- ScheduledController
-- Scheduler
-- SecretsStoreSecret
-- SendEmail
-- StreamVideos
-- TraceItemFetchEventInfoRequest
-- Tracing
-- UnsafeTraceMetrics
-- WebSearch
-- { GET, POST }
+- Community 506
+- Community 507
+- Community 508
+- Community 509
+- Community 510
+- Community 511
+- Community 512
+- Community 513
+- Community 514
+- Community 515
+- Community 516
+- Community 517
+- Community 518
+- Community 519
+- Community 520
+- Community 521
+- Community 522
+- Community 524
+- prompt-optimizer/SKILL.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 59 edges
-2. `log()` - 42 edges
-3. `main()` - 27 edges
+2. `log()` - 41 edges
+3. `Event` - 25 edges
 4. `readFile()` - 25 edges
-5. `Event` - 25 edges
-6. `useTrackEvent()` - 22 edges
-7. `getOptimizedImageUrl()` - 22 edges
-8. `run()` - 21 edges
-9. `run()` - 21 edges
-10. `ensureDir()` - 21 edges
+5. `useTrackEvent()` - 22 edges
+6. `getOptimizedImageUrl()` - 22 edges
+7. `buildRequirements()` - 21 edges
+8. `Badge` - 21 edges
+9. `Console` - 21 edges
+10. `run()` - 21 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `searchDocs()` --indirect_call--> `r()`  [INFERRED]
@@ -561,145 +554,134 @@
 ## Import Cycles
 - None detected.
 
-## Communities (803 total, 234 thin omitted)
+## Communities (797 total, 224 thin omitted)
 
 ### Community 0 - "RFC-2253"
 Cohesion: 0.00
 Nodes (834): RFC-2253, RFC-3339, RFC-5246, RFC-9440, AgentMemoryGetSummaryOptions, AgentMemoryGetSummaryResponse, AgentMemoryIncomingMemory, AgentMemoryIngestOptions (+826 more)
 
 ### Community 1 - "github-coordination/actions.js"
-Cohesion: 0.07
-Nodes (80): {
-  applyClaim,
-  applyDecompose,
-  applyPublish,
-  applyReview,
-  applySync,
-  applyUnblock,
-  applyValidate,
-  formatCollection,
-  formatSummary,
-  loadPolicy,
-  normalizeIssueNumber,
-  openStore,
-}, BOOL_FLAGS, dispatchCommand(), formatOutput(), main(), os, parseArgs(), readValue() (+72 more)
-
-### Community 2 - "rfq-schemas.ts"
 Cohesion: 0.06
-Nodes (49): RfqB2BForm(), RfqB2BFormProps, RfqB2GForm(), RfqB2GFormProps, mockCartItems, mockClearCart, mockRemoveItem, mockUpdateItemNotes (+41 more)
-
-### Community 3 - "scripts/gateguard-fact-force.js"
-Cohesion: 0.06
-Nodes (71): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+63 more)
-
-### Community 4 - "(hub)/page.tsx"
-Cohesion: 0.06
-Nodes (34): CompanyStatCounter(), dynamic, HubHomePage(), runtime, CompanyStatCounter(), certBodies, CertificationItem, CertificationsSection() (+26 more)
-
-### Community 5 - "install-lifecycle.js"
-Cohesion: 0.08
-Nodes (46): analyzeRecord(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildDoctorReport(), buildIssue(), buildRecordedStatePreview() (+38 more)
-
-### Community 6 - "apply.js"
-Cohesion: 0.12
-Nodes (28): applyInstallPlan(), {
+Nodes (67): applyInstallPlan(), {
   assertSafeClaudeSkillOperation,
   prepareClaudeSkillMigration,
   removeLegacyClaudeSkillFiles,
-}, { buildInstallIndex, rewriteRelativeLinks }, buildLinkIndexForPlan(), buildResolvedClaudeHooks(), cloneJsonValue(), deepMergeJson(), { filterMcpConfig, parseDisabledMcpServers } (+20 more)
+}, { buildInstallIndex, rewriteRelativeLinks }, buildLinkIndexForPlan(), buildResolvedClaudeHooks(), cloneJsonValue(), deepMergeJson(), { filterMcpConfig, parseDisabledMcpServers } (+59 more)
 
-### Community 7 - "hooks/gateguard-fact-force.js"
-Cohesion: 0.08
-Nodes (54): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+46 more)
-
-### Community 8 - "contact-client.tsx"
+### Community 2 - "rfq-schemas.ts"
 Cohesion: 0.07
-Nodes (47): AboutPage(), companyMilestones, companyStats, getInitials(), managementTeam, AboutPage(), metadata, runtime (+39 more)
+Nodes (68): analyzeRecord(), areFilesEqual(), assertPinnedWriteDestination(), assertSafeRepairSourcePath(), assertValidInstallStateForWrite(), { assertWithinTrustedRoot }, buildAdapterDerivedStatePreview(), buildIssue() (+60 more)
 
-### Community 9 - "install-executor.js"
-Cohesion: 0.09
-Nodes (41): path, toCursorAgentFileName(), toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations() (+33 more)
+### Community 3 - "scripts/gateguard-fact-force.js"
+Cohesion: 0.05
+Nodes (51): AboutPage(), companyMilestones, CompanyStatCounter(), companyStats, getInitials(), managementTeam, AboutPage(), metadata (+43 more)
 
-### Community 10 - "single_worker.js"
-Cohesion: 0.10
-Nodes (47): jaccard(), a, applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at() (+39 more)
-
-### Community 11 - "collect.js"
+### Community 4 - "(hub)/page.tsx"
 Cohesion: 0.07
-Nodes (42): asNonEmptyString(), asStringArray(), buildFragmentation(), buildInventory(), buildSignature(), isObject(), looksLikeSecretValue(), mergeServers() (+34 more)
+Nodes (65): assertMemoryDirectorySafe(), assertMemoryMatchesLocation(), assertMemoryRootSafe(), { assertWithinTrustedRoot, realpathNearestExisting }, buildExcerpt(), countOccurrences(), crypto, DEFAULT_RECALL_SCOPES (+57 more)
 
-### Community 12 - "config.ts"
+### Community 5 - "install-lifecycle.js"
 Cohesion: 0.07
 Nodes (47): base64url(), getAccessToken(), logger, main(), ServiceAccount, SUBMISSIONS, submitSitemap(), metadata (+39 more)
 
-### Community 13 - "resolve-formatter.js"
+### Community 6 - "apply.js"
+Cohesion: 0.08
+Nodes (43): categoryColors, ContactPage(), isValidEmail(), isValidPhone(), productSegments, SelectField(), SelectFieldProps, ContactSection() (+35 more)
+
+### Community 7 - "hooks/gateguard-fact-force.js"
+Cohesion: 0.09
+Nodes (53): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+45 more)
+
+### Community 8 - "contact-client.tsx"
+Cohesion: 0.09
+Nodes (53): allowWithStateWarning(), collectExecutableBodies(), commandBasename(), condensedGateMsg(), crypto, denyResult(), destructiveBashMsg(), ECC_DISABLE_VALUES (+45 more)
+
+### Community 9 - "install-executor.js"
 Cohesion: 0.07
-Nodes (40): binCache, BIOME_CONFIGS, detectFormatter(), findProjectRoot(), FORMATTER_PACKAGES, formatterCache, fs, getRunnerFromPackageManager() (+32 more)
+Nodes (47): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+39 more)
+
+### Community 10 - "single_worker.js"
+Cohesion: 0.06
+Nodes (43): asNonEmptyString(), asStringArray(), buildFragmentation(), buildInventory(), buildSignature(), isObject(), looksLikeSecretValue(), mergeServers() (+35 more)
+
+### Community 11 - "collect.js"
+Cohesion: 0.09
+Nodes (41): path, toCursorAgentFileName(), toCursorAgentRelativePath(), addCursorAgentDataScaffoldOperations(), addFileCopyOperation(), addJsonMergeOperation(), addMatchingRuleOperations(), addRecursiveCopyOperations() (+33 more)
+
+### Community 12 - "config.ts"
+Cohesion: 0.18
+Nodes (41): applyClaim(), applyDecompose(), applyPublish(), applyReview(), applySync(), applyUnblock(), applyValidate(), {
+  assertIssueClaimable,
+  buildIssueComment,
+  buildIssueStateFromAction,
+  desiredLabelsForState,
+  getCoordinationState,
+  summarizeStateForOutput,
+  syncIssueLabels,
+  verifyDependenciesClosed,
+} (+33 more)
+
+### Community 13 - "resolve-formatter.js"
+Cohesion: 0.08
+Nodes (28): runtime, metadata, runtime, AnalyticsDownloadLink(), AnalyticsDownloadLinkProps, AnalyticsLink(), AnalyticsLinkProps, BackToTop() (+20 more)
 
 ### Community 14 - "agent-data-home.js"
-Cohesion: 0.15
-Nodes (24): {
+Cohesion: 0.09
+Nodes (42): FAMILY_ALIASES, {
+  getInstallComponent,
+  listInstallComponents,
+  listInstallProfiles,
+}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+34 more)
+
+### Community 15 - "scripts/bash-hook-dispatcher.js"
+Cohesion: 0.09
+Nodes (39): {
   getCursorSessionEnvPayload,
   resolveAgentDataHome,
   AGENT_DATA_HOME_ENV,
-}, main(), { readStdinJson, log }, { assertWithinTrustedRoot }, DEFAULT_CURSOR_ECC_DIR_SEGMENTS, ensureAgentDataHomeEnv(), expandHomePath(), fs (+16 more)
-
-### Community 15 - "scripts/bash-hook-dispatcher.js"
-Cohesion: 0.07
-Nodes (33): path, run(), { spawnSync }, {
-  buildPreToolUseAdditionalContext,
-  combineAdditionalContext,
-}, { isHookEnabled }, main(), normalizeHookResult(), POST_BASH_HOOKS (+25 more)
+}, main(), { readStdinJson, log }, { assertWithinTrustedRoot }, DEFAULT_CURSOR_ECC_DIR_SEGMENTS, ensureAgentDataHomeEnv(), expandHomePath(), fs (+31 more)
 
 ### Community 16 - "install-manifests.js"
-Cohesion: 0.11
-Nodes (29): addSyntheticSkillComponents(), assertKnownModuleIds(), COMPONENT_FAMILY_PREFIXES, dedupeStrings(), DEFAULT_REPO_ROOT, expandComponentIdsToModuleIds(), fs, { getInstallTargetAdapter, planInstallTargetScaffold } (+21 more)
+Cohesion: 0.08
+Nodes (31): CertificationsGrid(), CertificationsPage(), metadata, revalidate, runtime, LeafletMap, ProjectMapDynamic(), ArticlesSection() (+23 more)
 
 ### Community 17 - "scripts/session-end.js"
-Cohesion: 0.10
-Nodes (32): EXCLUDED_PATTERNS, fs, { isGitRepo, getGitModifiedFiles, readFile, log }, passThroughAndExit(), extractConversationText(), fs, generateSessionSummary(), getContextRemainingPct() (+24 more)
+Cohesion: 0.12
+Nodes (41): { buildControlPaneActions }, buildControlPaneSnapshot(), classifyAssignee(), connectorStatus(), deepMerge(), DEFAULT_STATE_STORE_RELATIVE_PATH, defaultConfigPaths(), defaultDbPath() (+33 more)
 
 ### Community 18 - "loop-status.js"
 Cohesion: 0.11
 Nodes (41): analyzeTranscript(), atomicWriteJson(), buildRecommendation(), buildStatus(), crypto, extractToolResultIds(), extractToolUses(), findTranscriptPaths() (+33 more)
 
 ### Community 19 - "scan-supply-chain-iocs.js"
-Cohesion: 0.08
-Nodes (37): addFinding(), claudePermissionDenyRanges(), CRITICAL_TEXT_INDICATORS, crypto, DEFAULT_ROOT, DEPENDENCY_FILENAMES, dependencyFileReferencesPackageVersion(), escapeRegExp() (+29 more)
-
-### Community 20 - "scripts/session-start.js"
-Cohesion: 0.10
-Nodes (42): getSessionLeaseDir(), getSessionLeaseFile(), resolveSessionId(), writeSessionLease(), getSelectionPrompt(), findFiles(), log(), stripAnsi() (+34 more)
-
-### Community 21 - "Coding Standards & Best Practices"
 Cohesion: 0.05
 Nodes (41): 1. Long Functions, 1. Readability First, 2. Deep Nesting, 2. KISS (Keep It Simple, Stupid), 3. DRY (Don't Repeat Yourself), 3. Magic Numbers, 4. YAGNI (You Aren't Gonna Need It), API Design Standards (+33 more)
 
+### Community 20 - "scripts/session-start.js"
+Cohesion: 0.08
+Nodes (37): addFinding(), claudePermissionDenyRanges(), CRITICAL_TEXT_INDICATORS, crypto, DEFAULT_ROOT, DEPENDENCY_FILENAMES, dependencyFileReferencesPackageVersion(), escapeRegExp() (+29 more)
+
+### Community 21 - "Coding Standards & Best Practices"
+Cohesion: 0.11
+Nodes (30): RfqB2BForm(), RfqB2GForm(), mockCartItems, mockClearCart, mockRemoveItem, mockUpdateItemNotes, mockUpdateQuantity, mockUseRfqCartStoreMock (+22 more)
+
 ### Community 22 - "scripts/posttooluse-dispatcher.js"
-Cohesion: 0.09
-Nodes (36): { isHookEnabled }, getDisabledHookIds(), getHookProfile(), isHookEnabled(), normalizeId(), parseProfiles(), VALID_PROFILES, appendLine() (+28 more)
+Cohesion: 0.05
+Nodes (35): 1. Machine-Readable YAML Frontmatter, 2. OpenSpec Behavioral Contracts, 3. RFC 2119 Normative Precision, 4. Declarative Machine Code & Schemas, 5. Graphify Knowledge Graph Anchoring, 6. OpenSpec SDD Lifecycle Mapping, 7. Anchored URIs & Zero Redundancy Invariants, AI-Friendly Documentation Rule (7 Pillars Standard) (+27 more)
 
 ### Community 23 - "ci/catalog.js"
 Cohesion: 0.09
 Nodes (38): AGENTS_PATH, buildCatalog(), createDocumentSpecs(), createDocumentSpecsForRoot(), DOCS_ZH_CN_AGENTS_PATH, DOCS_ZH_CN_README_PATH, DOCUMENT_SPECS, evaluateExpectations() (+30 more)
 
 ### Community 24 - "harness-audit.js"
-Cohesion: 0.11
-Nodes (37): buildGithubChecks(), buildProviderChecks(), buildReport(), CATEGORIES, collectProviderChecks(), compareVersionDesc(), countFiles(), detectTargetMode() (+29 more)
+Cohesion: 0.08
+Nodes (35): appendSessionContent(), deleteSession(), writeSessionContent(), findFiles(), log(), replaceInFile(), collapseWhitespace(), collectLearnedSkillFiles() (+27 more)
 
 ### Community 25 - "hooks/session-activity-tracker.js"
 Cohesion: 0.11
-Nodes (37): actionForFileKey(), {
-  appendFile,
-  getClaudeDir,
-  stripAnsi,
-}, buildActivityRow(), buildCreationPreview(), buildDiffPreviewFromPatchPreview(), buildPatchPreviewFromContent(), buildPatchPreviewFromReplacement(), buildReplacementPreview() (+29 more)
+Nodes (37): buildGithubChecks(), buildProviderChecks(), buildReport(), CATEGORIES, collectProviderChecks(), compareVersionDesc(), countFiles(), detectTargetMode() (+29 more)
 
 ### Community 26 - "memory.js"
-Cohesion: 0.10
-Nodes (36): doctorMemoryVault(), appendOption(), assertMutationAllowed(), BOOLEAN_OPTIONS, COMMAND_HANDLERS, fs, isBidiControl(), main() (+28 more)
-
-### Community 27 - "scripts/session-activity-tracker.js"
 Cohesion: 0.11
 Nodes (37): actionForFileKey(), {
   appendFile,
@@ -707,111 +689,113 @@ Nodes (37): actionForFileKey(), {
   stripAnsi,
 }, buildActivityRow(), buildCreationPreview(), buildDiffPreviewFromPatchPreview(), buildPatchPreviewFromContent(), buildPatchPreviewFromReplacement(), buildReplacementPreview() (+29 more)
 
+### Community 27 - "scripts/session-activity-tracker.js"
+Cohesion: 0.12
+Nodes (37): jaccard(), applyLocaleRedirects(), applyRouteDest(), applyRouteHeaders(), applyRouteOverrides(), applyRouteStatus(), at(), checkPhase() (+29 more)
+
 ### Community 28 - "dashboard-web.js"
+Cohesion: 0.11
+Nodes (37): actionForFileKey(), {
+  appendFile,
+  getClaudeDir,
+  stripAnsi,
+}, buildActivityRow(), buildCreationPreview(), buildDiffPreviewFromPatchPreview(), buildPatchPreviewFromContent(), buildPatchPreviewFromReplacement(), buildReplacementPreview() (+29 more)
+
+### Community 29 - "studio/package.json"
 Cohesion: 0.09
 Nodes (32): createDashboardServer(), fs, HOST, http, LANG, LANG_KEYS, listenDashboardServer(), loadAgents() (+24 more)
 
-### Community 29 - "studio/package.json"
-Cohesion: 0.05
-Nodes (36): sanity, @sanity/eslint-config-studio, author, dependencies, react, react-dom, sanity, styled-components (+28 more)
-
 ### Community 30 - "operator-readiness-dashboard.js"
+Cohesion: 0.07
+Nodes (31): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, FetchOptions (+23 more)
+
+### Community 31 - "[spoke]/[slug]/page.tsx"
 Cohesion: 0.11
 Nodes (35): agentShieldEnterpriseEvidence(), agentShieldEnterpriseGap(), buildGrowthSummary(), buildReport(), { buildReport: buildPlatformReport }, buildRequirement(), buildRequirements(), DEFAULT_THRESHOLDS (+27 more)
 
-### Community 31 - "[spoke]/[slug]/page.tsx"
-Cohesion: 0.27
-Nodes (8): generateMetadata(), revalidate, runtime, SpokeDynamicPage(), PortableText(), Props, getAllSpokeConfigs(), getPageBySlug()
-
 ### Community 32 - "install-apply.js"
-Cohesion: 0.20
-Nodes (17): { getComputeSponsorCopy }, getHelpText(), {
-  LEGACY_INSTALL_TARGETS,
-  normalizeInstallRequest,
-  parseInstallArgs,
-}, main(), os, printHumanPlan(), showHelp(), {
-  SUPPORTED_INSTALL_TARGETS,
-  listLegacyCompatibilityLanguages,
-  listSupportedLocales,
-} (+9 more)
+Cohesion: 0.10
+Nodes (31): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+23 more)
 
 ### Community 33 - "ThemeToggle.tsx"
-Cohesion: 0.43
-Nodes (6): Button(), buttonVariants, getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
-
-### Community 34 - "hooks/mcp-health-check.js"
 Cohesion: 0.12
 Nodes (34): attemptReconnect(), configPaths(), detectFailureCode(), emitLogs(), envNumber(), extractMcpTarget(), extractMcpTargetFromRaw(), FAILURE_PATTERNS (+26 more)
 
-### Community 35 - "plan-canvas.js"
+### Community 34 - "hooks/mcp-health-check.js"
 Cohesion: 0.13
-Nodes (33): resolveIdleTimeoutMs(), resolvePort(), canonicalizeArtifactPath(), resolveStateDir(), sessionKeyFor(), awaitRequest(), {
+Nodes (34): resolveIdleTimeoutMs(), resolvePort(), canonicalizeArtifactPath(), createSessionStore(), resolveStateDir(), sessionKeyFor(), awaitRequest(), {
   canonicalizeArtifactPath,
   createSessionStore,
   resolveStateDir,
   sessionKeyFor
-}, cmdAwait() (+25 more)
+} (+26 more)
 
-### Community 36 - "scripts/mcp-health-check.js"
+### Community 35 - "plan-canvas.js"
 Cohesion: 0.12
 Nodes (34): attemptReconnect(), configPaths(), detectFailureCode(), emitLogs(), envNumber(), extractMcpTarget(), extractMcpTargetFromRaw(), FAILURE_PATTERNS (+26 more)
 
-### Community 37 - "Card 1.3 Sanity CMS Audit Findings Report"
+### Community 36 - "scripts/mcp-health-check.js"
 Cohesion: 0.06
 Nodes (34): 1. Executive Summary, 1. `product` Schema Drift ([`product.ts`](file:///d:/dev/arostech-hub/studio/schemaTypes/product.ts)), 2. Complete Content Type Matrix & Schema Alignment, 2. `portfolioEntry` Schema Drift ([`portfolioEntry.ts`](file:///d:/dev/arostech-hub/studio/schemaTypes/portfolioEntry.ts)), 3.1 Policy Evaluation (No Silent Cloud-Managed Exceptions), 3.2 Field-Level Schema Drift Breakdown, 3. Detailed Schema Drift & Missing Files Analysis, 3. `spokeConfig` Schema Drift ([`spokeConfig.ts`](file:///d:/dev/arostech-hub/studio/schemaTypes/spokeConfig.ts)) (+26 more)
 
+### Community 37 - "Card 1.3 Sanity CMS Audit Findings Report"
+Cohesion: 0.09
+Nodes (31): openStore(), { applyMigrations, getAppliedMigrations }, { assertValidEntity, validateEntity }, { createQueryApi }, createStateStore(), DEFAULT_STATE_STORE_RELATIVE_PATH, fs, initSqlJs (+23 more)
+
 ### Community 38 - "compilerOptions"
-Cohesion: 0.06
-Nodes (34): esnext, everything-claude-code, extracted_workspace, jest, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts (+26 more)
-
-### Community 39 - "hooks/session-start.js"
-Cohesion: 0.11
-Nodes (32): collapseWhitespace(), dedupeRecentSessions(), { detectProjectType }, extractFirstParagraph(), extractInstinctAction(), extractMarkdownHeading(), extractSection(), fs (+24 more)
-
-### Community 40 - "release-video-suite.js"
 Cohesion: 0.11
 Nodes (33): buildReport(), detectBlackSegments(), evaluatePrimaryRender(), formatBytes(), fs, inspectArtifactCollection(), inspectPublishCandidates(), inspectSourceAssets() (+25 more)
 
-### Community 41 - "opsx-onboard.md"
+### Community 39 - "hooks/session-start.js"
+Cohesion: 0.08
+Nodes (25): limiter, POST(), runtime, POST(), runtime, GET(), runtime, sendPasswordResetEmail() (+17 more)
+
+### Community 40 - "release-video-suite.js"
 Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
+Nodes (28): EXCLUDED_PATTERNS, fs, { isGitRepo, getGitModifiedFiles, readFile, log }, passThroughAndExit(), fs, {
+  getLearnedSkillsDir,
+  ensureDir,
+  readFile,
+  countInFile,
+  log
+}, main(), path (+20 more)
 
-### Community 42 - "utils.js"
-Cohesion: 0.07
-Nodes (44): { ensureDir, appendFile, getClaudeDir }, fs, os, path, RATE_TABLE, { sanitizeSessionId }, sumUsageFromTranscript(), toNumber() (+36 more)
-
-### Community 43 - "hooks/posttooluse-dispatcher.js"
+### Community 41 - "opsx-onboard.md"
 Cohesion: 0.09
 Nodes (31): { readFile }, run(), appendLine(), ASYNC_HOOKS, buildDryRunPreview(), cli(), extractToolName(), getPluginRoot() (+23 more)
 
+### Community 42 - "utils.js"
+Cohesion: 0.09
+Nodes (23): collapseWhitespace(), { detectProjectType }, extractFirstParagraph(), extractInstinctAction(), extractMarkdownHeading(), extractSection(), fs, getInstinctConfidenceThreshold() (+15 more)
+
+### Community 43 - "hooks/posttooluse-dispatcher.js"
+Cohesion: 0.11
+Nodes (29): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+21 more)
+
 ### Community 44 - "memory-vault.js"
-Cohesion: 0.12
-Nodes (32): assertMemoryDirectorySafe(), assertMemoryMatchesLocation(), assertMemoryRootSafe(), { assertWithinTrustedRoot, realpathNearestExisting }, buildExcerpt(), countOccurrences(), crypto, defaultMemoryId() (+24 more)
+Cohesion: 0.06
+Nodes (33): @cloudflare/next-on-pages, cross-env, eslint-config-next, lru-cache, devDependencies, @cloudflare/next-on-pages, cross-env, eslint-config-next (+25 more)
 
 ### Community 45 - "control-pane/state.js"
-Cohesion: 0.18
-Nodes (27): { buildControlPaneActions }, buildControlPaneSnapshot(), connectorStatus(), DEFAULT_STATE_STORE_RELATIVE_PATH, execRows(), fs, initSqlJs, normalizeSession() (+19 more)
+Cohesion: 0.11
+Nodes (21): dynamic, GET(), runtime, JobStatus, NotificationQueue, sendInternalNotification(), sendRfqAcknowledgment(), alertNewRfq() (+13 more)
 
 ### Community 46 - "package-manager.js"
 Cohesion: 0.12
-Nodes (29): { commandExists, getClaudeDir, readFile, writeFile }, detectFromLockFile(), detectFromPackageJson(), DETECTION_PRIORITY, escapeRegex(), fs, getAvailablePackageManagers(), getCommandPattern() (+21 more)
-
-### Community 47 - "canonical-session.js"
-Cohesion: 0.12
 Nodes (31): buildAggregates(), DEFAULT_RECORDING_DIR, deriveClaudeWorkerId(), deriveDmuxSessionState(), deriveWorkerHealth(), ensureArrayOfStrings(), ensureBoolean(), ensureInteger() (+23 more)
 
-### Community 48 - "tmux-worktree-orchestrator.js"
+### Community 47 - "canonical-session.js"
 Cohesion: 0.13
 Nodes (30): branchExists(), buildOrchestrationPlan(), buildSessionBannerCommand(), buildTemplateVariables(), buildWorkerArtifacts(), canonicalizePath(), cleanupExisting(), commandSucceeds() (+22 more)
 
-### Community 49 - "platform-audit.js"
+### Community 48 - "tmux-worktree-orchestrator.js"
 Cohesion: 0.11
 Nodes (31): buildCheck(), buildGithubReport(), buildLocalEvidenceChecks(), buildReport(), DEFAULT_REPOS, DEFAULT_THRESHOLDS, {
   emptyDiscussionSummary,
   fetchDiscussionSummary,
 }, fetchGithubRepo() (+23 more)
 
-### Community 50 - "control-pane/server.js"
+### Community 49 - "platform-audit.js"
 Cohesion: 0.11
 Nodes (27): {
   createControlPaneServer,
@@ -823,138 +807,124 @@ Nodes (27): {
   isAllowedOrigin
 }, { buildControlPaneAction } (+19 more)
 
-### Community 51 - "observer-sessions.js"
+### Community 50 - "control-pane/server.js"
 Cohesion: 0.14
-Nodes (24): computeProjectId(), crypto, { ensureDir, sanitizeSessionId }, fs, getHomunculusDir(), getObserverPidFile(), getObserverSignalCounterFile(), getProjectRegistryPath() (+16 more)
+Nodes (28): computeProjectId(), crypto, { ensureDir, sanitizeSessionId }, fs, getHomunculusDir(), getObserverPidFile(), getObserverSignalCounterFile(), getProjectRegistryPath() (+20 more)
 
-### Community 52 - "queries.js"
+### Community 51 - "observer-sessions.js"
 Cohesion: 0.08
 Nodes (17): ACTIVE_SESSION_STATES, { assertValidEntity }, ATTENTION_WORK_ITEM_STATUSES, classifyOutcome(), classifyWorkItemStatus(), CLOSED_WORK_ITEM_STATUSES, FAILURE_OUTCOMES, mapDecisionRow() (+9 more)
 
-### Community 53 - "evaluate.py"
-Cohesion: 0.13
-Nodes (26): AxisScore, check_accuracy(), check_actionability(), check_clarity(), check_completeness(), check_conciseness(), _check_jargon(), _check_summary() (+18 more)
-
-### Community 54 - "Card 1.1 Edge Middleware Execution & Subdomain Routing Audit"
-Cohesion: 0.06
-Nodes (30): 1. `/404` Short-Circuit Anti-Pattern, 2. Loopback Fetch Anti-Pattern inside Edge Middleware, 3. Unfiltered Hot-Path Console Logging, 4. Subdomain Naming Mismatch & Specification Drift, 5. Direct Hub Path Access to `/dashboard`, Action Plan & Wave Assignments, Actual Pipeline ([`src/middleware.ts:L26-L136`](file:///d:/dev/arostech-hub/src/middleware.ts#L26-L136)), Card 1.1 Edge Middleware Execution & Subdomain Routing Audit (+22 more)
-
-### Community 55 - "types.ts"
-Cohesion: 0.09
-Nodes (26): CertificationsGridProps, mockCertification(), mockPage(), mockPortfolioEntry(), mockProduct(), mockSpokeConfig(), mockFetch, Article (+18 more)
-
-### Community 56 - "hooks/bash-hook-dispatcher.js"
+### Community 52 - "queries.js"
 Cohesion: 0.09
 Nodes (24): path, run(), { spawnSync }, {
   buildPreToolUseAdditionalContext,
   combineAdditionalContext,
 }, { isHookEnabled }, main(), POST_BASH_HOOKS, PRE_BASH_HOOKS (+16 more)
 
-### Community 57 - "plan-canvas/server.js"
-Cohesion: 0.12
-Nodes (16): artifactSdkJs(), { artifactSdkJs }, { buildAllowedHostnames, isAllowedHostHeader, isAllowedOrigin }, {
+### Community 53 - "evaluate.py"
+Cohesion: 0.09
+Nodes (24): path, run(), { spawnSync }, {
+  buildPreToolUseAdditionalContext,
+  combineAdditionalContext,
+}, { isHookEnabled }, main(), POST_BASH_HOOKS, PRE_BASH_HOOKS (+16 more)
+
+### Community 54 - "Card 1.1 Edge Middleware Execution & Subdomain Routing Audit"
+Cohesion: 0.11
+Nodes (24): escapeHtml(), artifactSdkJs(), { artifactSdkJs }, { buildAllowedHostnames, isAllowedHostHeader, isAllowedOrigin }, {
   canvasCss,
   canvasClientJs,
   renderCanvasHtml,
   renderMarkdownArtifactHtml,
   renderSessionListHtml
-}, CONTENT_TYPES, createPlanCanvasServer(), { EventEmitter }, fs (+8 more)
+}, CONTENT_TYPES, createPlanCanvasServer(), { EventEmitter } (+16 more)
+
+### Community 55 - "types.ts"
+Cohesion: 0.11
+Nodes (27): createAdapterRegistry(), inspectSessionTarget(), buildSkillEvaluationScaffold(), roundRate(), summarize(), appendSkillObservation(), createObservationId(), createSkillObservation() (+19 more)
+
+### Community 56 - "hooks/bash-hook-dispatcher.js"
+Cohesion: 0.15
+Nodes (28): appendEvolutionRecord(), { appendFile, ensureDir }, createVersion(), ensureSkillExists(), ensureSkillVersioning(), EVOLUTION_LOG_TYPES, fs, getCurrentVersion() (+20 more)
+
+### Community 57 - "plan-canvas/server.js"
+Cohesion: 0.10
+Nodes (29): appendLine(), ASYNC_HOOKS, buildDryRunPreview(), cli(), extractToolName(), getPluginRoot(), isEnabled(), main() (+21 more)
 
 ### Community 58 - "claw.js"
+Cohesion: 0.07
+Nodes (29): a) Build & Run Commands — PUT FIRST, AGENTS.md Generator, Always generate for:, Always skip:, Anti-Patterns to Avoid, b) Testing Instructions, c) Project Structure, CLAUDE.md Companion File (+21 more)
+
+### Community 59 - "memory-mcp.mjs"
 Cohesion: 0.16
 Nodes (28): appendTurn(), askClaude(), branchSession(), buildPrompt(), compactSession(), estimateTokenCount(), exportSession(), fs (+20 more)
 
-### Community 59 - "memory-mcp.mjs"
-Cohesion: 0.10
-Nodes (24): DEFAULT_RECALL_SCOPES, Ajv, assertScopesAuthorized(), createMemoryMcpService(), {
-  DEFAULT_RECALL_SCOPES,
-  MEMORY_KINDS,
-  MEMORY_SCOPES,
-  doctorMemoryVault,
-  readMemoryById,
-  saveMemory,
-  searchMemories,
-}, executeMemoryTool(), { fileURLToPath }, fs (+16 more)
-
 ### Community 60 - "session-inspect.js"
-Cohesion: 0.11
-Nodes (25): buildSkillEvaluationScaffold(), roundRate(), summarize(), appendSkillObservation(), createObservationId(), createSkillObservation(), ensureString(), fs (+17 more)
+Cohesion: 0.08
+Nodes (24): ghApi, actions, parsing, policy, state, store, { DEFAULT_POLICY, DEFAULT_SCHEMA_VERSION, DEFAULT_SECTION_MARKER }, escapeRegExp() (+16 more)
 
 ### Community 61 - "release-approval-gate.js"
+Cohesion: 0.08
+Nodes (22): { createInstallTargetAdapter }, { createInstallTargetAdapter }, createInstallTargetAdapter(), { createInstallTargetAdapter }, { createInstallTargetAdapter }, { createInstallTargetAdapter }, { createInstallTargetAdapter }, ADAPTERS (+14 more)
+
+### Community 62 - "ito.js"
 Cohesion: 0.13
 Nodes (28): ANNOUNCEMENT_FILE_NAMES, buildReport(), crypto, fileExists(), findAnnouncementOffenders(), fs, isApproved(), ledgerBlockers() (+20 more)
 
-### Community 62 - "ito.js"
+### Community 63 - "agent-proximity/index.js"
+Cohesion: 0.09
+Nodes (26): CertificationsGridProps, mockCertification(), mockPage(), mockPortfolioEntry(), mockProduct(), mockSpokeConfig(), mockFetch, Article (+18 more)
+
+### Community 64 - "generate-command-registry.js"
 Cohesion: 0.12
 Nodes (26): assertUsableExecutable(), buildInvocation(), CANONICAL_ENTRY_SEGMENTS, {
   createSafeItoInvocationEnvironment,
   getInvocationCommand,
 }, fs, invokeIto(), isCanonicalItoEntry(), isUsableExecutable() (+18 more)
 
-### Community 63 - "agent-proximity/index.js"
-Cohesion: 0.16
-Nodes (26): advise(), agentPriority(), clamp01(), closureRate(), collisionRisk(), DEFAULTS, dependencyRisk(), graphDistance() (+18 more)
-
-### Community 64 - "generate-command-registry.js"
-Cohesion: 0.17
-Nodes (23): checkRegistry(), cleanYamlScalar(), collectKnownReferences(), DEFAULT_OUTPUT_PATH, extractDescription(), extractReferences(), formatRegistry(), formatTextSummary() (+15 more)
-
 ### Community 65 - "work-items.js"
+Cohesion: 0.10
+Nodes (22): allowedSymbolCodePoints, changedFiles, collectDangerousInvisibleMatches(), collectMatches(), fs, ignoredDirs, isAllowedEmojiLikeSymbol(), isDangerousInvisibleCodePoint() (+14 more)
+
+### Community 66 - "Event"
+Cohesion: 0.13
+Nodes (24): fs, isSessionFileTarget(), { normalizeClaudeHistorySession, persistCanonicalSnapshot }, parseClaudeTarget(), path, resolveSessionRecord(), sessionAliases, sessionManager (+16 more)
+
+### Community 67 - "isForeignPlatformPath"
 Cohesion: 0.15
 Nodes (26): assignOption(), buildGithubIssueWorkItem(), buildGithubPrWorkItem(), buildUpsertPayload(), { claimWorkItem }, claimWorkItemCli(), closeStaleGithubItems(), { createStateStore } (+18 more)
 
-### Community 66 - "Event"
+### Community 68 - "session-aliases.js"
+Cohesion: 0.13
+Nodes (26): AxisScore, check_accuracy(), check_actionability(), check_clarity(), check_completeness(), check_conciseness(), _check_jargon(), _check_summary() (+18 more)
+
+### Community 69 - "scripts/suggest-compact.js"
 Cohesion: 0.07
 Nodes (5): CloseEvent, CustomEvent, Event, MessageEvent, PromiseRejectionEvent
 
-### Community 67 - "isForeignPlatformPath"
-Cohesion: 0.23
-Nodes (11): {
-  createFlatRuleOperations,
-  createInstallTargetAdapter,
-  isForeignPlatformPath,
-}, path, planOperations(), createFlatRuleOperations(), isForeignPlatformPath(), {
-  createFlatRuleOperations,
-  createInstallTargetAdapter,
-  isForeignPlatformPath,
-}, path, planOperations() (+3 more)
-
-### Community 68 - "session-aliases.js"
-Cohesion: 0.24
-Nodes (16): cleanupAliases(), deleteAlias(), fs, getAliasesForSession(), getAliasesPath(), {
-  getClaudeDir,
-  ensureDir,
-  readFile,
-  log
-}, getDefaultAliases(), listAliases() (+8 more)
-
-### Community 69 - "scripts/suggest-compact.js"
-Cohesion: 0.14
-Nodes (25): computeContextBucket(), extractUsageTokens(), formatWindowLabel(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens() (+17 more)
-
 ### Community 70 - "ADR-0006: Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture"
-Cohesion: 0.08
-Nodes (25): 1. Context & Problem Statement, 2. Decision & Selected Option, 3. Evaluation of Alternatives, 4. Behavioral Contracts & Security Requirements, 5. Declarative Architecture Schemas & Interfaces, 6. Consequences & Trade-offs, 7. Wave 1 Implementation Instructions (Prerequisite for Task 3.1.1), 8. Graphify Anchoring & References (+17 more)
+Cohesion: 0.14
+Nodes (24): CODEX_TARGET_PREFIXES, deriveLastActivityMs(), deriveModel(), deriveObjective(), { execFileSync }, extractText(), findLatestRollout(), findRolloutById() (+16 more)
 
 ### Community 71 - "Backend Development Patterns"
 Cohesion: 0.08
 Nodes (25): API Design Patterns, Authentication & Authorization, Backend Development Patterns, Background Jobs & Queues, Cache-Aside Pattern, Caching Strategies, Centralized Error Handler, Database Patterns (+17 more)
 
 ### Community 72 - "memory-vault-format.js"
-Cohesion: 0.15
-Nodes (24): asNonEmptyString(), FATAL_UTF8_DECODER, FRONTMATTER_FIELDS, FRONTMATTER_KEYS, hasUnsafeControlCharacters(), MEMORY_KINDS, MEMORY_SCOPES, MEMORY_STATUSES (+16 more)
+Cohesion: 0.09
+Nodes (25): 1. `/404` Short-Circuit Anti-Pattern, 2. Loopback Fetch Anti-Pattern inside Edge Middleware, 3. Unfiltered Hot-Path Console Logging, 4. Subdomain Naming Mismatch & Specification Drift, 5. Direct Hub Path Access to `/dashboard`, Action Plan & Wave Assignments, Actual Pipeline ([`src/middleware.ts:L26-L136`](file:///d:/dev/arostech-hub/src/middleware.ts#L26-L136)), Card 1.1 Edge Middleware Execution & Subdomain Routing Audit (+17 more)
 
 ### Community 73 - "session-manager.js"
-Cohesion: 0.12
-Nodes (27): fs, hydrateSessionFromPath(), isSessionFileTarget(), { normalizeClaudeHistorySession, persistCanonicalSnapshot }, parseClaudeTarget(), path, resolveSessionRecord(), sessionAliases (+19 more)
+Cohesion: 0.08
+Nodes (25): 1. Context & Problem Statement, 2. Decision & Selected Option, 3. Evaluation of Alternatives, 4. Behavioral Contracts & Security Requirements, 5. Declarative Architecture Schemas & Interfaces, 6. Consequences & Trade-offs, 7. Wave 1 Implementation Instructions (Prerequisite for Task 3.1.1), 8. Graphify Anchoring & References (+17 more)
 
 ### Community 74 - "codex-worktree.js"
-Cohesion: 0.14
-Nodes (24): CODEX_TARGET_PREFIXES, deriveLastActivityMs(), deriveModel(), deriveObjective(), { execFileSync }, extractText(), findLatestRollout(), findRolloutById() (+16 more)
+Cohesion: 0.19
+Nodes (23): advise(), agentPriority(), clamp01(), closureRate(), collisionRisk(), DEFAULTS, dependencyRisk(), graphDistance() (+15 more)
 
 ### Community 75 - "How It Works"
-Cohesion: 0.09
-Nodes (22): Anti-Patterns, Audit output shape, Crawlability, Examples, Heading structure, How It Works, Indexability, Internal linking (+14 more)
+Cohesion: 0.17
+Nodes (23): checkRegistry(), cleanYamlScalar(), collectKnownReferences(), DEFAULT_OUTPUT_PATH, extractDescription(), extractReferences(), formatRegistry(), formatTextSummary() (+15 more)
 
 ### Community 76 - "install-plan.js"
 Cohesion: 0.14
@@ -969,68 +939,42 @@ Nodes (22): {
 }, main(), { normalizeInstallRequest }, parseArgs(), printComponents(), printModules(), printPlan() (+14 more)
 
 ### Community 77 - "proximity.js"
-Cohesion: 0.12
-Nodes (21): buildDependencyGraph(), buildDependencyGraphFromSources(), extractRelativeSpecifiers(), fs, isSourceFile(), path, RESOLVE_EXTENSIONS, resolveSpecifier() (+13 more)
+Cohesion: 0.15
+Nodes (22): renderDashboard(), collectSkillHealth(), discoverSkills(), formatHealthReport(), formatRate(), fs, getFailureTrend(), getLastRun() (+14 more)
 
 ### Community 78 - "skill-evolution/health.js"
-Cohesion: 0.14
-Nodes (22): collectSkillHealth(), discoverSkills(), filterRecordsWithinDays(), formatHealthReport(), formatRate(), fs, getFailureTrend(), getLastRun() (+14 more)
-
-### Community 79 - "Agent Self-Evaluation"
-Cohesion: 0.08
-Nodes (23): Agent Self-Evaluation, Anti-Patterns, Best Practices, Code Examples, Core Concepts, "Everything is a 5", Example: Good Evaluation (Score 4+), Example: Weak Evaluation (Score 2-3) (+15 more)
-
-### Community 80 - "openspec-onboard/SKILL.md"
-Cohesion: 0.10
-Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
-
-### Community 81 - "Card 1.2 Prisma Schema & Data Model Audit Findings"
 Cohesion: 0.08
 Nodes (23): 1. Executive Summary, 2.1 Model Reconciliation Table, 2.2 Deep Dive Findings on Model Differences, 2. Verification (a): Models Comparison & Drift Analysis, 3.1 Enum Reconciliation Table, 3.2 Enum Findings Summary, 3. Verification (b): Enums Comparison & Drift Analysis, 4. Verification (c): Auth.js Adapter Boilerplate Flagging (+15 more)
 
-### Community 82 - "rfq/route.ts"
+### Community 79 - "Agent Self-Evaluation"
 Cohesion: 0.14
-Nodes (15): limiter, POST(), runtime, mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest (+7 more)
+Nodes (17): categoryIcons, categoryLabels, faqData, FAQItem, FAQPage(), FAQPage(), metadata, runtime (+9 more)
 
-### Community 83 - "redirects/route.ts"
-Cohesion: 0.20
-Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, requireAuth(), cache, CacheEntry (+6 more)
-
-### Community 84 - "products/[slug]/page.tsx"
+### Community 80 - "openspec-onboard/SKILL.md"
 Cohesion: 0.11
-Nodes (23): faqData, FAQPage(), FAQPage(), metadata, runtime, generateMetadata(), ProductDetailPage(), revalidate (+15 more)
+Nodes (21): RfqB2BFormProps, RfqB2GFormProps, b2GSpecificFieldsSchema, ContactInfo, contactInfoSchema, PROCUREMENT_TYPES, ProcurementType, RfqB2BInput (+13 more)
 
-### Community 85 - "cursor-project.js"
-Cohesion: 0.31
-Nodes (10): {
-  createFlatFileOperations,
-  createFlatRuleOperations,
-  createInstallTargetAdapter,
-  createManagedOperation,
-  isForeignPlatformPath,
-}, createJsonMergeOperation(), fs, path, planOperations(), readJsonObject(), { toCursorAgentFileName }, toCursorRuleFileName() (+2 more)
-
-### Community 86 - "portfolio/[slug]/page.tsx"
-Cohesion: 0.24
-Nodes (10): generateMetadata(), PortfolioDetailPage(), revalidate, runtime, GalleryCarousel(), Props, getPortfolioBySlug(), ImageAsset (+2 more)
-
-### Community 87 - "consult.js"
+### Community 81 - "Card 1.2 Prisma Schema & Data Model Audit Findings"
 Cohesion: 0.16
 Nodes (22): buildConsultation(), buildSearchCorpus(), commandFor(), COMPONENT_ALIASES, expandToken(), formatText(), FUZZY_EXCLUDED_TOKENS, MACHINE_LEARNING_CONTEXT_TOKENS (+14 more)
 
-### Community 88 - "devDependencies"
+### Community 82 - "rfq/route.ts"
+Cohesion: 0.15
+Nodes (20): extractConversationText(), fs, generateSessionSummary(), getDeterministicFallbackSummary(), getLLMModel(), { spawnSync }, assert, createTempTranscript() (+12 more)
+
+### Community 83 - "redirects/route.ts"
+Cohesion: 0.17
+Nodes (22): getContextRemainingPct(), getContextThreshold(), getDateString(), getProjectName(), getSessionIdShort(), getTimeString(), sanitizeSessionId(), stripAnsi() (+14 more)
+
+### Community 84 - "products/[slug]/page.tsx"
 Cohesion: 0.09
-Nodes (23): @cloudflare/next-on-pages, eslint-config-next, jest, jest-environment-jsdom, devDependencies, @cloudflare/next-on-pages, eslint-config-next, jest (+15 more)
+Nodes (22): Agent Self-Evaluation, Anti-Patterns, Best Practices, Code Examples, Core Concepts, "Everything is a 5", Example: Good Evaluation (Score 4+), Example: Weak Evaluation (Score 2-3) (+14 more)
 
-### Community 89 - "(hub)/portfolio/page.tsx"
-Cohesion: 0.23
-Nodes (10): metadata, PortfolioPage(), revalidate, runtime, CategoryFilter, PortfolioGridClient(), Props, getPortfolioEntries() (+2 more)
-
-### Community 90 - "merge-codex-config.js"
+### Community 85 - "cursor-project.js"
 Cohesion: 0.17
 Nodes (21): appendBlock(), appendImplicitTable(), appendToTable(), ensureTrailingNewline(), findFirstTableIndex(), findTableRange(), fs, getNested() (+13 more)
 
-### Community 91 - "lib/harness-adapter-compliance.js"
+### Community 86 - "portfolio/[slug]/page.tsx"
 Cohesion: 0.16
 Nodes (19): {
   ADAPTER_RECORDS,
@@ -1039,71 +983,94 @@ Nodes (19): {
   validateDocumentation,
 }, buildPayload(), main(), parseArgs(), path, printHelp(), renderText(), ADAPTER_RECORDS (+11 more)
 
-### Community 92 - "session-adapters/registry.js"
+### Community 87 - "consult.js"
 Cohesion: 0.12
-Nodes (23): createAntigravityAdapter(), createClaudeHistoryAdapter(), createCodexWorktreeAdapter(), createDmuxTmuxAdapter(), createOpencodeAdapter(), buildDefaultAdapterOptions(), coerceTargetValue(), createAdapterRegistry() (+15 more)
+Nodes (19): binCache, BIOME_CONFIGS, detectFormatter(), findProjectRoot(), FORMATTER_PACKAGES, formatterCache, fs, getRunnerFromPackageManager() (+11 more)
 
-### Community 93 - "compilerOptions"
-Cohesion: 0.09
-Nodes (21): ES2020, compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+13 more)
+### Community 88 - "devDependencies"
+Cohesion: 0.19
+Nodes (19): hydrateSessionFromPath(), buildSessionRecord(), fs, getAllSessions(), getMatchingSessionCandidates(), getSessionById(), getSessionCandidates(), getSessionContent() (+11 more)
 
-### Community 94 - "runner.js"
-Cohesion: 0.31
-Nodes (8): { execSync }, findFilesMatching(), fs, parseSimpleYaml(), path, runBenchmark(), runJudge(), TASKS_DIR
-
-### Community 95 - "state-store/index.js"
-Cohesion: 0.15
-Nodes (19): openStore(), { applyMigrations, getAppliedMigrations }, { assertValidEntity, validateEntity }, { createQueryApi }, createStateStore(), DEFAULT_STATE_STORE_RELATIVE_PATH, fs, initSqlJs (+11 more)
-
-### Community 96 - "session-adapters/opencode.js"
-Cohesion: 0.17
+### Community 89 - "(hub)/portfolio/page.tsx"
+Cohesion: 0.16
 Nodes (20): deriveModelFromMessages(), deriveObjective(), { execFileSync }, findLatestSessionInfo(), findSessionInfoById(), fs, isOpencodeSessionFileTarget(), isSessionInfoFile() (+12 more)
 
-### Community 97 - "versioning.js"
-Cohesion: 0.23
-Nodes (20): countPendingAmendments(), appendEvolutionRecord(), { appendFile, ensureDir }, createVersion(), ensureSkillExists(), ensureSkillVersioning(), EVOLUTION_LOG_TYPES, fs (+12 more)
+### Community 90 - "merge-codex-config.js"
+Cohesion: 0.10
+Nodes (21): Anti-Patterns, Audit output shape, Crawlability, Examples, Heading structure, How It Works, Indexability, Internal linking (+13 more)
 
-### Community 98 - "status.js"
+### Community 91 - "lib/harness-adapter-compliance.js"
+Cohesion: 0.17
+Nodes (17): generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate, runtime, SpokePortfolioPage() (+9 more)
+
+### Community 92 - "session-adapters/registry.js"
+Cohesion: 0.15
+Nodes (20): bucketByDay(), formatPercent(), getTrendArrow(), groupRecordsBySkill(), health, horizontalBar(), panelBox(), renderAmendmentPanel() (+12 more)
+
+### Community 93 - "compilerOptions"
 Cohesion: 0.17
 Nodes (20): { createStateStore }, formatCode(), formatPercent(), fs, main(), os, parseArgs(), path (+12 more)
 
-### Community 99 - "Card 1.4 API Routes Audit Findings Report"
+### Community 94 - "runner.js"
 Cohesion: 0.10
 Nodes (20): 1. Executive Summary, 2. Complete Endpoint Inventory Matrix, 3.1 RFQ Engine (`/api/rfq`) Schema & Payload Comparison, 3. Detailed Schema Verification & Contract Diffs, 4. Response Envelope Compliance Audit, 5.1 `GET /api/admin/leads`, 5.2 `PATCH /api/admin/leads/:id/status`, 5.3 `GET /api/dashboard/tracking` (+12 more)
 
-### Community 100 - "env.ts"
-Cohesion: 0.07
-Nodes (31): getTagsForDocumentType(), isValidSignature(), POST(), runtime, SanityWebhookPayload, CACHE_TAGS, CacheTag, FetchOptions (+23 more)
+### Community 95 - "state-store/index.js"
+Cohesion: 0.13
+Nodes (17): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, articleFields (+9 more)
 
-### Community 101 - "orchestration-session.js"
+### Community 96 - "session-adapters/opencode.js"
+Cohesion: 0.17
+Nodes (16): AboutSection(), companyMilestones, companyStats, getInitials(), managementTeam, misiIcons, visiMisiItems, Button (+8 more)
+
+### Community 98 - "status.js"
 Cohesion: 0.18
 Nodes (18): inspectPackageDir(), buildSessionSnapshot(), collectSessionSnapshot(), fs, listTmuxPanes(), listWorkerDirectories(), loadWorkerSnapshots(), parseBullets() (+10 more)
 
-### Community 102 - "supply-chain-advisory-sources.js"
+### Community 99 - "Card 1.4 API Routes Audit Findings Report"
 Cohesion: 0.16
 Nodes (15): buildAdvisorySourceReport(), buildLinearStatus(), createCheck(), DEFAULT_ADVISORY_SOURCES, DEFAULT_GENERATED_AT(), defaultFetchSource(), fs, http (+7 more)
 
-### Community 103 - "proximity-tick.js"
+### Community 100 - "env.ts"
 Cohesion: 0.15
 Nodes (18): buildSendArgs(), createEccMessageSink(), { execFileSync }, fs, KIND_BY_TYPE, path, resolveEccBin(), createProximityDispatcher() (+10 more)
 
-### Community 104 - "preview-pack-smoke.js"
+### Community 101 - "orchestration-session.js"
+Cohesion: 0.12
+Nodes (16): ANTIGRAVITY_TARGET_PREFIXES, createAntigravityAdapter(), fs, { normalizeCanonicalSession, persistCanonicalSnapshot }, os, path, buildDefaultAdapterOptions(), coerceTargetValue() (+8 more)
+
+### Community 102 - "supply-chain-advisory-sources.js"
+Cohesion: 0.16
+Nodes (16): splitShellSegments(), extractCommandSubstitutions(), extractSubshellGroups(), collectCheckSegments(), DEV_COMMAND_WORDS, {
+  extractCommandSubstitutions,
+  extractSubshellGroups
+}, getLeadingCommandWord(), isBlockedDevSegment() (+8 more)
+
+### Community 103 - "proximity-tick.js"
 Cohesion: 0.16
 Nodes (19): buildReport(), crypto, fileExists(), findForbiddenContent(), fs, HERMES_BOUNDARY_MARKERS, lineNumberForIndex(), main() (+11 more)
 
+### Community 104 - "preview-pack-smoke.js"
+Cohesion: 0.10
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
+
 ### Community 105 - "Card 1.7 21st SDK Footprint Audit & Recommendation Report"
 Cohesion: 0.10
-Nodes (19): 1. Executive Summary, 2.1 Dedicated File Inventory, 2.2 Shared Configuration & Infrastructure Entrypoints, 2. Complete File Inventory & Line Counts, 3.1 21st SDK Direct Dependencies, 3.2 Related AI SDK Dependencies, 3. npm Dependency Analysis, 4.1 Request Processing Pipeline (+11 more)
+Nodes (19): Codebase Analysis, Graceful Exit Handling, Guardrails, Phase 10: Archive, Phase 11: Recap & Next Steps, Phase 1: Welcome, Phase 2: Task Selection, Phase 3: Explore Demo (+11 more)
 
 ### Community 106 - "vars"
 Cohesion: 0.10
-Nodes (19): nodejs_compat, assets, directory, compatibility_date, compatibility_flags, main, name, observability (+11 more)
+Nodes (19): 1. Executive Summary, 2.1 Dedicated File Inventory, 2.2 Shared Configuration & Infrastructure Entrypoints, 2. Complete File Inventory & Line Counts, 3.1 21st SDK Direct Dependencies, 3.2 Related AI SDK Dependencies, 3. npm Dependency Analysis, 4.1 Request Processing Pipeline (+11 more)
 
 ### Community 107 - "claude-skill-migration.js"
-Cohesion: 0.17
-Nodes (27): assertSafeClaudeSkillOperation(), assertSafeSkillPath(), { assertWithinTrustedRoot }, buildMigrationStates(), buildState(), classifyPreviousOperations(), classifySkillConflicts(), classifySkillGroup() (+19 more)
+Cohesion: 0.10
+Nodes (19): nodejs_compat, assets, directory, compatibility_date, compatibility_flags, main, name, observability (+11 more)
 
 ### Community 108 - "TransformStream"
+Cohesion: 0.17
+Nodes (13): getTokenHandler(), limiter, POST(), runtime, limiter, POST(), runtime, NotificationType (+5 more)
+
+### Community 109 - "Console"
 Cohesion: 0.10
 Nodes (7): CompressionStream, DecompressionStream, FixedLengthStream, IdentityTransformStream, TextDecoderStream, TextEncoderStream, TransformStream
 
@@ -1124,8 +1091,8 @@ Cohesion: 0.19
 Nodes (18): commandOutput(), evaluate(), findFileIssues(), fs, getExecutableCandidates(), getPathEnv(), getStagedFileContent(), getStagedFiles() (+10 more)
 
 ### Community 115 - "helpers.js"
-Cohesion: 0.33
-Nodes (4): fs, os, path, PLATFORM_SOURCE_PATH_OWNERS
+Cohesion: 0.15
+Nodes (17): cleanupEmptyParentDirs(), uninstallInstalledStates(), SUPPORTED_INSTALL_TARGETS, main(), os, parseArgs(), printHuman(), { repairInstalledStates } (+9 more)
 
 ### Community 116 - "provenance.js"
 Cohesion: 0.20
@@ -1152,130 +1119,102 @@ Cohesion: 0.11
 Nodes (18): author, bugs, url, description, directories, doc, test, homepage (+10 more)
 
 ### Community 122 - "auth.config.ts"
-Cohesion: 0.16
-Nodes (14): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User, checkDashboardAccess() (+6 more)
+Cohesion: 0.17
+Nodes (16): HubHomePage(), generateMetadata(), ProductDetailPage(), revalidate, runtime, getProductBySlug(), ArticleData, createBreadcrumbSchema() (+8 more)
 
 ### Community 123 - "Evaluation Criteria — Detailed Scoring Guide"
-Cohesion: 0.17
-Nodes (11): Accuracy, Actionability, Clarity, Completeness, Conciseness, Edge Cases, Evaluation Criteria — Detailed Scoring Guide, When the task is inherently simple (+3 more)
-
-### Community 124 - "auto-update.js"
 Cohesion: 0.16
 Nodes (16): buildInstallApplyArgs(), deriveRepoRootFromState(), determineInstallCwd(), { discoverInstalledStates }, ECC_PACKAGE_NAMES, fs, main(), os (+8 more)
+
+### Community 124 - "auto-update.js"
+Cohesion: 0.17
+Nodes (14): normalizeHookResult(), runHooks(), { buildPreToolUseAdditionalContext }, isSuspiciousDocPath(), main(), path, run(), { buildPreToolUseAdditionalContext } (+6 more)
 
 ### Community 125 - "check-plugin-cache.js"
 Cohesion: 0.19
 Nodes (17): checkCache(), collectManifestRefs(), fs, listInstalledVersions(), log(), main(), manifestPathFor(), os (+9 more)
 
 ### Community 126 - "list-installed.js"
-Cohesion: 0.16
-Nodes (15): SUPPORTED_INSTALL_TARGETS, { discoverInstalledStates }, main(), os, parseArgs(), printHuman(), showHelp(), { SUPPORTED_INSTALL_TARGETS } (+7 more)
-
-### Community 127 - "AGENTS.md Generator"
-Cohesion: 0.07
-Nodes (29): a) Build & Run Commands — PUT FIRST, AGENTS.md Generator, Always generate for:, Always skip:, Anti-Patterns to Avoid, b) Testing Instructions, c) Project Structure, CLAUDE.md Companion File (+21 more)
-
-### Community 128 - "scripts/session-start-bootstrap.js"
-Cohesion: 0.12
-Nodes (16): DEFAULT_SCRIPT_PROBE, DEFAULT_SKILL_PROBE, fs, os, path, PLUGIN_CACHE_SLUGS, PLUGIN_ROOT_SEGMENTS, resolveEccRoot() (+8 more)
-
-### Community 129 - "dashboard.js"
-Cohesion: 0.21
-Nodes (17): bucketByDay(), formatPercent(), getTrendArrow(), groupRecordsBySkill(), health, horizontalBar(), panelBox(), renderAmendmentPanel() (+9 more)
-
-### Community 130 - "ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine"
-Cohesion: 0.11
-Nodes (17): 1. Behavioral Contracts & Requirements, 2. Context & Problem Statement, 3. Decision & Declarative Routing Schemas, 4. Alternatives Considered, 5. Consequences & Impact Analysis, ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine, Alternative 1: Edge Worker 301 Redirect Engine with Database Lookups, Alternative 2: Separate Next.js Applications per Subdomain (+9 more)
-
-### Community 131 - "prisma.ts"
-Cohesion: 0.16
-Nodes (11): GET(), runtime, globalForPrisma, prisma, AuditOptions, auditRedirects(), AuditReport, BrokenTarget (+3 more)
-
-### Community 132 - "buildPreToolUseAdditionalContext"
 Cohesion: 0.17
 Nodes (14): normalizeHookResult(), runHooks(), { buildPreToolUseAdditionalContext }, isSuspiciousDocPath(), main(), path, run(), { buildPreToolUseAdditionalContext } (+6 more)
 
-### Community 133 - "openspec-explore/SKILL.md"
-Cohesion: 0.18
-Nodes (10): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+2 more)
+### Community 127 - "AGENTS.md Generator"
+Cohesion: 0.12
+Nodes (16): DEFAULT_SCRIPT_PROBE, DEFAULT_SKILL_PROBE, fs, os, path, PLUGIN_CACHE_SLUGS, PLUGIN_ROOT_SEGMENTS, resolveEccRoot() (+8 more)
 
-### Community 134 - "gemini-adapt-agents.js"
+### Community 128 - "scripts/session-start-bootstrap.js"
 Cohesion: 0.11
-Nodes (28): adaptAgents(), adaptFrontmatter(), adaptToolName(), ensureDirectory(), formatToolLine(), fs, main(), { normalizeAgentTools } (+20 more)
+Nodes (17): 1. Behavioral Contracts & Requirements, 2. Context & Problem Statement, 3. Decision & Declarative Routing Schemas, 4. Alternatives Considered, 5. Consequences & Impact Analysis, ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine, Alternative 1: Edge Worker 301 Redirect Engine with Database Lookups, Alternative 2: Separate Next.js Applications per Subdomain (+9 more)
 
-### Community 135 - "Agent Output"
-Cohesion: 0.18
-Nodes (10): Agent Output, Edge Cases Handled, Evaluation Report, Files Changed, High-Score Example: Adding Retry Logic, Merge: [PR #423](https://github.com/example/pr/423), Summary, Task (+2 more)
+### Community 129 - "dashboard.js"
+Cohesion: 0.22
+Nodes (14): DELETE(), GET(), POST(), redirectSchema, runtime, checkDashboardAccess(), getServerSession(), requireAuth() (+6 more)
 
-### Community 136 - "Operational 5-Step Incident Response Protocol Runbook"
+### Community 130 - "ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine"
+Cohesion: 0.21
+Nodes (15): allowedModes, buildAgentCatalog(), compressToCatalog(), compressToSummary(), extractSummary(), fs, lazyLoadAgent(), loadAgent() (+7 more)
+
+### Community 131 - "prisma.ts"
 Cohesion: 0.12
 Nodes (16): 1. Incident Severity Definitions, 2. The 5-Step Incident Response Protocol, 3. OpenSpec Behavioral Requirements, 4. OpenSpec Delta, 5. Graphify Knowledge Graph Anchoring, ADDED Requirements, MODIFIED Requirements, Operational 5-Step Incident Response Protocol Runbook (+8 more)
 
-### Community 137 - "ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration"
+### Community 132 - "buildPreToolUseAdditionalContext"
 Cohesion: 0.12
 Nodes (16): 1. Behavioral Contracts & Requirements, 2. Context & Architecture, 3. Declarative Security Schemas & Interfaces, 4. Alternatives Considered, 5. Consequences & Security Guarantees, ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration, Alternative 1: External Database Session Storage, Alternative 2: Disconnected Portal Applications (+8 more)
 
-### Community 138 - "scripts"
+### Community 133 - "openspec-explore/SKILL.md"
 Cohesion: 0.12
 Nodes (17): scripts, build, clean:pages, _comment_pages_build, db:seed:users, dev, generate, lint (+9 more)
 
-### Community 139 - "executeRepairOperation"
-Cohesion: 0.15
-Nodes (26): areFilesEqual(), cloneJsonValue(), copyContainedFile(), deepMergeJson(), deepRemoveJsonSubset(), ensureContainedParentDir(), executeRepairOperation(), executeUninstallOperation() (+18 more)
+### Community 134 - "gemini-adapt-agents.js"
+Cohesion: 0.12
+Nodes (17): jest, compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, module (+9 more)
 
-### Community 140 - "merge-mcp-config.js"
+### Community 135 - "Agent Output"
+Cohesion: 0.12
+Nodes (16): author, description, engines, node, keywords, license, main, name (+8 more)
+
+### Community 136 - "Operational 5-Step Incident Response Protocol Runbook"
 Cohesion: 0.17
 Nodes (14): configDiffers(), ECC_SERVERS, findSubSections(), fs, LEGACY_ALIASES, log(), main(), { parseDisabledMcpServers } (+6 more)
 
-### Community 141 - "scripts/plugin-hook-bootstrap.js"
-Cohesion: 0.23
-Nodes (15): { ensureAgentDataHomeEnv }, findBashBinary(), findShellBinary(), fs, isPowerShellBin(), main(), normalizePluginRootForPlatform(), passthrough() (+7 more)
-
-### Community 142 - "hooks/ecc-context-monitor.js"
-Cohesion: 0.22
-Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
-
-### Community 143 - "hooks/ecc-metrics-bridge.js"
+### Community 137 - "ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration"
 Cohesion: 0.19
 Nodes (15): crypto, extractFilePaths(), fs, { getClaudeDir }, getCostWarningCachePath(), hashToolCall(), os, path (+7 more)
 
-### Community 144 - "hooks/plugin-hook-bootstrap.js"
+### Community 138 - "scripts"
 Cohesion: 0.23
 Nodes (15): { ensureAgentDataHomeEnv }, findBashBinary(), findShellBinary(), fs, isPowerShellBin(), main(), normalizePluginRootForPlatform(), passthrough() (+7 more)
 
-### Community 145 - "scripts/run-with-flags.js"
+### Community 139 - "executeRepairOperation"
 Cohesion: 0.21
 Nodes (15): isDryRun(), buildDryRunPreview(), { buildPreToolUseAdditionalContext }, exitWithStdout(), extractTargetContext(), fs, getPluginRoot(), { isHookEnabled, isDryRun } (+7 more)
 
-### Community 146 - "install-targets/registry.js"
-Cohesion: 0.08
-Nodes (22): { createInstallTargetAdapter }, { createInstallTargetAdapter }, createInstallTargetAdapter(), { createInstallTargetAdapter }, { createInstallTargetAdapter }, { createInstallTargetAdapter }, { createInstallTargetAdapter }, ADAPTERS (+14 more)
+### Community 140 - "merge-mcp-config.js"
+Cohesion: 0.25
+Nodes (15): applyEmphasis(), buildList(), buildListBlock(), cellAlign(), classifyUrl(), isAlignmentRow(), listTag(), renderInline() (+7 more)
 
-### Community 147 - "markdown.js"
-Cohesion: 0.16
-Nodes (23): applyEmphasis(), buildList(), buildListBlock(), cellAlign(), classifyUrl(), escapeHtml(), isAlignmentRow(), listTag() (+15 more)
-
-### Community 148 - "scripts/ecc-metrics-bridge.js"
-Cohesion: 0.19
-Nodes (15): crypto, extractFilePaths(), fs, { getClaudeDir }, getCostWarningCachePath(), hashToolCall(), os, path (+7 more)
-
-### Community 149 - "Auth & ADR Audit Findings"
+### Community 141 - "scripts/plugin-hook-bootstrap.js"
 Cohesion: 0.12
 Nodes (15): 1.1 `PrismaAdapter(prisma)` Eager Import Evaluation, 1.2 Evaluation & Decision on Edge Refactor Pattern, 1. Extended Scope Evaluation: Cloudflare Edge Compatibility, 2. Verification Matrix: Specification vs Implementation, 3. Detailed Audit Findings & Defects, 4. Wave 1 Action & Remediation Plan, 5. Graphify Anchoring & References, Action Items Checklist (+7 more)
 
-### Community 150 - "Card Results"
+### Community 142 - "hooks/ecc-context-monitor.js"
 Cohesion: 0.12
 Nodes (15): 1.1 Middleware Audit — [FAIL / PARTIAL GAPS], 1.2 Prisma Schema Audit — [PASS / GAP IDENTIFIED], 1.3 Sanity CMS Audit — [POLICY VIOLATION / MISSING SCHEMAS], 1.4 API Routes Audit — [DRIFT / MISSING ENDPOINTS], 1.5 Auth & ADR Audit — [CRITICAL EDGE INCOMPATIBILITY / ADR PRODUCED], 1.6 Analytics Audit — [DRIFT / PRD STATUS UPDATE NEEDED], 1.7 21st SDK Footprint Audit — [PURGE / REMOVE IN WAVE 4], 1.8 Dead Code Audit — [SAFE TO DELETE / MIGRATION PATH] (+7 more)
 
-### Community 151 - "ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture"
+### Community 143 - "hooks/ecc-metrics-bridge.js"
 Cohesion: 0.12
 Nodes (15): 1. Behavioral Contracts & Requirements, 2. Context & Problem Statement, 3. Decision & Declarative Data Schemas, 4. Alternatives Considered, 5. Consequences & Risk Mitigation, ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture, Alternative 1: Discriminated Union Form Segregation (`z.discriminatedUnion`), Alternative 2: Separate Form Endpoints per Product Spoke (+7 more)
 
-### Community 152 - "password-reset.test.ts"
-Cohesion: 0.14
-Nodes (14): limiter, POST(), runtime, POST(), runtime, sendPasswordResetEmail(), mockNextResponse, mockSendEmail (+6 more)
+### Community 144 - "hooks/plugin-hook-bootstrap.js"
+Cohesion: 0.12
+Nodes (15): 1. Behavioral Contracts & Requirements, 2. Context & Multi-Dimensional Decision Rationale, 3. Declarative Architecture Schemas & Config, 4. Alternatives Considered, 5. Consequences & Trade-offs, ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`), Alternative 1: Retain `@cloudflare/next-on-pages`, Alternative 2: Direct Static Export (`next export` / `output: 'export'`) (+7 more)
 
-### Community 154 - "discussion-audit.js"
+### Community 146 - "install-targets/registry.js"
+Cohesion: 0.13
+Nodes (15): @21st-sdk/agent, @21st-sdk/node, class-variance-authority, clsx, embla-carousel-react, next-sanity, dependencies, @21st-sdk/agent (+7 more)
+
+### Community 147 - "markdown.js"
 Cohesion: 0.22
 Nodes (14): {
   DEFAULT_DISCUSSION_FIRST,
@@ -1283,54 +1222,72 @@ Nodes (14): {
   fetchDiscussionSummary,
 }, DEFAULT_REPOS, fs, main(), markdownEscape(), parseArgs(), parseIntegerFlag(), path (+6 more)
 
-### Community 155 - "scripts/governance-capture.js"
+### Community 148 - "scripts/ecc-metrics-bridge.js"
 Cohesion: 0.22
 Nodes (14): analyzeForGovernanceEvents(), APPROVAL_COMMANDS, crypto, detectApprovalRequired(), detectSecrets(), detectSensitivePath(), emitGovernanceEvent(), fingerprintCommand() (+6 more)
 
-### Community 156 - "hooks/governance-capture.js"
+### Community 149 - "Auth & ADR Audit Findings"
+Cohesion: 0.22
+Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
+
+### Community 150 - "Card Results"
 Cohesion: 0.22
 Nodes (14): analyzeForGovernanceEvents(), APPROVAL_COMMANDS, crypto, detectApprovalRequired(), detectSecrets(), detectSensitivePath(), emitGovernanceEvent(), fingerprintCommand() (+6 more)
 
-### Community 157 - "hooks/run-with-flags.js"
+### Community 151 - "ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture"
 Cohesion: 0.22
 Nodes (14): buildDryRunPreview(), { buildPreToolUseAdditionalContext }, exitWithStdout(), extractTargetContext(), fs, getPluginRoot(), { isHookEnabled, isDryRun }, main() (+6 more)
 
-### Community 158 - "hooks/session-end.js"
+### Community 152 - "password-reset.test.ts"
 Cohesion: 0.24
 Nodes (14): buildSessionHeader(), buildSummaryBlock(), buildSummarySection(), escapeRegExp(), extractHeaderField(), extractSessionSummary(), fs, { generateSessionSummary, getContextRemainingPct, getContextThreshold } (+6 more)
 
-### Community 159 - "observability-readiness.js"
+### Community 153 - "URLSearchParams"
+Cohesion: 0.18
+Nodes (13): buildProximityTriggers(), clamp01(), pct(), { buildDependencyGraph }, buildProximitySnapshot(), defaultChangedFilesFor(), defaultWorkingSetFor(), { execFileSync } (+5 more)
+
+### Community 154 - "discussion-audit.js"
+Cohesion: 0.22
+Nodes (14): getTempDir(), output(), writeFile(), buildContextSuggestion(), cleanupOldCounters(), fs, getCounterRetentionDays(), {
+  getTempDir,
+  writeFile,
+  readStdinJson,
+  log,
+  output
+} (+6 more)
+
+### Community 155 - "scripts/governance-capture.js"
 Cohesion: 0.24
 Nodes (14): buildChecks(), buildReport(), fileExists(), fs, hasObjectKeys(), includesAll(), main(), parseArgs() (+6 more)
 
-### Community 161 - "validate-hooks.js"
+### Community 156 - "hooks/governance-capture.js"
+Cohesion: 0.25
+Nodes (14): MSYS_NO_PATHCONV, release.sh script, update_agent_yaml_version(), update_agents_version(), update_codex_marketplace_version(), update_latest_release_heading(), update_marketplace_plugin_version(), update_opencode_hook_banner_version() (+6 more)
+
+### Community 158 - "hooks/session-end.js"
 Cohesion: 0.19
 Nodes (13): Ajv, EVENTS_WITHOUT_MATCHER, fs, HOOKS_FILE, HOOKS_SCHEMA_PATH, isNonEmptyString(), isNonEmptyStringArray(), path (+5 more)
 
-### Community 162 - "check-unicode-safety.js"
-Cohesion: 0.12
-Nodes (21): allowedSymbolCodePoints, changedFiles, collectDangerousInvisibleMatches(), collectMatches(), fs, ignoredDirs, isAllowedEmojiLikeSymbol(), isDangerousInvisibleCodePoint() (+13 more)
+### Community 159 - "observability-readiness.js"
+Cohesion: 0.23
+Nodes (13): adaptAgents(), adaptFrontmatter(), adaptToolName(), ensureDirectory(), formatToolLine(), fs, main(), { normalizeAgentTools } (+5 more)
 
-### Community 163 - "hooks/observe-runner.js"
+### Community 160 - "DurableObjectStorage"
 Cohesion: 0.22
 Nodes (12): combineStderr(), findShellBinary(), fs, getPhaseFromHookId(), getPluginRoot(), getTimeoutMs(), OBSERVE_RELATIVE_PATH, path (+4 more)
 
-### Community 164 - "hooks/pre-bash-dev-server-block.js"
+### Community 161 - "validate-hooks.js"
 Cohesion: 0.20
 Nodes (12): DEV_COMMAND_WORDS, {
   extractCommandSubstitutions,
   extractSubshellGroups
 }, getLeadingCommandWord(), isBlockedDevSegment(), isOptionToken(), normalizeCommandWord(), path, PREFIX_OPTION_VALUE_WORDS (+4 more)
 
-### Community 165 - "hooks/stop-format-typecheck.js"
+### Community 162 - "check-unicode-safety.js"
 Cohesion: 0.21
 Nodes (13): crypto, { execFileSync, spawnSync }, { findProjectRoot, detectFormatter, resolveFormatterBin }, findTsConfigDir(), formatBatch(), fs, getAccumFile(), main() (+5 more)
 
-### Community 166 - "install-state.js"
-Cohesion: 0.22
-Nodes (14): assertValidInstallStateForWrite(), buildDiscoveryRecord(), assertValidInstallState(), cloneJsonValue(), createFallbackValidator(), createInstallState(), formatValidationErrors(), fs (+6 more)
-
-### Community 167 - "normalizeRelativePath"
+### Community 163 - "hooks/observe-runner.js"
 Cohesion: 0.23
 Nodes (12): {
   createInstallTargetAdapter,
@@ -1344,95 +1301,95 @@ Nodes (12): {
   normalizeRelativePath,
 }, getClaudeManagedDestinationPath(), path, planOperations() (+4 more)
 
-### Community 168 - "project-detect.js"
+### Community 164 - "hooks/pre-bash-dev-server-block.js"
+Cohesion: 0.23
+Nodes (11): {
+  createFlatRuleOperations,
+  createInstallTargetAdapter,
+  isForeignPlatformPath,
+}, path, planOperations(), createFlatRuleOperations(), isForeignPlatformPath(), {
+  createFlatRuleOperations,
+  createInstallTargetAdapter,
+  isForeignPlatformPath,
+}, path, planOperations() (+3 more)
+
+### Community 165 - "hooks/stop-format-typecheck.js"
 Cohesion: 0.23
 Nodes (13): detectProjectType(), fileExists(), FRAMEWORK_RULES, fs, getComposerDeps(), getElixirDeps(), getGoDeps(), getPackageJsonDeps() (+5 more)
 
-### Community 169 - "tracker.js"
+### Community 166 - "install-state.js"
 Cohesion: 0.21
 Nodes (13): { appendFile }, fs, getRunsFilePath(), normalizeExecutionRecord(), os, path, readJsonl(), readSkillExecutionRecords() (+5 more)
 
-### Community 170 - "scripts/observe-runner.js"
+### Community 167 - "normalizeRelativePath"
 Cohesion: 0.22
 Nodes (12): combineStderr(), findShellBinary(), fs, getPhaseFromHookId(), getPluginRoot(), getTimeoutMs(), OBSERVE_RELATIVE_PATH, path (+4 more)
 
-### Community 171 - "release.sh"
-Cohesion: 0.27
-Nodes (13): release.sh script, update_agent_yaml_version(), update_agents_version(), update_codex_marketplace_version(), update_latest_release_heading(), update_marketplace_plugin_version(), update_opencode_hook_banner_version(), update_package_lock_version() (+5 more)
+### Community 168 - "project-detect.js"
+Cohesion: 0.21
+Nodes (13): crypto, { execFileSync, spawnSync }, { findProjectRoot, detectFormatter, resolveFormatterBin }, findTsConfigDir(), formatBatch(), fs, getAccumFile(), main() (+5 more)
 
-### Community 172 - "queue.test.ts"
-Cohesion: 0.19
-Nodes (11): sendInternalNotification(), sendRfqAcknowledgment(), mockSend, mockAlertNew, mockAlertQueueFailure, mockJobCreate, mockJobFindMany, mockJobFindUnique (+3 more)
+### Community 169 - "tracker.js"
+Cohesion: 0.14
+Nodes (14): eslint, @types/react, typescript, eslint, @types/react, typescript, @sanity/eslint-config-studio, devDependencies (+6 more)
 
-### Community 176 - "dependencies"
-Cohesion: 0.15
-Nodes (13): @21st-sdk/agent, @21st-sdk/nextjs, @auth/prisma-adapter, class-variance-authority, next, dependencies, @21st-sdk/agent, @21st-sdk/nextjs (+5 more)
+### Community 170 - "scripts/observe-runner.js"
+Cohesion: 0.23
+Nodes (10): metadata, PortfolioPage(), revalidate, runtime, CategoryFilter, PortfolioGridClient(), Props, getPortfolioEntries() (+2 more)
 
-### Community 177 - "AboutSection.tsx"
-Cohesion: 0.17
-Nodes (16): AboutSection(), companyMilestones, companyStats, getInitials(), managementTeam, misiIcons, visiMisiItems, Button (+8 more)
-
-### Community 178 - "generate.ts"
+### Community 174 - "Headers"
 Cohesion: 0.27
 Nodes (12): AREA_PATTERNS, AreaInfo, buildTree(), classifyFiles(), generateAreaDoc(), generateIndex(), lineCount(), main() (+4 more)
 
-### Community 179 - "ecc-bot.mjs"
+### Community 175 - "SubtleCrypto"
 Cohesion: 0.24
 Nodes (11): clampHeartbeatInterval(), findSkill(), handlers, HELP, interactionCallbackUrl(), loadSkills(), log(), main() (+3 more)
 
-### Community 180 - "pre-tool-guardrail-agy.js"
+### Community 176 - "dependencies"
 Cohesion: 0.31
 Nodes (10): isDestructiveCommand(), { isReadonlyViolation, hasWindowsBackslash }, hasWindowsBackslash(), isReadonlyViolation(), extractPathsAndCommands(), fs, { hasWindowsBackslash, isReadonlyViolation }, { isDestructiveCommand } (+2 more)
 
-### Community 182 - "sync-ecc-to-codex.sh"
+### Community 177 - "AboutSection.tsx"
 Cohesion: 0.27
 Nodes (8): compose_ecc_block(), generate_prompt_file(), log(), replace_ecc_section(), require_path(), run_or_echo(), sync-ecc-to-codex.sh script, write_extension_prompt()
 
-### Community 183 - "3. Detailed Audit Findings"
+### Community 178 - "generate.ts"
 Cohesion: 0.15
 Nodes (12): 1. Executive Summary, 2. Scope & Files Inspected, 3.1 Verification (a): PostHog Initialization & Privacy Control, 3.2 Verification (b): Sentry Initialization & Source Map Protection, 3.3 Verification (c): Event Name Taxonomy vs PRD §4.3, 3.4 Verification (d): GDPR & LGPD Compliance, 3.5 Verification (e): Intentional Phase-1-Active Status & PRD Status Reconciliation, 3. Detailed Audit Findings (+4 more)
 
-### Community 184 - "Playwright End-to-End (E2E) Testing Playbook"
+### Community 179 - "ecc-bot.mjs"
 Cohesion: 0.15
 Nodes (12): 1. Playwright Setup & Configuration, 2. Core Execution Commands, 3. Page Object Model (POM) Patterns, 4. OpenSpec Behavioral Requirements, 5. OpenSpec Delta, 6. Graphify Knowledge Graph Anchoring, ADDED Requirements, MODIFIED Requirements (+4 more)
 
-### Community 185 - "Client Onboarding & Project Tracking Portal Management Runbook"
+### Community 180 - "pre-tool-guardrail-agy.js"
 Cohesion: 0.15
 Nodes (12): 1. Overview & Portal Architecture, 2. Onboarding Workflow Steps, 3. Data Isolation & Security Mandates, 4. OpenSpec Behavioral Requirements, 5. OpenSpec Delta, 6. Graphify Knowledge Graph Anchoring, ADDED Requirements, Client Onboarding & Project Tracking Portal Management Runbook (+4 more)
 
-### Community 187 - "Body"
+### Community 181 - "eval/package.json"
+Cohesion: 0.24
+Nodes (9): ArticleDetailPage(), generateMetadata(), revalidate, runtime, Props, ShareButtons(), getArticleBySlug(), createArticleSchema() (+1 more)
+
+### Community 182 - "sync-ecc-to-codex.sh"
+Cohesion: 0.24
+Nodes (10): generateMetadata(), PortfolioDetailPage(), revalidate, runtime, GalleryCarousel(), Props, getPortfolioBySlug(), ImageAsset (+2 more)
+
+### Community 184 - "Playwright End-to-End (E2E) Testing Playbook"
 Cohesion: 0.15
 Nodes (3): Body, Request, Response
 
-### Community 191 - "ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`)"
-Cohesion: 0.12
-Nodes (15): 1. Behavioral Contracts & Requirements, 2. Context & Multi-Dimensional Decision Rationale, 3. Declarative Architecture Schemas & Config, 4. Alternatives Considered, 5. Consequences & Trade-offs, ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`), Alternative 1: Retain `@cloudflare/next-on-pages`, Alternative 2: Direct Static Export (`next export` / `output: 'export'`) (+7 more)
-
-### Community 192 - "metadata.ts"
-Cohesion: 0.33
-Nodes (7): generateMetadata(), createHubHomeMetadata(), createHubPageMetadata(), createSpokeProductMetadata(), PAGE_TITLE_MAP, slugify(), SpokeProduct
-
-### Community 193 - "[spoke]/page.tsx"
-Cohesion: 0.18
-Nodes (15): generateMetadata(), revalidate, runtime, SpokeHome(), generateMetadata(), revalidate, runtime, SpokePortfolioPage() (+7 more)
-
-### Community 194 - "Low-Score Example: Adding Retry Logic"
-Cohesion: 0.33
-Nodes (5): Agent Output, Evaluation Report, Low-Score Example: Adding Retry Logic, Task, Why This Scores Poorly
-
-### Community 195 - "validate-no-personal-paths.js"
+### Community 188 - "Container"
 Cohesion: 0.18
 Nodes (9): EXEMPT_PREFIXES, files, fs, isExempt(), path, PLACEHOLDER_USERNAMES, repoRelative(), ROOT (+1 more)
 
-### Community 196 - "github-discussions.js"
+### Community 189 - "FormData"
 Cohesion: 0.29
 Nodes (11): buildReport(), discussionNeedsAcceptedAnswer(), discussionNeedsMaintainerTouch(), emptyDiscussionSummary(), fetchDiscussionSummary(), MAINTAINER_ASSOCIATIONS, runCommand(), runGhJson() (+3 more)
 
-### Community 197 - "main"
+### Community 190 - "URLPattern"
 Cohesion: 0.29
 Nodes (11): extract_content(), format_feedback(), get_anomaly_attr(), main(), Any, Append an audit event to the JSONL audit log. Creates a new dict to avoid…, Get a field from an anomaly that may be a dict or an object. The SDK's…, Format detected anomalies as feedback for Claude Code. Returns: A human-… (+3 more)
 
-### Community 198 - "hooks/suggest-compact.js"
+### Community 191 - "ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`)"
 Cohesion: 0.24
 Nodes (11): buildContextSuggestion(), cleanupOldCounters(), fs, getCounterRetentionDays(), {
   getTempDir,
@@ -1442,310 +1399,333 @@ Nodes (11): buildContextSuggestion(), cleanupOldCounters(), fs, getCounterRetent
   output
 }, incrementToolCallCount(), main(), path (+3 more)
 
-### Community 199 - "main"
+### Community 192 - "metadata.ts"
 Cohesion: 0.29
-Nodes (11): extract_content(), format_feedback(), get_anomaly_attr(), main(), Any, Append an audit event to the JSONL audit log. Creates a new dict to avoid…, Get a field from an anomaly that may be a dict or an object. The SDK's…, Format detected anomalies as feedback for Claude Code. Returns: A human-… (+3 more)
+Nodes (11): extract_content(), format_feedback(), get_anomaly_attr(), main(), Append an audit event to the JSONL audit log. Creates a new dict to avoid…, Get a field from an anomaly that may be a dict or an object. The SDK's…, Format detected anomalies as feedback for Claude Code. Returns: A human-…, Entry point for the Claude Code PreToolUse hook. (+3 more)
 
-### Community 200 - "uninstall.js"
-Cohesion: 0.29
-Nodes (9): cleanupEmptyParentDirs(), uninstallInstalledStates(), main(), os, parseArgs(), printHuman(), showHelp(), { SUPPORTED_INSTALL_TARGETS } (+1 more)
+### Community 193 - "[spoke]/page.tsx"
+Cohesion: 0.24
+Nodes (11): buildDependencyGraph(), buildDependencyGraphFromSources(), extractRelativeSpecifiers(), fs, isSourceFile(), path, RESOLVE_EXTENSIONS, resolveSpecifier() (+3 more)
 
-### Community 201 - "opencode-home.js"
+### Community 194 - "Low-Score Example: Adding Retry Logic"
+Cohesion: 0.23
+Nodes (11): buildDiscoveryRecord(), discoverInstalledStates(), normalizeTargets(), listInstallTargetAdapters(), { discoverInstalledStates }, main(), os, parseArgs() (+3 more)
+
+### Community 195 - "validate-no-personal-paths.js"
 Cohesion: 0.20
 Nodes (11): buildValidationIssue(), defaultValidateAdapterInput(), {
   buildValidationIssue,
   createInstallTargetAdapter,
 }, COMPILED_PLUGIN_DIST_DIR, defaultValidateOpencodeHome(), fs, isExpectedType(), MISSING_ARTEFACT_ERROR_CODES (+3 more)
 
-### Community 202 - "scripts/ecc-context-monitor.js"
-Cohesion: 0.20
-Nodes (14): costWarningsEnabled(), crypto, detectLoop(), evaluateConditions(), fs, getWarnPath(), isEnabledEnv(), os (+6 more)
+### Community 196 - "github-discussions.js"
+Cohesion: 0.21
+Nodes (7): extractUsageTokens(), fs, isKnownModelFamilyMatch(), KNOWN_MODEL_WINDOW_TOKENS, readFileTail(), readLatestContextTokens(), resolveContextWindowTokens()
 
-### Community 203 - "Agent Self-Evaluation Report Template"
-Cohesion: 0.40
-Nodes (4): Agent Self-Evaluation Report Template, Post-Evaluation Actions, Quick Reference: Scoring Triggers, When to Skip
+### Community 197 - "main"
+Cohesion: 0.17
+Nodes (11): Accuracy, Actionability, Clarity, Completeness, Conciseness, Edge Cases, Evaluation Criteria — Detailed Scoring Guide, When the task is inherently simple (+3 more)
 
-### Community 204 - "pre-edit-rule-gate.cjs"
-Cohesion: 0.36
-Nodes (7): fs, loadGateMap(), main(), MAP_PATH, matchPattern(), path, run()
-
-### Community 205 - "Hook Integration for Session-Stop Self-Evaluation"
-Cohesion: 0.50
-Nodes (3): Hook Integration for Session-Stop Self-Evaluation, Integration with the Python Evaluator, Manual Usage (Recommended)
-
-### Community 208 - "scripts/catalog.js"
-Cohesion: 0.25
-Nodes (13): FAMILY_ALIASES, {
-  getInstallComponent,
-  listInstallComponents,
-  listInstallProfiles,
-}, main(), normalizeFamily(), parseArgs(), printComponent(), printComponents(), printProfiles() (+5 more)
-
-### Community 210 - "Auth.js v5 Edge Security & Client Portal Access Codemap"
+### Community 198 - "hooks/suggest-compact.js"
 Cohesion: 0.17
 Nodes (11): 1. Behavioral Contracts & Requirements, 2. Declarative Security & Authorization Schemas, 3.1 Edge Security Subsystem Flow, 3. System Security Terrain & Code Architecture, 4. Role-Based Access Control (RBAC) Matrix, 5. Security Practices & Controls, Auth.js v5 Edge Security & Client Portal Access Codemap, OpenSpec Delta (+3 more)
 
-### Community 211 - "an-token/route.ts"
-Cohesion: 0.31
-Nodes (8): getTokenHandler(), limiter, POST(), runtime, validateANSDKEnv(), createRateLimiter(), getClientIp(), RateLimiterOptions
+### Community 199 - "main"
+Cohesion: 0.17
+Nodes (12): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, module, moduleResolution (+4 more)
 
-### Community 212 - "normalizeConfig"
-Cohesion: 0.19
-Nodes (14): classifyAssignee(), deepMerge(), defaultConfigPaths(), defaultDbPath(), defaultStateDbPath(), homeDir(), isPlainObject(), normalizeConfig() (+6 more)
-
-### Community 213 - "queries.ts"
-Cohesion: 0.09
-Nodes (25): ArticlesGridClient(), getInitialSavedIds(), Props, ArticlesPage(), metadata, revalidate, runtime, ArticleDetailPage() (+17 more)
-
-### Community 215 - "ExtendableEvent"
+### Community 201 - "opencode-home.js"
 Cohesion: 0.17
 Nodes (6): EmailEvent, ExtendableEvent, FetchEvent, QueueEvent, ScheduledEvent, TailEvent
 
-### Community 217 - "opsx-explore.md"
-Cohesion: 0.20
-Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
-
-### Community 218 - "ecc.js"
-Cohesion: 0.19
-Nodes (13): COMMANDS, { createSafeItoInvocationEnvironment }, { getComputeSponsorCopy }, { listAvailableLanguages }, main(), path, PRIMARY_COMMANDS, resolveCommand() (+5 more)
-
-### Community 220 - "schema.js"
-Cohesion: 0.22
-Nodes (12): Ajv, assertValidEntity(), cachedValidators, ENTITY_DEFINITIONS, formatValidationErrors(), fs, getAjv(), getEntityValidator() (+4 more)
-
-### Community 224 - "Extended Development Workflow (8-Layer)"
-Cohesion: 0.05
-Nodes (35): 1. Machine-Readable YAML Frontmatter, 2. OpenSpec Behavioral Contracts, 3. RFC 2119 Normative Precision, 4. Declarative Machine Code & Schemas, 5. Graphify Knowledge Graph Anchoring, 6. OpenSpec SDD Lifecycle Mapping, 7. Anchored URIs & Zero Redundancy Invariants, AI-Friendly Documentation Rule (7 Pillars Standard) (+27 more)
-
-### Community 225 - "validate-workflow-security.js"
+### Community 203 - "Agent Self-Evaluation Report Template"
 Cohesion: 0.25
 Nodes (10): DEFAULT_WORKFLOWS_DIR, extractCheckoutSteps(), findViolations(), fs, getLineNumber(), getWorkflowFiles(), path, RULES (+2 more)
 
-### Community 226 - "NotificationQueue"
-Cohesion: 0.24
-Nodes (6): dynamic, GET(), runtime, NotificationQueue, mockNextResponse, mockProcessAllPending
-
-### Community 227 - "scripts/desktop-notify.js"
-Cohesion: 0.29
-Nodes (10): extractSummary(), findPowerShell(), findTerminalTTY(), fs, { isMacOS, log }, isUnderMultiplexer(), notifyMacOS(), notifyWindows() (+2 more)
-
-### Community 228 - "hooks/cost-tracker.js"
+### Community 204 - "pre-edit-rule-gate.cjs"
 Cohesion: 0.20
 Nodes (8): { ensureDir, appendFile, getClaudeDir }, fs, os, path, RATE_TABLE, { sanitizeSessionId }, sumUsageFromTranscript(), toNumber()
 
-### Community 229 - "hooks/desktop-notify.js"
+### Community 205 - "Hook Integration for Session-Stop Self-Evaluation"
 Cohesion: 0.29
 Nodes (10): extractSummary(), findPowerShell(), findTerminalTTY(), fs, { isMacOS, log }, isUnderMultiplexer(), notifyMacOS(), notifyWindows() (+2 more)
 
-### Community 230 - "work-item-mutations.js"
+### Community 206 - "ai"
+Cohesion: 0.29
+Nodes (8): fail(), log(), MSYS_NO_PATHCONV, ok(), phase(), score_passes(), gan-harness.sh script, warn()
+
+### Community 207 - "scripts/package.json"
+Cohesion: 0.27
+Nodes (10): {
+  applyClaim,
+  applyDecompose,
+  applyPublish,
+  applyReview,
+  applySync,
+  applyUnblock,
+  applyValidate,
+  formatCollection,
+  formatSummary,
+  loadPolicy,
+  normalizeIssueNumber,
+  openStore,
+}, BOOL_FLAGS, dispatchCommand(), formatOutput(), main(), os, parseArgs(), readValue() (+2 more)
+
+### Community 208 - "scripts/catalog.js"
+Cohesion: 0.20
+Nodes (8): { ensureDir, appendFile, getClaudeDir }, fs, os, path, RATE_TABLE, { sanitizeSessionId }, sumUsageFromTranscript(), toNumber()
+
+### Community 209 - "next-themes"
+Cohesion: 0.29
+Nodes (10): extractSummary(), findPowerShell(), findTerminalTTY(), fs, { isMacOS, log }, isUnderMultiplexer(), notifyMacOS(), notifyWindows() (+2 more)
+
+### Community 210 - "Auth.js v5 Edge Security & Client Portal Access Codemap"
 Cohesion: 0.25
 Nodes (10): claimWorkItem(), DONE_STATUSES, isOpenStatus(), LANE_TO_STATUS, moveWorkItem(), PRIORITY_RANK, priorityRank(), selectClaimTarget() (+2 more)
 
-### Community 231 - "sessions.js"
-Cohesion: 0.13
-Nodes (11): createSessionStore(), crypto, FEEDBACK_KINDS, fs, normalizeFeedbackItem(), nowIso(), os, path (+3 more)
+### Community 211 - "an-token/route.ts"
+Cohesion: 0.31
+Nodes (10): {
+  createFlatFileOperations,
+  createFlatRuleOperations,
+  createInstallTargetAdapter,
+  createManagedOperation,
+  isForeignPlatformPath,
+}, createJsonMergeOperation(), fs, path, planOperations(), readJsonObject(), { toCursorAgentFileName }, toCursorRuleFileName() (+2 more)
 
-### Community 232 - "session-aliases.d.ts"
+### Community 212 - "normalizeConfig"
+Cohesion: 0.22
+Nodes (9): crypto, FEEDBACK_KINDS, fs, normalizeFeedbackItem(), nowIso(), os, path, sanitizeText() (+1 more)
+
+### Community 213 - "queries.ts"
 Cohesion: 0.24
 Nodes (10): AliasEntry, AliasListItem, AliasResult, AliasStore, CleanupResult, DeleteAliasResult, ListAliasesOptions, RenameAliasResult (+2 more)
 
-### Community 233 - "main"
-Cohesion: 0.18
-Nodes (11): main(), markdownEscape(), normalizeRelativePrefix(), parseArgs(), parseIntegerFlag(), readValue(), renderMarkdown(), renderReport() (+3 more)
-
-### Community 234 - "sessions-cli.js"
-Cohesion: 0.31
-Nodes (10): { createStateStore }, main(), os, parseArgs(), printDecisions(), printSessionDetail(), printSessionList(), printSkillRuns() (+2 more)
-
-### Community 235 - "validate-ai-docs.cjs"
-Cohesion: 0.27
-Nodes (10): { execSync }, fs, getModifiedDocFiles(), main(), parseFrontmatter(), path, REQUIRED_FRONTMATTER_KEYS, run() (+2 more)
-
-### Community 243 - "doctor.js"
-Cohesion: 0.33
-Nodes (8): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS }
-
-### Community 244 - "Minimal Working Example: Adding a Client Tracking Portal Route Handler"
-Cohesion: 0.18
-Nodes (10): 1. Behavioral Contracts & Requirements, 2. Declarative Route Handler Schemas, 3. Step-by-Step Implementation, 4. Security & Access Verification, Minimal Working Example: Adding a Client Tracking Portal Route Handler, OpenSpec Delta, Requirement: REQ-MWE-CLIENT-PORTAL-001 Row-Level Scoped Route Handler Execution, Scenario: Authenticated Client Query (+2 more)
-
-### Community 245 - "useTrackEvent"
-Cohesion: 0.08
-Nodes (29): runtime, metadata, runtime, AnalyticsDownloadLink(), AnalyticsDownloadLinkProps, AnalyticsLink(), AnalyticsLinkProps, BackToTop() (+21 more)
-
-### Community 246 - "cn"
-Cohesion: 0.09
-Nodes (32): categoryIcons, categoryLabels, FAQItem, SelectField(), SelectFieldProps, TextFieldProps, categoryIcons, categoryLabels (+24 more)
-
-### Community 247 - "StreamError"
-Cohesion: 0.18
-Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError, InvalidURLError, MaxFileSizeError, NotFoundError, QuotaReachedError (+3 more)
-
-### Community 252 - "hooks"
-Cohesion: 0.20
-Nodes (9): hooks, PostToolUse, PostToolUseFailure, PreCompact, PreToolUse, SessionEnd, SessionStart, Stop (+1 more)
-
-### Community 255 - "check-codex-global-state.sh"
-Cohesion: 0.53
-Nodes (9): check_config_absent(), check_config_pattern(), fail(), ok(), require_file(), required_skills, search_file(), check-codex-global-state.sh script (+1 more)
-
-### Community 256 - "scripts/design-quality-check.js"
-Cohesion: 0.29
-Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
-
-### Community 257 - "gan-harness.sh"
-Cohesion: 0.33
-Nodes (7): fail(), log(), ok(), phase(), score_passes(), gan-harness.sh script, warn()
-
-### Community 258 - "hooks/design-quality-check.js"
-Cohesion: 0.29
-Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
-
-### Community 261 - "buildSkillHealthReport"
+### Community 214 - "DurableObjectState"
 Cohesion: 0.33
 Nodes (9): { buildSkillHealthReport }, createProposalId(), proposeSkillAmendment(), summarizePatchPreview(), buildSkillHealthReport(), deriveSkillStatus(), rankCounts(), roundRate() (+1 more)
 
-### Community 265 - "Standardize Documentation (7 Pillars Standard)"
+### Community 215 - "ExtendableEvent"
+Cohesion: 0.18
+Nodes (11): main(), markdownEscape(), normalizeRelativePrefix(), parseArgs(), parseIntegerFlag(), readValue(), renderMarkdown(), renderReport() (+3 more)
+
+### Community 216 - "WorkerEntrypoint"
+Cohesion: 0.31
+Nodes (10): { createStateStore }, main(), os, parseArgs(), printDecisions(), printSessionDetail(), printSessionList(), printSkillRuns() (+2 more)
+
+### Community 217 - "opsx-explore.md"
+Cohesion: 0.27
+Nodes (10): { execSync }, fs, getModifiedDocFiles(), main(), parseFrontmatter(), path, REQUIRED_FRONTMATTER_KEYS, run() (+2 more)
+
+### Community 218 - "ecc.js"
+Cohesion: 0.18
+Nodes (10): Agent Output, Edge Cases Handled, Evaluation Report, Files Changed, High-Score Example: Adding Retry Logic, Merge: [PR #423](https://github.com/example/pr/423), Summary, Task (+2 more)
+
+### Community 219 - "@ai-sdk/react"
+Cohesion: 0.18
+Nodes (10): 1. Behavioral Contracts & Requirements, 2. Declarative Route Handler Schemas, 3. Step-by-Step Implementation, 4. Security & Access Verification, Minimal Working Example: Adding a Client Tracking Portal Route Handler, OpenSpec Delta, Requirement: REQ-MWE-CLIENT-PORTAL-001 Row-Level Scoped Route Handler Execution, Scenario: Authenticated Client Query (+2 more)
+
+### Community 220 - "schema.js"
+Cohesion: 0.29
+Nodes (10): a, c(), ct(), e(), n(), o(), ot(), p() (+2 more)
+
+### Community 221 - "opsx-apply.md"
+Cohesion: 0.18
+Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError, InvalidURLError, MaxFileSizeError, NotFoundError, QuotaReachedError (+3 more)
+
+### Community 223 - "opsx-bulk-archive.md"
+Cohesion: 0.20
+Nodes (9): hooks, PostToolUse, PostToolUseFailure, PreCompact, PreToolUse, SessionEnd, SessionStart, Stop (+1 more)
+
+### Community 224 - "Extended Development Workflow (8-Layer)"
+Cohesion: 0.53
+Nodes (9): check_config_absent(), check_config_pattern(), fail(), ok(), require_file(), required_skills, search_file(), check-codex-global-state.sh script (+1 more)
+
+### Community 225 - "validate-workflow-security.js"
+Cohesion: 0.29
+Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
+
+### Community 226 - "NotificationQueue"
+Cohesion: 0.31
+Nodes (9): { buildDoctorReport }, main(), os, parseArgs(), printHuman(), showHelp(), statusLabel(), { SUPPORTED_INSTALL_TARGETS } (+1 more)
+
+### Community 227 - "scripts/desktop-notify.js"
+Cohesion: 0.29
+Nodes (9): buildWarning(), CHECKLIST, detectSignals(), fs, GENERIC_SIGNALS, getFilePaths(), path, readContent() (+1 more)
+
+### Community 228 - "hooks/cost-tracker.js"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, Handling Different Entry Points, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do (+1 more)
+
+### Community 229 - "hooks/desktop-notify.js"
+Cohesion: 0.20
+Nodes (9): Check for context, Ending Discovery, Guardrails, OpenSpec Awareness, The Stance, What You Don't Have To Do, What You Might Do, When a change exists (+1 more)
+
+### Community 230 - "work-item-mutations.js"
 Cohesion: 0.20
 Nodes (9): 🏛️ Mapping of the 7 Pillars, Standardize Documentation (7 Pillars Standard), Step 1: Scan & Audit Document (Pillar 5 - Graph Exploration), Step 2: Inject Machine-Readable YAML Frontmatter (Pillar 1), Step 3: Refactor Requirements & Normative Precision (Pillar 2 & 3), Step 4: Add Declarative Schemas & Graphify Anchors (Pillar 4 & 5), Step 5: Map OpenSpec SDD Spec Deltas (Pillar 6), Step 6: Anchor URIs & Enforce Zero Redundancy (Pillar 7) (+1 more)
 
-### Community 266 - "preserve-manifest.js"
+### Community 231 - "sessions.js"
+Cohesion: 0.20
+Nodes (10): react-dom, react-dom, sanity, dependencies, react, react-dom, sanity, styled-components (+2 more)
+
+### Community 232 - "session-aliases.d.ts"
 Cohesion: 0.20
 Nodes (9): backupBuildIdPath, backupDir, backupManifestPath, buildIdPath, filesToBackup, manifestPath, nextDir, pagesManifestPath (+1 more)
 
-### Community 267 - "scripts/ecc-statusline.js"
+### Community 233 - "main"
 Cohesion: 0.31
-Nodes (9): buildContextBar(), formatDuration(), fs, os, path, readCurrentTask(), runStatusline(), { sanitizeSessionId, readBridge, writeBridgeAtomic } (+1 more)
+Nodes (8): generateMetadata(), createHubHomeMetadata(), createHubPageMetadata(), createSpokeHomeMetadata(), createSpokeProductMetadata(), PAGE_TITLE_MAP, slugify(), SpokeProduct
 
-### Community 268 - "redirects.test.ts"
+### Community 234 - "sessions-cli.js"
+Cohesion: 0.27
+Nodes (8): generateMetadata(), revalidate, runtime, SpokeDynamicPage(), PortableText(), Props, getAllSpokeConfigs(), getPageBySlug()
+
+### Community 235 - "validate-ai-docs.cjs"
 Cohesion: 0.20
 Nodes (8): mockClearCache, mockCreate, mockDelete, mockFindMany, mockFindUnique, mockNextResponse, mockRequireAuth, mockUpdate
 
-### Community 269 - "schemaTypes/index.ts"
+### Community 236 - "opsx-continue.md"
 Cohesion: 0.29
 Nodes (4): schemaTypes, portfolioEntry, product, spokeConfig
 
-### Community 273 - "session-bridge.js"
-Cohesion: 0.27
-Nodes (9): crypto, fs, getBridgePath(), os, path, readBridge(), renameWithRetry(), resolveSessionId() (+1 more)
+### Community 240 - "opsx-sync.md"
+Cohesion: 0.31
+Nodes (8): { execSync }, findFilesMatching(), fs, parseSimpleYaml(), path, runBenchmark(), runJudge(), TASKS_DIR
 
-### Community 275 - "harness-adapter.js"
-Cohesion: 0.25
-Nodes (5): fs, getHarnessDataDir(), getHarnessType(), os, path
+### Community 241 - "opsx-update.md"
+Cohesion: 0.39
+Nodes (7): { isHookEnabled }, getDisabledHookIds(), getHookProfile(), isHookEnabled(), normalizeId(), parseProfiles(), VALID_PROFILES
 
-### Community 276 - "antigravity.js"
-Cohesion: 0.25
-Nodes (5): ANTIGRAVITY_TARGET_PREFIXES, fs, { normalizeCanonicalSession, persistCanonicalSnapshot }, os, path
-
-### Community 277 - "dmux-tmux.js"
-Cohesion: 0.29
-Nodes (6): buildSourceTarget(), { collectSessionSnapshot }, fs, isPlanFileTarget(), { normalizeDmuxSnapshot, persistCanonicalSnapshot }, path
-
-### Community 279 - "validate-commands.js"
+### Community 242 - "opsx-verify.md"
 Cohesion: 0.25
 Nodes (8): AGENTS_DIR, COMMANDS_DIR, fs, path, ROOT_DIR, SKILLS_DIR, validateCommands(), validateFrontmatter()
 
-### Community 280 - "hooks/ecc-statusline.js"
+### Community 243 - "doctor.js"
 Cohesion: 0.31
 Nodes (8): buildContextBar(), formatDuration(), fs, os, path, readCurrentTask(), runStatusline(), { sanitizeSessionId, readBridge, writeBridgeAtomic }
 
-### Community 281 - "hooks/post-bash-command-log.js"
+### Community 244 - "Minimal Working Example: Adding a Client Tracking Portal Route Handler"
 Cohesion: 0.31
 Nodes (8): appendLine(), fs, main(), MODE_CONFIG, os, path, run(), sanitizeCommand()
 
-### Community 282 - "hooks/pre-compact.js"
+### Community 245 - "useTrackEvent"
 Cohesion: 0.31
 Nodes (8): escapeRegExp(), fs, { generateSessionSummary }, { getSessionsDir, getDateTimeString, getTimeString, findFiles, ensureDir, appendFile, readFile, writeFile, getProjectName, log }, main(), normalizePath(), path, selectActiveSessionPath()
 
-### Community 283 - "hooks/quality-gate.js"
+### Community 246 - "cn"
 Cohesion: 0.31
 Nodes (8): exec(), { findProjectRoot, detectFormatter, resolveFormatterBin }, fs, log(), maybeRunQualityGate(), path, run(), { spawnSync }
 
-### Community 284 - "hooks/session-start-bootstrap.js"
+### Community 247 - "StreamError"
 Cohesion: 0.22
 Nodes (8): fs, path, raw, rel, { resolveEccRoot }, root, script, { spawnSync }
 
-### Community 285 - "scripts/post-bash-command-log.js"
+### Community 248 - "ServiceWorkerGlobalScope"
+Cohesion: 0.25
+Nodes (5): fs, getHarnessDataDir(), getHarnessType(), os, path
+
+### Community 249 - "openspec-apply-change/SKILL.md"
+Cohesion: 0.25
+Nodes (6): buildSourceTarget(), { collectSessionSnapshot }, fs, isPlanFileTarget(), { normalizeDmuxSnapshot, persistCanonicalSnapshot }, path
+
+### Community 250 - "openspec-archive-change/SKILL.md"
 Cohesion: 0.31
 Nodes (8): appendLine(), fs, main(), MODE_CONFIG, os, path, run(), sanitizeCommand()
 
-### Community 286 - "PortfolioSection.tsx"
-Cohesion: 0.08
-Nodes (29): CertificationsGrid(), CertificationsPage(), metadata, revalidate, runtime, ProjectMapDynamic(), ArticlesSection(), categoryColors (+21 more)
+### Community 251 - "openspec-bulk-archive-change/SKILL.md"
+Cohesion: 0.31
+Nodes (8): exec(), { findProjectRoot, detectFormatter, resolveFormatterBin }, fs, log(), maybeRunQualityGate(), path, run(), { spawnSync }
 
-### Community 292 - "2. Declarative Zod Schemas & TypeScript Interfaces"
+### Community 252 - "hooks"
 Cohesion: 0.22
 Nodes (8): 1. Executive Summary & Legacy Rot Elimination, 2.1 Universal RFQ Submission Contracts, 2.2 Product Spoke Metadata & Cart Items Schemas, 2.3 Auth.js v5 JWT Session Contracts (`authSessionSchema`), 2. Declarative Zod Schemas & TypeScript Interfaces, 3. Transactional Database Models (Neon Postgres via Prisma ORM), Declarative System Data Model & Schema Contracts, Key Architectural Invariants
 
-### Community 294 - "leaflet-map.tsx"
-Cohesion: 0.33
-Nodes (6): cities, createCustomIcon(), LeafletMap(), LeafletMapProps, ProjectCity, LeafletMap
+### Community 253 - "openspec-continue-change/SKILL.md"
+Cohesion: 0.22
+Nodes (7): runtime, { handlers, auth, signIn, signOut }, JWT, next-auth, next-auth/jwt, Session, User
 
-### Community 296 - "ByteLengthQueuingStrategy"
+### Community 254 - "Cache"
+Cohesion: 0.33
+Nodes (7): cache, CacheEntry, getFromCache(), lookupRedirect(), normalizePath(), setToCache(), mockFetch
+
+### Community 256 - "scripts/design-quality-check.js"
 Cohesion: 0.22
 Nodes (3): ByteLengthQueuingStrategy, CountQueuingStrategy, QueuingStrategy
 
-### Community 304 - "validate-agents.js"
+### Community 263 - "openspec-update-change/SKILL.md"
 Cohesion: 0.29
 Nodes (7): AGENTS_DIR, extractFrontmatter(), fs, path, REQUIRED_FIELDS, VALID_MODELS, validateAgents()
 
-### Community 305 - "validate-skills.js"
+### Community 264 - "openspec-verify-change/SKILL.md"
 Cohesion: 0.36
 Nodes (7): extractFrontmatter(), fs, inspectFrontmatter(), path, SKILLS_DIR, validateSkillDir(), validateSkills()
 
-### Community 306 - "release-announce.mjs"
+### Community 265 - "Standardize Documentation (7 Pillars Standard)"
 Cohesion: 0.46
 Nodes (7): buildMessage(), crossPostToDiscussions(), discord(), graphql(), main(), postAndPinToDiscord(), sleep()
 
-### Community 307 - "hooks/plan-canvas-sessions.js"
+### Community 266 - "preserve-manifest.js"
 Cohesion: 0.36
 Nodes (7): buildContext(), fs, openSessions(), os, path, run(), stateDir()
 
-### Community 308 - "hooks/post-edit-accumulator.js"
+### Community 267 - "scripts/ecc-statusline.js"
 Cohesion: 0.32
 Nodes (7): appendPath(), crypto, fs, getAccumFile(), os, path, run()
 
-### Community 309 - "control-pane/actions.js"
+### Community 268 - "redirects.test.ts"
 Cohesion: 0.39
 Nodes (7): ACTION_DEFINITIONS, buildControlPaneAction(), buildControlPaneActions(), commandLineFor(), normalizeLimit(), path, shellQuote()
 
-### Community 310 - "inspection.js"
+### Community 269 - "schemaTypes/index.ts"
 Cohesion: 0.43
 Nodes (7): detectPatterns(), FAILURE_OUTCOMES, generateReport(), groupFailures(), inspect(), normalizeFailureReason(), suggestAction()
 
-### Community 311 - "assertWithinTrustedRoot"
-Cohesion: 0.39
-Nodes (7): assertWithinTrustedRoot(), fs, isWithinRoot(), path, pathEntryExists(), realpathNearestExisting(), resolveContainment()
-
-### Community 312 - "scripts/plan-canvas-sessions.js"
+### Community 270 - "EventSource"
 Cohesion: 0.36
 Nodes (7): buildContext(), fs, openSessions(), os, path, run(), stateDir()
 
-### Community 313 - "scripts/post-edit-accumulator.js"
+### Community 271 - "Flagship"
 Cohesion: 0.32
 Nodes (7): appendPath(), crypto, fs, getAccumFile(), os, path, run()
 
-### Community 328 - "build-opencode.js"
+### Community 272 - "R2ObjectBody"
+Cohesion: 0.36
+Nodes (7): fs, loadGateMap(), main(), MAP_PATH, matchPattern(), path, run()
+
+### Community 273 - "session-bridge.js"
+Cohesion: 0.25
+Nodes (6): mockAlertFail, mockBuildWaUrl, mockEnqueue, mockLeadCreate, mockNextRequest, mockNextResponse
+
+### Community 274 - "typescript"
+Cohesion: 0.43
+Nodes (6): Button(), buttonVariants, getServerSnapshot(), getSnapshot(), subscribe(), ThemeToggle()
+
+### Community 280 - "hooks/ecc-statusline.js"
 Cohesion: 0.29
 Nodes (6): distDir, { execFileSync }, fs, opencodeDir, path, rootDir
 
-### Community 329 - "pre-push"
+### Community 281 - "hooks/post-bash-command-log.js"
 Cohesion: 0.48
 Nodes (5): pre-push script, fail(), has_node_script(), log(), run_node_script()
 
-### Community 330 - "scripts/config-protection.js"
+### Community 282 - "hooks/pre-compact.js"
 Cohesion: 0.33
 Nodes (6): fs, parseInput(), path, PROTECTED_FILES, run(), truncated
 
-### Community 331 - "hooks/config-protection.js"
+### Community 283 - "hooks/quality-gate.js"
 Cohesion: 0.33
 Nodes (6): fs, parseInput(), path, PROTECTED_FILES, run(), truncated
 
-### Community 332 - "ecc_dashboard_runtime.py"
+### Community 284 - "hooks/session-start-bootstrap.js"
 Cohesion: 0.33
 Nodes (6): build_terminal_launch(), launch_terminal(), maximize_window(), Maximize the dashboard window using the safest supported method., Return safe argv/kwargs for opening a terminal rooted at the requested path., Open a terminal at the given path after validating the target directory.
 
-### Community 333 - "antigravity-project.js"
+### Community 285 - "scripts/post-bash-command-log.js"
+Cohesion: 0.38
+Nodes (5): normalizeLabelValue(), runCommand(), runGh(), runGhJson(), { spawnSync }
+
+### Community 286 - "PortfolioSection.tsx"
 Cohesion: 0.33
 Nodes (5): {
   createFlatRuleOperations,
@@ -1754,43 +1734,67 @@ Nodes (5): {
   normalizeRelativePath,
 }, path, planOperations(), SUPPORTED_SOURCE_PREFIXES, supportsAntigravitySourcePath()
 
-### Community 334 - "session-manager.d.ts"
+### Community 287 - "Community 287"
 Cohesion: 0.33
 Nodes (6): GetAllSessionsOptions, Session, SessionFilenameMeta, SessionListResult, SessionMetadata, SessionStats
 
-### Community 335 - "utils.d.ts"
+### Community 288 - "Community 288"
 Cohesion: 0.29
 Nodes (6): CommandResult, FileMatch, FindFilesOptions, GrepMatch, ReadStdinJsonOptions, ReplaceInFileOptions
 
-### Community 352 - "gemini-adapt-ecc.js"
+### Community 289 - "Community 289"
+Cohesion: 0.38
+Nodes (6): fs, { inspectSessionTarget }, main(), parseArgs(), path, usage()
+
+### Community 290 - "@hookform/resolvers"
+Cohesion: 0.29
+Nodes (7): ES2020, esnext, lib, DOM, lib, dom, dom.iterable
+
+### Community 291 - "Community 291"
+Cohesion: 0.29
+Nodes (7): **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, include, **/*.ts, **/*.tsx
+
+### Community 292 - "2. Declarative Zod Schemas & TypeScript Interfaces"
 Cohesion: 0.29
 Nodes (4): fs, path, targetDir, toolMappings
 
-### Community 360 - "validate-rules.js"
+### Community 299 - "DurableObjectTransaction"
 Cohesion: 0.40
 Nodes (5): collectRuleFiles(), fs, path, RULES_DIR, validateRules()
 
-### Community 361 - "scripts/doc-file-warning.js"
-Cohesion: 0.47
-Nodes (5): { buildPreToolUseAdditionalContext }, isSuspiciousDocPath(), main(), path, run()
+### Community 300 - "ReadableStream"
+Cohesion: 0.33
+Nodes (4): fs, os, path, PLATFORM_SOURCE_PATH_OWNERS
 
-### Community 362 - "package-manager.d.ts"
+### Community 301 - "Socket"
 Cohesion: 0.33
 Nodes (5): DetectionSource, GetPackageManagerOptions, PackageManagerConfig, PackageManagerName, PackageManagerResult
 
-### Community 363 - "skill-evolution/index.js"
+### Community 302 - "WritableStreamDefaultWriter"
 Cohesion: 0.33
 Nodes (5): dashboard, health, provenance, tracker, versioning
 
-### Community 364 - "gsc-verify.ts"
+### Community 303 - "Community 303"
+Cohesion: 0.33
+Nodes (5): Agent Output, Evaluation Report, Low-Score Example: Adding Retry Logic, Task, Why This Scores Poorly
+
+### Community 304 - "validate-agents.js"
 Cohesion: 0.53
 Nodes (3): nextConfig, getDnsTxtRecord(), writeHtmlVerificationFile()
 
-### Community 380 - "hooks/check-console-log.js"
+### Community 305 - "validate-skills.js"
+Cohesion: 0.40
+Nodes (5): cities, createCustomIcon(), LeafletMap(), LeafletMapProps, ProjectCity
+
+### Community 306 - "release-announce.mjs"
+Cohesion: 0.33
+Nodes (5): exclude, include, **/*.ts, **/*.tsx, node_modules
+
+### Community 320 - "R2Bucket"
 Cohesion: 0.40
 Nodes (3): EXCLUDED_PATTERNS, fs, { isGitRepo, getGitModifiedFiles, readFile, log }
 
-### Community 381 - "hooks/evaluate-session.js"
+### Community 321 - "SqlStorageCursor"
 Cohesion: 0.40
 Nodes (3): fs, {
   getLearnedSkillsDir,
@@ -1800,31 +1804,51 @@ Nodes (3): fs, {
   log
 }, path
 
-### Community 382 - "hooks/post-edit-format.js"
+### Community 322 - "Vectorize"
 Cohesion: 0.40
 Nodes (3): { execFileSync, spawnSync }, { findProjectRoot, detectFormatter, resolveFormatterBin }, path
 
-### Community 383 - "observation-envelope-agy.js"
+### Community 323 - "Community 323"
+Cohesion: 0.60
+Nodes (4): normalizePathForGitBash(), path, toFileUri(), toGitBashPath()
+
+### Community 324 - "Community 324"
 Cohesion: 0.60
 Nodes (4): extractArtifacts(), fs, main(), readStdinSync()
 
-### Community 389 - "seed-redirects.ts"
+### Community 326 - "Community 326"
+Cohesion: 0.60
+Nodes (4): isDocPath(), main(), path, run()
+
+### Community 327 - "Community 327"
+Cohesion: 0.40
+Nodes (4): Agent Self-Evaluation Report Template, Post-Evaluation Actions, Quick Reference: Scoring Triggers, When to Skip
+
+### Community 328 - "build-opencode.js"
 Cohesion: 0.40
 Nodes (3): logger, prisma, sampleRedirects
 
-### Community 390 - "chat/page.tsx"
+### Community 329 - "pre-push"
+Cohesion: 0.40
+Nodes (4): everything-claude-code, extracted_workspace, subdomain, exclude
+
+### Community 330 - "scripts/config-protection.js"
 Cohesion: 0.50
 Nodes (3): chat, ChatPage(), runtime
 
-### Community 410 - "install-global-git-hooks.sh"
+### Community 331 - "hooks/config-protection.js"
+Cohesion: 0.50
+Nodes (3): ContactPage(), metadata, runtime
+
+### Community 349 - "Community 349"
 Cohesion: 0.83
 Nodes (3): log(), run_or_echo(), install-global-git-hooks.sh script
 
-### Community 413 - "hooks/post-edit-typecheck.js"
+### Community 352 - "gemini-adapt-ecc.js"
 Cohesion: 0.50
 Nodes (3): { execFileSync }, fs, path
 
-### Community 414 - "hooks/session-end-marker.js"
+### Community 353 - "Community 353"
 Cohesion: 0.67
 Nodes (3): log(), {
   resolveProjectContext,
@@ -1834,45 +1858,49 @@ Nodes (3): log(), {
   resolveSessionId
 }, run()
 
-### Community 416 - "scripts/post-edit-typecheck.js"
+### Community 355 - "Ai"
 Cohesion: 0.50
 Nodes (3): { execFileSync }, fs, path
 
-### Community 428 - "sanity.ts"
+### Community 356 - "AiSearchNamespace"
+Cohesion: 0.50
+Nodes (3): Hook Integration for Session-Stop Self-Evaluation, Integration with the Python Evaluator, Manual Usage (Recommended)
+
+### Community 362 - "package-manager.d.ts"
 Cohesion: 0.50
 Nodes (3): mockFetch, mockSanityClient, mockSanityFetch
 
-### Community 429 - "use-analytics.test.ts"
+### Community 363 - "skill-evolution/index.js"
 Cohesion: 0.50
 Nodes (3): mockCapturePostHogEvent, mockEvent, mockInitPostHog
 
-### Community 430 - "posthog.test.ts"
+### Community 364 - "gsc-verify.ts"
 Cohesion: 0.50
 Nodes (3): mockCapture, mockIdentify, mockInit
 
-### Community 481 - "BasicImageTransformations"
+### Community 401 - "StreamVideoHandle"
 Cohesion: 0.67
 Nodes (3): BasicImageTransformations, RequestInitCfPropertiesImage, RequestInitCfPropertiesImageDraw
 
 ## Knowledge Gaps
-- **2929 isolated node(s):** `type`, `fs`, `path`, `{ execSync }`, `TASKS_DIR` (+2924 more)
+- **2894 isolated node(s):** `$schema`, `PreToolUse`, `PreCompact`, `SessionStart`, `PostToolUse` (+2889 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **234 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **224 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Console` connect `Console` to `RFC-2253`, `scripts/ecc-context-monitor.js`?**
-  _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Why does `event()` connect `useTrackEvent` to `scripts/session-activity-tracker.js`, `hooks/session-activity-tracker.js`, `scripts/governance-capture.js`, `hooks/governance-capture.js`?**
-  _High betweenness centrality (0.084) - this node is a cross-community bridge._
-- **Why does `p()` connect `single_worker.js` to `isForeignPlatformPath`, `normalizeRelativePath`, `proximity.js`, `hooks/ecc-metrics-bridge.js`, `scripts/ecc-metrics-bridge.js`, `cursor-project.js`, `inspection.js`, `pre-tool-guardrail-agy.js`, `dashboard-web.js`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
-- **What connects `type`, `fs`, `path` to the rest of the system?**
-  _2929 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Console` connect `versioning.js` to `RFC-2253`?**
+  _High betweenness centrality (0.132) - this node is a cross-community bridge._
+- **Why does `event()` connect `resolve-formatter.js` to `memory.js`, `scripts/ecc-metrics-bridge.js`, `dashboard-web.js`, `Card Results`?**
+  _High betweenness centrality (0.079) - this node is a cross-community bridge._
+- **Why does `p()` connect `schema.js` to `hooks/observe-runner.js`, `hooks/pre-bash-dev-server-block.js`, `install-executor.js`, `ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration`, `schemaTypes/index.ts`, `an-token/route.ts`, `URLSearchParams`, `scripts/session-activity-tracker.js`, `studio/package.json`?**
+  _High betweenness centrality (0.071) - this node is a cross-community bridge._
+- **What connects `$schema`, `PreToolUse`, `PreCompact` to the rest of the system?**
+  _2894 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `RFC-2253` be split into smaller, more focused modules?**
   _Cohesion score 0.002386634844868735 - nodes in this community are weakly interconnected._
 - **Should `github-coordination/actions.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.0661729574773053 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06103286384976526 - nodes in this community are weakly interconnected._
 - **Should `rfq-schemas.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06448087431693988 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06625258799171843 - nodes in this community are weakly interconnected._

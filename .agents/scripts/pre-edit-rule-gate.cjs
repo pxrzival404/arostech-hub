@@ -56,7 +56,8 @@ function run(inputOrRaw) {
     return { exitCode: 0 };
   }
 
-  const filePath = String(input?.tool_input?.file_path || input?.tool_input?.TargetFile || '');
+  const toolInput = input?.tool_input || input?.toolInput || input?.input || input?.toolCall?.args || input?.args || input || {};
+  const filePath = String(toolInput?.file_path || toolInput?.TargetFile || toolInput?.target_file || toolInput?.filePath || '');
   if (!filePath) return { exitCode: 0 };
 
   const gateMap = loadGateMap();
@@ -73,7 +74,7 @@ function run(inputOrRaw) {
 
   if (matchedGates.length > 0) {
     const context = matchedGates.map(g => 
-      `[Platform Rule Gate §2.3] REMINDER: File '${filePath}' is governed by '${g.rule_file}' (Owner Agent: ${g.owner_agent}). MUST comply with all platform constraints.`
+      `[Platform Rule Gate §2.3] ENFORCED: File '${filePath}' is governed by '${g.rule_file}' (Owner Agent: ${g.owner_agent}). MUST comply with all platform constraints defined in the rule file.`
     );
 
     return {

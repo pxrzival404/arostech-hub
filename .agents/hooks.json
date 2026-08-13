@@ -1,19 +1,52 @@
 {
   "version": "1.0.0",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "id": "pre:gateguard-fact-force",
-        "description": "Fact-forcing gate for pre-tool execution validation",
-        "handler": "./scripts/hooks/gateguard-fact-force.js",
-        "events": ["PreToolUse", "beforeSubmitPrompt"]
-      },
-      {
-        "id": "pre:platform-rule-gate",
-        "description": "Enforces AGENTS.md §2.3 Rule File Gating before domain file edits",
-        "handler": "./scripts/pre-edit-rule-gate.cjs",
-        "events": ["PreToolUse"]
-      }
-    ]
-  }
+  "PreInvocation": [
+    {
+      "command": "node ./.agents/scripts/pre-tool-guardrail-agy.js"
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|run_command|bash|edit|write|multiedit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node ./.agents/scripts/hooks/gateguard-fact-force.js",
+          "timeout": 15000
+        },
+        {
+          "type": "command",
+          "command": "node ./.agents/scripts/hooks/block-no-verify.js",
+          "timeout": 10000
+        },
+        {
+          "type": "command",
+          "command": "node ./.agents/scripts/pre-edit-rule-gate.cjs",
+          "timeout": 10000
+        },
+        {
+          "type": "command",
+          "command": "node ./.agents/scripts/pre-write-ai-doc-guard.cjs",
+          "timeout": 10000
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|edit|write|multiedit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node ./.agents/scripts/hooks/post-edit-accumulator.js",
+          "timeout": 10000
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "command": "node ./.agents/scripts/stop-format-typecheck.js"
+    }
+  ]
 }

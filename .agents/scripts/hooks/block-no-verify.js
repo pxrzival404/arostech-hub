@@ -488,12 +488,16 @@ function extractCommand(rawInput) {
     const parsed = JSON.parse(trimmed);
     if (typeof parsed !== 'object' || parsed === null) return trimmed;
 
-    // Claude Code format: { tool_input: { command: "..." } }
-    const cmd = parsed.tool_input?.command;
-    if (typeof cmd === 'string') return cmd;
+    // Claude Code format: { tool_input: { command: "..." } } and Antigravity: { tool_input: { CommandLine: "..." } }
+    const inputObj = parsed.tool_input || parsed.toolInput || parsed.input || parsed.toolCall?.args || parsed.args || {};
+    if (typeof inputObj === 'object' && inputObj !== null) {
+      for (const key of ['CommandLine', 'command', 'cmd', 'input', 'shell', 'script']) {
+        if (typeof inputObj[key] === 'string') return inputObj[key];
+      }
+    }
 
-    // Generic JSON formats
-    for (const key of ['command', 'cmd', 'input', 'shell', 'script']) {
+    // Generic top-level JSON formats
+    for (const key of ['CommandLine', 'command', 'cmd', 'input', 'shell', 'script']) {
       if (typeof parsed[key] === 'string') return parsed[key];
     }
 

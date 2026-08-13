@@ -1,7 +1,7 @@
 ---
 id: doc:AGENTS.md
 title: arostech-hub — AI Agent Operating Rules & Harness Governance
-version: 2.3.0
+version: 2.4.0
 status: authoritative
 graphify_community: engineering
 authoritative_references:
@@ -13,7 +13,10 @@ authoritative_references:
 ## Overview
 PT Daya Berkah Sentosa Nusantara (`arostech-hub`) platform built on Next.js 16.2.6 (App Router), Cloudflare Pages Edge Runtime, Sanity CMS (GROQ/ISR), Neon PostgreSQL (Prisma ORM), Auth.js v5, and Tailwind CSS v4. Governed by OpenSpec SDD, TDD, and **Graphify Knowledge Graph** (established as the sole standard memory system for Layer 0 Context Boot and Layer 6 Memory Sync).
 
-## Quick CLI Reference
+## Terminal & Execution Standard
+All CLI commands, test suites, and automation scripts executed by AI agents MUST execute within **Git Bash** (`bash` environment with POSIX toolchains). Agents SHALL use POSIX shell syntax, standard pipe/redirection operators (`|`, `&&`, `||`), and forward-slash (`/`) directory paths. PowerShell and `cmd.exe` proprietary syntax MUST NOT be used.
+
+## Quick CLI Reference (Git Bash)
 
 pnpm dev            # Start Next.js development server
 pnpm build          # Standard Next.js production build
@@ -63,6 +66,7 @@ L0: Context Boot (graphify query) -> L1: HLA Alignment (docs/) -> L2: Research &
 
 ## Invariants & Guardrails
 
-- ✅ **Always do:** Run `graphify query "<task>"` at Layer 0 boot. Derive tests from OpenSpec specs. Enforce 80%+ test coverage. Return new immutable copies. Validate docs with `node .agents/scripts/validate-ai-docs.cjs`.
+- ✅ **Always do:** Execute all commands in **Git Bash** (`bash`) using forward-slash (`/`) paths. Run `graphify query "<task>"` at Layer 0 boot. Derive tests from OpenSpec specs. Enforce 80%+ test coverage. Return new immutable copies. Validate docs with `node .agents/scripts/validate-ai-docs.cjs`.
 - ⚠️ **Ask first:** Modifying `prisma/schema.prisma`. Adding new npm dependencies. Altering Auth.js split config. Modifying deployment pipelines.
-- 🚫 **Never do:** Commit hardcoded secrets or API keys. Set `ignoreBuildErrors: true` in `next.config.ts`. Use Node OS APIs in Edge middleware. Delete failing unit tests. Exceed 25 MB Worker bundle limit (`_worker.js`).
+- 🚫 **Never do:** Commit hardcoded secrets or API keys. Set `ignoreBuildErrors: true` in `next.config.ts`. Use Node OS APIs in Edge middleware. Delete failing unit tests. Exceed 25 MB Worker bundle limit (`_worker.js`). Execute PowerShell or `cmd.exe` proprietary syntax in terminal invocations.
+

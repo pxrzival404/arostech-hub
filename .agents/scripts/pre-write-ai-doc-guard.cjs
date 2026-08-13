@@ -2,14 +2,19 @@
 /**
  * Pre-Write AI-Doc Guard (PreToolUse Hook)
  *
- * Inspects Write/Edit payloads targeting `docs/**/*.md` files to remind
+ * Inspects Write/Edit payloads targeting docs files to remind
  * the agent to follow the 7 Pillars of AI-Friendly Documentation Standard.
  */
 
 'use strict';
 
 const path = require('path');
-const { buildPreToolUseAdditionalContext } = require('./pretooluse-visible-output');
+let buildPreToolUseAdditionalContext;
+try {
+  buildPreToolUseAdditionalContext = require(path.join(__dirname, 'pretooluse-visible-output.js')).buildPreToolUseAdditionalContext;
+} catch {
+  buildPreToolUseAdditionalContext = (arr) => JSON.stringify({ additionalContext: Array.isArray(arr) ? arr.join('\n') : String(arr) });
+}
 
 const MAX_STDIN = 1024 * 1024;
 
@@ -29,7 +34,8 @@ function run(inputOrRaw, _options = {}) {
     return { exitCode: 0 };
   }
 
-  const filePath = String(input?.tool_input?.file_path || input?.tool_input?.TargetFile || '');
+  const toolInput = input?.tool_input || input?.toolInput || input?.input || input?.toolCall?.args || input?.args || input || {};
+  const filePath = String(toolInput?.file_path || toolInput?.TargetFile || toolInput?.target_file || toolInput?.filePath || '');
 
   if (filePath && isDocPath(filePath)) {
     return {
