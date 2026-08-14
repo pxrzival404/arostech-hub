@@ -51,7 +51,8 @@ L0: Context Boot (graphify query) -> L1: HLA Alignment (docs/) -> L2: Research &
   - [`teamwork-squad-orchestration.md`](file:///d:/dev/arostech-hub/.agents/rules/teamwork-squad-orchestration.md) — Squad orchestration, Draft-First, PRD cascade
   - [`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md) — 7-Pillars documentation standard
   - [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md) — Knowledge Graph boot (Layer 0) & sync protocol (Layer 3/6/8)
-  - [`prompt-deep-thinking-context.md`](file:///d:/dev/arostech-hub/.agents/rules/prompt-deep-thinking-context.md) — Deep-thinking prompt engineering & context management
+  - [`agy-prompt.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-prompt.md) — Isolated prompt-crafting, context-harvesting, and prompt-architecture (Manual)
+  - [`agy-deepthinking.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-deepthinking.md) — General in-flight deep-reasoning & pre-execution checklist gate (Manual)
 
 ## Domain Glob Routing Matrix (`.agents/rules/`)
 

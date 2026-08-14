@@ -1,7 +1,7 @@
 ---
 id: GOV-AGENT-001
 title: Antigravity AI Agent Rules & System Governance
-version: 4.1.0
+version: 4.2.0
 status: LOCKED_BASELINE
 graphify_community: "community_governance"
 authoritative_references:
@@ -25,6 +25,8 @@ authoritative_references:
 3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under documentation tasks, strict write restrictions apply according to [`.agents/rules/ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md). Codebase files (`src/`, `prisma/`, `package.json`) SHALL remain strictly read-only. Only markdown documentation files under `docs/`, `openspec/`, and root documentation files MAY be modified.
 4. **Workflow Discipline**: Agents MUST follow the **Plan -> TDD -> Review** cycle for non-trivial changes.
 5. **Terminal & Shell Standard**: All terminal commands, CLI tool calls, build steps, and automation scripts executed by AI agents MUST use **Git Bash** (`bash` environment with POSIX toolchain). Agents SHALL use POSIX shell syntax, standard pipe/redirection operators (`|`, `&&`, `||`), forward-slash path separators (`/`), and POSIX utilities (`grep`, `sed`, `awk`, `find`, `cat`, `curl`). Windows Command Prompt (`cmd.exe`) and PowerShell-specific commands or backslash pathing MUST NOT be used for agent execution.
+6. **Prompt Engineering & Context Isolation (`agy-prompt`)**: In prompt-crafting sessions, agents operate under strict read-only context harvesting ([`.agents/rules/agy-prompt.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-prompt.md)), dynamic framework alignment via `prompt-architect`, safe token densities (85.0%–95.0%), and mandatory `/grill-me` alignment when assessment score is `< 7.0 / 10`.
+7. **In-Flight Deep Reasoning & Architectural Gating (`agy-deepthinking`)**: For complex architectural analysis and high-risk changes, agents utilize multi-source knowledge gathering, iterative reasoning via `sequentialthinking`, and MUST render an evaluation Checklist Gate Table in chat output prior to mutating actions ([`.agents/rules/agy-deepthinking.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-deepthinking.md)).
 
 ---
 
@@ -93,6 +95,7 @@ All command line and script executions by AI agents SHALL standardise on Git Bas
 ## MODIFIED Requirements
 - Aligned baseline stack definitions with Next.js 16.2.6, Tailwind v4, and Auth.js v5.
 - Updated documentation mode rule reference to `.agents/rules/ai-friendly-docs.md`.
+- Codified isolated prompt engineering (`agy-prompt`) and in-flight deep reasoning (`agy-deepthinking`) operating mandates.
 
 ## REMOVED Requirements
 - Legacy Vercel staging deployment references.
