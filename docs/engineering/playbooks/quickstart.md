@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_engineering"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35"
   testing_strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L35"
   deployment_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/deployment.md#L1-L35"
 ---
 
 # Developer Quickstart & Onboarding Playbook
 
-> **Authoritative Baseline Reference**: Day-1 developer onboarding and local environment setup guide for the **DBSN Centralized Digital Ecosystem**, adhering to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35)).
+> **TL;DR**: Authoritative specification and architectural reference for Developer Quickstart & Onboarding Playbook within the DBSN platform (docs/engineering/playbooks/quickstart.md).
+
+
+> **Authoritative Baseline Reference**: Day-1 developer onboarding and local environment setup guide for the **DBSN Centralized Digital Ecosystem**, adhering to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35)).
 
 ---
 

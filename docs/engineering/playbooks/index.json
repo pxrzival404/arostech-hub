@@ -1,0 +1,31 @@
+{
+  "folder": "docs/engineering/playbooks",
+  "description": "Developer onboarding, Sanity CMS integration, Google Search Console, and test engineering playbooks",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-ENG-PLAY-GSC",
+      "file": "gsc-setup.md",
+      "title": "Google Search Console Setup, Verification & Indexing Playbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Google Search Console Setup, Verification & Indexing Playbook within the DBSN platform (docs/engineering/playbooks/gsc-setup.md)."
+    },
+    {
+      "id": "PLAY-QUICK-001",
+      "file": "quickstart.md",
+      "title": "Developer Quickstart & Onboarding Playbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Developer Quickstart & Onboarding Playbook within the DBSN platform (docs/engineering/playbooks/quickstart.md)."
+    },
+    {
+      "id": "DOC-ENG-PLAY-SANITY",
+      "file": "sanity-cms-guide.md",
+      "title": "Sanity Headless CMS Integration & ISR Revalidation Guide",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Sanity Headless CMS Integration & ISR Revalidation Guide within the DBSN platform (docs/engineering/playbooks/sanity-cms-guide.md)."
+    }
+  ],
+  "subfolders": [
+    "testing"
+  ]
+}

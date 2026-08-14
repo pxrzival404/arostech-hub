@@ -1,0 +1,29 @@
+{
+  "folder": "docs/system/api/mwe",
+  "description": "Minimal Working Examples for adding API endpoints, client portal routes, and new spoke subdomains",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "API-MWE-ENDPOINT-001",
+      "file": "add-api-endpoint.md",
+      "title": "Minimal Working Example: Adding a Secure Edge API Endpoint",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Minimal Working Example: Adding a Secure Edge API Endpoint within the DBSN platform (docs/system/api/mwe/add-api-endpoint.md)."
+    },
+    {
+      "id": "API-MWE-CLIENT-PORTAL-001",
+      "file": "add-client-portal-route.md",
+      "title": "Minimal Working Example: Adding a Client Tracking Portal Route Handler",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Minimal Working Example: Adding a Client Tracking Portal Route Handler within the DBSN platform (docs/system/api/mwe/add-client-portal-route.md)."
+    },
+    {
+      "id": "API-MWE-SPOKE-001",
+      "file": "add-new-spoke.md",
+      "title": "Minimal Working Example: Adding a New Product Spoke Subdomain",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Minimal Working Example: Adding a New Product Spoke Subdomain within the DBSN platform (docs/system/api/mwe/add-new-spoke.md)."
+    }
+  ],
+  "subfolders": []
+}

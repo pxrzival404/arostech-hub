@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_operations"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   release_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/release-process.md#L1-L60"
 ---
 
 # Client Onboarding & Project Tracking Portal Management Runbook
 
-> **Authoritative Baseline Reference**: Operational procedures for provisioning client accounts, managing project tracking milestones, and maintaining B2B/B2G data isolation on the **DBSN Client Portal** (`dashboard.dayaberkah.id`), fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Client Onboarding & Project Tracking Portal Management Runbook within the DBSN platform (docs/operations/runbooks/client-onboarding-and-tracking.md).
+
+
+> **Authoritative Baseline Reference**: Operational procedures for provisioning client accounts, managing project tracking milestones, and maintaining B2B/B2G data isolation on the **DBSN Client Portal** (`dashboard.dayaberkah.id`), fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

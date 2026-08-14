@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **integration-health-audit-2026-07-14.md** (0 connections) — `docs/operations/audits/integration-health-audit-2026-07-14.md`
+- **integration-health-audit-2026-07-14.md** (0 connections) — `docs/operations/audits/archive/integration-health-audit-2026-07-14.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/operations/audits/integration-health-audit-2026-07-14.md`
+- `docs/operations/audits/archive/integration-health-audit-2026-07-14.md`
 
 ## Audit Trail
 

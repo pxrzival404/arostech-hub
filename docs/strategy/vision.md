@@ -6,15 +6,18 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_vision"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120"
   compatibility_matrix: "file:///d:/dev/arostech-hub/docs/strategy/compatibility-matrix.md#L1-L40"
   routing_lifecycle: "file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L50"
 ---
 
 # System Identity, Vision, & Business Context
 
+> **TL;DR**: Authoritative specification and architectural reference for System Identity, Vision, & Business Context within the DBSN platform (docs/strategy/vision.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document defines system identity, product vision, and strategic business context aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L15-L120)).
+> **Authoritative Baseline Reference**: This document defines system identity, product vision, and strategic business context aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L15-L120)).
 
 ---
 
@@ -74,7 +77,7 @@ The system SHALL establish all brand positioning and digital assets under `dayab
 
 > [!IMPORTANT]
 > **SUPERSEDED NOTICE — GTM Domain & Greenfield Architecture Pivot (2026-08-12):**  
-> Section II contains historical business analysis and GTM recommendations compiled in April 2026. The preliminary domain recommendations in Section 3.2 (`dbsn.co.id` / `dbsnenergy.co.id`), legacy 301 redirect engine proposals, and unverified project volume metrics are **SUPERSEDED** by PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L22-L35)).  
+> Section II contains historical business analysis and GTM recommendations compiled in April 2026. The preliminary domain recommendations in Section 3.2 (`dbsn.co.id` / `dbsnenergy.co.id`), legacy 301 redirect engine proposals, and unverified project volume metrics are **SUPERSEDED** by PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L22-L35)).  
 > The target canonical domain is explicitly locked to **`dayaberkah.id`** operating as a pure greenfield build.
 
 # DBSN Strategic Intelligence Report

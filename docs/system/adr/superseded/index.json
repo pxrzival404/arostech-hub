@@ -1,0 +1,22 @@
+{
+  "folder": "docs/system/adr/superseded",
+  "description": "Physical archive of superseded architecture decisions",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "ADR-0001",
+      "file": "0001-migrate-fully-to-cloudflare-pages.md",
+      "title": "ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure",
+      "status": "SUPERSEDED (by ADR-0007)",
+      "summary": "Authoritative specification and architectural reference for ADR-0001: Migrate Fully to Cloudflare Pages Infrastructure within the DBSN platform (docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md)."
+    },
+    {
+      "id": "ADR-0002",
+      "file": "0002-explicit-cloudflare-pages-deploy-command.md",
+      "title": "ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace",
+      "status": "SUPERSEDED (by ADR-0007)",
+      "summary": "Authoritative specification and architectural reference for ADR-0002: Explicit Cloudflare Pages Deploy Target in Monorepo Workspace within the DBSN platform (docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md)."
+    }
+  ],
+  "subfolders": []
+}

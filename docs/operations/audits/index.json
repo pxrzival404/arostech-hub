@@ -1,0 +1,32 @@
+{
+  "folder": "docs/operations/audits",
+  "description": "Operational audits, developer fix guides, verification prompts, and audit archives",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-OPS-AUDIT-FIX-GUIDE",
+      "file": "developer-fix-guide.md",
+      "title": "Developer Remediation Fix Guide & Manual Checkpoints",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Developer Remediation Fix Guide & Manual Checkpoints within the DBSN platform (docs/operations/audits/developer-fix-guide.md)."
+    },
+    {
+      "id": "DOC-OPS-AUDIT-INDEX",
+      "file": "README.md",
+      "title": "Operations Audit Log Master Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Operations Audit Log Master Index (`docs/operations/audits/`) within the DBSN platform (docs/operations/audits/README.md)."
+    },
+    {
+      "id": "DOC-OPS-AUDIT-VERIFY-PROMPT",
+      "file": "verify-manual-tasks-prompt.md",
+      "title": "Manual Tasks Verification Prompt & Checkpoint Suite",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Manual Tasks Verification Prompt & Checkpoint Suite within the DBSN platform (docs/operations/audits/verify-manual-tasks-prompt.md)."
+    }
+  ],
+  "subfolders": [
+    "archive",
+    "phase-1-findings"
+  ]
+}

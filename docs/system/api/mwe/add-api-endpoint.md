@@ -7,11 +7,14 @@ target_domain: dayaberkah.id
 graphify_community: "community_api"
 authoritative_references:
   api_reference: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L21-L57"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L32-L80"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L32-L80"
   config_schema: "file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L45-L75"
 ---
 
 # Minimal Working Example: Adding a Secure Edge API Endpoint
+
+> **TL;DR**: Authoritative specification and architectural reference for Minimal Working Example: Adding a Secure Edge API Endpoint within the DBSN platform (docs/system/api/mwe/add-api-endpoint.md).
+
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
 > **Authoritative Baseline Reference**: This guide demonstrates how to create a production-ready, type-safe, and secure API endpoint in the Next.js App Router under `src/app/api/`, adhering to PRD v4.0.0 standards ([`reference.md`](file:///d:/dev/arostech-hub/docs/system/api/reference.md#L21-L57)).

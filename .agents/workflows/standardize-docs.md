@@ -24,7 +24,7 @@ Convert narrative, ad-hoc, or non-standard documentation under `docs/` into AI-f
 
 ## Step 1: Scan & Audit Document (Pillar 5 - Graph Exploration)
 
-1. Identify the target document path under `docs/` (e.g. `docs/strategy/prd.md`).
+1. Identify the target document path under `docs/` (e.g. `docs/strategy/prd/00-overview-and-goals.md`).
 2. Run the validator script to identify existing gaps against the 7 Pillars:
    ```bash
    node .agents/scripts/validate-ai-docs.cjs <target-doc-path>

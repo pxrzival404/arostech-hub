@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_architecture"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80"
 ---
 
 # System Frontend Architecture & Code Terrain Map
 
+> **TL;DR**: Authoritative specification and architectural reference for System Frontend Architecture & Code Terrain Map within the DBSN platform (docs/system/architecture/codemaps/frontend.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document defines the frontend application structure, component hierarchy, state management, design system tokenization, and UI patterns for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)).
+> **Authoritative Baseline Reference**: This document defines the frontend application structure, component hierarchy, state management, design system tokenization, and UI patterns for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170)).
 
 ---
 

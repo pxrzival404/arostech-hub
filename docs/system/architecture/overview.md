@@ -6,16 +6,19 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_architecture"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170"
   roadmap: "file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29"
   execution_lifecycle: "file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L98"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150"
 ---
 
 # System Architecture & Code Terrain Map Overview
 
+> **TL;DR**: Authoritative specification and architectural reference for System Architecture & Code Terrain Map Overview within the DBSN platform (docs/system/architecture/overview.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Baseline Sync`  
-> **Authoritative Baseline Reference**: This document defines the high-level system architecture, data flow, and code terrain map for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)) and the master roadmap ([`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29)).
+> **Authoritative Baseline Reference**: This document defines the high-level system architecture, data flow, and code terrain map for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170)) and the master roadmap ([`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29)).
 
 ---
 
@@ -140,7 +143,7 @@ All product spoke inquiries MUST funnel through a single transactional Neon Post
 
 ## Section IV: Executive Phase Status Synchronization
 
-The operational phase status across the architecture MUST match PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L22-L35)) and `roadmap.md` ([`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29)) exactly:
+The operational phase status across the architecture MUST match PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L22-L35)) and `roadmap.md` ([`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29)) exactly:
 
 | Phase | Milestone Title | Architecture Phase Status | Synchronized Baseline Notes |
 |-------|-----------------|--------------------------|-----------------------------|
@@ -155,7 +158,7 @@ The operational phase status across the architecture MUST match PRD v4.0.0 ([`pr
 
 - Knowledge Graph Node ID: `doc:docs/system/architecture/overview.md`
 - Graphify Community: `community_architecture`
-- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)
+- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170)
 - Master Roadmap Reference: [`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L21-L29)
 - Execution Lifecycle Reference: [`execution-lifecycle.md`](file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L98)
-- System Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150)
+- System Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150)

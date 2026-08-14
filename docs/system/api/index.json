@@ -1,0 +1,38 @@
+{
+  "folder": "docs/system/api",
+  "description": "Public API contracts, response envelopes, environment configuration schemas, and extensibility guides",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "API-CFG-SCHEMA-001",
+      "file": "configuration-schema.md",
+      "title": "Environment Variables & Deployment Configuration Schema Reference",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Environment Variables & Deployment Configuration Schema Reference within the DBSN platform (docs/system/api/configuration-schema.md)."
+    },
+    {
+      "id": "API-EXT-001",
+      "file": "extensibility.md",
+      "title": "API & Adapter Extensibility Architecture",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for API & Adapter Extensibility Architecture within the DBSN platform (docs/system/api/extensibility.md)."
+    },
+    {
+      "id": "API-INDEX-001",
+      "file": "README.md",
+      "title": "System API Reference & Architecture Documentation Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System API Reference & Architecture Documentation Index within the DBSN platform (docs/system/api/README.md)."
+    },
+    {
+      "id": "API-REF-001",
+      "file": "reference.md",
+      "title": "DBSN Public API Reference Contracts",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Public API Reference Contracts within the DBSN platform (docs/system/api/reference.md)."
+    }
+  ],
+  "subfolders": [
+    "mwe"
+  ]
+}

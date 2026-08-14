@@ -6,15 +6,18 @@ status: ACCEPTED
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L22-L28"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L22-L28"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L40-L60"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L22-L30"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L22-L30"
 ---
 
 # ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine
 
+> **TL;DR**: Authoritative specification and architectural reference for ADR-0003: Greenfield Hub-and-Spoke Subdomain Routing Architecture over Legacy 301 Redirect Engine within the DBSN platform (docs/system/adr/0003-greenfield-hub-and-spoke-subdomain-routing.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-12 PRD v4.0.0 Decision #7 Implementation`  
-> **Authoritative Baseline Reference**: Architectural Decision Record formalizing Decision #7 from PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L22-L28)), establishing a greenfield build strategy for `dayaberkah.id` and its product spokes via Next.js 16 Edge Subdomain Middleware, completely superseding legacy redirect engines.
+> **Authoritative Baseline Reference**: Architectural Decision Record formalizing Decision #7 from PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L22-L28)), establishing a greenfield build strategy for `dayaberkah.id` and its product spokes via Next.js 16 Edge Subdomain Middleware, completely superseding legacy redirect engines.
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0003-greenfield-hub-and-spoke-subdomain-routing.md`
 
 ---

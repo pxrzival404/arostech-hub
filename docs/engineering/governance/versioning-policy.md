@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_governance"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   release_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/release-process.md#L1-L60"
 ---
 
 # Semantic Versioning Policy & Release Gate Rules
 
-> **Authoritative Baseline Reference**: Semantic Versioning (SemVer 2.0.0) standards, release gate criteria, and changelog maintenance rules for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Semantic Versioning Policy & Release Gate Rules within the DBSN platform (docs/engineering/governance/versioning-policy.md).
+
+
+> **Authoritative Baseline Reference**: Semantic Versioning (SemVer 2.0.0) standards, release gate criteria, and changelog maintenance rules for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

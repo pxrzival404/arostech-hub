@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_audits"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   developer_fix_guide: "file:///d:/dev/arostech-hub/docs/operations/audits/developer-fix-guide.md#L1-L60"
 ---
 
 # Manual Tasks Verification Prompt & Checkpoint Suite
 
-> **Authoritative Baseline Reference**: Automated checkpoint verification prompt for developer manual task compliance, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Manual Tasks Verification Prompt & Checkpoint Suite within the DBSN platform (docs/operations/audits/verify-manual-tasks-prompt.md).
+
+
+> **Authoritative Baseline Reference**: Automated checkpoint verification prompt for developer manual task compliance, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

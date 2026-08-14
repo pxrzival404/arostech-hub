@@ -1,0 +1,29 @@
+{
+  "folder": "docs/system/architecture/information-architecture",
+  "description": "Navigation strategy, sitemaps, and user flow architectures",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "IA-STRAT-NAV-001",
+      "file": "navigation-strategy.md",
+      "title": "Information Architecture Strategy & Global Navigation",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Information Architecture Strategy & Global Navigation within the DBSN platform (docs/system/architecture/information-architecture/navigation-strategy.md)."
+    },
+    {
+      "id": "IA-SITEMAPS-001",
+      "file": "sitemaps.md",
+      "title": "Information Architecture Sitemaps & Route Mapping",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Information Architecture Sitemaps & Route Mapping within the DBSN platform (docs/system/architecture/information-architecture/sitemaps.md)."
+    },
+    {
+      "id": "IA-USER-FLOWS-001",
+      "file": "user-flows.md",
+      "title": "Information Architecture Core User Flows & Conversion Pathways",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Information Architecture Core User Flows & Conversion Pathways within the DBSN platform (docs/system/architecture/information-architecture/user-flows.md)."
+    }
+  ],
+  "subfolders": []
+}

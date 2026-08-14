@@ -13,6 +13,9 @@ authoritative_references:
 
 # Minimal Working Example: Adding a Client Tracking Portal Route Handler
 
+> **TL;DR**: Authoritative specification and architectural reference for Minimal Working Example: Adding a Client Tracking Portal Route Handler within the DBSN platform (docs/system/api/mwe/add-client-portal-route.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-12 Auth.js v5 Client Portal MWE Baseline`  
 > **Authoritative Baseline Reference**: Step-by-step guide and production-ready code for implementing authenticated, row-level scoped API endpoints for the **Client Tracking Portal** (`dashboard.dayaberkah.id`), synchronized with PRD v4.0.0 and ADR-0005 ([`adr_0005`](file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L50)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/api/mwe/add-client-portal-route.md`

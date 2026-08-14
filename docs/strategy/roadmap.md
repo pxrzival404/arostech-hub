@@ -6,15 +6,18 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_roadmap"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L22-L35"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L22-L35"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L60"
   testing_strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L50"
 ---
 
 # Greenfield Architecture Roadmap
 
+> **TL;DR**: Authoritative specification and architectural reference for Greenfield Architecture Roadmap within the DBSN platform (docs/strategy/roadmap.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document tracks execution phases and status for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L15-L120)).
+> **Authoritative Baseline Reference**: This document tracks execution phases and status for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L15-L120)).
 
 ---
 
@@ -119,4 +122,4 @@ The system SHALL deploy exclusively to Cloudflare Pages edge hosting on `dayaber
 - Knowledge Graph Node ID: `doc:docs/strategy/roadmap.md`
 - Graphify Community: `community_roadmap`
 - System Architecture Overview: [`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L60)
-- System PRD SSOT: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)
+- System PRD SSOT: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)

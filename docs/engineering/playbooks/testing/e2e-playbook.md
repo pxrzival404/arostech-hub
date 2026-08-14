@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_testing"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60"
 ---
 
 # Playwright End-to-End (E2E) Testing Playbook
 
-> **Authoritative Baseline Reference**: Execution patterns, Page Object Model (POM) structure, cross-subdomain authentication, and critical flow verification for Playwright E2E testing in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Playwright End-to-End (E2E) Testing Playbook within the DBSN platform (docs/engineering/playbooks/testing/e2e-playbook.md).
+
+
+> **Authoritative Baseline Reference**: Execution patterns, Page Object Model (POM) structure, cross-subdomain authentication, and critical flow verification for Playwright E2E testing in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

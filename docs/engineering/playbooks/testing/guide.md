@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_testing"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60"
 ---
 
 # Engineering Testing Guide & Jest Execution Playbook
 
-> **Authoritative Baseline Reference**: Execution patterns, Jest configuration, directory conventions, and Universal RFQ test specifications for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Engineering Testing Guide & Jest Execution Playbook within the DBSN platform (docs/engineering/playbooks/testing/guide.md).
+
+
+> **Authoritative Baseline Reference**: Execution patterns, Jest configuration, directory conventions, and Universal RFQ test specifications for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

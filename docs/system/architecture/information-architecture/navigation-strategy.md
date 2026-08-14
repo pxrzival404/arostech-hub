@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_ia"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120"
   sitemaps: "file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/sitemaps.md#L1-L50"
 ---
 
 # Information Architecture Strategy & Global Navigation
 
+> **TL;DR**: Authoritative specification and architectural reference for Information Architecture Strategy & Global Navigation within the DBSN platform (docs/system/architecture/information-architecture/navigation-strategy.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document defines the Information Architecture (IA) strategy, Hub-and-Spoke navigation structure, and global navigation models for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)) and the sitemap specification ([`sitemaps.md`](file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/sitemaps.md#L1-L50)).
+> **Authoritative Baseline Reference**: This document defines the Information Architecture (IA) strategy, Hub-and-Spoke navigation structure, and global navigation models for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)) and the sitemap specification ([`sitemaps.md`](file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/sitemaps.md#L1-L50)).
 
 ---
 

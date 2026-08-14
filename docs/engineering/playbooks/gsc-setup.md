@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_playbooks"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   seo_strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L148-L175"
 ---
 
 # Google Search Console Setup, Verification & Indexing Playbook
 
-> **Authoritative Baseline Reference**: Configuration, property structure, verification processes, and sitemap submission automation for Google Search Console (GSC) on the **DBSN Centralized Digital Ecosystem** (`dayaberkah.id` and its spoke subdomains), fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Google Search Console Setup, Verification & Indexing Playbook within the DBSN platform (docs/engineering/playbooks/gsc-setup.md).
+
+
+> **Authoritative Baseline Reference**: Configuration, property structure, verification processes, and sitemap submission automation for Google Search Console (GSC) on the **DBSN Centralized Digital Ecosystem** (`dayaberkah.id` and its spoke subdomains), fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 
@@ -118,4 +121,4 @@ The system SHALL expose XML sitemaps for public hubs and spokes while enforcing 
 
 - Knowledge Graph Node ID: `doc:docs/engineering/playbooks/gsc-setup.md`
 - Graphify Community: `community_playbooks`
-- Master Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)
+- Master Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)

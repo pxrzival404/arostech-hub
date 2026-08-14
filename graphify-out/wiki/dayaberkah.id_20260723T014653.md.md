@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **dayaberkah.id-20260723T014653.md** (0 connections) — `docs/operations/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md`
+- **dayaberkah.id-20260723T014653.md** (0 connections) — `docs/operations/audits/archive/lighthouse-20260723-recommendation.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/operations/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md`
+- `docs/operations/audits/archive/lighthouse-20260723-recommendation.md`
 
 ## Audit Trail
 

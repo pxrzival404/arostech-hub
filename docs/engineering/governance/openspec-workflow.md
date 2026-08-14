@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_governance"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   ai_rules: "file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60"
 ---
 
 # OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide
 
-> **Authoritative Baseline Reference**: Collaboration protocol for AI agent harnesses (Antigravity CLI / `agy`) and human engineers using the **OpenSpec Extended Workflow (OPSX)** and **Every Code Change (ECC)** discipline, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide within the DBSN platform (docs/engineering/governance/openspec-workflow.md).
+
+
+> **Authoritative Baseline Reference**: Collaboration protocol for AI agent harnesses (Antigravity CLI / `agy`) and human engineers using the **OpenSpec Extended Workflow (OPSX)** and **Every Code Change (ECC)** discipline, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 
