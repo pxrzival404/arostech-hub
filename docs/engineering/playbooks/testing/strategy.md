@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_testing"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   api_reference: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L1-L60"
 ---
 
 # Technical Testing & TDD Strategy
 
-> **Authoritative Baseline Reference**: Testing playbook and TDD execution methodology for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Technical Testing & TDD Strategy within the DBSN platform (docs/engineering/playbooks/testing/strategy.md).
+
+
+> **Authoritative Baseline Reference**: Testing playbook and TDD execution methodology for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

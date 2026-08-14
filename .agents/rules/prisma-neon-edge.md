@@ -3,7 +3,7 @@
 > **Rule ID**: `RULE-DB-001`  
 > **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
 > **Owner Agents**: `typescript-reviewer` (ORM type safety), `database-reviewer` (query & schema governance)  
-> **Primary Authority**: [ADR-0004](file:///d:/dev/arostech-hub/docs/system/adr/0004-universal-rfq-cart-schema-and-post-rfq-lead-classification.md), [ADR-0006](file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md) & [Data Model Spec](file:///d:/dev/arostech-hub/docs/system/data-model.md)
+> **Primary Authority**: [ADR-0004](file:///d:/dev/arostech-hub/docs/system/adr/0004-universal-rfq-cart-schema-and-post-rfq-lead-classification.md), [ADR-0006](file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md) & [Data Model Spec](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md)
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "folder": "docs",
+  "description": "DBSN Central Documentation Hub Master Index and Root Manifest",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-ROOT-INDEX",
+      "file": "README.md",
+      "title": "DBSN Central Documentation Hub Master Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for DBSN Documentation Hub — Master Index within the DBSN platform (docs/README.md)."
+    }
+  ],
+  "subfolders": [
+    "engineering",
+    "operations",
+    "strategy",
+    "system"
+  ]
+}

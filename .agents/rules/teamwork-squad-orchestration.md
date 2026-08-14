@@ -18,7 +18,7 @@ description: Squad orchestration protocol for multi-agent teamwork-preview sessi
 When requested to run `/teamwork-preview` or multi-agent squad orchestration, the agent MUST present a structured draft prompt/plan artifact for user review BEFORE initiating agent execution or spawning parallel tasks.
 
 ### 2. PRD-First Root SSOT Cascade
-All architectural documentation modifications MUST cascade top-down from `docs/strategy/prd.md` (Root SSOT). The cascade order MUST follow:
+All architectural documentation modifications MUST cascade top-down from `docs/strategy/prd/00-overview-and-goals.md` (Root SSOT). The cascade order MUST follow:
 `PRD` → `Strategy & Identity` → `Core Architecture & API` → `Ops & SecOps` → `TDD & Governance`.
 
 ### 3. Dynamic Task Expansion & Decision Autonomy

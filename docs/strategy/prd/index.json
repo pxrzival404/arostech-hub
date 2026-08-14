@@ -1,0 +1,50 @@
+{
+  "folder": "docs/strategy/prd",
+  "description": "Canonical Product Requirements Document (PRD v4.0.0) modular specifications",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "PRD-MOD-00",
+      "file": "00-overview-and-goals.md",
+      "title": "PRD Module 00: Overview, System Context & Platform Requirements",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the problem statement, business goals, target audience (B2G/B2B), Greenfield Hub-and-Spoke architecture, core user journeys, UI/UX accessibility standards, and functional/non-functional requirements for the PT Daya Berkah Sentosa Nusantara (`dayaberkah.id`) centralized platform."
+    },
+    {
+      "id": "PRD-MOD-01",
+      "file": "01-domain-rfq-cart-schema.md",
+      "title": "PRD Module 01: Universal RFQ Cart Schema, Data Models & Telemetry",
+      "status": "LOCKED_BASELINE",
+      "summary": "Specifies the composite multi-item cart data model, Sanity CMS content schemas, transactional database tables (`rfq_submissions` & `rfq_line_items`), GA4 telemetry instrumentation, and formal acceptance test cases."
+    },
+    {
+      "id": "PRD-MOD-02",
+      "file": "02-auth-and-access-model.md",
+      "title": "PRD Module 02: Authentication, Access Control & Client Portal Model",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the unified Auth.js v5 authentication architecture across the catch-all route `/api/auth/[...nextauth]`, distinguishing internal Google OAuth (admin/viewer) from client Credentials access, along with row-level data isolation via `trackingScopeIds`."
+    },
+    {
+      "id": "PRD-MOD-03",
+      "file": "03-api-contracts-and-envelope.md",
+      "title": "PRD Module 03: API Contracts, Response Envelopes & Error Policies",
+      "status": "LOCKED_BASELINE",
+      "summary": "Mandates the standard `{ success, data, error, meta }` response envelope for all REST API endpoints, specifies the `POST /api/rfq` request/response contract, and establishes integration error policies."
+    },
+    {
+      "id": "PRD-MOD-04",
+      "file": "04-environment-and-config.md",
+      "title": "PRD Module 04: Environment Configuration, SEO Engine & Resilience",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines runtime environment variables, Cloudflare Pages Wrangler secrets, feature flags, native Greenfield SEO architecture, notification pipelines, and emergency rollback procedures."
+    },
+    {
+      "id": "PRD-MOD-05",
+      "file": "05-decisions-log.md",
+      "title": "PRD Module 05: Resolved Architectural Decisions Log",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative historical log of all key architectural and product decisions (OQ-1 through OQ-6, plus Greenfield SEO Strategy) locked for the PT Daya Berkah Sentosa Nusantara platform baseline."
+    }
+  ],
+  "subfolders": []
+}

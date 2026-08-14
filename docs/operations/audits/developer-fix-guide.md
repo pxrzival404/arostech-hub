@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_audits"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   verify_prompt: "file:///d:/dev/arostech-hub/docs/operations/audits/verify-manual-tasks-prompt.md#L1-L60"
 ---
 
 # Developer Remediation Fix Guide & Manual Checkpoints
 
-> **Authoritative Baseline Reference**: Step-by-step manual task guide and environment verification protocol for engineering remediation, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Developer Remediation Fix Guide & Manual Checkpoints within the DBSN platform (docs/operations/audits/developer-fix-guide.md).
+
+
+> **Authoritative Baseline Reference**: Step-by-step manual task guide and environment verification protocol for engineering remediation, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

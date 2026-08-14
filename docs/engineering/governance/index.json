@@ -1,0 +1,43 @@
+{
+  "folder": "docs/engineering/governance",
+  "description": "AI agent rules, coding standards, contributing workflows, and versioning policies",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "GOV-AGENT-001",
+      "file": "ai-agent-rules.md",
+      "title": "Antigravity AI Agent Rules & System Governance",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Antigravity AI Agent Rules & System Governance within the DBSN platform (docs/engineering/governance/ai-agent-rules.md)."
+    },
+    {
+      "id": "DOC-ENG-GOV-CODING",
+      "file": "coding-standards.md",
+      "title": "Engineering Coding Standards & Style Guide",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Engineering Coding Standards & Style Guide within the DBSN platform (docs/engineering/governance/coding-standards.md)."
+    },
+    {
+      "id": "DOC-ENG-GOV-CONTRIBUTING",
+      "file": "contributing.md",
+      "title": "Contributing Guidelines & Git Flow Standard",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Contributing Guidelines & Git Flow Standard within the DBSN platform (docs/engineering/governance/contributing.md)."
+    },
+    {
+      "id": "DOC-ENG-GOV-OPENSPEC",
+      "file": "openspec-workflow.md",
+      "title": "OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide within the DBSN platform (docs/engineering/governance/openspec-workflow.md)."
+    },
+    {
+      "id": "DOC-ENG-GOV-VERSIONING",
+      "file": "versioning-policy.md",
+      "title": "Semantic Versioning Policy & Release Gate Rules",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Semantic Versioning Policy & Release Gate Rules within the DBSN platform (docs/engineering/governance/versioning-policy.md)."
+    }
+  ],
+  "subfolders": []
+}

@@ -6,14 +6,18 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_architecture"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80"
 ---
 
 # Subdomain Routing & Middleware Execution Lifecycle Architecture
 
-> **[SUPERSEDED]**  
-> The legacy 301 redirect engine, database-driven redirect lookups, and `/api/redirects/lookup` loopback mechanism detailed in prior specification drafts were **PERMANENTLY SUPERSEDED** by Greenfield Native SEO metadata generation (`sitemap.ts`, `robots.ts`) in PRD v3.6/v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L24-L30)).  
+> **TL;DR**: Authoritative specification and architectural reference for Subdomain Routing & Middleware Execution Lifecycle Architecture within the DBSN platform (docs/system/architecture/execution-lifecycle.md).
+
+
+> **[ARCHITECTURAL SCOPE]**  
+> *(Legacy 301 engine superseded by Greenfield Subdomain Routing)*  
+> The legacy 301 redirect engine, database-driven redirect lookups, and `/api/redirects/lookup` loopback mechanism detailed in prior specification drafts were **PERMANENTLY SUPERSEDED** by Greenfield Native SEO metadata generation (`sitemap.ts`, `robots.ts`) in PRD v4.0.0.  
 > The Next.js Edge Middleware logic SHALL execute pure Edge subdomain resolution without database calls, external loopbacks, or legacy 301 redirect tables.
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
@@ -21,7 +25,7 @@ authoritative_references:
 
 ---
 
-## ## OpenSpec Delta
+## OpenSpec Delta
 
 - **ADDED**: Strict Edge Runtime execution contracts for Next.js 16 middleware, clean domain resolution, dynamic spoke rewrites, and client dashboard route guards.
 - **REMOVED**: Legacy 301 redirect lookup tables (`redirect_map`), middleware database loopbacks, and AbortController fetch timeouts for legacy API endpoints.

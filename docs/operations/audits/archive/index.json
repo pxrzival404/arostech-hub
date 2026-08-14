@@ -1,0 +1,29 @@
+{
+  "folder": "docs/operations/audits/archive",
+  "description": "Historical integration, UX, and Lighthouse audit reports",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-OPS-AUDIT-INTEGRATION-20260714",
+      "file": "integration-health-audit-2026-07-14.md",
+      "title": "Integration Health & API Reliability Audit (2026-07-14)",
+      "status": "SUPERSEDED",
+      "summary": "Authoritative specification and architectural reference for Integration Health & API Reliability Audit (Historical Baseline) within the DBSN platform (docs/operations/audits/archive/integration-health-audit-2026-07-14.md)."
+    },
+    {
+      "id": "DOC-OPS-AUDIT-LANDING-20260709",
+      "file": "landing-page-ux-audit-2026-07-09.md",
+      "title": "Landing Page UX/UI Quality & Conversion Funnel Audit",
+      "status": "SUPERSEDED",
+      "summary": "Authoritative specification and architectural reference for Landing Page UX/UI Quality & Conversion Funnel Audit (Historical Report) within the DBSN platform (docs/operations/audits/archive/landing-page-ux-audit-2026-07-09.md)."
+    },
+    {
+      "id": "DOC-OPS-AUDIT-LIGHTHOUSE-20260723",
+      "file": "lighthouse-20260723-recommendation.md",
+      "title": "Lighthouse Performance & Accessibility Recommendation Audit",
+      "status": "SUPERSEDED",
+      "summary": "Authoritative specification and architectural reference for Lighthouse Performance & Accessibility Recommendation Audit (Historical Report) within the DBSN platform (docs/operations/audits/archive/lighthouse-20260723-recommendation.md)."
+    }
+  ],
+  "subfolders": []
+}

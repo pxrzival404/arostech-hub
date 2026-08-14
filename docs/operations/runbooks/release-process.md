@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_operations"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   versioning_policy: "file:///d:/dev/arostech-hub/docs/engineering/governance/versioning-policy.md#L1-L40"
 ---
 
 # Release Management & Cloudflare Deployment Pipeline Runbook
 
-> **Authoritative Baseline Reference**: Deployment process, CI/CD pipeline, and Cloudflare Pages edge hosting release controls for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Release Management & Cloudflare Deployment Pipeline Runbook within the DBSN platform (docs/operations/runbooks/release-process.md).
+
+
+> **Authoritative Baseline Reference**: Deployment process, CI/CD pipeline, and Cloudflare Pages edge hosting release controls for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

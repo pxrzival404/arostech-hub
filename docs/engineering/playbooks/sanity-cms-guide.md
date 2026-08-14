@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_playbooks"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   mocking_specs: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/mocking-specs.md#L1-L60"
 ---
 
 # Sanity Headless CMS Integration & ISR Revalidation Guide
 
-> **Authoritative Baseline Reference**: Usage patterns, GROQ query functions, schema definitions, and Incremental Static Regeneration (ISR) revalidation for Sanity CMS in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Sanity Headless CMS Integration & ISR Revalidation Guide within the DBSN platform (docs/engineering/playbooks/sanity-cms-guide.md).
+
+
+> **Authoritative Baseline Reference**: Usage patterns, GROQ query functions, schema definitions, and Incremental Static Regeneration (ISR) revalidation for Sanity CMS in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

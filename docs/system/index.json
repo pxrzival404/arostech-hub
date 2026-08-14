@@ -1,0 +1,20 @@
+{
+  "folder": "docs/system",
+  "description": "System Architecture, Data Model, API specifications, and Architecture Decision Records",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "SYS-INDEX-001",
+      "file": "README.md",
+      "title": "System Domain Master Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Architecture & API (`docs/system/`) within the DBSN platform (docs/system/README.md)."
+    }
+  ],
+  "subfolders": [
+    "adr",
+    "api",
+    "architecture",
+    "data-model"
+  ]
+}

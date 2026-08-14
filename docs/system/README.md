@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_architecture"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L1-L80"
 ---
 
 # System Architecture & API (`docs/system/`)
 
+> **TL;DR**: Authoritative specification and architectural reference for System Architecture & API (`docs/system/`) within the DBSN platform (docs/system/README.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document serves as the master specification index for the System domain of the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)).
+> **Authoritative Baseline Reference**: This document serves as the master specification index for the System domain of the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)).
 
 ---
 

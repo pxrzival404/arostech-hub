@@ -6,16 +6,19 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_strategy"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L104-L186"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L104-L186"
   vision: "file:///d:/dev/arostech-hub/docs/strategy/vision.md#L1-L64"
   roadmap: "file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L1-L95"
 ---
 
 # Dokumen Persyaratan Produk (PRD)
+
+> **TL;DR**: Authoritative specification and architectural reference for Dokumen Persyaratan Produk (PRD) within the DBSN platform (docs/strategy/segments.md).
+
 ## Ekosistem Digital Terpadu DBSN — Pendekatan Berbasis Segmen Pelanggan
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Executive Companion Notice:** This document serves as the executive & segment-focused companion to the technical [**PRD v4.0.0**](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L15-L186).
+> **Executive Companion Notice:** This document serves as the executive & segment-focused companion to the technical [**PRD v4.0.0**](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L15-L186).
 
 **Disiapkan untuk:** Manajemen Eksekutif DBSN (CEO, CTO, COO)  
 **Tanggal:** 11 Mei 2026 (Updated August 2026 for Greenfield Baseline)  
@@ -182,5 +185,5 @@ Dengan mengkonsolidasikan tiga domain terpisah dan sistem terfragmentasi menjadi
 
 - Knowledge Graph Node ID: `doc:docs/strategy/segments.md`
 - Graphify Community: `community_strategy`
-- System PRD: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)
+- System PRD: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)
 - Master Engineering Roadmap: [`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L1-L95)

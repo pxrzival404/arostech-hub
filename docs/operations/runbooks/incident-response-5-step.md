@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_operations"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   release_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/release-process.md#L1-L60"
 ---
 
 # Operational 5-Step Incident Response Protocol Runbook
 
-> **Authoritative Baseline Reference**: Operational triage, containment, remediation, recovery, and post-mortem procedures for production outages or degradation on the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Operational 5-Step Incident Response Protocol Runbook within the DBSN platform (docs/operations/runbooks/incident-response-5-step.md).
+
+
+> **Authoritative Baseline Reference**: Operational triage, containment, remediation, recovery, and post-mortem procedures for production outages or degradation on the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

@@ -1,0 +1,45 @@
+{
+  "folder": "docs/strategy",
+  "description": "Strategic business context, vision, customer segments, roadmap, compatibility, and product requirements",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "STRAT-COMPAT-001",
+      "file": "compatibility-matrix.md",
+      "title": "System Runtime & Platform Compatibility Matrix",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Runtime & Platform Compatibility Matrix within the DBSN platform (docs/strategy/compatibility-matrix.md)."
+    },
+    {
+      "id": "STRAT-INDEX-001",
+      "file": "README.md",
+      "title": "Strategy & Scope Domain Specification Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Strategy & Scope (`docs/strategy/`) within the DBSN platform (docs/strategy/README.md)."
+    },
+    {
+      "id": "ROAD-DBSN-001",
+      "file": "roadmap.md",
+      "title": "Greenfield Architecture Roadmap",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Greenfield Architecture Roadmap within the DBSN platform (docs/strategy/roadmap.md)."
+    },
+    {
+      "id": "SEG-DBSN-001",
+      "file": "segments.md",
+      "title": "DBSN Customer Segment & Executive Companion PRD",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Dokumen Persyaratan Produk (PRD) within the DBSN platform (docs/strategy/segments.md)."
+    },
+    {
+      "id": "VIS-DBSN-001",
+      "file": "vision.md",
+      "title": "DBSN System Identity, Vision & Strategic Business Context",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Identity, Vision, & Business Context within the DBSN platform (docs/strategy/vision.md)."
+    }
+  ],
+  "subfolders": [
+    "prd"
+  ]
+}

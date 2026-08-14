@@ -5,13 +5,16 @@ version: 4.1.0
 status: LOCKED_BASELINE
 graphify_community: "community_governance"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   agents_root: "file:///d:/dev/arostech-hub/AGENTS.md#L1-L100"
 ---
 
 # Antigravity AI Agent Rules & System Governance
 
-> **Authoritative Baseline Reference**: Operating rules, system mandates, and domain topology for AI agent execution in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)) and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100).
+> **TL;DR**: Authoritative specification and architectural reference for Antigravity AI Agent Rules & System Governance within the DBSN platform (docs/engineering/governance/ai-agent-rules.md).
+
+
+> **Authoritative Baseline Reference**: Operating rules, system mandates, and domain topology for AI agent execution in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)) and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100).
 
 ---
 

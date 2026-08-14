@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_audits"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   ops_index: "file:///d:/dev/arostech-hub/docs/operations/README.md#L1-L40"
 ---
 
 # Operations Audit Log Master Index (`docs/operations/audits/`)
 
-> **Authoritative Baseline Reference**: Historical audit reports, remediation fix guides, and Lighthouse analysis reports for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Operations Audit Log Master Index (`docs/operations/audits/`) within the DBSN platform (docs/operations/audits/README.md).
+
+
+> **Authoritative Baseline Reference**: Historical audit reports, remediation fix guides, and Lighthouse analysis reports for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 
@@ -19,9 +22,9 @@ authoritative_references:
 
 | Audit Date | Audit Scope | Status | Report Reference |
 | :--- | :--- | :--- | :--- |
-| 2026-07-14 | Integration Health & API Reliability | SUPERSEDED | [`integration-health-audit-2026-07-14.md`](file:///d:/dev/arostech-hub/docs/operations/audits/integration-health-audit-2026-07-14.md#L1-L40) |
-| 2026-07-09 | Landing Page UX & Conversion Funnel | SUPERSEDED | [`landing-page-ux-audit-2026-07-09.md`](file:///d:/dev/arostech-hub/docs/operations/audits/landing-page-ux-audit-2026-07-09.md#L1-L40) |
-| 2026-07-23 | Desktop Performance & Core Web Vitals | SUPERSEDED | [`dayaberkah.id-20260723T014653.md`](file:///d:/dev/arostech-hub/docs/operations/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md#L1-L40) |
+| 2026-07-14 | Integration Health & API Reliability | SUPERSEDED | [`integration-health-audit-2026-07-14.md`](file:///d:/dev/arostech-hub/docs/operations/audits/archive/integration-health-audit-2026-07-14.md#L1-L40) |
+| 2026-07-09 | Landing Page UX & Conversion Funnel | SUPERSEDED | [`landing-page-ux-audit-2026-07-09.md`](file:///d:/dev/arostech-hub/docs/operations/audits/archive/landing-page-ux-audit-2026-07-09.md#L1-L40) |
+| 2026-07-23 | Desktop Performance & Core Web Vitals | SUPERSEDED | [`dayaberkah.id-20260723T014653.md`](file:///d:/dev/arostech-hub/docs/operations/audits/archive/lighthouse-20260723-recommendation.md#L1-L40) |
 
 ---
 

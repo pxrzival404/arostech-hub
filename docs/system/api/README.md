@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_api"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L636-L797"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150"
 ---
 
 # System API Reference & Architecture Documentation Index
 
+> **TL;DR**: Authoritative specification and architectural reference for System API Reference & Architecture Documentation Index within the DBSN platform (docs/system/api/README.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
-> **Authoritative Baseline Reference**: Index of public API reference contracts, environment configuration schemas, extensibility patterns, and Minimal Working Example (MWE) guides for the **DBSN Centralized Digital Ecosystem**, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L636-L797)).
+> **Authoritative Baseline Reference**: Index of public API reference contracts, environment configuration schemas, extensibility patterns, and Minimal Working Example (MWE) guides for the **DBSN Centralized Digital Ecosystem**, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/api/README.md`
 
 ---

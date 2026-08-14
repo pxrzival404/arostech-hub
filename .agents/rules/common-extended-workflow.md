@@ -68,14 +68,14 @@ Use `query_graph`, `get_node`, `get_neighbors`, `god_nodes`, `shortest_path` MCP
 **Purpose**: Validate that the work is aligned with the High-Level Architecture before committing to a spec.
 
 ```
-1. Read docs/strategy/prd.md → Validate feature is in PRD scope
+1. Read docs/strategy/prd/00-overview-and-goals.md → Validate feature is in PRD scope
 2. Read domain-specific docs/ → Understand HLA constraints
 3. Cross-check: docs/ internally consistent? (7-Pillars validation)
 ```
 
 **Gate**: NO code change without PRD alignment. If feature is not in PRD, stop and propose change to PRD first.
 
-**Ponytail Check (YAGNI)**: If feature is not in PRD, do not implement. Raise a proposal to `docs/strategy/prd.md` first and wait for approval.
+**Ponytail Check (YAGNI)**: If feature is not in PRD, do not implement. Raise a proposal to `docs/strategy/prd/00-overview-and-goals.md` first and wait for approval.
 
 ---
 

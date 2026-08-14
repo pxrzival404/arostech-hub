@@ -1,0 +1,32 @@
+{
+  "folder": "docs/system/architecture",
+  "description": "Execution topology, routing lifecycle, system overview, codemaps, and information architecture",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "ARCH-LIFECYCLE-001",
+      "file": "execution-lifecycle.md",
+      "title": "Subdomain Routing & Middleware Execution Lifecycle Architecture",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Subdomain Routing & Middleware Execution Lifecycle Architecture within the DBSN platform (docs/system/architecture/execution-lifecycle.md)."
+    },
+    {
+      "id": "ARCH-OVERVIEW-001",
+      "file": "overview.md",
+      "title": "DBSN System Architecture & Code Terrain Overview",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Architecture & Code Terrain Map Overview within the DBSN platform (docs/system/architecture/overview.md)."
+    },
+    {
+      "id": "ARCH-INDEX-001",
+      "file": "README.md",
+      "title": "System Architecture Domain Specification Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Architecture (`docs/system/architecture/`) within the DBSN platform (docs/system/architecture/README.md)."
+    }
+  ],
+  "subfolders": [
+    "codemaps",
+    "information-architecture"
+  ]
+}

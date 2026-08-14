@@ -59,7 +59,7 @@ Technical constraints and specifications MUST use RFC 2119 keywords in uppercase
 Include concrete TypeScript interfaces, Zod schemas, or Prisma definitions instead of describing data models narratively.
 
 ### 5. Graphify Knowledge Graph Anchoring
-Link documentation sections directly to Graphify Node IDs (e.g. `doc:docs/strategy/prd.md`) and God Nodes. Agents SHOULD use GraphRAG tools (`graphify query`, `graphify path`) before raw file dumping.
+Link documentation sections directly to Graphify Node IDs (e.g. `doc:docs/strategy/prd/00-overview-and-goals.md`) and God Nodes. Agents SHOULD use GraphRAG tools (`graphify query`, `graphify path`) before raw file dumping.
 
 After any `docs/` modification, run:
 ```bash

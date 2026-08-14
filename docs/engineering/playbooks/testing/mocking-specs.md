@@ -5,13 +5,16 @@ version: 4.0.0
 status: LOCKED_BASELINE
 graphify_community: "community_testing"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60"
 ---
 
 # External Service Mocking Specifications & Test Doubles Guide
 
-> **Authoritative Baseline Reference**: Standardized mock definitions and test double specifications for external integrations (Neon/Prisma, Sanity CMS, Resend Email, and Telegram Bot API) in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for External Service Mocking Specifications & Test Doubles Guide within the DBSN platform (docs/engineering/playbooks/testing/mocking-specs.md).
+
+
+> **Authoritative Baseline Reference**: Standardized mock definitions and test double specifications for external integrations (Neon/Prisma, Sanity CMS, Resend Email, and Telegram Bot API) in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 
