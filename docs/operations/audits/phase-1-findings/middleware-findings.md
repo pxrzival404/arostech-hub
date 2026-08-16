@@ -2,9 +2,9 @@
 id: AUDIT-MW-CARD1.1-001
 title: Card 1.1 Edge Middleware Execution & Subdomain Routing Audit
 version: 1.0.0
-status: AUDITED
+status: IN_PROGRESS
 target_domain: dayaberkah.id
-graphify_community: "community_architecture"
+graphify_community: "community_audits"
 authoritative_references:
   execution_lifecycle: "file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L147"
   middleware: "file:///d:/dev/arostech-hub/src/middleware.ts#L1-L146"

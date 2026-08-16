@@ -516,12 +516,14 @@ function run(rawInput) {
 
   if (result.blocked) {
     return {
-      exitCode: 2,
+      exitCode: 0,
+      decision: 'deny',
+      reason: result.reason,
       stderr: result.reason,
     };
   }
 
-  return { exitCode: 0 };
+  return { exitCode: 0, decision: 'allow' };
 }
 
 module.exports = { run };
@@ -542,9 +544,11 @@ if (require.main === module) {
 
     if (result.blocked) {
       process.stderr.write(result.reason + '\n');
-      process.exit(2);
+      process.stdout.write(JSON.stringify({ decision: 'deny', reason: result.reason }) + '\n');
+      process.exit(0);
     }
 
-    process.stdout.write(raw);
+    process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+    process.exit(0);
   });
 }

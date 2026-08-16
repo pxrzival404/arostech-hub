@@ -1,10 +1,12 @@
 ---
 id: TDD-STRAT-001
 title: DBSN Technical Testing & TDD Strategy
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_testing"
 authoritative_references:
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   api_reference: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L1-L60"
 ---
@@ -14,7 +16,7 @@ authoritative_references:
 > **TL;DR**: Authoritative specification and architectural reference for Technical Testing & TDD Strategy within the DBSN platform (docs/engineering/playbooks/testing/strategy.md).
 
 
-> **Authoritative Baseline Reference**: Testing playbook and TDD execution methodology for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
+> **Authoritative Baseline Reference**: Testing playbook and TDD execution methodology for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)) and [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100).
 
 ---
 
@@ -40,8 +42,9 @@ All software development across the codebase MUST adhere to the Test-Driven Deve
 ### Mandated TDD Rules
 1. **Red First**: No production feature code SHALL be merged without prior failing test coverage.
 2. **Isolation Invariant**: Tests MUST execute independently without shared in-memory state or database pollution.
-3. **Coverage Threshold**: Total project test coverage MUST be maintained at **80%+** across unit, integration, and end-to-end suites.
-4. **Zero-Hallucination Scope**: Test suites MUST NOT import or mock non-existent runtime components (such as external legacy queue clusters or legacy 301 redirect tables).
+3. **Coverage Threshold**: Total project test coverage MUST be maintained at **85.0%+** (Strict Zero-Regression Gate) across unit, integration, and end-to-end suites.
+4. **Spec-to-Test Multiplier**: Each OpenSpec requirement MUST define $\ge 2$ BDD scenarios mapping to $\ge 4$ executable Jest assertions in the TDD RED phase.
+5. **Zero-Hallucination Scope**: Test suites MUST NOT import or mock non-existent runtime components (such as external legacy queue clusters or legacy 301 redirect tables).
 
 ---
 
@@ -92,8 +95,8 @@ The testing framework MUST validate composite cart RFQ submissions (`rfqSubmissi
 
 | Test Level | Scope | Tools | Target Coverage | Execution Trigger |
 |---|---|---|---|---|
-| **Unit** | Utility functions, Zod schemas, React components | Jest / React Testing Library | 85%+ | Pre-commit hook & PR gate |
-| **Integration** | API routes (`/api/rfq`, `/api/auth`), Prisma DB queries | Jest + Mocked Providers | 80%+ | CI pipeline run |
+| **Unit** | Utility functions, Zod schemas, React components | Jest / React Testing Library | 85.0%+ | Pre-commit hook & PR gate |
+| **Integration** | API routes (`/api/rfq`, `/api/auth`), Prisma DB queries | Jest + Mocked Providers | 85.0%+ | CI pipeline run |
 | **E2E** | Client dashboard auth, tracking portal, RFQ submission | Playwright | 100% Critical Flows | Pre-deployment gate |
 
 ---

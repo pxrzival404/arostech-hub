@@ -2,8 +2,9 @@
 id: AUDIT-DEADCODE-001
 title: Card 1.8 Dead Code Audit Findings Report
 version: 1.0.0
-status: COMPLETED
-graphify_community: "community_dead_code"
+status: IN_PROGRESS
+target_domain: dayaberkah.id
+graphify_community: "community_audits"
 authoritative_references:
   tailwind_config: "file:///d:/dev/arostech-hub/tailwind.config.ts#L1-L54"
   globals_css: "file:///d:/dev/arostech-hub/src/app/globals.css#L1-L469"

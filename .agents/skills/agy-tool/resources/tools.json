@@ -1,0 +1,1358 @@
+{
+  "$schema": "https://agentskills.io/schemas/tools.v1.json",
+  "skill_name": "agy-tool",
+  "version": "2.5.0",
+  "description": "Authoritative registry of Native Tools, MCP Servers, Antigravity CLI Controls, and Repo Automation.",
+  "tools": [
+    {
+      "name": "view_file",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Read text and binary files with 1-indexed line slicing (max 800 lines) and byte offset pagination.",
+      "usage": "view_file(AbsolutePath, StartLine, EndLine, ContentOffset, IsSkillFile)",
+      "safety": "read_only",
+      "tags": ["file", "read", "viewer", "inspection", "native"],
+      "parameters": [
+        { "name": "AbsolutePath", "type": "string", "required": true, "description": "POSIX absolute path to target file." },
+        { "name": "StartLine", "type": "integer", "required": false, "description": "1-indexed start line (inclusive).", "default": 1 },
+        { "name": "EndLine", "type": "integer", "required": false, "description": "1-indexed end line (inclusive).", "default": null },
+        { "name": "ContentOffset", "type": "integer", "required": false, "description": "Byte offset into file content.", "default": 0 },
+        { "name": "IsSkillFile", "type": "boolean", "required": false, "description": "Set to true when executing skill instructions.", "default": false }
+      ],
+      "guardrails": [
+        "1-Based Line Indexing: Line 1 is the first line of the file.",
+        "POSIX Path Standard: Absolute paths must use forward slashes (/)."
+      ],
+      "example": {
+        "tool": "view_file",
+        "parameters": { "AbsolutePath": "d:/dev/arostech-hub/src/middleware.ts", "StartLine": 1, "EndLine": 60 }
+      }
+    },
+    {
+      "name": "write_to_file",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Create new files or overwrite existing files with complete code contents.",
+      "usage": "write_to_file(TargetFile, CodeContent, Overwrite, Description, ArtifactMetadata)",
+      "safety": "mutating",
+      "tags": ["file", "create", "write", "overwrite", "native"],
+      "parameters": [
+        { "name": "TargetFile", "type": "string", "required": true, "description": "POSIX absolute destination file path." },
+        { "name": "CodeContent", "type": "string", "required": true, "description": "Full file content to write." },
+        { "name": "Overwrite", "type": "boolean", "required": true, "description": "Must be true to overwrite existing files.", "default": false },
+        { "name": "Description", "type": "string", "required": true, "description": "Brief explanation of changes made." },
+        { "name": "ArtifactMetadata", "type": "object", "required": false, "description": "Metadata for artifact documents in brain directory." }
+      ],
+      "guardrails": [
+        "Artifact Metadata: Must include ArtifactMetadata when writing files to the brain directory.",
+        "POSIX Paths: Forward slashes strictly required."
+      ],
+      "example": {
+        "tool": "write_to_file",
+        "parameters": { "TargetFile": "d:/dev/arostech-hub/src/lib/constants.ts", "CodeContent": "export const APP_NAME = 'Arostech Hub';", "Overwrite": true, "Description": "Initialize app constants" }
+      }
+    },
+    {
+      "name": "replace_file_content",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Precise single contiguous block find-and-replace using exact byte-for-byte character matching.",
+      "usage": "replace_file_content(TargetFile, TargetContent, ReplacementContent, StartLine, EndLine, Instruction, Description)",
+      "safety": "mutating",
+      "tags": ["file", "edit", "replace", "refactor", "native"],
+      "parameters": [
+        { "name": "TargetFile", "type": "string", "required": true, "description": "POSIX absolute path to target file." },
+        { "name": "TargetContent", "type": "string", "required": true, "description": "Exact text block to replace with exact whitespace." },
+        { "name": "ReplacementContent", "type": "string", "required": true, "description": "New content to replace TargetContent with." },
+        { "name": "StartLine", "type": "integer", "required": true, "description": "1-indexed starting line number of block." },
+        { "name": "EndLine", "type": "integer", "required": true, "description": "1-indexed ending line number of block." },
+        { "name": "Instruction", "type": "string", "required": true, "description": "Description of code modification." },
+        { "name": "Description", "type": "string", "required": true, "description": "User-facing summary of change." }
+      ],
+      "guardrails": [
+        "Exact Verbatim Whitespace: TargetContent must match character-by-character.",
+        "Single Occurrence Invariant: Must uniquely match exactly one block in the file."
+      ],
+      "example": {
+        "tool": "replace_file_content",
+        "parameters": {
+          "TargetFile": "d:/dev/arostech-hub/src/lib/auth.ts",
+          "TargetContent": "export const authConfig = {\n  debug: false,\n};",
+          "ReplacementContent": "export const authConfig = {\n  debug: process.env.NODE_ENV === 'development',\n};",
+          "StartLine": 10,
+          "EndLine": 12,
+          "Instruction": "Enable debug logging in development",
+          "Description": "Set debug mode dynamically based on NODE_ENV"
+        }
+      }
+    },
+    {
+      "name": "multi_replace_file_content",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Atomic multi-chunk find-and-replace across non-contiguous blocks in a file.",
+      "usage": "multi_replace_file_content(TargetFile, ReplacementChunks, Instruction, Description)",
+      "safety": "mutating",
+      "tags": ["file", "batch-edit", "multi-replace", "native"],
+      "parameters": [
+        { "name": "TargetFile", "type": "string", "required": true, "description": "POSIX absolute path to target file." },
+        { "name": "ReplacementChunks", "type": "array", "required": true, "description": "Array of ReplacementChunk objects with StartLine, EndLine, TargetContent, ReplacementContent." },
+        { "name": "Instruction", "type": "string", "required": true, "description": "Description of batch edits." },
+        { "name": "Description", "type": "string", "required": true, "description": "User-facing summary of batch edits." }
+      ],
+      "guardrails": [
+        "Non-Overlapping Chunks: Provide ordered, disjoint line ranges.",
+        "Exact Matching: Every chunk TargetContent must match file contents exactly."
+      ],
+      "example": {
+        "tool": "multi_replace_file_content",
+        "parameters": {
+          "TargetFile": "d:/dev/arostech-hub/src/lib/config.ts",
+          "ReplacementChunks": [
+            { "StartLine": 5, "EndLine": 5, "TargetContent": "const PORT = 3000;", "ReplacementContent": "const PORT = process.env.PORT || 3000;", "AllowMultiple": false }
+          ],
+          "Instruction": "Update port config",
+          "Description": "Make port configurable via environment variable"
+        }
+      }
+    },
+    {
+      "name": "list_dir",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Explore directory contents, relative paths, file sizes, and recursive child counts.",
+      "usage": "list_dir(DirectoryPath)",
+      "safety": "read_only",
+      "tags": ["directory", "ls", "explore", "filesystem", "native"],
+      "parameters": [
+        { "name": "DirectoryPath", "type": "string", "required": true, "description": "POSIX absolute path to target directory." }
+      ],
+      "guardrails": [
+        "Absolute Paths: Must supply absolute POSIX path."
+      ],
+      "example": {
+        "tool": "list_dir",
+        "parameters": { "DirectoryPath": "d:/dev/arostech-hub/src" }
+      }
+    },
+    {
+      "name": "grep_search",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Fast ripgrep code search with regex, case-insensitivity, and glob filtering (capped at 50 matches).",
+      "usage": "grep_search(SearchPath, Query, IsRegex, CaseInsensitive, MatchPerLine, Includes)",
+      "safety": "read_only",
+      "tags": ["search", "grep", "ripgrep", "code", "native"],
+      "parameters": [
+        { "name": "SearchPath", "type": "string", "required": true, "description": "Absolute directory or file path to search." },
+        { "name": "Query", "type": "string", "required": true, "description": "Search term or regex pattern." },
+        { "name": "IsRegex", "type": "boolean", "required": false, "description": "Treat query as regular expression.", "default": false },
+        { "name": "CaseInsensitive", "type": "boolean", "required": false, "description": "Perform case-insensitive search.", "default": false },
+        { "name": "MatchPerLine", "type": "boolean", "required": false, "description": "Return line numbers and line content snippets.", "default": true },
+        { "name": "Includes", "type": "array", "required": false, "description": "Glob patterns to filter files (e.g. ['*.ts'])." }
+      ],
+      "guardrails": [
+        "Result Cap: Results capped at 50 matches. Use Includes to refine scope."
+      ],
+      "example": {
+        "tool": "grep_search",
+        "parameters": { "SearchPath": "d:/dev/arostech-hub", "Query": "export const runtime = 'edge'", "MatchPerLine": true }
+      }
+    },
+    {
+      "name": "run_command",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Execute shell commands in Git Bash POSIX terminal (sync or background daemon).",
+      "usage": "run_command(CommandLine, Cwd, IsDaemon, WaitMsBeforeAsync)",
+      "safety": "mutating",
+      "tags": ["terminal", "bash", "shell", "exec", "build", "test", "native"],
+      "parameters": [
+        { "name": "CommandLine", "type": "string", "required": true, "description": "Shell command line to execute." },
+        { "name": "Cwd", "type": "string", "required": true, "description": "Target working directory as an absolute POSIX path." },
+        { "name": "IsDaemon", "type": "boolean", "required": false, "description": "Set true for long-running support processes.", "default": false },
+        { "name": "WaitMsBeforeAsync", "type": "integer", "required": true, "description": "Milliseconds to wait before sending command to background." }
+      ],
+      "guardrails": [
+        "No cd Commands: Never use 'cd' inside CommandLine. Specify the Cwd parameter.",
+        "Reactive Wakeup: Do not poll manage_task for background processes; yield execution."
+      ],
+      "example": {
+        "tool": "run_command",
+        "parameters": { "CommandLine": "pnpm test", "Cwd": "d:/dev/arostech-hub", "WaitMsBeforeAsync": 10000 }
+      }
+    },
+    {
+      "name": "manage_task",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Manage, monitor, tail logs, send input to, or terminate asynchronous background processes.",
+      "usage": "manage_task(Action, TaskId, Input)",
+      "safety": "standard",
+      "tags": ["task", "background", "daemon", "process", "kill", "native"],
+      "parameters": [
+        { "name": "Action", "type": "string", "required": true, "description": "Action to perform: 'list', 'kill', 'status', 'send_input'." },
+        { "name": "TaskId", "type": "string", "required": false, "description": "Task identifier (required for kill, status, send_input)." },
+        { "name": "Input", "type": "string", "required": false, "description": "Input string to send to background process stdin." }
+      ],
+      "guardrails": [
+        "No Busy-Wait Polling: Do not loop on Action='status'; wait for system Reactive Wakeup notifications."
+      ],
+      "example": {
+        "tool": "manage_task",
+        "parameters": { "Action": "status", "TaskId": "task-123" }
+      }
+    },
+    {
+      "name": "define_subagent",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Dynamically registers new specialized subagent blueprints for the duration of the conversation.",
+      "usage": "define_subagent(name, description, system_prompt, enable_mcp_tools, enable_write_tools)",
+      "safety": "standard",
+      "tags": ["subagent", "blueprint", "agent-definition", "native"],
+      "parameters": [
+        { "name": "name", "type": "string", "required": true, "description": "Identifier name for the subagent blueprint." },
+        { "name": "description", "type": "string", "required": true, "description": "Summary of subagent specialization." },
+        { "name": "system_prompt", "type": "string", "required": true, "description": "System instruction prompt for the subagent." },
+        { "name": "enable_mcp_tools", "type": "boolean", "required": false, "description": "Allow subagent to use MCP tools." },
+        { "name": "enable_write_tools", "type": "boolean", "required": false, "description": "Allow subagent to modify files." }
+      ],
+      "guardrails": [
+        "Ephemeral Scope: Blueprint registrations persist only for the current conversation."
+      ],
+      "example": {
+        "tool": "define_subagent",
+        "parameters": { "name": "security_auditor", "description": "Audits dependencies for vulnerabilities", "system_prompt": "Audit package.json and report CVEs." }
+      }
+    },
+    {
+      "name": "invoke_subagent",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Spawn asynchronous subagent instances for concurrent task execution with model routing.",
+      "usage": "invoke_subagent(Subagents: [{TypeName, Role, Prompt, Model}])",
+      "safety": "standard",
+      "tags": ["agent", "subagent", "delegate", "orchestration", "native"],
+      "parameters": [
+        { "name": "Subagents", "type": "array", "required": true, "description": "Array of subagent specification objects." }
+      ],
+      "guardrails": [
+        "Subagent Output Contract: Subagents MUST deliver all findings via send_message."
+      ],
+      "example": {
+        "tool": "invoke_subagent",
+        "parameters": {
+          "Subagents": [{ "TypeName": "research", "Role": "Schema Auditor", "Prompt": "Inspect schema.prisma", "Model": "inherit" }]
+        }
+      }
+    },
+    {
+      "name": "send_message",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Inter-agent communication bus for relaying reports and structured findings between agents.",
+      "usage": "send_message(Recipient, Message)",
+      "safety": "standard",
+      "tags": ["agent", "messaging", "report", "inter-agent", "native"],
+      "parameters": [
+        { "name": "Recipient", "type": "string", "required": true, "description": "Target agent conversation ID." },
+        { "name": "Message", "type": "string", "required": true, "description": "Complete markdown formatted message content." }
+      ],
+      "guardrails": [
+        "Agent-Only Scope: Never use send_message to communicate with the human user."
+      ],
+      "example": {
+        "tool": "send_message",
+        "parameters": { "Recipient": "244f20fc-929b-48dd-a84c-7a58994881ba", "Message": "Analysis complete." }
+      }
+    },
+    {
+      "name": "manage_subagents",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Inspect active subagents, view conversation IDs, check lifecycle states, or terminate instances.",
+      "usage": "manage_subagents(Action, ConversationIds)",
+      "safety": "standard",
+      "tags": ["subagent", "orchestration", "lifecycle", "native"],
+      "parameters": [
+        { "name": "Action", "type": "string", "required": true, "description": "Action: 'list', 'kill', 'kill_all'." },
+        { "name": "ConversationIds", "type": "array", "required": false, "description": "Target conversation IDs for kill action." }
+      ],
+      "guardrails": [
+        "No Polling: Do not continuously list subagents; wait for notifications."
+      ],
+      "example": {
+        "tool": "manage_subagents",
+        "parameters": { "Action": "list" }
+      }
+    },
+    {
+      "name": "search_web",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Performs Google web search for public knowledge, documentation, or technical discussions.",
+      "usage": "search_web(query, domain)",
+      "safety": "read_only",
+      "tags": ["web", "search", "google", "documentation", "native"],
+      "parameters": [
+        { "name": "query", "type": "string", "required": true, "description": "Web search query string." },
+        { "name": "domain", "type": "string", "required": false, "description": "Recommended domain to prioritize." }
+      ],
+      "guardrails": [
+        "Context7 Precedence: Always query Context7 MCP for official library documentation first."
+      ],
+      "example": {
+        "tool": "search_web",
+        "parameters": { "query": "Prisma serverless postgres connection pool limit" }
+      }
+    },
+    {
+      "name": "read_url_content",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Fetches public web page content via HTTP request and converts HTML into clean markdown.",
+      "usage": "read_url_content(Url)",
+      "safety": "read_only",
+      "tags": ["web", "scrape", "http", "markdown", "native"],
+      "parameters": [
+        { "name": "Url", "type": "string", "required": true, "description": "Public web URL to fetch." }
+      ],
+      "guardrails": [
+        "No JavaScript: This tool performs plain HTTP requests; for dynamic JS apps use Playwright or Firecrawl."
+      ],
+      "example": {
+        "tool": "read_url_content",
+        "parameters": { "Url": "https://raw.githubusercontent.com/org/repo/main/README.md" }
+      }
+    },
+    {
+      "name": "generate_image",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Generates or edits UI mockups and graphics saved as visual artifacts.",
+      "usage": "generate_image(Prompt, ImageName, AspectRatio, ImagePaths)",
+      "safety": "mutating",
+      "tags": ["image", "design", "ui", "mockup", "artifact", "native"],
+      "parameters": [
+        { "name": "Prompt", "type": "string", "required": true, "description": "Text prompt describing desired image." },
+        { "name": "ImageName", "type": "string", "required": true, "description": "All lowercase filename with underscores (max 3 words)." },
+        { "name": "AspectRatio", "type": "string", "required": false, "description": "Aspect ratio (1:1, 16:9, 4:3, etc.).", "default": "1:1" },
+        { "name": "ImagePaths", "type": "array", "required": false, "description": "Reference image paths (max 3)." }
+      ],
+      "guardrails": [
+        "No Device Frames: Generate the interface itself without surrounding phone/laptop bezels unless requested."
+      ],
+      "example": {
+        "tool": "generate_image",
+        "parameters": { "Prompt": "Modern dark mode SaaS dashboard with telemetry charts", "ImageName": "saas_dashboard", "AspectRatio": "16:9" }
+      }
+    },
+    {
+      "name": "ask_question",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Renders interactive modal for clarifying underspecified requirements or choosing designs.",
+      "usage": "ask_question(questions)",
+      "safety": "standard",
+      "tags": ["interactive", "prompt", "user-input", "clarify", "native"],
+      "parameters": [
+        { "name": "questions", "type": "array", "required": true, "description": "Array of question objects with question, options, is_multi_select." }
+      ],
+      "guardrails": [
+        "Concise Options: Provide clear, discrete choices for the user."
+      ],
+      "example": {
+        "tool": "ask_question",
+        "parameters": { "questions": [{ "question": "Select database backend:", "options": ["Neon Postgres", "Cloudflare D1", "SQLite"] }] }
+      }
+    },
+    {
+      "name": "schedule",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Schedule one-shot timers with cancellation conditions or recurring cron notifications.",
+      "usage": "schedule(Prompt, DurationSeconds, CronExpression, TimerCondition, IsDaemon)",
+      "safety": "standard",
+      "tags": ["timer", "schedule", "cron", "reminder", "native"],
+      "parameters": [
+        { "name": "Prompt", "type": "string", "required": true, "description": "Message to send upon timer expiration." },
+        { "name": "DurationSeconds", "type": "integer", "required": false, "description": "Number of seconds for one-shot timer." },
+        { "name": "CronExpression", "type": "string", "required": false, "description": "Standard 5-field cron expression." },
+        { "name": "TimerCondition", "type": "string", "required": false, "description": "Early termination condition: 'never', 'any', or sender ID.", "default": "never" },
+        { "name": "IsDaemon", "type": "boolean", "required": false, "description": "Standing recurring schedule flag." }
+      ],
+      "guardrails": [
+        "No Sleep Commands: Never run bash sleep; use schedule instead.",
+        "Mutual Exclusivity: Provide exactly one of DurationSeconds or CronExpression."
+      ],
+      "example": {
+        "tool": "schedule",
+        "parameters": { "Prompt": "Check build status after compilation window", "DurationSeconds": 180, "TimerCondition": "any" }
+      }
+    },
+    {
+      "name": "call_mcp_tool",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Dynamic RPC gateway to execute lazy-loaded tools from configured MCP servers.",
+      "usage": "call_mcp_tool(ServerName, ToolName, Arguments)",
+      "safety": "standard",
+      "tags": ["mcp", "rpc", "bridge", "federation", "native"],
+      "parameters": [
+        { "name": "ServerName", "type": "string", "required": true, "description": "Target MCP server identifier." },
+        { "name": "ToolName", "type": "string", "required": true, "description": "Target tool name on the server." },
+        { "name": "Arguments", "type": "object", "required": true, "description": "Input parameters matching tool schema." }
+      ],
+      "guardrails": [
+        "Check Schema: Read tool schema file in .gemini/antigravity/mcp before invoking lazy tools."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "context7", "ToolName": "query-docs", "Arguments": { "libraryId": "/npm/next", "query": "middleware runtime" } }
+      }
+    },
+    {
+      "name": "list_resources",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Lists available static resources exposed by an MCP server.",
+      "usage": "list_resources(ServerName)",
+      "safety": "read_only",
+      "tags": ["mcp", "resources", "list", "native"],
+      "parameters": [
+        { "name": "ServerName", "type": "string", "required": true, "description": "Target MCP server identifier." }
+      ],
+      "guardrails": [
+        "Server Must Support Resources: Check if server exposes resource endpoints."
+      ],
+      "example": {
+        "tool": "list_resources",
+        "parameters": { "ServerName": "mcp-server-neon" }
+      }
+    },
+    {
+      "name": "read_resource",
+      "category": "native",
+      "server": "default_api",
+      "summary": "Retrieves contents of a specific MCP server resource URI.",
+      "usage": "read_resource(ServerName, Uri)",
+      "safety": "read_only",
+      "tags": ["mcp", "resource", "read", "native"],
+      "parameters": [
+        { "name": "ServerName", "type": "string", "required": true, "description": "Target MCP server identifier." },
+        { "name": "Uri", "type": "string", "required": true, "description": "Resource URI to read." }
+      ],
+      "guardrails": [
+        "Valid URI: URI must match an exposed resource from list_resources."
+      ],
+      "example": {
+        "tool": "read_resource",
+        "parameters": { "ServerName": "mcp-server-neon", "Uri": "postgres://schema/public" }
+      }
+    },
+    {
+      "name": "context7",
+      "category": "mcp",
+      "server": "context7",
+      "summary": "Authoritative real-time documentation retrieval for developer libraries and SDKs.",
+      "usage": "call_mcp_tool('context7', 'resolve-library-id', { libraryName, query })",
+      "safety": "read_only",
+      "tags": ["context7", "docs", "api", "reference", "mcp"],
+      "parameters": [
+        { "name": "libraryName", "type": "string", "required": true, "description": "Package or framework identifier." },
+        { "name": "query", "type": "string", "required": true, "description": "Specific API or configuration query." }
+      ],
+      "guardrails": [
+        "Precedence Rule: Always call Context7 before searching the public web."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "context7", "ToolName": "resolve-library-id", "Arguments": { "libraryName": "next", "query": "Edge runtime Route Handlers" } }
+      }
+    },
+    {
+      "name": "graphify",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Codebase structural ontology, God node detection, and dependency impact analysis.",
+      "usage": "call_mcp_tool('graphify', 'query_graph', { question: 'src/lib/auth.ts', mode: 'bfs', depth: 3, token_budget: 2000 })",
+      "safety": "read_only",
+      "tags": ["graphify", "knowledge-graph", "ast", "god-nodes", "mcp"],
+      "parameters": [
+        { "name": "question", "type": "string", "required": true, "description": "Natural language question, keyword search, or symbol path." },
+        { "name": "mode", "type": "string", "required": false, "description": "Traversal mode: 'bfs' for broad context, 'dfs' for deep path tracing.", "default": "bfs" },
+        { "name": "depth", "type": "integer", "required": false, "description": "Graph traversal depth (1 to 6).", "default": 3 },
+        { "name": "token_budget", "type": "integer", "required": false, "description": "Maximum tokens allocated for output context.", "default": 2000 },
+        { "name": "context_filter", "type": "array", "required": false, "description": "Optional edge-context filter, e.g. ['call', 'field']." }
+      ],
+      "guardrails": [
+        "Layer 0 Boot: Run during initial context boot to map architectural blast radius.",
+        "Mode Selection: Use bfs for broad exploration; use dfs to trace precise dependency chains."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "query_graph",
+          "Arguments": {
+            "question": "src/lib/auth.ts",
+            "mode": "bfs",
+            "depth": 3,
+            "token_budget": 2000
+          }
+        }
+      }
+    },
+    {
+      "name": "shortest_path",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Find the shortest dependency and execution path between two concepts in the knowledge graph.",
+      "usage": "call_mcp_tool('graphify', 'shortest_path', { source, target, max_hops })",
+      "safety": "read_only",
+      "tags": ["graphify", "path", "shortest-path", "dependency", "mcp"],
+      "parameters": [
+        { "name": "source", "type": "string", "required": true, "description": "Source concept label, function, or keyword." },
+        { "name": "target", "type": "string", "required": true, "description": "Target concept label, function, or keyword." },
+        { "name": "max_hops", "type": "integer", "required": false, "description": "Maximum graph hops to evaluate (default 8).", "default": 8 }
+      ],
+      "guardrails": [
+        "Blast Radius Analysis: Use shortest_path to verify if modifying node A directly impacts node B."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "shortest_path",
+          "Arguments": {
+            "source": "src/lib/auth.ts",
+            "target": "src/middleware.ts",
+            "max_hops": 5
+          }
+        }
+      }
+    },
+    {
+      "name": "god_nodes",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Identify architectural hub nodes with the highest degree of incoming/outgoing connections (high blast radius).",
+      "usage": "call_mcp_tool('graphify', 'god_nodes', {})",
+      "safety": "read_only",
+      "tags": ["graphify", "god-nodes", "architecture", "blast-radius", "mcp"],
+      "parameters": [],
+      "guardrails": [
+        "High-Risk Modifiers: Nodes with 50+ edges require extra scrutiny and comprehensive test coverage."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "god_nodes",
+          "Arguments": {}
+        }
+      }
+    },
+    {
+      "name": "get_node",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Retrieve full details, source location, and degree for a specific graph node by label or ID.",
+      "usage": "call_mcp_tool('graphify', 'get_node', { label })",
+      "safety": "read_only",
+      "tags": ["graphify", "node", "inspect", "ast", "mcp"],
+      "parameters": [
+        { "name": "label", "type": "string", "required": true, "description": "Node label, symbol name, or exact ID." }
+      ],
+      "guardrails": [
+        "Exact Match: Provide exact symbol or filename for deterministic node metadata."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "get_node",
+          "Arguments": { "label": "authConfig" }
+        }
+      }
+    },
+    {
+      "name": "get_neighbors",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Retrieve all direct incoming and outgoing neighbor nodes with edge relations and confidence scores.",
+      "usage": "call_mcp_tool('graphify', 'get_neighbors', { label, relation_filter, token_budget })",
+      "safety": "read_only",
+      "tags": ["graphify", "neighbors", "edges", "relations", "mcp"],
+      "parameters": [
+        { "name": "label", "type": "string", "required": true, "description": "Target node label or ID." },
+        { "name": "relation_filter", "type": "string", "required": false, "description": "Optional relation filter (e.g. 'imports', 'calls')." },
+        { "name": "token_budget", "type": "integer", "required": false, "description": "Maximum output tokens.", "default": 2000 }
+      ],
+      "guardrails": [
+        "Immediate Impact: Use to check direct callers and importers before refactoring."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "get_neighbors",
+          "Arguments": { "label": "prisma", "token_budget": 1500 }
+        }
+      }
+    },
+    {
+      "name": "get_community",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Retrieve all nodes within an architectural cluster/community by community ID.",
+      "usage": "call_mcp_tool('graphify', 'get_community', { community_id, token_budget })",
+      "safety": "read_only",
+      "tags": ["graphify", "community", "cluster", "architecture", "mcp"],
+      "parameters": [
+        { "name": "community_id", "type": "integer", "required": true, "description": "0-indexed community identifier." },
+        { "name": "token_budget", "type": "integer", "required": false, "description": "Maximum output tokens.", "default": 2000 }
+      ],
+      "guardrails": [
+        "Architectural Boundaries: Check community cohesion before creating cross-module dependencies."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "get_community",
+          "Arguments": { "community_id": 0, "token_budget": 2000 }
+        }
+      }
+    },
+    {
+      "name": "graph_stats",
+      "category": "mcp",
+      "server": "graphify",
+      "summary": "Retrieve knowledge graph topological statistics (node count, edge count, density, modularity).",
+      "usage": "call_mcp_tool('graphify', 'graph_stats', {})",
+      "safety": "read_only",
+      "tags": ["graphify", "stats", "topology", "metrics", "mcp"],
+      "parameters": [],
+      "guardrails": ["Audit overall codebase connectivity and complexity metrics."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": {
+          "ServerName": "graphify",
+          "ToolName": "graph_stats",
+          "Arguments": {}
+        }
+      }
+    },
+    {
+      "name": "mcp-server-neon",
+      "category": "mcp",
+      "server": "mcp-server-neon",
+      "summary": "Neon Serverless Postgres database management, instant branching, live SQL, and query tuning.",
+      "usage": "call_mcp_tool('mcp-server-neon', 'run_sql', { project_id, sql })",
+      "safety": "mutating",
+      "tags": ["neon", "postgres", "sql", "database", "branches", "mcp"],
+      "parameters": [
+        { "name": "project_id", "type": "string", "required": true, "description": "Neon cloud project identifier." },
+        { "name": "sql", "type": "string", "required": true, "description": "SQL query to execute." }
+      ],
+      "guardrails": [
+        "Ephemeral Branches: Always test migrations on separate branches prior to merging."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "mcp-server-neon", "ToolName": "run_sql", "Arguments": { "project_id": "arostech-prod", "sql": "SELECT count(*) FROM users;" } }
+      }
+    },
+    {
+      "name": "Sanity",
+      "category": "mcp",
+      "server": "Sanity",
+      "summary": "Headless CMS Content Lake, live GROQ querying, document mutations, and draft releases.",
+      "usage": "call_mcp_tool('Sanity', 'query_documents', { query: '*[_type==\"product\"]' })",
+      "safety": "mutating",
+      "tags": ["sanity", "cms", "groq", "content", "schema", "mcp"],
+      "parameters": [
+        { "name": "query", "type": "string", "required": true, "description": "GROQ query expression." }
+      ],
+      "guardrails": [
+        "Preserve System Fields: Preserve _id, _type, and _rev when patching documents."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "Sanity", "ToolName": "query_documents", "Arguments": { "query": "*[_type == 'article']{_id, title}" } }
+      }
+    },
+    {
+      "name": "cloudflare-bindings",
+      "category": "mcp",
+      "server": "cloudflare-bindings",
+      "summary": "Manage Cloudflare Edge primitives: D1 SQL, KV storage, R2 object store, and Worker scripts.",
+      "usage": "call_mcp_tool('cloudflare-bindings', 'd1_database_query', { database_id, sql })",
+      "safety": "mutating",
+      "tags": ["cloudflare", "workers", "d1", "kv", "r2", "edge", "mcp"],
+      "parameters": [
+        { "name": "database_id", "type": "string", "required": true, "description": "Target D1 database identifier." },
+        { "name": "sql", "type": "string", "required": true, "description": "SQLite query string." }
+      ],
+      "guardrails": [
+        "SQLite Dialect: Use SQLite syntax for D1; bind parameters to prevent injection."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "cloudflare-bindings", "ToolName": "d1_database_query", "Arguments": { "database_id": "hub-d1", "sql": "SELECT * FROM redirects;" } }
+      }
+    },
+    {
+      "name": "cloudflare-observability",
+      "category": "mcp",
+      "server": "cloudflare-observability",
+      "summary": "Query live Worker telemetry logs, observability values, and execution metrics.",
+      "usage": "call_mcp_tool('cloudflare-observability', 'query_worker_observability', { worker_name, query })",
+      "safety": "read_only",
+      "tags": ["cloudflare", "logs", "telemetry", "metrics", "observability", "mcp"],
+      "parameters": [
+        { "name": "worker_name", "type": "string", "required": true, "description": "Target Cloudflare Worker name." },
+        { "name": "query", "type": "string", "required": false, "description": "Filter or query string for logs." }
+      ],
+      "guardrails": ["Inspect production exceptions and response latency directly from Edge runtime."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "cloudflare-observability", "ToolName": "query_worker_observability", "Arguments": { "worker_name": "arostech-hub-worker" } }
+      }
+    },
+    {
+      "name": "cloudflare-docs",
+      "category": "mcp",
+      "server": "cloudflare-docs",
+      "summary": "Authoritative Cloudflare developer documentation and Pages-to-Workers migration guides.",
+      "usage": "call_mcp_tool('cloudflare-docs', 'search_cloudflare_documentation', { query })",
+      "safety": "read_only",
+      "tags": ["cloudflare", "docs", "migration", "edge", "mcp"],
+      "parameters": [
+        { "name": "query", "type": "string", "required": true, "description": "Search query for Cloudflare platform docs." }
+      ],
+      "guardrails": ["Use for Workers, Pages, Hyperdrive, KV, and OpenNext configuration questions."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "cloudflare-docs", "ToolName": "search_cloudflare_documentation", "Arguments": { "query": "Hyperdrive TCP pooling with Prisma" } }
+      }
+    },
+    {
+      "name": "cloudflare-builds",
+      "category": "mcp",
+      "server": "cloudflare-builds",
+      "summary": "Inspect live Cloudflare Worker and Pages build pipelines, deployments, and build logs.",
+      "usage": "call_mcp_tool('cloudflare-builds', 'workers_builds_list_builds', { account_id })",
+      "safety": "read_only",
+      "tags": ["cloudflare", "builds", "deployments", "ci-cd", "mcp"],
+      "parameters": [
+        { "name": "account_id", "type": "string", "required": false, "description": "Cloudflare account identifier." }
+      ],
+      "guardrails": ["Audit remote build failures and deployment status."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "cloudflare-builds", "ToolName": "workers_builds_list_builds", "Arguments": {} }
+      }
+    },
+    {
+      "name": "playwright",
+      "category": "mcp",
+      "server": "playwright",
+      "summary": "Automated headless browser navigation, E2E testing, visual snapshots, and DOM interaction.",
+      "usage": "call_mcp_tool('playwright', 'browser_navigate', { url })",
+      "safety": "mutating",
+      "tags": ["playwright", "browser", "e2e", "testing", "snapshots", "mcp"],
+      "parameters": [
+        { "name": "url", "type": "string", "required": true, "description": "Target URL to navigate to." }
+      ],
+      "guardrails": [
+        "Snapshot First: Always capture accessibility snapshot to find real element IDs."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "playwright", "ToolName": "browser_navigate", "Arguments": { "url": "http://localhost:3000" } }
+      }
+    },
+    {
+      "name": "browser-use",
+      "category": "mcp",
+      "server": "browser-use",
+      "summary": "Autonomous cloud browser agent for multi-step web workflows and complex interactions.",
+      "usage": "call_mcp_tool('browser-use', 'browser_task', { task })",
+      "safety": "mutating",
+      "tags": ["browser", "automation", "agent", "web", "mcp"],
+      "parameters": [
+        { "name": "task", "type": "string", "required": true, "description": "High-level browser automation instruction." }
+      ],
+      "guardrails": ["Ideal for multi-page flows requiring session persistence across tabs."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "browser-use", "ToolName": "browser_task", "Arguments": { "task": "Check checkout flow on staging" } }
+      }
+    },
+    {
+      "name": "firecrawl",
+      "category": "mcp",
+      "server": "firecrawl",
+      "summary": "Advanced web scraping, recursive crawling, markdown extraction, and arXiv research search.",
+      "usage": "call_mcp_tool('firecrawl', 'firecrawl_scrape', { url })",
+      "safety": "read_only",
+      "tags": ["firecrawl", "crawler", "scrape", "markdown", "research", "mcp"],
+      "parameters": [
+        { "name": "url", "type": "string", "required": true, "description": "Target web page URL." }
+      ],
+      "guardrails": [
+        "Markdown Sanitization: Strips navigation fluff and extracts pure markdown."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "firecrawl", "ToolName": "firecrawl_scrape", "Arguments": { "url": "https://nextjs.org/docs" } }
+      }
+    },
+    {
+      "name": "github",
+      "category": "mcp",
+      "server": "github",
+      "summary": "GitHub platform operations: pull requests, issue triage, branch management, and reviews.",
+      "usage": "call_mcp_tool('github', 'create_pull_request', { title, body, head, base })",
+      "safety": "mutating",
+      "tags": ["github", "pr", "issues", "commits", "reviews", "mcp"],
+      "parameters": [
+        { "name": "title", "type": "string", "required": true, "description": "Conventional Commit PR title." },
+        { "name": "head", "type": "string", "required": true, "description": "Source feature branch." },
+        { "name": "base", "type": "string", "required": true, "description": "Target base branch." }
+      ],
+      "guardrails": [
+        "Conventional Commits: Use standard prefixes (feat:, fix:, docs:, refactor:)."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "github", "ToolName": "create_pull_request", "Arguments": { "title": "feat(auth): sliding session", "head": "feat/session", "base": "main" } }
+      }
+    },
+    {
+      "name": "filesystem",
+      "category": "mcp",
+      "server": "filesystem",
+      "summary": "Local filesystem operations fallback for allowed directory boundaries.",
+      "usage": "call_mcp_tool('filesystem', 'read_file', { path })",
+      "safety": "read_only",
+      "tags": ["filesystem", "files", "io", "mcp"],
+      "parameters": [
+        { "name": "path", "type": "string", "required": true, "description": "Path to file on filesystem." }
+      ],
+      "guardrails": ["Native tools (view_file, write_to_file) take precedence over filesystem MCP."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "filesystem", "ToolName": "read_file", "Arguments": { "path": "d:/dev/arostech-hub/package.json" } }
+      }
+    },
+    {
+      "name": "memory",
+      "category": "mcp",
+      "server": "memory",
+      "summary": "Persistent knowledge graph memory across developer sessions and agent handoffs.",
+      "usage": "call_mcp_tool('memory', 'create_entities', { entities })",
+      "safety": "mutating",
+      "tags": ["memory", "graph", "entities", "state", "mcp"],
+      "parameters": [
+        { "name": "entities", "type": "array", "required": true, "description": "List of knowledge entities to persist." }
+      ],
+      "guardrails": ["Store architectural decisions and persistent team conventions."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "memory", "ToolName": "create_entities", "Arguments": { "entities": [{ "name": "AuthSystem", "entityType": "Architecture", "observations": ["Uses NextAuth with JWT on Edge"] }] } }
+      }
+    },
+    {
+      "name": "notion-mcp-server",
+      "category": "mcp",
+      "server": "notion-mcp-server",
+      "summary": "Notion workspace integration, task management, and document synchronization.",
+      "usage": "call_mcp_tool('notion-mcp-server', 'API-post-search', { query })",
+      "safety": "read_only",
+      "tags": ["notion", "workspace", "tasks", "docs", "mcp"],
+      "parameters": [
+        { "name": "query", "type": "string", "required": false, "description": "Search term for Notion workspace pages and databases." }
+      ],
+      "guardrails": ["Synchronize requirements and team documentation from Notion pages."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "notion-mcp-server", "ToolName": "API-post-search", "Arguments": { "query": "Sprint Goals" } }
+      }
+    },
+    {
+      "name": "sequential-thinking",
+      "category": "mcp",
+      "server": "sequential-thinking",
+      "summary": "Dynamic multi-step reasoning protocol for complex mathematical or architectural planning.",
+      "usage": "call_mcp_tool('sequential-thinking', 'sequentialthinking', { thought, thoughtNumber, totalThoughts, nextThoughtNeeded })",
+      "safety": "standard",
+      "tags": ["reasoning", "thinking", "planning", "algorithm", "mcp"],
+      "parameters": [
+        { "name": "thought", "type": "string", "required": true, "description": "Current reasoning step content." },
+        { "name": "thoughtNumber", "type": "integer", "required": true, "description": "Current step number in reasoning chain." },
+        { "name": "totalThoughts", "type": "integer", "required": true, "description": "Estimated total thoughts needed." },
+        { "name": "nextThoughtNeeded", "type": "boolean", "required": true, "description": "Whether further reasoning steps follow." }
+      ],
+      "guardrails": ["Use when formulating complex migration sequences or multi-tier refactorings."],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "sequential-thinking", "ToolName": "sequentialthinking", "Arguments": { "thought": "Evaluate database schema constraints", "thoughtNumber": 1, "totalThoughts": 3, "nextThoughtNeeded": true } }
+      }
+    },
+    {
+      "name": "token-optimizer",
+      "category": "mcp",
+      "server": "token-optimizer",
+      "summary": "Context hygiene, session compression, AST grep, predictive caching, and token budgeting.",
+      "usage": "call_mcp_tool('token-optimizer', 'smart_ast_grep', { pattern, language })",
+      "safety": "standard",
+      "tags": ["tokens", "ast", "compression", "cache", "mcp"],
+      "parameters": [
+        { "name": "pattern", "type": "string", "required": true, "description": "AST structural search pattern." },
+        { "name": "language", "type": "string", "required": true, "description": "Target programming language." }
+      ],
+      "guardrails": [
+        "AST Search: Matches syntax tree nodes rather than raw character text."
+      ],
+      "example": {
+        "tool": "call_mcp_tool",
+        "parameters": { "ServerName": "token-optimizer", "ToolName": "smart_ast_grep", "Arguments": { "pattern": "function $A($B) { $$$ }", "language": "typescript" } }
+      }
+    },
+    {
+      "name": "agy",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Launch interactive Terminal User Interface (TUI) coding session.",
+      "usage": "agy [--resume <id>] [--model <name>] [--cwd <path>]",
+      "safety": "standard",
+      "tags": ["agy", "cli", "terminal", "tui", "launch"],
+      "parameters": [
+        { "name": "--resume", "type": "string", "required": false, "description": "Resume previous session by conversation UUID." },
+        { "name": "--model", "type": "string", "required": false, "description": "Select model tier (e.g. gemini-2.5-pro)." }
+      ],
+      "guardrails": ["Use agy for interactive TUI and agy -p for headless scripting."],
+      "example": { "tool": "agy", "parameters": { "--model": "gemini-2.5-pro" } }
+    },
+    {
+      "name": "agy -p",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Non-interactive headless single-shot execution for scripts and CI/CD pipelines.",
+      "usage": "agy -p \"<instruction>\" [--output-format json] [--non-interactive]",
+      "safety": "mutating",
+      "tags": ["agy", "headless", "prompt", "ci-cd", "automation", "cli"],
+      "parameters": [
+        { "name": "-p", "type": "string", "required": true, "description": "Prompt string to execute non-interactively." }
+      ],
+      "guardrails": ["Use --dangerously-skip-permissions only in automated sandbox CI runners."],
+      "example": { "tool": "agy -p", "parameters": { "-p": "Run tests and report status", "--output-format": "json" } }
+    },
+    {
+      "name": "agy --resume",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Reconnect to a previous conversation state with preserved context and history.",
+      "usage": "agy --resume <session-id> / agy -c",
+      "safety": "standard",
+      "tags": ["agy", "resume", "history", "session", "cli"],
+      "parameters": [
+        { "name": "--resume", "type": "string", "required": true, "description": "Session UUID identifier." }
+      ],
+      "guardrails": ["Preserves all past tool calls, thoughts, and workspace changes."],
+      "example": { "tool": "agy --resume", "parameters": { "--resume": "244f20fc-929b-48dd-a84c-7a58994881ba" } }
+    },
+    {
+      "name": "agy auth",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Manage user authentication, API keys, and account login status.",
+      "usage": "agy auth login | agy auth status | agy auth logout",
+      "safety": "standard",
+      "tags": ["agy", "auth", "login", "credentials", "cli"],
+      "parameters": [
+        { "name": "command", "type": "string", "required": true, "description": "Subcommand: login, status, logout." }
+      ],
+      "guardrails": ["Use agy auth status to verify account tier and quotas."],
+      "example": { "tool": "agy auth", "parameters": { "command": "status" } }
+    },
+    {
+      "name": "agy config",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Inspect and set global platform settings, telemetry, and default models.",
+      "usage": "agy config get <key> | agy config set <key> <value>",
+      "safety": "mutating",
+      "tags": ["agy", "config", "settings", "preferences", "cli"],
+      "parameters": [
+        { "name": "action", "type": "string", "required": true, "description": "Action: get, set, list." },
+        { "name": "key", "type": "string", "required": false, "description": "Configuration key name." },
+        { "name": "value", "type": "string", "required": false, "description": "Configuration value." }
+      ],
+      "guardrails": ["Global configurations stored in user home directory."],
+      "example": { "tool": "agy config", "parameters": { "action": "set", "key": "model", "value": "gemini-2.5-pro" } }
+    },
+    {
+      "name": "/compact",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Manually trigger conversation context compaction to reclaim tokens.",
+      "usage": "/compact [directives]",
+      "safety": "standard",
+      "tags": ["compact", "tokens", "summarize", "context", "cli"],
+      "parameters": [
+        { "name": "directives", "type": "string", "required": false, "description": "Specific files or invariants to preserve." }
+      ],
+      "guardrails": ["Trigger /compact when session token usage exceeds 60% capacity."],
+      "example": { "tool": "/compact", "parameters": { "directives": "Preserve active refactoring plan for src/middleware.ts" } }
+    },
+    {
+      "name": "/stats",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Display active session token usage, latency metrics, and API quota.",
+      "usage": "/stats",
+      "safety": "read_only",
+      "tags": ["stats", "tokens", "metrics", "quota", "cli"],
+      "parameters": [],
+      "guardrails": ["Useful for auditing token consumption during long development sessions."],
+      "example": { "tool": "/stats", "parameters": {} }
+    },
+    {
+      "name": "/model",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Switch active LLM model tier (e.g. gemini-2.5-pro vs gemini-2.5-flash).",
+      "usage": "/model [tier-name]",
+      "safety": "standard",
+      "tags": ["model", "llm", "tier", "switch", "cli"],
+      "parameters": [
+        { "name": "tier-name", "type": "string", "required": false, "description": "Target model identifier." }
+      ],
+      "guardrails": ["Select flash for speed/lookups and pro for deep architecture and synthesis."],
+      "example": { "tool": "/model", "parameters": { "tier-name": "gemini-2.5-pro" } }
+    },
+    {
+      "name": "/checkpoint",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Create an immutable point-in-time snapshot of conversation and file state.",
+      "usage": "/checkpoint [label]",
+      "safety": "mutating",
+      "tags": ["checkpoint", "snapshot", "backup", "state", "cli"],
+      "parameters": [
+        { "name": "label", "type": "string", "required": false, "description": "Descriptive label for checkpoint." }
+      ],
+      "guardrails": ["Create checkpoints before destructive refactorings."],
+      "example": { "tool": "/checkpoint", "parameters": { "label": "pre-auth-refactor" } }
+    },
+    {
+      "name": "/clear",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Reset conversation transcript while retaining project context.",
+      "usage": "/clear",
+      "safety": "mutating",
+      "tags": ["clear", "reset", "transcript", "cli"],
+      "parameters": [],
+      "guardrails": ["Clears turn history without modifying workspace files."],
+      "example": { "tool": "/clear", "parameters": {} }
+    },
+    {
+      "name": "/export",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Export active conversation log to local Markdown/JSON format.",
+      "usage": "/export [filepath]",
+      "safety": "mutating",
+      "tags": ["export", "transcript", "markdown", "json", "cli"],
+      "parameters": [
+        { "name": "filepath", "type": "string", "required": false, "description": "Destination file path." }
+      ],
+      "guardrails": ["Saves full conversation turns and tool calls."],
+      "example": { "tool": "/export", "parameters": { "filepath": "docs/session-log.md" } }
+    },
+    {
+      "name": "/exit",
+      "category": "cli",
+      "server": "antigravity",
+      "summary": "Safely terminate the active CLI session.",
+      "usage": "/exit or /quit",
+      "safety": "standard",
+      "tags": ["exit", "quit", "close", "cli"],
+      "parameters": [],
+      "guardrails": ["Flushes logs and closes open sockets."],
+      "example": { "tool": "/exit", "parameters": {} }
+    },
+    {
+      "name": "/opsx-propose",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Propose a new change (proposal, specs, design, tasks) without writing code.",
+      "usage": "/opsx-propose <feature-name-or-description>",
+      "safety": "mutating",
+      "tags": ["openspec", "sdd", "propose", "spec", "planning", "repo"],
+      "parameters": [
+        { "name": "description", "type": "string", "required": true, "description": "Feature requirements and design constraints." }
+      ],
+      "guardrails": ["Never write implementation code during the propose phase."],
+      "example": { "tool": "/opsx-propose", "parameters": { "description": "Add sliding window rate limiter to /api/auth" } }
+    },
+    {
+      "name": "/opsx-apply",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Sequentially implement task checklists from approved OpenSpec delta change.",
+      "usage": "/opsx-apply [change-name]",
+      "safety": "mutating",
+      "tags": ["openspec", "apply", "tdd", "implementation", "tasks", "repo"],
+      "parameters": [
+        { "name": "change-name", "type": "string", "required": false, "description": "Active change identifier." }
+      ],
+      "guardrails": ["Implement tasks strictly according to tasks.md checklist."],
+      "example": { "tool": "/opsx-apply", "parameters": { "change-name": "add-rate-limiter" } }
+    },
+    {
+      "name": "/opsx-verify",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Verify codebase changes against specifications, tests, and design requirements.",
+      "usage": "/opsx-verify [change-name]",
+      "safety": "read_only",
+      "tags": ["openspec", "verify", "audit", "qa", "repo"],
+      "parameters": [
+        { "name": "change-name", "type": "string", "required": false, "description": "Active change identifier." }
+      ],
+      "guardrails": ["Run unit tests, lint checks, and spec compliance audits."],
+      "example": { "tool": "/opsx-verify", "parameters": { "change-name": "add-rate-limiter" } }
+    },
+    {
+      "name": "/opsx-archive",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Archive completed change proposal and sync delta specs to main specification root.",
+      "usage": "/opsx-archive [change-name]",
+      "safety": "mutating",
+      "tags": ["openspec", "archive", "sync", "spec", "repo"],
+      "parameters": [
+        { "name": "change-name", "type": "string", "required": false, "description": "Active change identifier." }
+      ],
+      "guardrails": ["Only archive after all tasks are completed and verified."],
+      "example": { "tool": "/opsx-archive", "parameters": { "change-name": "add-rate-limiter" } }
+    },
+    {
+      "name": "/opsx-sync",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Sync delta specs directly to main specifications without archiving.",
+      "usage": "/opsx-sync [change-name]",
+      "safety": "mutating",
+      "tags": ["openspec", "sync", "spec", "repo"],
+      "parameters": [
+        { "name": "change-name", "type": "string", "required": false, "description": "Active change identifier." }
+      ],
+      "guardrails": ["Merges specification deltas into canonical specs."],
+      "example": { "tool": "/opsx-sync", "parameters": { "change-name": "add-rate-limiter" } }
+    },
+    {
+      "name": "/opsx-new",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Start a new step-by-step change lifecycle with guided prompt questions.",
+      "usage": "/opsx-new",
+      "safety": "mutating",
+      "tags": ["openspec", "new", "wizard", "repo"],
+      "parameters": [],
+      "guardrails": ["Guides developer through proposal template creation."],
+      "example": { "tool": "/opsx-new", "parameters": {} }
+    },
+    {
+      "name": "/opsx-ff",
+      "category": "repo",
+      "server": "openspec",
+      "summary": "OpenSpec SDD: Fast-forward through OpenSpec artifact creation in one go.",
+      "usage": "/opsx-ff <change-description>",
+      "safety": "mutating",
+      "tags": ["openspec", "fast-forward", "quick", "repo"],
+      "parameters": [
+        { "name": "description", "type": "string", "required": true, "description": "Brief description of the change." }
+      ],
+      "guardrails": ["Generates proposal, specs, design, and tasks simultaneously."],
+      "example": { "tool": "/opsx-ff", "parameters": { "description": "Update JWT expiry to 1 hour" } }
+    },
+    {
+      "name": "validate-ai-docs.cjs",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Validate Markdown docs against the 7-Pillars standard (frontmatter, links, TL;DR).",
+      "usage": "node .agents/scripts/validate-ai-docs.cjs",
+      "safety": "read_only",
+      "tags": ["docs", "7-pillars", "validation", "lint", "repo"],
+      "parameters": [],
+      "guardrails": ["Ensures all markdown documents comply with AI-Friendly documentation principles."],
+      "example": { "tool": "validate-ai-docs.cjs", "parameters": {} }
+    },
+    {
+      "name": "generate-docs-manifests.cjs",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Generate token-lean index manifests for AI context harvesting and prompt injection.",
+      "usage": "node .agents/scripts/generate-docs-manifests.cjs",
+      "safety": "mutating",
+      "tags": ["docs", "manifest", "ai-context", "tokens", "repo"],
+      "parameters": [],
+      "guardrails": ["Creates lean index files for rapid agent boot."],
+      "example": { "tool": "generate-docs-manifests.cjs", "parameters": {} }
+    },
+    {
+      "name": "ensure-tldr.cjs",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Enforce machine-readable TL;DR summary blocks in all project documentation.",
+      "usage": "node .agents/scripts/ensure-tldr.cjs",
+      "safety": "read_only",
+      "tags": ["docs", "tldr", "summary", "audit", "repo"],
+      "parameters": [],
+      "guardrails": ["Verifies every markdown document starts with a structured TL;DR block."],
+      "example": { "tool": "ensure-tldr.cjs", "parameters": {} }
+    },
+    {
+      "name": "reconcile-docs-links.cjs",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Check and fix relative and absolute markdown document links across the repository.",
+      "usage": "node .agents/scripts/reconcile-docs-links.cjs",
+      "safety": "mutating",
+      "tags": ["docs", "links", "repair", "reconcile", "repo"],
+      "parameters": [],
+      "guardrails": ["Ensures no broken links exist between documentation files."],
+      "example": { "tool": "reconcile-docs-links.cjs", "parameters": {} }
+    },
+    {
+      "name": "help.js",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Deterministic tool catalog runner, parameter inspector, prompt generator, and system doctor.",
+      "usage": "node .agents/skills/agy-tool/scripts/help.js [--all|--inspect <tool>|--recipe <intent>|--doctor|--export-md]",
+      "safety": "read_only",
+      "tags": ["help", "catalog", "discovery", "doctor", "inspect", "recipes", "repo"],
+      "parameters": [
+        { "name": "--all", "type": "boolean", "required": false, "description": "List all tools across 4 categories." },
+        { "name": "--inspect", "type": "string", "required": false, "description": "Inspect parameter schema for tool." },
+        { "name": "--recipe", "type": "string", "required": false, "description": "Generate prompt formula for intent." },
+        { "name": "--doctor", "type": "boolean", "required": false, "description": "Run system health diagnostic probes." },
+        { "name": "--export-md", "type": "string", "required": false, "description": "Export 7-Pillars cheatsheet markdown." }
+      ],
+      "guardrails": ["Zero external dependencies; runs in <300ms."],
+      "example": { "tool": "help.js", "parameters": { "--doctor": true } }
+    },
+    {
+      "name": "harness-audit.js",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Execute deterministic 12-category harness audit producing a 0-10 scorecard.",
+      "usage": "node scripts/harness-audit.js",
+      "safety": "read_only",
+      "tags": ["audit", "harness", "scorecard", "quality", "repo"],
+      "parameters": [],
+      "guardrails": ["Audits tool parity, documentation standards, and agent capability coverage."],
+      "example": { "tool": "harness-audit.js", "parameters": {} }
+    },
+    {
+      "name": "platform-audit.js",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Audit Cloudflare Pages Edge, Neon Postgres, and Sanity CMS bindings and connectivity.",
+      "usage": "node scripts/platform-audit.js",
+      "safety": "read_only",
+      "tags": ["cloudflare", "neon", "sanity", "audit", "bindings", "repo"],
+      "parameters": [],
+      "guardrails": ["Validates all remote cloud platform configurations."],
+      "example": { "tool": "platform-audit.js", "parameters": {} }
+    },
+    {
+      "name": "quality-gate.js",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Run ECC formatter and quality gate verification for targeted files.",
+      "usage": "node scripts/quality-gate.js <filepath>",
+      "safety": "read_only",
+      "tags": ["ecc", "quality", "linter", "gate", "repo"],
+      "parameters": [
+        { "name": "filepath", "type": "string", "required": true, "description": "File path to validate." }
+      ],
+      "guardrails": ["Enforces strict typing, linting, and formatting standards."],
+      "example": { "tool": "quality-gate.js", "parameters": { "filepath": "src/lib/auth.ts" } }
+    },
+    {
+      "name": "mcp-health-check.js",
+      "category": "repo",
+      "server": "scripts",
+      "summary": "Probe and report connectivity status of all configured MCP servers.",
+      "usage": "node scripts/mcp-health-check.js",
+      "safety": "read_only",
+      "tags": ["mcp", "health", "connectivity", "probe", "repo"],
+      "parameters": [],
+      "guardrails": ["Verifies socket and transport connectivity to all active MCP bridges."],
+      "example": { "tool": "mcp-health-check.js", "parameters": {} }
+    },
+    {
+      "name": "graphify reflect",
+      "category": "repo",
+      "server": "graphify",
+      "summary": "Graphify Work Memory: Aggregate agent Q&A lessons into LESSONS.md and create .graphify_learning.json overlay.",
+      "usage": "graphify reflect [--if-stale] [--out docs/LESSONS.md] [--graph graphify-out/graph.json]",
+      "safety": "mutating",
+      "tags": ["graphify", "reflect", "lessons", "work-memory", "repo"],
+      "parameters": [
+        { "name": "--if-stale", "type": "boolean", "required": false, "description": "No-op when LESSONS.md is already newer than memory logs.", "default": true },
+        { "name": "--out", "type": "string", "required": false, "description": "Custom output path for lessons markdown (default: docs/LESSONS.md)." },
+        { "name": "--graph", "type": "string", "required": false, "description": "Knowledge graph JSON path (default: graphify-out/graph.json)." }
+      ],
+      "guardrails": [
+        "Layer 6 Memory Sync: Run graphify reflect at the end of feature workflows to persist learnings.",
+        "Work Memory Overlay: Generates .graphify_learning.json tagging nodes as preferred/tentative/contested."
+      ],
+      "example": { "tool": "graphify reflect", "parameters": { "--if-stale": true, "--out": "docs/LESSONS.md" } }
+    },
+    {
+      "name": "graphify extract --code-only",
+      "category": "repo",
+      "server": "graphify",
+      "summary": "Graphify AST Extraction: Deterministically parse local codebase AST without requiring LLM vision or API keys.",
+      "usage": "graphify extract <directory> --code-only [--directed] [--no-viz]",
+      "safety": "mutating",
+      "tags": ["graphify", "extract", "ast", "code-only", "fast", "repo"],
+      "parameters": [
+        { "name": "directory", "type": "string", "required": true, "description": "POSIX path to target directory to extract." },
+        { "name": "--code-only", "type": "boolean", "required": true, "description": "Extract code only using local AST parsers." },
+        { "name": "--directed", "type": "boolean", "required": false, "description": "Preserve directed call and import edges." }
+      ],
+      "guardrails": [
+        "Zero API Quota: Extracts complete architectural graph locally without external LLM calls."
+      ],
+      "example": { "tool": "graphify extract --code-only", "parameters": { "directory": ".", "--code-only": true } }
+    },
+    {
+      "name": "graphify path",
+      "category": "cli",
+      "server": "graphify",
+      "summary": "Graphify CLI Path Tracer: Find the shortest connection path between two named concepts from terminal.",
+      "usage": "graphify path \"<source>\" \"<target>\"",
+      "safety": "read_only",
+      "tags": ["graphify", "path", "cli", "trace", "terminal"],
+      "parameters": [
+        { "name": "source", "type": "string", "required": true, "description": "Source concept, symbol, or filename." },
+        { "name": "target", "type": "string", "required": true, "description": "Target concept, symbol, or filename." }
+      ],
+      "guardrails": [
+        "Fast Dependency Check: Instant terminal verification of concept connections without launching MCP."
+      ],
+      "example": { "tool": "graphify path", "parameters": { "source": "auth.ts", "target": "middleware.ts" } }
+    }
+  ]
+}

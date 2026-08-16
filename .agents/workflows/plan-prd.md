@@ -16,7 +16,7 @@ Produces a **Product Requirements Document** — the requirements-phase artifact
 | Frame the problem and users | Design the architecture |
 | Capture success criteria and scope | Pick files or write patterns |
 | List open questions and risks | Enumerate implementation tasks |
-| Write `.claude/prds/{name}.prd.md` | Produce an implementation plan — that's `/plan` |
+| Write Antigravity PRD artifact (`prd.md`) | Produce an implementation plan — that's `/plan` |
 
 If you find yourself writing implementation detail, stop and cut it. It belongs in `/plan`.
 
@@ -66,13 +66,7 @@ Wait for responses.
 
 ### Phase 4 — GENERATE & HAND OFF
 
-Create the directory if needed, write the PRD, and report.
-
-```bash
-mkdir -p .claude/prds
-```
-
-**Output path**: `.claude/prds/{kebab-case-name}.prd.md`
+Generate the PRD as an Antigravity markdown artifact (`<appDataDir>/brain/<conversation-id>/prd.md` or `{name}_prd.md`):
 
 #### PRD Template
 
@@ -86,49 +80,34 @@ mkdir -p .claude/prds
 - {User quote, data point, or observation}
 - {OR: "Assumption — needs validation via {method}"}
 
-## Users
-- **Primary**: {role, context, what triggers the need}
-- **Not for**: {who this explicitly excludes}
+## Target Users
+- **Primary**: {Specific role/persona, context, and what triggers the pain}
+- **Not for**: {Who this explicitly excludes}
 
-## Hypothesis
-We believe **{capability}** will **{solve problem}** for **{users}**.
-We'll know we're right when **{measurable outcome}**.
-
-## Success Metrics
-| Metric | Target | How measured |
-|---|---|---|
-| {primary} | {number} | {method} |
+## Hypothesis & Measurable Outcome
+{We believe <capability> will <solve problem> for <users>. Measured by <outcome>.}
 
 ## Scope
-**MVP** — {the minimum to test the hypothesis}
+### In Scope (MVP)
+- {item 1}
+- {item 2}
 
-**Out of scope**
-- {item} — {why deferred}
+### Out of Scope (Explicitly Excluded)
+- {item 1}
+- {item 2}
 
-## Delivery Milestones
-<!-- Business outcomes, not engineering tasks. /plan turns each into a plan. -->
-<!-- Status: pending | in-progress | complete -->
-
-| # | Milestone | Outcome | Status | Plan |
-|---|---|---|---|---|
-| 1 | {name} | {user-visible change} | pending | — |
-| 2 | {name} | {user-visible change} | pending | — |
-
-## Open Questions
-- [ ] {question that could change scope or approach}
-
-## Risks
-| Risk | Likelihood | Impact | Mitigation |
-|---|---|---|---|
+## Open Questions & Risks
+- [ ] {Question / risk 1}
+- [ ] {Question / risk 2}
 
 ---
-*Status: DRAFT — requirements only. Implementation planning pending via /plan.*
+*Status: DRAFT — requirements only. Implementation planning pending via /plan or /opsx-propose.*
 ```
 
 #### Report to user
 
 ```
-PRD created: .claude/prds/{name}.prd.md
+PRD artifact created: <appDataDir>/brain/<conversation-id>/prd.md
 
 Problem:    {one line}
 Hypothesis: {one line}
@@ -141,8 +120,8 @@ Validation status:
 
 Open questions: {count}
 
-Next step: /plan .claude/prds/{name}.prd.md
-  → /plan will pick the next pending milestone and produce an implementation plan.
+Next step: /plan (or /opsx-propose for Layer 3 SDD)
+  → /plan will consume the PRD artifact and produce an implementation_plan.md artifact.
 ```
 
 ## Integration

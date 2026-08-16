@@ -2,9 +2,9 @@
 id: AUDIT-AUTH-001
 title: Auth & ADR Audit Findings — Cloudflare Edge Compatibility & Auth.js v5 Verification
 version: 4.0.0
-status: COMPLETED
+status: IN_PROGRESS
 target_domain: dayaberkah.id
-graphify_community: "community_audit"
+graphify_community: "community_audits"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L753-L797"
   api_ref: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L194-L241"

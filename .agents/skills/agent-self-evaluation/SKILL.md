@@ -19,29 +19,7 @@ After completing a complex task, the agent pauses to rate its own output against
 
 ### Session Hook Integration
 
-To configure an automated reminder at session end, add the following snippet to hooks/hooks.json:
-
-`json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[Self-Eval] Session complete. Consider running agent-self-evaluation to rate your output.'"
-          }
-        ],
-        "description": "Remind agent to self-evaluate at session end"
-      }
-    ]
-  }
-}
-`
-
-### Session Hook Integration
-
-To configure an automated reminder at session end, add the following snippet to `hooks/hooks.json`:
+To configure an automated reminder at session end, add the following snippet to [`.agents/hooks.json`](file:///d:/dev/arostech-hub/.agents/hooks.json):
 
 ```json
 {
@@ -113,9 +91,7 @@ Do NOT average the scores in your head first and then work backwards. Score each
 
 ### Step 3: Produce the Evaluation Report
 
-Format your report using the template below (matches scripts/evaluate.py output):
-
-`scripts/evaluate.py` output):
+Format your report using the template below (matches output of `python .agents/skills/agent-self-evaluation/scripts/evaluate.py`):
 
 ```
 ============================================================

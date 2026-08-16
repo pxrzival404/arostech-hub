@@ -2,10 +2,10 @@
 id: AUDIT-PRISMA-001
 title: Card 1.2 Prisma Schema & Data Model Audit Findings
 version: 1.0.0
-status: COMPLETED
+status: IN_PROGRESS
 audit_date: 2026-08-13
 target_domain: dayaberkah.id
-graphify_community: "community_data_model"
+graphify_community: "community_audits"
 authoritative_references:
   schema_prisma: "file:///d:/dev/arostech-hub/prisma/schema.prisma#L1-L201"
   prisma_client: "file:///d:/dev/arostech-hub/src/lib/db/prisma.ts#L1-L33"

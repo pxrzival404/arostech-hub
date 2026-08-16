@@ -1,18 +1,18 @@
 ---
-id: audit-21st-sdk-footprint
+id: AUDIT-SDK-001
 title: "Card 1.7 21st SDK Footprint Audit & Recommendation Report"
 version: 1.0.0
-status: APPROVED
+status: IN_PROGRESS
 author: Card 1.7 21st SDK Audit Agent
 date: 2026-08-13
-graphify_community: "an-token/route.ts"
+target_domain: dayaberkah.id
+graphify_community: "community_audits"
 authoritative_references:
-  - "file:///D:/dev/arostech-hub/AGENTS.md#L286"
-  - "file:///D:/dev/arostech-hub/SYSTEM_BLUEPRINT_MIGRATION_PLAN_v2.md#L284"
-  - "file:///D:/dev/arostech-hub/src/app/chat/page.tsx"
-  - "file:///D:/dev/arostech-hub/src/app/api/an-token/route.ts"
-  - "file:///D:/dev/arostech-hub/src/agents/my-agent/index.ts"
-  - "file:///D:/dev/arostech-hub/src/lib/config/env.ts#L257-L301"
+  agents_md: "file:///d:/dev/arostech-hub/AGENTS.md#L1-L60"
+  chat_page: "file:///d:/dev/arostech-hub/src/app/chat/page.tsx#L1-L50"
+  an_token: "file:///d:/dev/arostech-hub/src/app/api/an-token/route.ts#L1-L50"
+  agent_def: "file:///d:/dev/arostech-hub/src/agents/my-agent/index.ts#L1-L50"
+  env_config: "file:///d:/dev/arostech-hub/src/lib/config/env.ts#L257-L301"
 ---
 
 # Card 1.7 21st SDK Footprint Audit & Recommendation Report

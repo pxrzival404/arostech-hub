@@ -2,8 +2,9 @@
 id: AUDIT-SANITY-001
 title: Card 1.3 Sanity CMS Audit Findings Report
 version: 1.0.0
-status: COMPLETED
-graphify_community: "community_sanity"
+status: IN_PROGRESS
+target_domain: dayaberkah.id
+graphify_community: "community_audits"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L335-L346"
   sanity_guide: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/sanity-cms-guide.md#L1-L100"

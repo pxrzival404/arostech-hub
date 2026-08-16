@@ -1,21 +1,21 @@
 ---
-id: audit/fase-1-report
+id: AUDIT-PHASE1-SUMMARY-001
 title: "Fase 1 Audit Report — Codebase-to-Docs High-Level Alignment"
 version: "1.0.0"
-status: complete
+status: IN_PROGRESS
+target_domain: dayaberkah.id
 date: "2026-08-13"
-graphify_community: "audit"
+graphify_community: "community_audits"
 authoritative_references:
-  - SYSTEM_BLUEPRINT_MIGRATION_PLAN_v2.md Section 5.2
-  - docs/operations/audits/phase-1-findings/middleware-findings.md
-  - docs/operations/audits/phase-1-findings/prisma-findings.md
-  - docs/operations/audits/phase-1-findings/sanity-findings.md
-  - docs/operations/audits/phase-1-findings/api-findings.md
-  - docs/operations/audits/phase-1-findings/auth-findings.md
-  - docs/operations/audits/phase-1-findings/analytics-findings.md
-  - docs/operations/audits/phase-1-findings/sdk-footprint-findings.md
-  - docs/operations/audits/phase-1-findings/dead-code-findings.md
-  - docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md
+  middleware_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/middleware-findings.md#L1-L50"
+  prisma_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/prisma-findings.md#L1-L50"
+  sanity_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/sanity-findings.md#L1-L50"
+  api_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/api-findings.md#L1-L50"
+  auth_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/auth-findings.md#L1-L50"
+  analytics_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/analytics-findings.md#L1-L50"
+  sdk_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/sdk-footprint-findings.md#L1-L50"
+  dead_code_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/dead-code-findings.md#L1-L50"
+  adr_0006: "file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md#L1-L50"
 ---
 
 # Fase 1 Audit Report — Codebase-to-Docs High-Level Alignment

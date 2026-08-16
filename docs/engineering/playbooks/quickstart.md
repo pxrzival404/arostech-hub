@@ -151,7 +151,7 @@ Developers MUST execute build type-checking and unit testing scripts prior to co
 #### Scenario: Pre-Commit Build Verification
 - GIVEN a modified feature branch
 - WHEN running `pnpm pages:build` and `pnpm test`
-- THEN both commands MUST pass with 0 errors and minimum 80% test coverage.
+- THEN both commands MUST pass with 0 errors and minimum 85.0% test coverage (Strict Zero-Regression Gate).
 
 ```bash
 pnpm dev              # Local dev server (lvh.me:3000)

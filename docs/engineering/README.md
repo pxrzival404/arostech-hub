@@ -1,10 +1,12 @@
 ---
 id: DOC-ENG-INDEX
 title: Engineering & Governance Master Index
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_engineering"
 authoritative_references:
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   ai_rules: "file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60"
 ---
@@ -28,7 +30,7 @@ docs/engineering/
 │   ├── ai-agent-rules.md   # AI agent operating guardrails & topology
 │   ├── coding-standards.md # TypeScript, React 19, Tailwind v4 rules
 │   ├── contributing.md     # Git Flow, commit standards, PR gates
-│   ├── openspec-workflow.md# OpenSpec Extended Workflow (OPSX) guide
+│   ├── 0xrizz-workflow.md  # 0xrizz 8-Layer Unified Governance & Harness
 │   └── versioning-policy.md# SemVer 2.0.0 & release gate criteria
 └── playbooks/              # Developer execution playbooks
     ├── gsc-setup.md        # Google Search Console & indexing playbook
@@ -51,7 +53,7 @@ docs/engineering/
 | [`ai-agent-rules.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60) | Operating rules, domain topology, `[DOCS_MODE]` guardrails | Agents SHALL NOT mutate code in DOCS_MODE |
 | [`coding-standards.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/coding-standards.md#L1-L60) | TS strict mode, immutability, React 19 RSC, Tailwind v4 | Code SHALL NOT use `any` types |
 | [`versioning-policy.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/versioning-policy.md#L1-L40) | SemVer 2.0.0 rules and release gates | Version numbers SHALL follow SemVer strictly |
-| [`openspec-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/openspec-workflow.md#L1-L50) | OpenSpec Extended Workflow (OPSX) lifecycle | Changes MUST have approved OpenSpec proposal |
+| [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100) | 0xrizz 8-Layer Unified Governance & Agent Harness | All changes MUST traverse L0-L8 sequence |
 
 ---
 
@@ -62,7 +64,7 @@ docs/engineering/
 | [`quickstart.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/quickstart.md#L1-L50) | Local setup, `lvh.me` subdomain resolution, pnpm commands | Local environment setup |
 | [`sanity-cms-guide.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/sanity-cms-guide.md#L1-L100) | GROQ query patterns, ISR cache tags, webhook revalidation | Sanity CMS integration |
 | [`gsc-setup.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/gsc-setup.md#L1-L50) | Search Console setup, sitemap submission, indexing checks | Organic search indexing |
-| [`testing/strategy.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60) | TDD RED-GREEN-REFACTOR cycle, 80%+ coverage mandate | Test architecture strategy |
+| [`testing/strategy.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60) | TDD RED-GREEN-REFACTOR cycle, 85.0%+ coverage mandate | Test architecture strategy |
 | [`testing/guide.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/guide.md#L1-L60) | Jest configuration, file layout, Universal RFQ testing | Unit & Integration testing |
 | [`testing/mocking-specs.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/mocking-specs.md#L1-L60) | Neon/Prisma, Sanity, Resend, Telegram API mocks | Isolated unit mocking |
 | [`testing/e2e-playbook.md`](file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/e2e-playbook.md#L1-L60) | Playwright E2E testing across subdomains & client portal | Critical E2E user flows |

@@ -1,10 +1,12 @@
 ---
 id: DOC-OPS-RUN-RELEASE
 title: Release Management & Cloudflare Deployment Pipeline Runbook
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_operations"
 authoritative_references:
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   versioning_policy: "file:///d:/dev/arostech-hub/docs/engineering/governance/versioning-policy.md#L1-L40"
 ---
@@ -14,7 +16,7 @@ authoritative_references:
 > **TL;DR**: Authoritative specification and architectural reference for Release Management & Cloudflare Deployment Pipeline Runbook within the DBSN platform (docs/operations/runbooks/release-process.md).
 
 
-> **Authoritative Baseline Reference**: Deployment process, CI/CD pipeline, and Cloudflare Pages edge hosting release controls for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
+> **Authoritative Baseline Reference**: Deployment process, CI/CD pipeline, and Cloudflare Pages edge hosting release controls for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)) and [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100).
 
 ---
 
@@ -70,7 +72,7 @@ pnpm pages:deploy
 Before promoting a release candidate to production, operators MUST verify:
 
 - [ ] All unit and integration tests pass: `pnpm test`.
-- [ ] Total test coverage meets the **80%+** threshold: `pnpm test:coverage`.
+- [ ] Total test coverage meets the **85.0%+** threshold (Strict Zero-Regression Gate): `pnpm test:coverage`.
 - [ ] ESLint and static analysis pass clean: `pnpm lint`.
 - [ ] Cloudflare encrypted secret bindings verified in Page Settings.
 - [ ] Release notes tagged in `CHANGELOG.md`.

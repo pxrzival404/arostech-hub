@@ -3,6 +3,7 @@ id: DOC-ENG-TEST-E2E-PLAYBOOK
 title: Playwright End-to-End (E2E) Testing Playbook
 version: 4.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_testing"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"

@@ -3,6 +3,7 @@ id: DOC-ENG-PLAY-SANITY
 title: Sanity Headless CMS Integration & ISR Revalidation Guide
 version: 4.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_playbooks"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"

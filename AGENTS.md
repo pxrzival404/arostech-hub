@@ -1,10 +1,11 @@
 ---
 id: doc:AGENTS.md
 title: arostech-hub — AI Agent Operating Rules & Harness Governance
-version: 2.4.0
+version: 5.0.0
 status: authoritative
 graphify_community: engineering
 authoritative_references:
+  - file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100
   - file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60
 ---
 
@@ -40,15 +41,15 @@ openspec/           # LLA OpenSpec SDD change proposals (proposal, specs, tasks)
 
 ## Extended Development Workflow (8-Layer Standard)
 
-All development MUST follow the 8-layer sequence defined in [`.agents/rules/common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md):
+All development MUST follow the 8-layer sequence defined in [`.agents/rules/common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) and [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md):
 
 ```
-L0: Context Boot (graphify query) -> L1: HLA Alignment (docs/) -> L2: Research & Reuse (Context7) -> L3: SDD Proposal (/opsx-propose) -> L4: Agent Delegation -> L5: TDD Execution (RED-GREEN-REFACTOR) -> L6: Memory Sync (graphify update .) -> L7: Change Verify (/opsx-verify + lint + test + build) -> L8: Commit & Archive (/opsx-archive + /pr).
+L0: Context Boot (graphify query + dirty tree auto-sync) -> L1: HLA Alignment (docs/ 7-Pillars) -> L2: Research & Reuse (Context7 / GitHub) -> L3: SDD Scaffolding (Standard /opsx-propose vs Fast-Track /opsx-ff) -> L4: Agent Routing & Harness Auto-Gating -> L5: TDD Inner Loop (Isolated AAA RED-GREEN-REFACTOR-VERIFY, Spec-to-Test Multiplier >= 4) -> L6: Incremental Memory Sync (graphify update ., sub-second AST) -> L7: Strict Zero-Regression Verification (85.0%+ Branch Coverage, CF Pages Bundle <25MB) -> L8: Commit, PR & Archive (Conventional Commits, /opsx-archive).
 ```
 
 - **Governing Workflow Rules**:
+  - [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md) — Master 8-Layer Unified Governance & Agent Harness Specification (v5.0.0)
   - [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) — Unified 8-Layer execution sequence & gate conditions
-  - [`teamwork-squad-orchestration.md`](file:///d:/dev/arostech-hub/.agents/rules/teamwork-squad-orchestration.md) — Squad orchestration, Draft-First, PRD cascade
   - [`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md) — 7-Pillars documentation standard
   - [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md) — Knowledge Graph boot (Layer 0) & sync protocol (Layer 3/6/8)
   - [`agy-prompt.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-prompt.md) — Isolated prompt-crafting, context-harvesting, and prompt-architecture (Manual)
@@ -67,7 +68,7 @@ L0: Context Boot (graphify query) -> L1: HLA Alignment (docs/) -> L2: Research &
 
 ## Invariants & Guardrails
 
-- ✅ **Always do:** Execute all commands in **Git Bash** (`bash`) using forward-slash (`/`) paths. Run `graphify query "<task>"` at Layer 0 boot. Derive tests from OpenSpec specs. Enforce 80%+ test coverage. Return new immutable copies. Validate docs with `node .agents/scripts/validate-ai-docs.cjs`.
+- ✅ **Always do:** Execute all commands in **Git Bash** (`bash`) using forward-slash (`/`) paths. Run `graphify query "<task>"` at Layer 0 boot. Derive tests from OpenSpec specs with Spec-to-Test Multiplier >= 4. Enforce 85.0%+ branch test coverage (Strict Zero-Regression Gate). Return new immutable copies. Validate docs with `node .agents/scripts/validate-ai-docs.cjs`.
 - ⚠️ **Ask first:** Modifying `prisma/schema.prisma`. Adding new npm dependencies. Altering Auth.js split config. Modifying deployment pipelines.
 - 🚫 **Never do:** Commit hardcoded secrets or API keys. Set `ignoreBuildErrors: true` in `next.config.ts`. Use Node OS APIs in Edge middleware. Delete failing unit tests. Exceed 25 MB Worker bundle limit (`_worker.js`). Execute PowerShell or `cmd.exe` proprietary syntax in terminal invocations.
 

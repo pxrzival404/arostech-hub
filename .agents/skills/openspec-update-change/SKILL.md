@@ -2,12 +2,13 @@
 name: openspec-update-change
 description: Update an OpenSpec change by revising its existing planning artifacts and keeping them coherent with one another. Use when the user wants to revise a change's plan, fold new decisions into it, or reconcile its artifacts after an edit. Never edits code.
 allowed-tools: Bash(openspec:*)
+tools: [run_command, replace_file_content, write_to_file, view_file, grep_search, graphify:query_graph, graphify:get_neighbors]
 license: MIT
-compatibility: Requires openspec CLI.
+compatibility: Requires openspec CLI (v1.8.0+), Graphify MCP / CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.8.0"
+  version: "1.8.0"
+  memory_standard: "graphify-knowledge-graph"
 ---
 
 Revise a change's existing planning artifacts and keep them coherent. Never edit code.

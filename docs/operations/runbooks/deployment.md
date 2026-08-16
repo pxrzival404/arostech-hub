@@ -38,7 +38,7 @@ authoritative_references:
 
 ## 1. Deployment Architecture & Domain Topology
 
-The greenfield platform compiles a single Next.js 16 application via `@cloudflare/next-on-pages` and deploys it to Cloudflare Pages edge network. Incoming HTTP requests SHALL be processed by Edge Middleware and routed across 7 canonical hostnames.
+The greenfield platform compiles a single Next.js 16 application via `@opennextjs/cloudflare` (`.open-next/assets`) and deploys it to Cloudflare Pages edge network. Incoming HTTP requests SHALL be processed by Edge Middleware and routed across 7 canonical hostnames.
 
 ```
                   ┌──────────────────────┐

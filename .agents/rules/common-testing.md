@@ -1,11 +1,11 @@
 ---
 trigger: model_decision
-description: Testing requirements, 80% coverage threshold, TDD workflow, test structure AAA pattern, and test naming conventions
+description: Testing requirements, 85.0% strict coverage gate, Spec-to-Test multiplier (>=4 assertions/req), TDD workflow, AAA pattern, and test naming conventions
 ---
 
 # Testing Requirements
 
-## Minimum Test Coverage: 80%
+## Minimum Test Coverage: 85.0% (Strict Zero-Regression Gate)
 
 Test Types (ALL required):
 1. **Unit Tests** - Individual functions, utilities, components
@@ -16,7 +16,7 @@ Test Types (ALL required):
 
 > **Workflow context**: This rule enforces **Layer 5 (TDD Inner Loop)** of the 8-Layer Workflow.
 > SDD Pre-Condition must pass before entering the TDD cycle.
-> See [`common-extended-workflow.md`](./common-extended-workflow.md) for the full 8-layer sequence.
+> See [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L335) and [`common-extended-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-extended-workflow.md) for the full 8-layer sequence.
 
 ## Pre-Condition (SDD Spec Required)
 
@@ -25,11 +25,10 @@ Before entering the TDD cycle, the following MUST be verified:
 1. An OpenSpec spec file EXISTS in `openspec/` with GIVEN-WHEN-THEN scenarios for this task
 2. The task is listed in `tasks.md` and has passed atomicity gate (single responsibility)
 3. Test cases are derived from the spec's WHEN/THEN clauses — not invented independently
+4. Spec-to-Test Multiplier: each requirement MUST have $\ge 2$ testable BDD scenarios mapping to $\ge 4$ executable Jest assertions in TDD RED phase
 
 **If no spec exists**: Run `/opsx-propose` (Layer 3 SDD) first. Do NOT enter TDD without a spec.
 Entering TDD without an OpenSpec behavioral contract is a governance violation per AGENTS.md Section 4.
-
-
 
 MANDATORY workflow:
 1. Write test first (RED)
@@ -37,7 +36,7 @@ MANDATORY workflow:
 3. Write minimal implementation (GREEN)
 4. Run test - it should PASS
 5. Refactor (IMPROVE)
-6. Verify coverage (80%+)
+6. Verify coverage (85.0%+)
 
 ## Troubleshooting Test Failures
 

@@ -81,11 +81,14 @@ function findShellBinary() {
   }
 
   if (process.platform === 'win32') {
-    // Prefer PowerShell on Windows — it is native and does not leave zombie
-    // bash.exe / conhost.exe processes the way MSYS2/Git Bash does.
-    // Note: PowerShell is only suitable for .ps1 scripts; callers that need
-    // to run .sh scripts (e.g. observe-runner.js) must not use this function.
-    candidates.push('pwsh.exe', 'powershell.exe', 'bash.exe', 'bash');
+    candidates.push(
+      'C:\\Program Files\\Git\\bin\\bash.exe',
+      'C:\\Program Files\\Git\\usr\\bin\\bash.exe',
+      'bash.exe',
+      'bash',
+      'sh.exe',
+      'sh'
+    );
   } else {
     candidates.push('bash', 'sh');
   }

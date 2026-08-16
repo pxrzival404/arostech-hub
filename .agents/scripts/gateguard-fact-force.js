@@ -755,7 +755,16 @@ function hashSessionKey(prefix, value) {
 }
 
 function resolveSessionKey(data) {
-  const directCandidates = [data && data.session_id, data && data.sessionId, data && data.session && data.session.id, process.env.CLAUDE_SESSION_ID, process.env.ECC_SESSION_ID];
+  const directCandidates = [
+    data && data.conversationId,
+    data && data.conversation_id,
+    data && data.session_id,
+    data && data.sessionId,
+    data && data.session && data.session.id,
+    process.env.AGY_CONVERSATION_ID,
+    process.env.ANTIGRAVITY_SESSION_ID,
+    process.env.ECC_SESSION_ID
+  ];
 
   for (const candidate of directCandidates) {
     const sanitized = sanitizeSessionKey(candidate);
@@ -764,12 +773,12 @@ function resolveSessionKey(data) {
     }
   }
 
-  const transcriptPath = (data && (data.transcript_path || data.transcriptPath)) || process.env.CLAUDE_TRANSCRIPT_PATH;
+  const transcriptPath = (data && (data.transcript_path || data.transcriptPath)) || process.env.ANTIGRAVITY_TRANSCRIPT_PATH || process.env.TRANSCRIPT_PATH;
   if (transcriptPath && String(transcriptPath).trim()) {
     return hashSessionKey('tx', path.resolve(String(transcriptPath).trim()));
   }
 
-  const projectFingerprint = process.env.CLAUDE_PROJECT_DIR || process.cwd();
+  const projectFingerprint = process.env.ANTIGRAVITY_PROJECT_DIR || process.env.WORKSPACE_ROOT || process.cwd();
   return hashSessionKey('proj', path.resolve(projectFingerprint));
 }
 
@@ -1332,15 +1341,14 @@ if (require.main === module) {
       process.stdout.write(result);
       process.exit(0);
     } else if (result && typeof result === 'object') {
-      if (result.stderr) {
-        process.stderr.write(result.stderr + '\n');
-      }
       if (result.stdout) {
-        process.stdout.write(result.stdout);
+        process.stdout.write(result.stdout + '\n');
+      } else {
+        process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
       }
-      process.exit(result.exitCode || 0);
+      process.exit(0);
     } else {
-      process.stdout.write(data);
+      process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
       process.exit(0);
     }
   });

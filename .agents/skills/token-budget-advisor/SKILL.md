@@ -19,7 +19,7 @@ metadata:
 
 # Token Budget Advisor (TBA)
 
-Intercept the response flow to offer the user a choice about response depth **before** Claude answers.
+Intercept the response flow to offer the user a choice about response depth **before** answering.
 
 ## When to Use
 
@@ -41,9 +41,7 @@ Intercept the response flow to offer the user a choice about response depth **be
 
 ### Step 1 — Estimate input tokens
 
-Use the repository's canonical context-budget heuristics to estimate the prompt's token count mentally.
-
-Use the same calibration guidance as [context-budget](../context-budget/SKILL.md):
+Use the repository's canonical context-budget heuristics to estimate the prompt's token count mentally:
 
 - prose: `words × 1.3`
 - code-heavy or mixed/code blocks: `chars / 4`

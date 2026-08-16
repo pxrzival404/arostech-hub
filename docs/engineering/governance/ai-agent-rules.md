@@ -1,11 +1,13 @@
 ---
 id: GOV-AGENT-001
 title: Antigravity AI Agent Rules & System Governance
-version: 4.2.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_governance"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
   agents_root: "file:///d:/dev/arostech-hub/AGENTS.md#L1-L100"
 ---
 
@@ -14,7 +16,7 @@ authoritative_references:
 > **TL;DR**: Authoritative specification and architectural reference for Antigravity AI Agent Rules & System Governance within the DBSN platform (docs/engineering/governance/ai-agent-rules.md).
 
 
-> **Authoritative Baseline Reference**: Operating rules, system mandates, and domain topology for AI agent execution in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)) and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100).
+> **Authoritative Baseline Reference**: Operating rules, system mandates, and domain topology for AI agent execution in the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)), [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100), and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100).
 
 ---
 
@@ -23,7 +25,7 @@ authoritative_references:
 1. **Agent Primary Role**: Operate as both Context Coordinator (research, architectural planning, documentation) and Execution Engine (TDD, implementation, terminal verification loops).
 2. **Rule Hierarchy & Priority**: Instructions in `.agents/rules/` and [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md#L1-L100) MUST take precedence over default LLM behaviors.
 3. **Documentation Mode (`[DOCS_MODE]`)**: When operating under documentation tasks, strict write restrictions apply according to [`.agents/rules/ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md). Codebase files (`src/`, `prisma/`, `package.json`) SHALL remain strictly read-only. Only markdown documentation files under `docs/`, `openspec/`, and root documentation files MAY be modified.
-4. **Workflow Discipline**: Agents MUST follow the **Plan -> TDD -> Review** cycle for non-trivial changes.
+4. **Workflow Discipline (`0xrizz-workflow`)**: Agents MUST strictly execute through the 8-Layer sequence (L0 Context Boot $\to$ L1 HLA $\to$ L2 Research $\to$ L3 SDD $\to$ L4 Routing $\to$ L5 TDD $\to$ L6 AST Sync $\to$ L7 Zero-Regression Verify $\to$ L8 Archive) defined in [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100).
 5. **Terminal & Shell Standard**: All terminal commands, CLI tool calls, build steps, and automation scripts executed by AI agents MUST use **Git Bash** (`bash` environment with POSIX toolchain). Agents SHALL use POSIX shell syntax, standard pipe/redirection operators (`|`, `&&`, `||`), forward-slash path separators (`/`), and POSIX utilities (`grep`, `sed`, `awk`, `find`, `cat`, `curl`). Windows Command Prompt (`cmd.exe`) and PowerShell-specific commands or backslash pathing MUST NOT be used for agent execution.
 6. **Prompt Engineering & Context Isolation (`agy-prompt`)**: In prompt-crafting sessions, agents operate under strict read-only context harvesting ([`.agents/rules/agy-prompt.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-prompt.md)), dynamic framework alignment via `prompt-architect`, safe token densities (85.0%–95.0%), and mandatory `/grill-me` alignment when assessment score is `< 7.0 / 10`.
 7. **In-Flight Deep Reasoning & Architectural Gating (`agy-deepthinking`)**: For complex architectural analysis and high-risk changes, agents utilize multi-source knowledge gathering, iterative reasoning via `sequentialthinking`, and MUST render an evaluation Checklist Gate Table in chat output prior to mutating actions ([`.agents/rules/agy-deepthinking.md`](file:///d:/dev/arostech-hub/.agents/rules/agy-deepthinking.md)).

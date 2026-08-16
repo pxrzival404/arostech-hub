@@ -192,7 +192,7 @@ Stripe Checkout, and webhook events keep subscription status in sync.
 - [ ] Webhook correctly syncs subscription status
 - [ ] Free users cannot access Pro features
 - [ ] Downgrade/cancellation works correctly
-- [ ] All tests pass with 80%+ coverage
+- [ ] All tests pass with 85.0%+ coverage (Strict Zero-Regression Gate)
 ```
 
 ## When Planning Refactors

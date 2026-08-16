@@ -4,7 +4,7 @@ description: Standardize documentation in docs/ according to the 7 Pillars of AI
 
 # Standardize Documentation (7 Pillars Standard)
 
-Convert narrative, ad-hoc, or non-standard documentation under `docs/` into AI-friendly documentation compliant with the **7 Pillars Standard** ([ai-friendly-docs.md](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md)) derived from [AI-Friendly Documentation Framework Guide](file:///C:/Users/Windows%2010/.gemini/antigravity-ide/brain/db88ba16-1830-4dc5-b51d-f5ddef2d7aa0/ai_friendly_doc_framework_guide.md).
+Convert narrative, ad-hoc, or non-standard documentation under `docs/` into AI-friendly documentation compliant with the **7 Pillars Standard** ([`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md#L1-L75)) and [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100).
 
 ---
 

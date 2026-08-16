@@ -139,9 +139,11 @@ SELECT pg_reload_conf();
 
 ## Related
 
-- Agent: `database-reviewer` - Full database review workflow
-- Skill: `clickhouse-io` - ClickHouse analytics patterns
-- Skill: `backend-patterns` - API and backend patterns
+- Agent: [`database-reviewer`](file:///d:/dev/arostech-hub/.agents/agents/database-reviewer/) — Full database review workflow and query optimization
+- Rule: [`prisma-neon-edge.md`](file:///d:/dev/arostech-hub/.agents/rules/prisma-neon-edge.md) — Neon PostgreSQL proxy connection rules and serverless pooling
+- Skill: `prisma-patterns` — Prisma ORM patterns, schema design, and query anti-patterns
+- Skill: `database-migrations` — Migration lifecycle and zero-downtime schema changes
+- Skill: `backend-patterns` — API and backend patterns
 
 ---
 

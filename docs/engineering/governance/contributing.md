@@ -3,6 +3,7 @@ id: DOC-ENG-GOV-CONTRIBUTING
 title: Contributing Guidelines & Git Flow Standard
 version: 4.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_governance"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"

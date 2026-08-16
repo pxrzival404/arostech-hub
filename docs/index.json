@@ -9,6 +9,13 @@
       "title": "DBSN Central Documentation Hub Master Index",
       "status": "LOCKED_BASELINE",
       "summary": "Authoritative specification and architectural reference for DBSN Documentation Hub — Master Index within the DBSN platform (docs/README.md)."
+    },
+    {
+      "id": "DOC-CHEATSHEET-TOOLS",
+      "file": "CHEATSHEET_TOOLS.md",
+      "title": "Antigravity Unified Tool Ecosystem Cheatsheet",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative 7-Pillars capability discovery and prompt reference cheatsheet for Google Antigravity Native tools, MCP servers, CLI commands, and Repository workflows."
     }
   ],
   "subfolders": [

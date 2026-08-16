@@ -4,66 +4,66 @@
   "layer": "high-level-architecture",
   "documents": [
     {
-      "id": "doc:analytics-audit-findings",
+      "id": "AUDIT-ANA-001",
       "file": "analytics-findings.md",
       "title": "Card 1.6 Analytics & Telemetry Audit Findings",
-      "status": "APPROVED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.6 Analytics & Telemetry Audit Findings within the DBSN platform (docs/operations/audits/phase-1-findings/analytics-findings.md)."
     },
     {
       "id": "AUDIT-API-001",
       "file": "api-findings.md",
       "title": "Card 1.4 API Routes Audit Findings Report",
-      "status": "COMPLETED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.4 API Routes Audit Findings Report within the DBSN platform (docs/operations/audits/phase-1-findings/api-findings.md)."
     },
     {
       "id": "AUDIT-AUTH-001",
       "file": "auth-findings.md",
       "title": "Auth & ADR Audit Findings — Cloudflare Edge Compatibility & Auth.js v5 Verification",
-      "status": "COMPLETED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Auth & ADR Audit Findings within the DBSN platform (docs/operations/audits/phase-1-findings/auth-findings.md)."
     },
     {
       "id": "AUDIT-DEADCODE-001",
       "file": "dead-code-findings.md",
       "title": "Card 1.8 Dead Code Audit Findings Report",
-      "status": "COMPLETED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.8 Dead Code Audit Findings Report within the DBSN platform (docs/operations/audits/phase-1-findings/dead-code-findings.md)."
     },
     {
       "id": "AUDIT-MW-CARD1.1-001",
       "file": "middleware-findings.md",
       "title": "Card 1.1 Edge Middleware Execution & Subdomain Routing Audit",
-      "status": "AUDITED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.1 Edge Middleware Execution & Subdomain Routing Audit within the DBSN platform (docs/operations/audits/phase-1-findings/middleware-findings.md)."
     },
     {
-      "id": "audit/fase-1-report",
+      "id": "AUDIT-PHASE1-SUMMARY-001",
       "file": "phase-1-summary-report.md",
       "title": "Fase 1 Audit Report — Codebase-to-Docs High-Level Alignment",
-      "status": "complete",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Fase 1 Audit Report — Codebase-to-Docs High-Level Alignment within the DBSN platform (docs/operations/audits/phase-1-findings/phase-1-summary-report.md)."
     },
     {
       "id": "AUDIT-PRISMA-001",
       "file": "prisma-findings.md",
       "title": "Card 1.2 Prisma Schema & Data Model Audit Findings",
-      "status": "COMPLETED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.2 Prisma Schema & Data Model Audit Findings within the DBSN platform (docs/operations/audits/phase-1-findings/prisma-findings.md)."
     },
     {
       "id": "AUDIT-SANITY-001",
       "file": "sanity-findings.md",
       "title": "Card 1.3 Sanity CMS Audit Findings Report",
-      "status": "COMPLETED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.3 Sanity CMS Audit Findings Report within the DBSN platform (docs/operations/audits/phase-1-findings/sanity-findings.md)."
     },
     {
-      "id": "audit-21st-sdk-footprint",
+      "id": "AUDIT-SDK-001",
       "file": "sdk-footprint-findings.md",
       "title": "Card 1.7 21st SDK Footprint Audit & Recommendation Report",
-      "status": "APPROVED",
+      "status": "IN_PROGRESS",
       "summary": "Authoritative specification and architectural reference for Card 1.7 21st SDK Footprint Audit & Recommendation Report within the DBSN platform (docs/operations/audits/phase-1-findings/sdk-footprint-findings.md)."
     }
   ],

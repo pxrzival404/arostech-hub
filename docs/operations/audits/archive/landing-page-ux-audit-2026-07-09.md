@@ -3,6 +3,7 @@ id: DOC-OPS-AUDIT-LANDING-20260709
 title: Landing Page UX/UI Quality & Conversion Funnel Audit
 version: 4.0.0
 status: SUPERSEDED
+target_domain: dayaberkah.id
 graphify_community: "community_audits"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"

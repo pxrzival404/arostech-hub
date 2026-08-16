@@ -28,7 +28,7 @@ authoritative_references:
 | **Phase 1** | Foundation & Core Architecture | **COMPLETE** | 2026-05-13 | Next.js 16 setup, pnpm workspace, Tailwind v4, Prisma ORM |
 | **Phase 2** | Core Features & Universal RFQ | **COMPLETE** | 2026-06-03 | Subdomain middleware, Universal RFQ cart API, Sanity CMS |
 | **Phase 3** | Infrastructure & Auth.js v5 | **COMPLETE** | 2026-06-04 | Cloudflare Pages deployment, Auth.js v5 client portal |
-| **Phase 4** | Quality Gates & E2E Validation | **NOT STARTED** | Q3 2026 | PSI 90+ mobile optimization, 80%+ test coverage, E2E checks |
+| **Phase 4** | Quality Gates & E2E Validation | **NOT STARTED** | Q3 2026 | PSI 90+ mobile optimization, 85.0%+ test coverage, E2E checks |
 
 ---
 
@@ -45,7 +45,7 @@ Establish the monorepo foundation with Next.js 16, TypeScript 5.7+, Tailwind CSS
 | Configure pnpm workspace | ✅ | 2026-05-13 |
 | Configure Tailwind CSS v4 design tokens | ✅ | 2026-05-13 |
 | Set up Prisma ORM & Neon Postgres driver | ✅ | 2026-05-13 |
-| Set up Jest testing suite & 80% coverage threshold | ✅ | 2026-05-13 |
+| Set up Jest testing suite & 85.0% coverage threshold | ✅ | 2026-05-13 |
 
 ---
 
@@ -86,7 +86,7 @@ Deploy to Cloudflare Pages via `@opennextjs/cloudflare` and implement Auth.js v5
 ### Status: ⏸️ NOT STARTED
 
 #### Objectives
-Execute performance profiling for mobile PSI 90+, full test coverage enforcement (80%+), and security vulnerability scanning.
+Execute performance profiling for mobile PSI 90+, full test coverage enforcement (85.0%+ Strict Zero-Regression Gate), and security vulnerability scanning.
 
 | Task | Status | Target Schedule |
 |------|--------|-----------------|
@@ -105,7 +105,7 @@ Phase 4 SHALL NOT proceed to production deployment without passing all Quality G
 #### Scenario: Production Launch Gateway Check
 - GIVEN Phase 4 execution active
 - WHEN evaluating release readiness
-- THEN mobile PSI MUST score >= 90, total test coverage MUST satisfy >= 80%, and zero critical security vulnerabilities SHALL exist.
+- THEN mobile PSI MUST score >= 90, total test coverage MUST satisfy >= 85.0% (Strict Zero-Regression Gate), and zero critical security vulnerabilities SHALL exist.
 
 ### Requirement: REQ-ROAD-002-GREENFIELD-DEPLOYMENT
 The system SHALL deploy exclusively to Cloudflare Pages edge hosting on `dayaberkah.id` and its registered product spoke subdomains without maintaining legacy redirect infrastructure.

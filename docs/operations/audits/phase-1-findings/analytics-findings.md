@@ -1,16 +1,17 @@
 ---
-id: doc:analytics-audit-findings
+id: AUDIT-ANA-001
 title: Card 1.6 Analytics & Telemetry Audit Findings
 version: 1.0.0
-status: APPROVED
-graphify_community: 30
+status: IN_PROGRESS
+target_domain: dayaberkah.id
+graphify_community: "community_audits"
 authoritative_references:
-  - file:///D:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md
-  - file:///D:/dev/arostech-hub/src/lib/analytics/gtag.ts
-  - file:///D:/dev/arostech-hub/src/lib/analytics/posthog.ts
-  - file:///D:/dev/arostech-hub/src/hooks/use-analytics.ts
-  - file:///D:/dev/arostech-hub/sentry.client.config.ts
-  - file:///D:/dev/arostech-hub/next.config.ts
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
+  gtag: "file:///d:/dev/arostech-hub/src/lib/analytics/gtag.ts#L1-L50"
+  posthog: "file:///d:/dev/arostech-hub/src/lib/analytics/posthog.ts#L1-L50"
+  use_analytics: "file:///d:/dev/arostech-hub/src/hooks/use-analytics.ts#L1-L50"
+  sentry: "file:///d:/dev/arostech-hub/sentry.client.config.ts#L1-L50"
+  next_config: "file:///d:/dev/arostech-hub/next.config.ts#L1-L50"
 ---
 
 # Card 1.6 Analytics & Telemetry Audit Findings

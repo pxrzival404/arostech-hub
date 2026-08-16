@@ -168,7 +168,7 @@ function run(inputOrRaw, options = {}) {
       contextLines.push(`    * ${issue}`);
     }
   }
-  contextLines.push('Refer to 7 Pillars guide: ai_friendly_doc_framework_guide.md');
+  contextLines.push('Refer to 7 Pillars guide: .agents/rules/ai-friendly-docs.md');
 
   return {
     exitCode: 0,

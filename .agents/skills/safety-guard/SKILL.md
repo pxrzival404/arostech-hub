@@ -67,10 +67,10 @@ Agents can read anything but only write to `src/api/`. Destructive commands are 
 
 ## Implementation
 
-Uses PreToolUse hooks to intercept Bash, Write, Edit, and MultiEdit tool calls. Checks the command/path against the active rules before allowing execution.
+Uses PreToolUse hooks in `.agents/hooks.json` to intercept `run_command`, `write_to_file`, `replace_file_content`, and `multi_replace_file_content` tool calls. Checks the command/path against the active rules before allowing execution.
 
 ## Integration
 
-- Enable by default for `codex -a never` sessions
-- Pair with observability risk scoring in ECC 2.0
-- Logs all blocked actions to `~/.claude/safety-guard.log`
+- Enable by default for autonomous or high-risk execution sessions
+- Pair with observability risk scoring in ECC
+- Logs all blocked actions to `.agents/logs/safety-guard.log`

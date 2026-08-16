@@ -3,6 +3,7 @@ id: DOC-OPS-RUN-INCIDENT-5STEP
 title: Operational 5-Step Incident Response Protocol Runbook
 version: 4.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_operations"
 authoritative_references:
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"

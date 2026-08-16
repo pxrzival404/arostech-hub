@@ -3,7 +3,7 @@ schema: spec-driven
 # Project context
 context: |
   Project: PT Daya Berkah Sentosa Nusantara (DBSN) — arostech-hub
-  Platform Topology: Next.js 16.2.6 (App Router) on Cloudflare Pages Edge (@cloudflare/next-on-pages)
+  Platform Topology: Next.js 16.2.6 (App Router) on Cloudflare Pages Edge (@opennextjs/cloudflare)
   CMS: Sanity CMS (GROQ + ISR + Stega Visual Editing)
   Database: Neon (PostgreSQL) via Prisma ORM (Proxy lazy init)
   Auth: Auth.js v5 (JWT strategy, role-based token expiry)
@@ -27,7 +27,7 @@ rules:
     - Enforce immutability and schema boundary validation
   tasks:
     - Break implementation into atomic, testable TDD steps (RED-GREEN-REFACTOR)
-    - Require 80%+ test coverage verification
+    - Require 85.0%+ test coverage verification (Strict Zero-Regression Gate)
 
 # Per-operation guidance
 operations:

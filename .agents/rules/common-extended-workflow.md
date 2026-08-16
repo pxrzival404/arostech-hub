@@ -3,15 +3,15 @@ trigger: model_decision
 description: >
   Unified 8-Layer Development Workflow — Graphify-Anchored, SDD-Governed, TDD-Verified.
   Supersedes: common-development-workflow.md (deleted).
-  Authority: AGENTS.md Section 2.4 — OpenSpec SDD outer loop + TDD inner loop + Graphify memory layer.
+  Authority: docs/engineering/governance/0xrizz-workflow.md (v5.0.0 LOCKED_BASELINE) & AGENTS.md.
 supersedes: common-development-workflow.md
-version: 1.0.0
+version: 5.0.0
 ---
 
 # Extended Development Workflow (8-Layer)
 
 > **Supersedes**: `common-development-workflow.md` (deleted)
-> **Authority**: [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) Section 2.4, 4
+> **Authority**: [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L335) (v5.0.0, `LOCKED_BASELINE`), [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md)
 > **Scope**: All feature development, bug fixes, and refactoring in `arostech-hub`
 
 Every development session MUST follow this 8-layer sequence.
@@ -24,14 +24,14 @@ Every development session MUST follow this 8-layer sequence.
 ## Sequence Overview
 
 ```
-L0 Context Boot (Graphify)
-  └── L1 HLA Alignment (docs/)
-        └── L2 Research & Reuse
-              └── L3 SDD Proposal (openspec/)
-                    └── L4 Agent Delegation (Harness)
-                          └── L5 TDD Execution [per-task inner loop]
-                                └── L6 Post-Task Memory Sync (Graphify)
-                    └── L7 Change Verification (SDD outer loop close)
+L0 Context Boot (Graphify BFS + Stale Cache Auto-Sync)
+  └── L1 HLA Alignment (docs/ 7-Pillars)
+        └── L2 Research & Reuse (Context7 / GitHub)
+              └── L3 SDD Contract Scaffolding (Standard /opsx-propose vs Fast-Track /opsx-ff)
+                    └── L4 Agent Routing & Harness Auto-Gating (Domain Glob Matrix)
+                          └── L5 TDD Inner Loop [Isolated AAA RED-GREEN-REFACTOR-VERIFY]
+                                └── L6 Incremental Memory Sync (graphify update .)
+                    └── L7 Strict Zero-Regression Verification (85.0%+ Coverage, CF Build <25MB)
                           └── L8 Commit, PR & Archive
 ```
 
@@ -104,20 +104,24 @@ Use `query_graph`, `get_node`, `get_neighbors`, `god_nodes`, `shortest_path` MCP
 **Purpose**: Create behavioral contracts BEFORE writing any implementation code.
 
 ```
-/opsx-propose  or  /opsx-new
-  ├── proposal.md  — scope, non-goals, impact
-  ├── design.md    — decisions, alternatives, rollback plan
-  ├── specs/*.md   — GIVEN-WHEN-THEN behavioral contracts (≥2 scenarios/requirement)
-  └── tasks.md     — atomic checklist (each task = 1 TDD inner loop)
+1. Standard Feature Lane:
+   /opsx-propose <change-name>  or  /opsx-new <change-name>
+   ├── proposal.md  — scope, non-goals, impact
+   ├── design.md    — decisions, alternatives, rollback plan
+   ├── specs/*.md   — GIVEN-WHEN-THEN behavioral contracts (≥2 scenarios/requirement)
+   └── tasks.md     — atomic checklist (each task = 1 TDD inner loop)
+
+2. Fast-Track Hotfix Lane:
+   /opsx-ff hotfix-<name>
+   └── Single-file delta spec for 1-line security/typo hotfixes (eliminates governance lockout)
 
 After spec creation:
-  graphify update .   # sync new spec nodes to knowledge graph (AST-only, no API cost)
+  graphify update .   # sync new spec nodes to knowledge graph (AST-only, $0.00 cost, T_AST < 500ms)
 ```
 
 **Gate (Proposal)**: Scope must be aligned with PRD (L1 verified).
-**Gate (Spec Completeness)**: ≥2 GIVEN-WHEN-THEN scenarios per requirement. Each WHEN/THEN must be directly testable.
+**Gate (Spec Completeness)**: Spec-to-Test Multiplier: ≥2 GIVEN-WHEN-THEN scenarios per requirement mapping to ≥4 executable assertions.
 **Gate (Task Atomicity)**: Each task in `tasks.md` = single responsibility = exactly one TDD inner loop cycle.
-
 > Human approval of specs is required before proceeding to L4/L5.
 
 ---
@@ -158,7 +162,7 @@ After spec creation:
 For **each task** in `tasks.md`:
 
 ### RED Phase (`tdd-guide` agent)
-- Derive test cases directly from the spec's WHEN/THEN clauses
+- Derive test cases directly from the spec's WHEN/THEN clauses with Spec-to-Test Multiplier ($\ge 4$ assertions/req)
 - Write failing test that MUST fail before production code is written
 - Verify test fails for the correct reason (not a configuration error)
 - **Gate (RED)**: Test exists and fails correctly
@@ -178,7 +182,7 @@ For **each task** in `tasks.md`:
 ### VERIFY Phase (`verification-loop` skill)
 ```bash
 pnpm lint                          # lint gate
-pnpm test --changedSince=main      # 80%+ coverage gate
+pnpm test --changedSince=main      # 85.0%+ branch coverage gate (AAA isolated)
 tsc --noEmit                       # type gate
 ```
 - ALL must be green before task is marked `[x]`
@@ -192,7 +196,7 @@ tsc --noEmit                       # type gate
 
 ```bash
 # After each task [x]:
-graphify update .    # sync AST changes — no API cost
+graphify update .    # sync AST changes — no API cost ($0.00, T_AST < 500ms)
 ```
 
 New module nodes, dependency edges, and spec relationships are updated immediately.
@@ -210,14 +214,14 @@ This enables the next agent (or next session) to boot context correctly at L0.
 
 # 2. Full pre-merge pipeline (must all pass)
 pnpm lint                    # ✓
-pnpm test --coverage         # ✓  (≥80% coverage threshold — hard gate)
+pnpm test --coverage         # ✓  (≥85.0% branch coverage threshold — hard gate)
 rm -rf .open-next && pnpm pages:build # ✓  (Fresh Cloudflare Pages build, <25MB bundle)
 
 # 3. Docs validation (if any docs/ were modified)
 node .agents/scripts/validate-ai-docs.cjs
 ```
 
-**Gate (VERIFY)**: If coverage drops below 80% → **BLOCK archive**. Fix coverage first.
+**Gate (VERIFY)**: If coverage drops below 85.0% → **BLOCK archive**. Fix coverage first.
 **Gate (MERGE)**: 0 residual legacy domain references (`sentradaya.com`). 0 hallucinated env vars.
 
 ---
@@ -271,12 +275,12 @@ CHANGE LIFECYCLE
 
 | Layer | Primary Rule/Skill |
 |-------|--------------------|
-| L0 | [`graphify.md`](./graphify.md) — navigation priority + MCP tools |
-| L1 | [`ai-friendly-docs.md`](./ai-friendly-docs.md) — 7-Pillars standard |
-| L2 | [`search-first`](../skills/search-first/SKILL.md) skill |
-| L3 | [`openspec-propose`](../skills/openspec-propose/SKILL.md) skill |
+| L0 | [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md#L1-L100) — navigation priority + MCP tools |
+| L1 | [`ai-friendly-docs.md`](file:///d:/dev/arostech-hub/.agents/rules/ai-friendly-docs.md#L1-L75) — 7-Pillars standard |
+| L2 | [`search-first`](file:///d:/dev/arostech-hub/.agents/skills/search-first/SKILL.md#L1-L50) skill |
+| L3 | [`openspec-propose`](file:///d:/dev/arostech-hub/.agents/skills/openspec-propose/SKILL.md#L1-L50) skill |
 | L4 | [`AGENTS.md`](file:///d:/dev/arostech-hub/AGENTS.md) — auto-gating matrix |
-| L5 | [`common-testing.md`](./common-testing.md) + [`typescript-coding-style.md`](./typescript-coding-style.md) + domain rules |
-| L6 | [`graphify.md`](./graphify.md) — `graphify update .` |
-| L7 | [`teamwork-squad-orchestration.md`](./teamwork-squad-orchestration.md) — merge gate |
-| L8 | [`common-git-workflow.md`](./common-git-workflow.md) — conventional commits |
+| L5 | [`common-testing.md`](file:///d:/dev/arostech-hub/.agents/rules/common-testing.md#L1-L80) + [`typescript-coding-style.md`](file:///d:/dev/arostech-hub/.agents/rules/typescript-coding-style.md#L1-L100) |
+| L6 | [`graphify.md`](file:///d:/dev/arostech-hub/.agents/rules/graphify.md#L1-L100) — `graphify update .` ($T_{AST} < 500\text{ms}$) |
+| L7 | [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L335) — Strict Zero-Regression Gate ($\ge 85.0\%$) |
+| L8 | [`common-git-workflow.md`](file:///d:/dev/arostech-hub/.agents/rules/common-git-workflow.md#L1-L30) — conventional commits |

@@ -27,7 +27,7 @@ and output a complete optimized prompt the user can paste and run.
 
 - User says "optimize this prompt", "improve my prompt", "rewrite this prompt"
 - User says "help me write a better prompt for..."
-- User says "what's the best way to ask Claude Code to..."
+- User says "what's the best way to ask the agent to..."
 - User says "优化prompt", "改进prompt", "怎么写prompt", "帮我优化这个指令"
 - User pastes a draft prompt and asks for feedback or enhancement
 - User says "I don't know how to prompt for this"
@@ -38,8 +38,8 @@ and output a complete optimized prompt the user can paste and run.
 
 - User wants the task done directly (just execute it)
 - User says "优化代码", "优化性能", "optimize this code", "optimize performance" — these are refactoring tasks, not prompt optimization
-- User is asking about ECC configuration (use `configure-ecc` instead)
-- User wants a skill inventory (use `skill-stocktake` instead)
+- User is asking about workspace configuration (use `workspace-surface-audit` instead)
+- User wants a skill or tool inventory (use `workspace-surface-audit` or `agy-tool` instead)
 - User says "just do it" or "直接做"
 
 ## How It Works
@@ -62,7 +62,7 @@ Run this 6-phase pipeline sequentially. Present results using the Output Format 
 
 Before analyzing the prompt, detect the current project context:
 
-1. Check if a `CLAUDE.md` exists in the working directory — read it for project conventions
+1. Check if `AGENTS.md` / `GEMINI.md` exists in the working directory — read it for project conventions
 2. Detect tech stack from project files:
    - `package.json` → Node.js / TypeScript / React / Next.js
    - `go.mod` → Go
@@ -268,7 +268,7 @@ A compact version for experienced ECC users. Vary by intent type:
 ### Trigger Examples
 
 - "Optimize this prompt for ECC"
-- "Rewrite this prompt so Claude Code uses the right commands"
+- "Rewrite this prompt so the agent uses the right commands"
 - "帮我优化这个指令"
 - "How should I prompt ECC for this task?"
 
@@ -305,7 +305,7 @@ A compact version for experienced ECC users. Vary by intent type:
 - CSRF token
 
 验收标准：
-- 所有测试通过，覆盖率 80%+
+- 所有测试通过，覆盖率 85.0%+（Strict Zero-Regression Gate）
 - 页面在移动端和桌面端正常渲染
 - 登录成功跳转到 dashboard，失败显示错误信息
 
@@ -390,9 +390,7 @@ Recommended: Opus 4.6 for blueprint planning, Sonnet 4.6 for phase execution.
 
 | Component | When to Reference |
 |-----------|------------------|
-| `configure-ecc` | User hasn't set up ECC yet |
-| `skill-stocktake` | Audit which components are installed (use instead of hardcoded catalog) |
+| `workspace-surface-audit` | Audit workspace surfaces, skills, and configuration |
+| `agy-tool` | Inspect Antigravity native tools and MCP server capabilities |
 | `search-first` | Research phase in optimized prompts |
-| `blueprint` | EPIC-scope optimized prompts (invoke as skill, not command) |
-| `strategic-compact` | Long session context management |
-| `cost-aware-llm-pipeline` | Token optimization recommendations |
+| `graphify` | Knowledge graph queries and architecture mapping |

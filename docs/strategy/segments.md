@@ -43,7 +43,7 @@ authoritative_references:
 
 ### 1.1 Visi: Satu DBSN, Keberadaan Digital Terpadu
 
-PT. Daya Berkah Sentosa Nusantara (DBSN) mengonsolidasikan semua aset digital ke dalam **ekosistem digital terpusat** berbasis arsitektur *Hub-and-Spoke* (`dayaberkah.id`) yang melayani dua segmen pelanggan utama: Pejabat Pengadaan Pemerintah (B2G) dan Pembeli Teknis Sektor Swasta (B2B).
+PT Daya Berkah Sentosa Nusantara (DBSN) mengonsolidasikan semua aset digital ke dalam **ekosistem digital terpusat** berbasis arsitektur *Hub-and-Spoke* (`dayaberkah.id`) yang melayani dua segmen pelanggan utama: Pejabat Pengadaan Pemerintah (B2G) dan Pembeli Teknis Sektor Swasta (B2B).
 
 ### 1.2 Strategi Dua Jalur Pelanggan
 
@@ -156,7 +156,7 @@ Peta jalan implementasi untuk ekosistem terpadu `dayaberkah.id` terbagi ke dalam
 
 ### 5.4 Fase 4: Quality Gates & E2E Validation (Aktif — Q3 2026)
 - Pengoptimalan kinerja mobile dengan PageSpeed Insights (PSI) score ≥ 90.
-- Penegakan ambang batas pengujian minimum 80% coverage dan pengujian E2E Playwright.
+- Penegakan ambang batas pengujian minimum 85.0% coverage (Strict Zero-Regression Gate) dan pengujian E2E Playwright.
 - Finalisasi audit keamanan dan kesiapan peluncuran produksi.
 
 ---

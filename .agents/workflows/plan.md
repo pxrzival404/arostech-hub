@@ -7,7 +7,7 @@ argument-hint: "[feature description | path/to/*.prd.md]"
 
 This command creates a comprehensive implementation plan before writing any code. It accepts either free-form requirements or a PRD markdown file.
 
-Run inline by default. Do not call the Task tool or any subagent by default. This keeps `/plan` usable from plugin installs that ship commands without agent files.
+Run inline by default. Do not invoke subagents by default. This keeps `/plan` lightweight and focused.
 
 ## What This Command Does
 
@@ -35,18 +35,18 @@ The assistant will:
 4. **Identify dependencies** between components
 5. **Assess risks** and potential blockers
 6. **Estimate complexity** (High/Medium/Low)
-7. **Present the plan** and WAIT for your explicit confirmation
+7. **Present the plan** in `implementation_plan.md` and WAIT for your explicit confirmation
 
 ## Input Modes
 
 | Input | Mode | Behavior |
 |---|---|---|
-| `path/to/name.prd.md` | PRD artifact mode | Read the PRD, pick the next pending delivery milestone or implementation phase, and write `.claude/plans/{name}.plan.md` |
-| Any other markdown path | Reference mode | Read the file as context and produce an inline plan |
-| Free-form text | Conversational mode | Produce an inline plan |
+| `path/to/name.prd.md` | PRD artifact mode | Read the PRD, pick the next pending delivery milestone, and generate `implementation_plan.md` |
+| Any other markdown path | Reference mode | Read the file as context and produce an implementation plan |
+| Free-form text | Conversational mode | Produce an implementation plan |
 | Empty input | Clarification mode | Ask what should be planned |
 
-In PRD artifact mode, create `.claude/plans/` if needed. If the PRD contains a `Delivery Milestones` table, update only the selected row from `pending` to `in-progress` and set its `Plan` cell to the generated plan path. If the PRD uses the legacy `.claude/PRPs/prds/` format with `Implementation Phases`, read it without migrating paths.
+In PRD artifact mode, generate or update the Antigravity `implementation_plan.md` artifact (`<appDataDir>/brain/<conversation-id>/implementation_plan.md`).
 
 ## Pattern Grounding
 
@@ -62,9 +62,9 @@ Before writing the plan, search the codebase for conventions the implementation 
 
 If no similar code exists, state that explicitly. Do not invent a pattern.
 
-## PRD Artifact Output
+## Implementation Plan Artifact Output
 
-When called with a `.prd.md` file, write the plan to `.claude/plans/{kebab-case-name}.plan.md` using this structure:
+Write the plan to the Antigravity `implementation_plan.md` artifact using this structure:
 
 ````markdown
 # Plan: {Feature Name}
@@ -192,9 +192,9 @@ After planning:
 - Use `/code-review` to review completed implementation
 - Use `/pr` or `/prp-pr` to open a pull request
 
-> **Need requirements first?** Use `/plan-prd` for a lean PRD at `.claude/prds/{name}.prd.md`.
+> **Need requirements first?** Use `/plan-prd` or `/opsx-propose` to define requirements.
 >
-> **Need the legacy PRP flow?** Use `/prp-plan` for deep PRP planning with `.claude/PRPs/` artifacts. Use `/prp-implement` to execute those plans with rigorous validation loops.
+> **Need behavioral specs?** Use `/opsx-propose` for full OpenSpec SDD (Layer 3) with GIVEN-WHEN-THEN scenarios.
 
 ## Integration with 8-Layer Workflow
 
@@ -222,4 +222,4 @@ ECC also provides a `planner` agent for manual installs that include agent files
 If the `planner` subagent is unavailable, continue planning inline instead of surfacing an "Agent type 'planner' not found" error.
 
 For manual installs, the source file lives at:
-`agents/planner.md`
+`agents/planner/agent.md`

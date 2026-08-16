@@ -4,7 +4,7 @@ description: Manage Claude Code session history, aliases, and session metadata.
 
 # Sessions Command
 
-Manage Claude Code session history - list, load, alias, and edit sessions stored in `~/.claude/session-data/` with legacy reads from `~/.claude/sessions/`.
+Manage session history - list, load, alias, and inspect sessions stored in `.agents/sessions/` and Antigravity brain logs.
 
 ## Usage
 

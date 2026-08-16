@@ -64,21 +64,32 @@ function extractPathsAndCommands(toolName, toolInput) {
   return { paths, commands };
 }
 
+function denyResult(reason) {
+  process.stderr.write(reason + '\n');
+  process.stdout.write(JSON.stringify({ decision: 'deny', reason: reason }) + '\n');
+  process.exit(0);
+}
+
+function allowResult() {
+  process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+  process.exit(0);
+}
+
 function main() {
   const inputRaw = readStdinSync();
   if (!inputRaw || !inputRaw.trim()) {
-    process.exit(0);
+    allowResult();
   }
 
   let payload;
   try {
     payload = JSON.parse(inputRaw);
   } catch (err) {
-    process.exit(0);
+    allowResult();
   }
 
-  const toolName = payload.tool_name || payload.toolName || payload.name || '';
-  const toolInput = payload.tool_input || payload.toolInput || payload.input || {};
+  const toolName = payload.toolCall?.name || payload.tool_name || payload.toolName || payload.name || '';
+  const toolInput = payload.toolCall?.args || payload.tool_input || payload.toolInput || payload.input || {};
 
   const { paths, commands } = extractPathsAndCommands(toolName, toolInput);
 
@@ -86,26 +97,23 @@ function main() {
   const strictSlash = process.env.AGY_ENFORCE_FORWARD_SLASH_STRICT === '1';
   for (const p of paths) {
     if (hasWindowsBackslash(p) && strictSlash) {
-      process.stderr.write(
-        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited when AGY_ENFORCE_FORWARD_SLASH_STRICT=1. Path: '" + p + "'.\n"
+      denyResult(
+        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited when AGY_ENFORCE_FORWARD_SLASH_STRICT=1. Path: '" + p + "'."
       );
-      process.exit(2);
     }
   }
 
   // Check 2: Destructive operations in command strings
   for (const cmd of commands) {
     if (hasWindowsBackslash(cmd) && strictSlash) {
-      process.stderr.write(
-        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited in shell execution strings when AGY_ENFORCE_FORWARD_SLASH_STRICT=1.\n"
+      denyResult(
+        "AGY Guardrail Violation: Windows backslashes ('\\') are prohibited in shell execution strings when AGY_ENFORCE_FORWARD_SLASH_STRICT=1."
       );
-      process.exit(2);
     }
     if (isDestructiveCommand(cmd)) {
-      process.stderr.write(
-        "AGY Guardrail Violation: Destructive command targeting READ-ONLY target repository is prohibited. All modifications must be produced as patch files saved in harness/patches/.\n"
+      denyResult(
+        "AGY Guardrail Violation: Destructive command targeting READ-ONLY target repository is prohibited. All modifications must be produced as patch files saved in harness/patches/."
       );
-      process.exit(2);
     }
   }
 
@@ -125,15 +133,14 @@ function main() {
     if (isReadonlyViolation(p)) {
       if (isModifyingTool || isReadonlyViolation(p)) {
         const readonlyTarget = process.env.AGY_READONLY_REPO || 'workspace';
-        process.stderr.write(
-          "AGY Guardrail Violation: Target repository ('" + readonlyTarget + "') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/.\n"
+        denyResult(
+          "AGY Guardrail Violation: Target repository ('" + readonlyTarget + "') is READ-ONLY per AGENTS.md Section 1. Path: '" + p + "'. All modifications must be produced as patch files saved in harness/patches/."
         );
-        process.exit(2);
       }
     }
   }
 
-  process.exit(0);
+  allowResult();
 }
 
 main();

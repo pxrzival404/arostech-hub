@@ -2,8 +2,9 @@
 id: AUDIT-API-001
 title: Card 1.4 API Routes Audit Findings Report
 version: 1.0.0
-status: COMPLETED
-graphify_community: "community_api"
+status: IN_PROGRESS
+target_domain: dayaberkah.id
+graphify_community: "community_audits"
 authoritative_references:
   reference_md: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L1-L306"
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797"

@@ -25,11 +25,11 @@
       "summary": "Authoritative specification and architectural reference for Contributing Guidelines & Git Flow Standard within the DBSN platform (docs/engineering/governance/contributing.md)."
     },
     {
-      "id": "DOC-ENG-GOV-OPENSPEC",
-      "file": "openspec-workflow.md",
-      "title": "OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide",
+      "id": "DOC-ENG-GOV-0XRIZZ",
+      "file": "0xrizz-workflow.md",
+      "title": "0xrizz-workflow — First-Principles Unified Development Governance & Agent Harness Protocol",
       "status": "LOCKED_BASELINE",
-      "summary": "Authoritative specification and architectural reference for OpenSpec Extended Workflow (OPSX) & ECC Discipline Guide within the DBSN platform (docs/engineering/governance/openspec-workflow.md)."
+      "summary": "Authoritative specification and architectural reference for the 8-Layer AI Agent Development Harness and Software Design Document (SDD) Governance Protocol within PT Daya Berkah Sentosa Nusantara (docs/engineering/governance/0xrizz-workflow.md)."
     },
     {
       "id": "DOC-ENG-GOV-VERSIONING",

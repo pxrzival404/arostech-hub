@@ -1,10 +1,12 @@
 ---
 id: DOC-ROOT-INDEX
 title: DBSN Central Documentation Hub Master Index
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_root"
 authoritative_references:
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
   prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   ai_rules: "file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60"
 ---
@@ -14,7 +16,7 @@ authoritative_references:
 > **TL;DR**: Authoritative specification and architectural reference for DBSN Documentation Hub — Master Index within the DBSN platform (docs/README.md).
 
 
-> **Authoritative Baseline Reference**: Central documentation hub for the **PT. Daya Berkah Sentosa Nusantara (DBSN)** centralized digital ecosystem, structured into 4 top-level domains, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
+> **Authoritative Baseline Reference**: Central documentation hub for the **PT Daya Berkah Sentosa Nusantara (DBSN)** centralized digital ecosystem, structured into 4 top-level domains, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 

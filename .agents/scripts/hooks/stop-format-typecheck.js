@@ -16,13 +16,25 @@
 
 'use strict';
 
-const crypto = require('crypto');
 const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
 
-const { findProjectRoot, detectFormatter, resolveFormatterBin } = require('./lib/resolve-formatter');
+let resolveFormatter;
+try {
+  resolveFormatter = require('../lib/resolve-formatter');
+} catch {
+  resolveFormatter = require('./lib/resolve-formatter');
+}
+const { findProjectRoot, detectFormatter, resolveFormatterBin } = resolveFormatter;
+
+let sessionIdentity;
+try {
+  sessionIdentity = require('../lib/session-identity');
+} catch {
+  sessionIdentity = require('./lib/session-identity');
+}
+const { getSessionTempPath } = sessionIdentity;
 
 const MAX_STDIN = 1024 * 1024;
 // Total ms budget reserved for all batches (leaves headroom below the 300s Stop timeout)
@@ -37,12 +49,8 @@ function parseAccumulator(raw) {
   return [...new Set(raw.split('\n').map(l => l.trim()).filter(Boolean))];
 }
 
-function getAccumFile() {
-  const raw =
-    process.env.CLAUDE_SESSION_ID ||
-    crypto.createHash('sha1').update(process.cwd()).digest('hex').slice(0, 12);
-  const sessionId = raw.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 64);
-  return path.join(os.tmpdir(), `ecc-edited-${sessionId}.txt`);
+function getAccumFile(inputOrRaw) {
+  return getSessionTempPath('ecc-edited', inputOrRaw, '.txt');
 }
 
 function formatBatch(projectRoot, files, timeoutMs) {
@@ -68,8 +76,8 @@ function formatBatch(projectRoot, files, timeoutMs) {
         return;
       }
       const result = spawnSync(resolved.bin, fileArgs, { cwd: projectRoot, shell: true, stdio: 'pipe', timeout: timeoutMs });
-      if (result.status !== 0 && (result.stderr || result.stdout)) {
-        const msg = (result.stderr || result.stdout).toString().trim();
+      if (result.status !== 0 && result.stderr) {
+        const msg = result.stderr.toString().trim();
         if (msg) {
           process.stderr.write(`[Hook] stop-format-typecheck: format notice:\n${msg.slice(0, 500)}\n`);
         }
@@ -144,8 +152,8 @@ function typecheckBatch(tsConfigDir, editedFiles, timeoutMs) {
   }
 }
 
-function main() {
-  const accumFile = getAccumFile();
+function main(inputOrRaw) {
+  const accumFile = getAccumFile(inputOrRaw);
 
   let raw;
   try {
@@ -198,7 +206,7 @@ function main() {
  */
 function run(rawInput) {
   try {
-    main();
+    main(rawInput);
   } catch (err) {
     process.stderr.write(`[Hook] stop-format-typecheck error: ${err.message}\n`);
   }
@@ -219,18 +227,11 @@ if (require.main === module) {
     }
   });
   process.stdin.on('end', () => {
-    const output = run(stdinData);
-    // Never echo truncated stdin (invalid JSON would be reported as a Stop
-    // hook failure, #2090); flush stdout before exiting so large payloads
-    // are not cut at the pipe buffer.
+    run(stdinData);
     if (truncated) {
       process.stderr.write('[Hook] stop-format-typecheck: stdin exceeded 1MB; suppressing pass-through (fail-open)\n');
-      process.exit(0);
     }
-    if (!output) {
-      process.exit(0);
-    }
-    process.stdout.write(output, () => process.exit(0));
+    process.stdout.write('{}\n', () => process.exit(0));
   });
 }
 
