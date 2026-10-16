@@ -2,12 +2,13 @@
 name: openspec-propose
 description: Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.
 allowed-tools: Bash(openspec:*)
+tools: [run_command, replace_file_content, write_to_file, view_file, grep_search, graphify:query_graph, graphify:get_neighbors, graphify:shortest_path]
 license: MIT
-compatibility: Requires openspec CLI.
+compatibility: Requires openspec CLI (v1.8.0+), Graphify MCP / CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.8.0"
+  version: "1.8.0"
+  memory_standard: "graphify-knowledge-graph"
 ---
 
 Propose a new change - create the change and generate all artifacts in one step.
@@ -32,10 +33,12 @@ When the user is ready to implement, they must start the apply workflow explicit
 
 **Steps**
 
-1. **Understand the request and clarify material ambiguity**
+1. **Layer 0 Context Boot & Codebase Mapping (Graphify)**
 
-   If no clear input is provided, ask the user (open-ended, no preset options):
-   > "What change do you want to work on? Describe what you want to build or fix."
+   - **Knowledge Graph Query**: Before drafting artifacts, query the codebase memory using `graphify:query_graph` or `graphify query "<feature-topic>"`.
+   - **Blast Radius & Neighbor Mapping**: Use `graphify:shortest_path` or `graphify:get_neighbors` to identify all affected caller modules, schemas, and routes.
+   - If no clear input is provided, ask the user (open-ended, no preset options):
+     > "What change do you want to work on? Describe what you want to build or fix."
 
    From their description, derive a kebab-case name (e.g., "add user authentication" → `add-user-auth`).
 

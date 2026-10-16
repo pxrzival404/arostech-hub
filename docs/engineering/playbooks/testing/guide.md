@@ -1,17 +1,22 @@
 ---
 id: DOC-ENG-TEST-GUIDE
 title: Engineering Testing Guide & Jest Execution Playbook
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_testing"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   strategy: "file:///d:/dev/arostech-hub/docs/engineering/playbooks/testing/strategy.md#L1-L60"
 ---
 
 # Engineering Testing Guide & Jest Execution Playbook
 
-> **Authoritative Baseline Reference**: Execution patterns, Jest configuration, directory conventions, and Universal RFQ test specifications for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for Engineering Testing Guide & Jest Execution Playbook within the DBSN platform (docs/engineering/playbooks/testing/guide.md).
+
+
+> **Authoritative Baseline Reference**: Execution patterns, Jest configuration, directory conventions, and Universal RFQ test specifications for the **DBSN Centralized Digital Ecosystem**, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)) and [`0xrizz-workflow.md`](file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100).
 
 ---
 
@@ -23,7 +28,7 @@ All unit and integration tests MUST be executed using standard `pnpm` test comma
 |---|---|
 | `pnpm test` | Run all Jest unit and integration tests once |
 | `pnpm test:watch` | Run tests in interactive watch mode |
-| `pnpm test:coverage` | Generate coverage report (target: **80%+**) |
+| `pnpm test:coverage` | Generate coverage report (target: **85.0%+** Strict Zero-Regression Gate) |
 
 ```bash
 # Run specific test file

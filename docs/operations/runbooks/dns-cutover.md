@@ -6,13 +6,16 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_ops"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35"
   deployment_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/deployment.md#L1-L35"
 ---
 
 # DNS Cutover Checklist & Target Mapping Matrix
 
-> **Authoritative Baseline Reference**: This runbook documents the DNS CNAME record topology, pre-cutover checklist, declarative record schemas, and post-cutover verification procedures for **`dayaberkah.id`** on Cloudflare Pages, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35)).
+> **TL;DR**: Authoritative specification and architectural reference for DNS Cutover Checklist & Target Mapping Matrix within the DBSN platform (docs/operations/runbooks/dns-cutover.md).
+
+
+> **Authoritative Baseline Reference**: This runbook documents the DNS CNAME record topology, pre-cutover checklist, declarative record schemas, and post-cutover verification procedures for **`dayaberkah.id`** on Cloudflare Pages, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35)).
 
 ---
 

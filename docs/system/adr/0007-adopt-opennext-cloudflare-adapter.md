@@ -6,17 +6,20 @@ status: ACCEPTED
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L125"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L125"
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L30-L40"
-  adr_0001: "file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50"
-  adr_0002: "file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50"
+  adr_0001: "file:///d:/dev/arostech-hub/docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md#L1-L50"
+  adr_0002: "file:///d:/dev/arostech-hub/docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50"
   adr_0006: "file:///d:/dev/arostech-hub/docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md#L1-L50"
 ---
 
 # ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`)
 
+> **TL;DR**: Authoritative specification and architectural reference for ADR-0007: Adopt OpenNext Cloudflare Adapter (`@opennextjs/cloudflare`) within the DBSN platform (docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-13 OpenNext Cloudflare Adapter Migration`  
-> **Authoritative Baseline Reference**: Architectural Decision Record governing the adoption of `@opennextjs/cloudflare` as the canonical build and deployment adapter for Next.js 16 App Router on Cloudflare Pages, superseding the output directory and deploy command specifications of [`ADR-0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L1-L50) and [`ADR-0002`](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50).
+> **Authoritative Baseline Reference**: Architectural Decision Record governing the adoption of `@opennextjs/cloudflare` as the canonical build and deployment adapter for Next.js 16 App Router on Cloudflare Pages, superseding the output directory and deploy command specifications of [`ADR-0001`](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md#L1-L50) and [`ADR-0002`](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md#L1-L50).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md`
 
 ---
@@ -25,7 +28,7 @@ authoritative_references:
 
 - `ADDED`: Established `@opennextjs/cloudflare` as the build output bundler, targeting `.open-next/assets` and `.open-next/worker.js`.
 - `ADDED`: Created `open-next.config.ts` using `defineCloudflareConfig()` for declarative adapter caching and binding configurations.
-- `SUPERSEDED`: Superseded `.vercel/output/static` build output target from [`ADR-0001`](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md#L54-L61) and explicit deployment script parameters from [`ADR-0002`](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md#L48-L67).
+- `SUPERSEDED`: Superseded `.vercel/output/static` build output target from [`ADR-0001`](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md#L54-L61) and explicit deployment script parameters from [`ADR-0002`](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md#L48-L67).
 
 ---
 

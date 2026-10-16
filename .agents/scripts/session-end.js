@@ -223,9 +223,12 @@ async function main() {
   }
 
   // Decide whether to call LLM for a richer summary.
-  // Triggers: context remaining < 20%, or every 50 user messages as a baseline.
+  // When Graphify Knowledge Graph is authoritative, skip secondary LLM summarization passes.
+  const memoryMdPath = path.join(process.cwd(), '.agents', 'memory.md');
+  const isGraphifyActive = fs.existsSync(memoryMdPath) && fs.readFileSync(memoryMdPath, 'utf8').includes('Graphify');
+
   let llmSummary = null;
-  if (transcriptPath && summary && fs.existsSync(transcriptPath)) {
+  if (!isGraphifyActive && transcriptPath && summary && fs.existsSync(transcriptPath)) {
     const contextPct = getContextRemainingPct(transcriptPath);
     const isContextLow = contextPct !== null && contextPct < getContextThreshold();
     const interval = parseInt(process.env.ECC_LLM_SUMMARY_INTERVAL || '50', 10);

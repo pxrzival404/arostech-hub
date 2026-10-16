@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_strategy"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120"
   vision: "file:///d:/dev/arostech-hub/docs/strategy/vision.md#L1-L60"
 ---
 
 # System Runtime & Platform Compatibility Matrix
 
+> **TL;DR**: Authoritative specification and architectural reference for System Runtime & Platform Compatibility Matrix within the DBSN platform (docs/strategy/compatibility-matrix.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document defines the target runtime compatibility matrix and platform bindings for PT Daya Berkah Sentosa Nusantara (`arostech-hub`), fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)).
+> **Authoritative Baseline Reference**: This document defines the target runtime compatibility matrix and platform bindings for PT Daya Berkah Sentosa Nusantara (`arostech-hub`), fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)).
 
 ---
 
@@ -103,4 +106,4 @@ The system SHALL execute only on approved runtime versions (Node.js 20+, Next.js
 
 - **Graphify Node**: `doc:docs/strategy/compatibility-matrix.md`
 - **Community**: `community_strategy`
-- **Authoritative Anchor**: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)
+- **Authoritative Anchor**: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)

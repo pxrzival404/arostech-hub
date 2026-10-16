@@ -1,0 +1,43 @@
+{
+  "folder": "docs/operations/runbooks",
+  "description": "Deployment, DNS cutover, release process, incident response, and client onboarding runbooks",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-OPS-RUN-ONBOARDING",
+      "file": "client-onboarding-and-tracking.md",
+      "title": "Client Onboarding & Project Tracking Portal Management Runbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Client Onboarding & Project Tracking Portal Management Runbook within the DBSN platform (docs/operations/runbooks/client-onboarding-and-tracking.md)."
+    },
+    {
+      "id": "RUN-DEP-001",
+      "file": "deployment.md",
+      "title": "Greenfield Cloudflare Pages Deployment Runbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Greenfield Cloudflare Pages Deployment Runbook within the DBSN platform (docs/operations/runbooks/deployment.md)."
+    },
+    {
+      "id": "RUN-DNS-001",
+      "file": "dns-cutover.md",
+      "title": "DNS Cutover Checklist & Target Mapping Matrix",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for DNS Cutover Checklist & Target Mapping Matrix within the DBSN platform (docs/operations/runbooks/dns-cutover.md)."
+    },
+    {
+      "id": "DOC-OPS-RUN-INCIDENT-5STEP",
+      "file": "incident-response-5-step.md",
+      "title": "Operational 5-Step Incident Response Protocol Runbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Operational 5-Step Incident Response Protocol Runbook within the DBSN platform (docs/operations/runbooks/incident-response-5-step.md)."
+    },
+    {
+      "id": "DOC-OPS-RUN-RELEASE",
+      "file": "release-process.md",
+      "title": "Release Management & Cloudflare Deployment Pipeline Runbook",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Release Management & Cloudflare Deployment Pipeline Runbook within the DBSN platform (docs/operations/runbooks/release-process.md)."
+    }
+  ],
+  "subfolders": []
+}

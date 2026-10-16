@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_ops"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35"
   security_policy: "file:///d:/dev/arostech-hub/docs/operations/security/security-policy.md#L1-L35"
   dns_cutover: "file:///d:/dev/arostech-hub/docs/operations/runbooks/dns-cutover.md#L1-L35"
 ---
 
 # Greenfield Cloudflare Pages Deployment Runbook
 
-> **Authoritative Baseline Reference**: This runbook documents build commands, environment variable schemas, edge configuration, and deployment pipelines for the **DBSN Centralized Digital Ecosystem** on Cloudflare Pages, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35)).
+> **TL;DR**: Authoritative specification and architectural reference for Greenfield Cloudflare Pages Deployment Runbook within the DBSN platform (docs/operations/runbooks/deployment.md).
+
+
+> **Authoritative Baseline Reference**: This runbook documents build commands, environment variable schemas, edge configuration, and deployment pipelines for the **DBSN Centralized Digital Ecosystem** on Cloudflare Pages, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35)).
 
 ---
 
@@ -35,7 +38,7 @@ authoritative_references:
 
 ## 1. Deployment Architecture & Domain Topology
 
-The greenfield platform compiles a single Next.js 16 application via `@cloudflare/next-on-pages` and deploys it to Cloudflare Pages edge network. Incoming HTTP requests SHALL be processed by Edge Middleware and routed across 7 canonical hostnames.
+The greenfield platform compiles a single Next.js 16 application via `@opennextjs/cloudflare` (`.open-next/assets`) and deploys it to Cloudflare Pages edge network. Incoming HTTP requests SHALL be processed by Edge Middleware and routed across 7 canonical hostnames.
 
 ```
                   ┌──────────────────────┐

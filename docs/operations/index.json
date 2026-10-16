@@ -1,0 +1,19 @@
+{
+  "folder": "docs/operations",
+  "description": "Operational runbooks, incident response procedures, security policies, and historical audit findings",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "DOC-OPS-INDEX",
+      "file": "README.md",
+      "title": "Operations & Security Master Index",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Operations & Security Master Index (`docs/operations/`) within the DBSN platform (docs/operations/README.md)."
+    }
+  ],
+  "subfolders": [
+    "audits",
+    "runbooks",
+    "security"
+  ]
+}

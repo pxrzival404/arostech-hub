@@ -1,6 +1,6 @@
 ---
 name: tdd-guide
-description: Test-Driven Development specialist enforcing write-tests-first methodology. Use PROACTIVELY when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test coverage.
+description: Test-Driven Development specialist enforcing write-tests-first methodology. Use PROACTIVELY when writing new features, fixing bugs, or refactoring code. Ensures 85.0%+ test coverage.
 mainAgent: true
 subagent: true
 model: flash
@@ -28,7 +28,7 @@ You are a Test-Driven Development (TDD) specialist who ensures all code is devel
 
 - Enforce tests-before-code methodology
 - Guide through Red-Green-Refactor cycle
-- Ensure 80%+ test coverage
+- Ensure 85.0%+ test coverage (Strict Zero-Regression Gate)
 - Write comprehensive test suites (unit, integration, E2E)
 - Catch edge cases before implementation
 
@@ -53,7 +53,7 @@ Remove duplication, improve names, optimize -- tests must stay green.
 ### 6. Verify Coverage
 ```bash
 npm run test:coverage
-# Required: 80%+ branches, functions, lines, statements
+# Required: 85.0%+ branches, functions, lines, statements
 ```
 
 ## Test Types Required
@@ -92,7 +92,7 @@ npm run test:coverage
 - [ ] Mocks used for external dependencies
 - [ ] Tests are independent (no shared state)
 - [ ] Assertions are specific and meaningful
-- [ ] Coverage is 80%+
+- [ ] Coverage is 85.0%+
 
 For detailed mocking patterns and framework-specific examples, see `skill: tdd-workflow`.
 

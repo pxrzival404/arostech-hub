@@ -6,6 +6,9 @@ command: true
 
 # Instinct Status Command
 
+> [!NOTE]
+> **Memory Standard Notice**: File-based ECC instincts are superseded by **Graphify Knowledge Graph** (`graphify-out/`). Use `graphify query` or `graphify-out/wiki/` for architecture context.
+
 Shows learned instincts for the current project plus global instincts, grouped by domain.
 
 ## Implementation

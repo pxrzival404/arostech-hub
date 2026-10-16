@@ -6,14 +6,17 @@ status: ACCEPTED
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L753-L797"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L753-L797"
   api_ref: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L194-L241"
   adr_0005: "file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L116"
   adr_0007: "file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md#L1-L50"
-  auth_findings: "file:///d:/dev/arostech-hub/docs/audit/auth-findings.md#L1-L150"
+  auth_findings: "file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/auth-findings.md#L1-L150"
 ---
 
 # ADR-0006: Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture
+
+> **TL;DR**: Authoritative specification and architectural reference for ADR-0006: Auth.js v5 Cloudflare Edge Runtime Split-Config Architecture within the DBSN platform (docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md).
+
 
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-13 Cloudflare Edge Runtime Auth Baseline`  
 > **Authoritative Baseline Reference**: Architectural Decision Record defining the Cloudflare Edge Runtime authentication architecture, resolving Edge runtime incompatibilities between Auth.js v5, Prisma ORM, and bcryptjs.
@@ -33,7 +36,7 @@ authoritative_references:
 
 The **DBSN Centralized Digital Ecosystem** deploys to Cloudflare Pages via `@opennextjs/cloudflare` (superseding legacy `@cloudflare/next-on-pages` per [`ADR-0007`](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md)). The platform relies on Next.js 16 Edge Middleware (`src/middleware.ts`) for host mapping, subdomain rewriting (`dashboard.dayaberkah.id`, `pju`, `solarcell`, etc.), and session security enforcement.
 
-During the Card 1.5 Auth + ADR Audit ([`auth-findings.md`](file:///d:/dev/arostech-hub/docs/audit/auth-findings.md#L1-L150)), a critical architectural defect was confirmed:
+During the Card 1.5 Auth + ADR Audit ([`auth-findings.md`](file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/auth-findings.md#L1-L150)), a critical architectural defect was confirmed:
 1. `src/lib/auth/auth.config.ts` eagerly instantiates `PrismaAdapter(prisma)` and imports `bcryptjs` at the top-level module root.
 2. `src/app/api/auth/[...nextauth]/route.ts`, `src/app/api/auth/forgot-password/route.ts`, and `src/app/api/auth/reset-password/route.ts` declare `export const runtime = 'edge'`.
 
@@ -227,6 +230,6 @@ To complete Wave 1 implementation, execute the following step-by-step modificati
 
 - Knowledge Graph Node ID: `doc:docs/system/adr/0006-authjs-v5-cloudflare-edge-runtime-split-config.md`
 - Graphify Community: `community_adr`
-- PRD Baseline Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L753-L797)
+- PRD Baseline Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L753-L797)
 - API Reference: [`reference.md`](file:///d:/dev/arostech-hub/docs/system/api/reference.md#L194-L241)
-- Auth Findings Reference: [`auth-findings.md`](file:///d:/dev/arostech-hub/docs/audit/auth-findings.md#L1-L150)
+- Auth Findings Reference: [`auth-findings.md`](file:///d:/dev/arostech-hub/docs/operations/audits/phase-1-findings/auth-findings.md#L1-L150)

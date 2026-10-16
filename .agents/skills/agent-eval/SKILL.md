@@ -1,10 +1,10 @@
 ---
 name: agent-eval
-description: Head-to-head comparison of coding agents (Claude Code, Aider, Codex, etc.) on custom tasks with pass rate, cost, time, and consistency metrics
+description: Head-to-head comparison of coding agents (Antigravity, Claude Code, Aider, Codex, etc.) on custom tasks with pass rate, cost, time, and consistency metrics
 license: MIT
 metadata:
   origin: ECC
-tools: run_command, write_to_file, replace_file_content, multi_replace_file_content, view_file, grep_search, Read, Write, Edit, Bash, Grep, Glob
+tools: run_command, write_to_file, replace_file_content, multi_replace_file_content, view_file, grep_search
 ---
 
 # Agent Eval Skill

@@ -25,7 +25,13 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { extractCommandSubstitutions, extractSubshellGroups, extractBraceGroups } = require('./lib/shell-substitution');
+let shellSub;
+try {
+  shellSub = require('./lib/shell-substitution');
+} catch {
+  shellSub = require('../lib/shell-substitution');
+}
+const { extractCommandSubstitutions, extractSubshellGroups, extractBraceGroups } = shellSub;
 
 // Session state — scoped per session to avoid cross-session races.
 const STATE_DIR = process.env.GATEGUARD_STATE_DIR || path.join(process.env.HOME || process.env.USERPROFILE || '/tmp', '.gateguard');
@@ -749,7 +755,16 @@ function hashSessionKey(prefix, value) {
 }
 
 function resolveSessionKey(data) {
-  const directCandidates = [data && data.session_id, data && data.sessionId, data && data.session && data.session.id, process.env.CLAUDE_SESSION_ID, process.env.ECC_SESSION_ID];
+  const directCandidates = [
+    data && data.conversationId,
+    data && data.conversation_id,
+    data && data.session_id,
+    data && data.sessionId,
+    data && data.session && data.session.id,
+    process.env.AGY_CONVERSATION_ID,
+    process.env.ANTIGRAVITY_SESSION_ID,
+    process.env.ECC_SESSION_ID
+  ];
 
   for (const candidate of directCandidates) {
     const sanitized = sanitizeSessionKey(candidate);
@@ -758,12 +773,12 @@ function resolveSessionKey(data) {
     }
   }
 
-  const transcriptPath = (data && (data.transcript_path || data.transcriptPath)) || process.env.CLAUDE_TRANSCRIPT_PATH;
+  const transcriptPath = (data && (data.transcript_path || data.transcriptPath)) || process.env.ANTIGRAVITY_TRANSCRIPT_PATH || process.env.TRANSCRIPT_PATH;
   if (transcriptPath && String(transcriptPath).trim()) {
     return hashSessionKey('tx', path.resolve(String(transcriptPath).trim()));
   }
 
-  const projectFingerprint = process.env.CLAUDE_PROJECT_DIR || process.cwd();
+  const projectFingerprint = process.env.ANTIGRAVITY_PROJECT_DIR || process.env.WORKSPACE_ROOT || process.cwd();
   return hashSessionKey('proj', path.resolve(projectFingerprint));
 }
 
@@ -1204,15 +1219,26 @@ function run(rawInput) {
   activeStateFile = null;
   getStateFile(data);
 
-  const rawToolName = data.tool_name || '';
-  const toolInput = data.tool_input || {};
-  // Normalize: case-insensitive matching via lookup map
-  const TOOL_MAP = { edit: 'Edit', write: 'Write', multiedit: 'MultiEdit', bash: 'Bash' };
+  const rawToolName = data.tool_name || data.toolName || data.name || data.toolCall?.name || '';
+  const toolInput = data.tool_input || data.toolInput || data.input || data.toolCall?.args || {};
+  // Normalize: case-insensitive matching via lookup map supporting Claude Code & Antigravity
+  const TOOL_MAP = {
+    edit: 'Edit',
+    write: 'Write',
+    multiedit: 'MultiEdit',
+    bash: 'Bash',
+    replace_file_content: 'Edit',
+    write_to_file: 'Write',
+    multi_replace_file_content: 'MultiEdit',
+    edit_file: 'Edit',
+    write_file: 'Write',
+    run_command: 'Bash'
+  };
   const toolName = TOOL_MAP[rawToolName.toLowerCase()] || rawToolName;
   const inSubagent = isSubagentInvocation(data);
 
   if (toolName === 'Edit' || toolName === 'Write') {
-    const filePath = toolInput.file_path || '';
+    const filePath = toolInput.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath || '';
     if (!filePath || isClaudeSettingsPath(filePath) || isExemptPath(filePath)) {
       return rawInput; // allow
     }
@@ -1241,9 +1267,9 @@ function run(rawInput) {
       return rawInput; // parent session already passed the first-touch file gate
     }
 
-    const edits = toolInput.edits || [];
+    const edits = toolInput.edits || toolInput.ReplacementChunks || [];
     for (const edit of edits) {
-      const filePath = edit.file_path || '';
+      const filePath = edit.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath || '';
       if (filePath && !isClaudeSettingsPath(filePath) && !isExemptPath(filePath) && !isChecked(filePath)) {
         const { ok, denials } = markCheckedAndCountDenial(filePath);
         if (!ok) {
@@ -1259,7 +1285,7 @@ function run(rawInput) {
   }
 
   if (toolName === 'Bash') {
-    const command = toolInput.command || '';
+    const command = toolInput.command || toolInput.CommandLine || toolInput.cmd || '';
     if (isReadOnlyGitIntrospection(command)) {
       return rawInput;
     }
@@ -1298,3 +1324,32 @@ function run(rawInput) {
 }
 
 module.exports = { run };
+
+if (require.main === module) {
+  const MAX_STDIN = 1024 * 1024;
+  let data = '';
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', chunk => {
+    if (data.length < MAX_STDIN) {
+      const remaining = MAX_STDIN - data.length;
+      data += chunk.substring(0, remaining);
+    }
+  });
+  process.stdin.on('end', () => {
+    const result = run(data);
+    if (typeof result === 'string') {
+      process.stdout.write(result);
+      process.exit(0);
+    } else if (result && typeof result === 'object') {
+      if (result.stdout) {
+        process.stdout.write(result.stdout + '\n');
+      } else {
+        process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+      }
+      process.exit(0);
+    } else {
+      process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+      process.exit(0);
+    }
+  });
+}

@@ -6,14 +6,17 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_ia"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120"
   user_flows: "file:///d:/dev/arostech-hub/docs/system/architecture/information-architecture/user-flows.md#L1-L50"
 ---
 
 # Information Architecture Sitemaps & Route Mapping
 
+> **TL;DR**: Authoritative specification and architectural reference for Information Architecture Sitemaps & Route Mapping within the DBSN platform (docs/system/architecture/information-architecture/sitemaps.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Authoritative Baseline Reference**: This document defines the sitemap hierarchy, route tree, and URL structures for Hub (`dayaberkah.id`), Spokes (`[spoke].dayaberkah.id`), and Client Dashboard (`dashboard.dayaberkah.id`), fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)).
+> **Authoritative Baseline Reference**: This document defines the sitemap hierarchy, route tree, and URL structures for Hub (`dayaberkah.id`), Spokes (`[spoke].dayaberkah.id`), and Client Dashboard (`dashboard.dayaberkah.id`), fully synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)).
 
 ---
 

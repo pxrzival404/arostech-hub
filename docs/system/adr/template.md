@@ -7,10 +7,13 @@ target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
   adr_index: "file:///d:/dev/arostech-hub/docs/system/adr/README.md#L1-L20"
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
 ---
 
 # Architecture Decision Record Template
+
+> **TL;DR**: Authoritative specification and architectural reference for Architecture Decision Record Template within the DBSN platform (docs/system/adr/template.md).
+
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Baseline Sync`  
 > **Authoritative Baseline Reference**: Canonical template for authoring Architecture Decision Records (ADRs) within the **DBSN Centralized Digital Ecosystem**, complying with PRD v4.0.0 ([`README.md`](file:///d:/dev/arostech-hub/docs/system/adr/README.md#L1-L20)).

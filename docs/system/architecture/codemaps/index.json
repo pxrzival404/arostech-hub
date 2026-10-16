@@ -1,0 +1,43 @@
+{
+  "folder": "docs/system/architecture/codemaps",
+  "description": "Concise codebase architecture maps across frontend, backend, data, security, and dependencies",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "ARCH-MAP-BACKEND-001",
+      "file": "backend.md",
+      "title": "System Backend Architecture & Code Terrain Map",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Backend Architecture & Code Terrain Map within the DBSN platform (docs/system/architecture/codemaps/backend.md)."
+    },
+    {
+      "id": "ARCH-MAP-DATA-001",
+      "file": "data.md",
+      "title": "System Data Layer & Schema Code Terrain Map",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Data Layer & Schema Code Terrain Map within the DBSN platform (docs/system/architecture/codemaps/data.md)."
+    },
+    {
+      "id": "ARCH-MAP-DEPS-001",
+      "file": "dependencies.md",
+      "title": "System Package Dependencies & Service Mapping",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Package Dependencies & Service Mapping within the DBSN platform (docs/system/architecture/codemaps/dependencies.md)."
+    },
+    {
+      "id": "ARCH-MAP-FRONTEND-001",
+      "file": "frontend.md",
+      "title": "System Frontend Architecture & Code Terrain Map",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for System Frontend Architecture & Code Terrain Map within the DBSN platform (docs/system/architecture/codemaps/frontend.md)."
+    },
+    {
+      "id": "ARCH-SEC-CODEMAP-001",
+      "file": "security.md",
+      "title": "Auth.js v5 Edge Security & Client Portal Access Codemap",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for Auth.js v5 Edge Security & Client Portal Access Codemap within the DBSN platform (docs/system/architecture/codemaps/security.md)."
+    }
+  ],
+  "subfolders": []
+}

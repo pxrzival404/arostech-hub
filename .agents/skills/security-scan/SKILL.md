@@ -1,30 +1,30 @@
 ---
 name: security-scan
-description: Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions.
+description: Scan your agent configuration (.agents/ directory, ~/.gemini/config/) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks AGENTS.md, settings.json, MCP servers, hooks, and agent definitions.
 metadata:
   origin: ECC
 ---
 
 # Security Scan Skill
 
-Audit your Claude Code configuration for security issues using [AgentShield](https://github.com/affaan-m/agentshield).
+Audit your agent configuration and workspace harness for security issues using [AgentShield](https://github.com/affaan-m/agentshield).
 
 ## When to Activate
 
-- Setting up a new Claude Code project
-- After modifying `.claude/settings.json`, `CLAUDE.md`, or MCP configs
+- Setting up a new agent workspace or harness configuration
+- After modifying `.agents/settings.json`, `.agents/hooks.json`, `AGENTS.md`, or MCP configs
 - Before committing configuration changes
-- When onboarding to a new repository with existing Claude Code configs
+- When onboarding to a new repository with existing agent configs
 - Periodic security hygiene checks
 
 ## What It Scans
 
-| File | Checks |
+| File / Directory | Checks |
 |------|--------|
-| `CLAUDE.md` | Hardcoded secrets, auto-run instructions, prompt injection patterns |
+| `AGENTS.md` / `GEMINI.md` | Hardcoded secrets, auto-run instructions, prompt injection patterns |
 | `settings.json` | Overly permissive allow lists, missing deny lists, dangerous bypass flags |
-| `mcp.json` | Risky MCP servers, hardcoded env secrets, npx supply chain risks |
-| `hooks/` | Command injection via interpolation, data exfiltration, silent error suppression |
+| `mcp_config.json` / `mcp.json` | Risky MCP servers, hardcoded env secrets, supply chain risks |
+| `hooks.json` & `scripts/` | Command injection, data exfiltration, silent error suppression, timeout safety |
 | `agents/*.md` | Unrestricted tool access, prompt injection surface, missing model specs |
 
 ## Prerequisites
@@ -39,21 +39,21 @@ npx ecc-agentshield --version
 npm install -g ecc-agentshield
 
 # Or run directly via npx (no install needed)
-npx ecc-agentshield scan .
+npx ecc-agentshield scan .agents
 ```
 
 ## Usage
 
 ### Basic Scan
 
-Run against the current project's `.claude/` directory:
+Run against the project's `.agents/` or root directory:
 
 ```bash
 # Scan current project
 npx ecc-agentshield scan
 
-# Scan a specific path
-npx ecc-agentshield scan --path /path/to/.claude
+# Scan .agents directory
+npx ecc-agentshield scan --path .agents
 
 # Scan with minimum severity filter
 npx ecc-agentshield scan --min-severity medium
@@ -105,7 +105,7 @@ This runs:
 
 ### Initialize Secure Config
 
-Scaffold a new secure `.claude/` configuration from scratch:
+Scaffold a new secure agent configuration from scratch:
 
 ```bash
 npx ecc-agentshield init
@@ -113,8 +113,8 @@ npx ecc-agentshield init
 
 Creates:
 - `settings.json` with scoped permissions and deny list
-- `CLAUDE.md` with security best practices
-- `mcp.json` placeholder
+- `AGENTS.md` with security best practices
+- `mcp_config.json` placeholder
 
 ### GitHub Action
 

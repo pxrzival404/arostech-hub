@@ -6,15 +6,18 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_api"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170"
   api_reference: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L1-L100"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150"
 ---
 
 # API & Adapter Extensibility Architecture
 
+> **TL;DR**: Authoritative specification and architectural reference for API & Adapter Extensibility Architecture within the DBSN platform (docs/system/api/extensibility.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Baseline Sync`  
-> **Authoritative Baseline Reference**: This document defines the extension patterns for adding product spokes, custom API route handlers, and external integration webhooks within the **DBSN Centralized Digital Ecosystem**, conforming to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)).
+> **Authoritative Baseline Reference**: This document defines the extension patterns for adding product spokes, custom API route handlers, and external integration webhooks within the **DBSN Centralized Digital Ecosystem**, conforming to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170)).
 
 ---
 
@@ -128,5 +131,5 @@ The system MUST validate all newly registered product spoke configurations again
 - Knowledge Graph Node ID: `doc:docs/system/api/extensibility.md`
 - Graphify Community: `community_api`
 - Authoritative API Reference Contract: [`reference.md`](file:///d:/dev/arostech-hub/docs/system/api/reference.md#L1-L100)
-- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L110-L170)
-- System Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150)
+- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L110-L170)
+- System Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150)

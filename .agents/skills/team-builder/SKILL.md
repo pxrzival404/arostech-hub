@@ -48,31 +48,30 @@ agents/
 
 ## Configuration
 
-Agents are discovered via two methods, merged and deduplicated by agent name:
+Agents are discovered via directory scanning and plugin configurations, merged and deduplicated by agent name:
 
-1. **`claude agents` command** (primary) — run `claude agents` to get all agents known to the CLI, including user agents, plugin agents (e.g. `ecc:architect`), and built-in agents. This automatically covers ECC marketplace installs without any path configuration.
-2. **File glob** (fallback, for reading agent content) — agent markdown files are read from:
-   - `./agents/**/*.md` + `./agents/*.md` — project-local agents
-   - `~/.claude/agents/**/*.md` + `~/.claude/agents/*.md` — global user agents
+1. **Workspace Agents**: `.agents/agents/**/*.md` + `.agents/agents/*.md`
+2. **Global Customizations**: `~/.gemini/config/agents/**/*.md` + `~/.gemini/config/agents/*.md`
+3. **Plugin Agents**: Agent definitions exposed via installed plugins in `~/.gemini/config/plugins/`
 
-Earlier sources take precedence when names collide: user agents > plugin agents > built-in agents. A custom path can be used instead if the user specifies one.
+Earlier sources take precedence when names collide: workspace agents > global user agents > plugin agents. A custom path can be used instead if the user specifies one.
 
 ## How It Works
 
 ### Step 1: Discover Available Agents
 
-Run `claude agents` to get the full agent list. Parse each line:
-- **Plugin agents** are prefixed with `plugin-name:` (e.g., `ecc:security-reviewer`). Use the part after `:` as the agent name and the plugin name as the domain.
-- **User agents** have no prefix. Read the corresponding markdown file from `~/.claude/agents/` or `./agents/` to extract the name and description.
-- **Built-in agents** (e.g., `Explore`, `Plan`) are skipped unless the user explicitly asks to include them.
+Scan the agent directories using `list_dir` / filesystem tools:
+- **Plugin agents** are prefixed with `plugin-name:` (e.g., `cloudflare:reviewer`). Use the part after `:` as the agent name and the plugin name as the domain.
+- **Custom agents** read the corresponding markdown file from `.agents/agents/` or `~/.gemini/config/agents/` to extract the name and description.
+  - In `arostech-hub`, custom agents are structured as `.agents/agents/<agent-name>/agent.md` (or `.agents/agents/<agent-name>.md`). For folder packages (`<agent-name>/agent.md`), the agent name is derived from the directory name `<agent-name>` or the `# Heading` inside `agent.md`.
 
-For user agents loaded from markdown files:
+For agents loaded from markdown files:
 - **Subdirectory layout:** extract the domain from the parent folder name
-- **Flat layout:** collect all filename prefixes (text before the first `-`). A prefix qualifies as a domain only if it appears in 2 or more filenames (e.g., `engineering-security-engineer.md` and `engineering-software-architect.md` both start with `engineering` → Engineering domain). Files with unique prefixes (e.g., `code-reviewer.md`, `tdd-guide.md`) are grouped under "General"
-- Extract the agent name from the first `# Heading`. If no heading is found, derive the name from the filename (strip `.md`, replace hyphens with spaces, title-case)
-- Extract a one-line summary from the first paragraph after the heading
+- **Flat layout:** collect all filename prefixes (text before the first `-`). A prefix qualifies as a domain only if it appears in 2 or more filenames (e.g., `engineering-security-engineer.md` and `engineering-software-architect.md` both start with `engineering` → Engineering domain). Files with unique prefixes are grouped under "General".
+- Extract the agent name from the first `# Heading`. If no heading is found, derive the name from the filename (strip `.md`, replace hyphens with spaces, title-case).
+- Extract a one-line summary from the first paragraph after the heading.
 
-If no agents are found after running `claude agents` and probing file locations, inform the user: "No agents found. Run `claude agents` to verify your setup." Then stop.
+If no agents are found, inform the user: "No custom agents found in `.agents/agents/` or `~/.gemini/config/agents/`." Then stop.
 
 ### Step 2: Present Domain Menu
 
@@ -107,9 +106,7 @@ What should they work on? (describe the task):
 
 1. Read each selected agent's markdown file
 2. Prompt for the task description if not already provided
-3. Spawn all agents in parallel using the Agent tool:
-   - `subagent_type: "general-purpose"`
-   - `prompt: "{agent file content}\n\nTask: {task description}"`
+3. Execute agent roles sequentially or via subagents with their specialized persona prompt:
    - Each agent runs independently — no inter-agent communication needed
 4. If an agent fails (error, timeout, or empty output), note the failure inline (e.g., "Security Engineer: failed — [reason]") and continue with results from agents that succeeded
 
@@ -128,15 +125,14 @@ If only 1 agent was selected, skip synthesis and present the output directly.
 
 - **Dynamic discovery only.** Never hardcode agent lists. New files in the directory auto-appear in the menu.
 - **Max 5 agents per team.** More than 5 produces diminishing returns and excessive token usage. Enforce at selection time.
-- **Parallel dispatch.** All agents run simultaneously — use the Agent tool's parallel invocation pattern.
-- **Parallel Agent calls, not TeamCreate.** This skill uses parallel Agent tool calls for independent work. TeamCreate (a Claude Code tool for multi-agent dialogue) is only needed when agents must debate or respond to each other.
+- **Modular execution.** Run independent tasks per agent and synthesize findings cleanly.
 
 ## Examples
 
 ```
 User: team builder
 
-Claude:
+Assistant:
 Available agent domains:
 1. Engineering (2) — Software Architect, Security Engineer
 2. Marketing (1) — SEO Specialist
@@ -147,15 +143,15 @@ Pick domains or name specific agents:
 
 User: security + seo
 
-Claude:
+Assistant:
 Selected: Security Engineer + SEO Specialist
 What should they work on?
 
 User: Review my Next.js e-commerce site before launch
 
-[Both agents spawn in parallel, each applying their specialty to the codebase]
+[Both agents evaluate in parallel, each applying their specialty to the codebase]
 
-Claude:
+Assistant:
 ## Security Engineer Findings
 - [findings...]
 
@@ -163,6 +159,7 @@ Claude:
 - [findings...]
 
 ## Synthesis
+```
 Both agents agree on: [...]
 Tension: Security recommends CSP that blocks inline styles, SEO needs inline schema markup. Resolution: [...]
 Next steps: [...]

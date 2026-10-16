@@ -28,19 +28,30 @@ No user prompt needed:
 3. Bug fix or new feature - Use **tdd-guide** agent
 4. Architectural decision - Use **architect** agent
 
-## Parallel Task Execution
+## Parallel Subagent Delegation
 
-ALWAYS use parallel Task execution for independent operations:
+ALWAYS use parallel `invoke_subagent` calls for independent operations:
 
-```markdown
-# GOOD: Parallel execution
-Launch 3 agents in parallel:
-1. Agent 1: Security analysis of auth module
-2. Agent 2: Performance review of cache system
-3. Agent 3: Type checking of utilities
-
-# BAD: Sequential when unnecessary
-First agent 1, then agent 2, then agent 3
+```json
+{
+  "Subagents": [
+    {
+      "TypeName": "security-reviewer",
+      "Role": "Security Specialist",
+      "Prompt": "Security analysis of auth module"
+    },
+    {
+      "TypeName": "performance-optimizer",
+      "Role": "Performance Specialist",
+      "Prompt": "Performance review of cache system"
+    },
+    {
+      "TypeName": "typescript-reviewer",
+      "Role": "Type Specialist",
+      "Prompt": "Type checking of utilities"
+    }
+  ]
+}
 ```
 
 ## Delegation Completion Contract

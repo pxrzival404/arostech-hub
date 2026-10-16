@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "agy-tool-comprehensive-eval-suite",
+  "version": "2.5.0",
+  "description": "Deterministic unit, integration, behavioral, and adversarial test assertions for agy-tool scripts/help.js.",
+  "targetScript": ".agents/skills/agy-tool/scripts/help.js",
+  "resourcesRegistry": ".agents/skills/agy-tool/resources/tools.json",
+  "suites": [
+    {
+      "id": "TC-001-DEFAULT-RUN",
+      "title": "Default invocation lists all categories with exit code 0",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["ANTIGRAVITY AGENT HARNESS TOOL INVENTORY", "NATIVE CORE", "MCP SERVERS", "CLI & TUI", "REPO WORKFLOWS"]
+      }
+    },
+    {
+      "id": "TC-002-CATEGORY-NATIVE",
+      "title": "--category native filters exclusively native tools",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --category native --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["NATIVE CORE", "view_file", "grep_search", "replace_file_content"],
+        "stdoutExcludes": ["MCP SERVERS", "CLI & TUI", "REPO WORKFLOWS", "/opsx-propose"]
+      }
+    },
+    {
+      "id": "TC-003-CATEGORY-MCP",
+      "title": "--category mcp filters exclusively MCP server tools",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --category mcp --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["MCP SERVERS", "context7", "graphify", "mcp-server-neon", "Sanity"],
+        "stdoutExcludes": ["NATIVE CORE", "view_file", "CLI & TUI", "REPO WORKFLOWS"]
+      }
+    },
+    {
+      "id": "TC-004-CATEGORY-CLI",
+      "title": "--category cli filters exclusively CLI commands and TUI hotkeys",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --category cli --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["CLI & TUI", "agy", "/compact", "/stats", "/model"],
+        "stdoutExcludes": ["NATIVE CORE", "MCP SERVERS", "REPO WORKFLOWS"]
+      }
+    },
+    {
+      "id": "TC-005-CATEGORY-REPO",
+      "title": "--category repo filters exclusively repository workflows and scripts",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --category repo --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["REPO WORKFLOWS", "/opsx-propose", "/opsx-apply", "help.js", "validate-ai-docs.cjs"],
+        "stdoutExcludes": ["NATIVE CORE", "MCP SERVERS", "CLI & TUI"]
+      }
+    },
+    {
+      "id": "TC-006-SEARCH-KEYWORD",
+      "title": "--search filters tools across name, summary, and server",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --search neon --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["mcp-server-neon", "Postgres"],
+        "stdoutExcludes": ["view_file", "playwright"]
+      }
+    },
+    {
+      "id": "TC-007-SEARCH-SANITY",
+      "title": "--search finds Sanity CMS tools and capabilities",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --search sanity --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["Sanity", "GROQ", "Content Lake"]
+      }
+    },
+    {
+      "id": "TC-008-INSPECT-EXACT",
+      "title": "--inspect renders typed parameter table and invariants",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect replace_file_content --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "ANTIGRAVITY TOOL SCHEMA & GUARDRAIL INSPECTOR",
+          "replace_file_content",
+          "PARAMETERS SPECIFICATION:",
+          "TargetContent",
+          "ReplacementContent",
+          "GUARDRAILS & CRITICAL INVARIANTS:",
+          "Exact Verbatim Whitespace"
+        ]
+      }
+    },
+    {
+      "id": "TC-009-INSPECT-QUALIFIED",
+      "title": "--inspect resolves server-qualified tool names",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect mcp-server-neon:run_sql --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "ANTIGRAVITY TOOL SCHEMA & GUARDRAIL INSPECTOR",
+          "mcp-server-neon",
+          "PARAMETERS SPECIFICATION:",
+          "project_id",
+          "sql"
+        ]
+      }
+    },
+    {
+      "id": "TC-010-INSPECT-FUZZY",
+      "title": "--inspect handles fuzzy queries gracefully with confidence score",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect repl_file --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "FUZZY MATCH",
+          "replace_file_content"
+        ]
+      }
+    },
+    {
+      "id": "TC-011-INSPECT-JSON",
+      "title": "--inspect --json outputs typed schema envelope",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect view_file --json",
+      "expected": {
+        "exitCode": 0,
+        "jsonValidation": {
+          "found": true,
+          "hasKeys": ["found", "matchType", "similarity", "tool"]
+        }
+      }
+    },
+    {
+      "id": "TC-012-RECIPE-REFACTOR",
+      "title": "--recipe refactor outputs prompt template and anti-hallucination tips",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --recipe refactor --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "DEVELOPER PROMPT FORMULA RECIPE",
+          "Surgical Single-Block Refactoring",
+          "PROMPT FORMULA TEMPLATE:",
+          "[functionName]",
+          "[filePath]",
+          "ANTI-HALLUCINATION TIPS:"
+        ]
+      }
+    },
+    {
+      "id": "TC-013-PROMPT-ALIAS",
+      "title": "--prompt alias correctly routes to recipe screen",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --prompt invoke_subagent --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "DEVELOPER PROMPT FORMULA RECIPE",
+          "Subagent Parallel Research Delegation",
+          "PROMPT FORMULA TEMPLATE:"
+        ]
+      }
+    },
+    {
+      "id": "TC-014-RECIPE-JSON",
+      "title": "--recipe --json outputs structured recipe envelope",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --recipe background_build --json",
+      "expected": {
+        "exitCode": 0,
+        "jsonValidation": {
+          "hasKeys": ["recipe", "data"]
+        }
+      }
+    },
+    {
+      "id": "TC-015-DOCTOR-HEALTH-CHECK",
+      "title": "--doctor runs fast probes and outputs diagnostic scorecard",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --doctor --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "ANTIGRAVITY SYSTEM DIAGNOSTICS & HEALTH DOCTOR",
+          "Node.js Runtime Environment",
+          "Git Bash / POSIX Toolchain Standard",
+          "Core Environment & Auth Variables",
+          "MCP Server Configurations",
+          "Active Repository & Skill Integrity"
+        ]
+      }
+    },
+    {
+      "id": "TC-016-DOCTOR-BUDGET-EXECUTION",
+      "title": "--doctor executes strictly within the <300ms budget limit",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --doctor --json",
+      "expected": {
+        "exitCode": 0,
+        "jsonValidation": {
+          "budgetSatisfied": true,
+          "maxExecutionMs": 300
+        }
+      }
+    },
+    {
+      "id": "TC-017-EXPORT-MD-CHEATSHEET",
+      "title": "--export-md generates complete 7-Pillars cheatsheet document",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --export-md .agents/skills/agy-tool/eval/test_cheatsheet.md",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["Successfully exported 7-Pillars Cheatsheet", "test_cheatsheet.md"]
+      }
+    },
+    {
+      "id": "TC-018-EXPORT-MD-JSON",
+      "title": "--export-md --json returns structured metadata with bytes and lines",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --export-md .agents/skills/agy-tool/eval/test_cheatsheet_json.md --json",
+      "expected": {
+        "exitCode": 0,
+        "jsonValidation": {
+          "success": true,
+          "hasKeys": ["success", "targetFile", "bytes", "lines"]
+        }
+      }
+    },
+    {
+      "id": "TC-019-JSON-ALL-CATALOG",
+      "title": "--all --json outputs machine-readable full catalog JSON envelope",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --all --json",
+      "expected": {
+        "exitCode": 0,
+        "jsonValidation": {
+          "schemaVersion": "1.0.0",
+          "hasKeys": ["schemaVersion", "count", "tools"]
+        }
+      }
+    },
+    {
+      "id": "TC-020-INSPECT-GRAPHIFY-QUERY-GRAPH",
+      "title": "--inspect graphify renders complete parameters including mode, depth, and token_budget",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect graphify --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "ANTIGRAVITY TOOL SCHEMA & GUARDRAIL INSPECTOR",
+          "graphify",
+          "PARAMETERS SPECIFICATION:",
+          "question",
+          "mode",
+          "depth",
+          "token_budget"
+        ]
+      }
+    },
+    {
+      "id": "TC-021-INSPECT-SHORTEST-PATH",
+      "title": "--inspect shortest_path renders graphify shortest path tool schema",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect shortest_path --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "ANTIGRAVITY TOOL SCHEMA & GUARDRAIL INSPECTOR",
+          "shortest_path",
+          "source",
+          "target",
+          "max_hops"
+        ]
+      }
+    },
+    {
+      "id": "TC-022-RECIPE-GRAPHIFY-BLAST-RADIUS",
+      "title": "--recipe graphify_blast_radius generates blast radius analysis prompt",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --recipe graphify_blast_radius --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "DEVELOPER PROMPT FORMULA RECIPE",
+          "Architectural Blast Radius & Path Tracing",
+          "shortest_path"
+        ]
+      }
+    },
+    {
+      "id": "TC-023-RECIPE-GRAPHIFY-MEMORY",
+      "title": "--recipe graphify_memory generates session reflection prompt",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --recipe graphify_memory --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "DEVELOPER PROMPT FORMULA RECIPE",
+          "Session Work Memory & Reflection Sync",
+          "graphify reflect"
+        ]
+      }
+    },
+    {
+      "id": "TC-024-SEARCH-GRAPHIFY-REFLECT",
+      "title": "--search reflect finds graphify reflect work memory tool",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --search reflect --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": [
+          "graphify reflect",
+          "Work Memory"
+        ]
+      }
+    },
+    {
+      "id": "TC-NEG-001-INSPECT-MISSING-ARG",
+      "title": "--inspect without tool name returns exit code 1",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect",
+      "expected": {
+        "exitCode": 1,
+        "stderrIncludes": ["Flag --inspect requires a tool name"]
+      }
+    },
+    {
+      "id": "TC-NEG-002-INSPECT-COLLISION-GUARD",
+      "title": "--inspect immediately followed by --json triggers validation error",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --inspect --json",
+      "expected": {
+        "exitCode": 1,
+        "stderrIncludes": ["Flag --inspect requires a tool name"]
+      }
+    },
+    {
+      "id": "TC-NEG-003-RECIPE-MISSING-ARG",
+      "title": "--recipe without argument triggers validation error",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --recipe",
+      "expected": {
+        "exitCode": 1,
+        "stderrIncludes": ["Flag --recipe requires an intent or tool name"]
+      }
+    },
+    {
+      "id": "TC-NEG-004-REDOS-SEARCH-IMMUNITY",
+      "title": "Nested quantifier regex passed to --search executes without hanging",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --search \"((((a+)+)+)+)+$\" --no-color",
+      "expected": {
+        "exitCode": 0,
+        "stdoutIncludes": ["Showing: 0/"]
+      }
+    },
+    {
+      "id": "TC-NEG-005-EXPORT-MD-INVALID-PATH",
+      "title": "--export-md with forbidden Windows characters returns exit code 1",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --export-md \"invalid:dir?/*name.md\"",
+      "expected": {
+        "exitCode": 1,
+        "stderrIncludes": ["Export path contains invalid filename characters"]
+      }
+    },
+    {
+      "id": "TC-NEG-006-JSON-ERROR-ENVELOPE",
+      "title": "Invalid category in --json mode returns structured JSON error envelope",
+      "command": "node .agents/skills/agy-tool/scripts/help.js --category malformed_cat --json",
+      "expected": {
+        "exitCode": 1,
+        "jsonValidation": {
+          "error": true,
+          "hasKeys": ["error", "message"]
+        }
+      }
+    }
+  ]
+}

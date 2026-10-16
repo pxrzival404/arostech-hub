@@ -1,0 +1,15 @@
+{
+  "folder": "docs/operations/security",
+  "description": "Vulnerability disclosure SLAs, security policies, and edge runtime protections",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "SEC-POL-001",
+      "file": "security-policy.md",
+      "title": "DBSN Security Policy & Incident Response Protocol",
+      "status": "LOCKED_BASELINE",
+      "summary": "Authoritative specification and architectural reference for DBSN Security Policy & Incident Response Protocol within the DBSN platform (docs/operations/security/security-policy.md)."
+    }
+  ],
+  "subfolders": []
+}

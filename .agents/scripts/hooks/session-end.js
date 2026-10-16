@@ -11,8 +11,18 @@
 
 const path = require('path');
 const fs = require('fs');
-const { getSessionsDir, getDateString, getTimeString, getSessionIdShort, sanitizeSessionId, getProjectName, ensureDir, readFile, writeFile, runCommand, stripAnsi, log } = require('./lib/utils');
-const { generateSessionSummary, getContextRemainingPct, getContextThreshold } = require('./lib/llm-summary');
+
+let utils, llmSummaryLib;
+try {
+  utils = require('./lib/utils');
+  llmSummaryLib = require('./lib/llm-summary');
+} catch {
+  utils = require('../lib/utils');
+  llmSummaryLib = require('../lib/llm-summary');
+}
+
+const { getSessionsDir, getDateString, getTimeString, getSessionIdShort, sanitizeSessionId, getProjectName, ensureDir, readFile, writeFile, runCommand, stripAnsi, log } = utils;
+const { generateSessionSummary, getContextRemainingPct, getContextThreshold } = llmSummaryLib;
 
 const SUMMARY_START_MARKER = '<!-- ECC:SUMMARY:START -->';
 const SUMMARY_END_MARKER = '<!-- ECC:SUMMARY:END -->';
@@ -223,9 +233,12 @@ async function main() {
   }
 
   // Decide whether to call LLM for a richer summary.
-  // Triggers: context remaining < 20%, or every 50 user messages as a baseline.
+  // When Graphify Knowledge Graph is authoritative, skip secondary LLM summarization passes.
+  const memoryMdPath = path.join(process.cwd(), '.agents', 'memory.md');
+  const isGraphifyActive = fs.existsSync(memoryMdPath) && fs.readFileSync(memoryMdPath, 'utf8').includes('Graphify');
+
   let llmSummary = null;
-  if (transcriptPath && summary && fs.existsSync(transcriptPath)) {
+  if (!isGraphifyActive && transcriptPath && summary && fs.existsSync(transcriptPath)) {
     const contextPct = getContextRemainingPct(transcriptPath);
     const isContextLow = contextPct !== null && contextPct < getContextThreshold();
     const interval = parseInt(process.env.ECC_LLM_SUMMARY_INTERVAL || '50', 10);

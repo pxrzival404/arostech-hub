@@ -6,6 +6,9 @@ command: /instinct-export
 
 # Instinct Export Command
 
+> [!NOTE]
+> **Memory Standard Notice**: File-based ECC instincts are superseded by **Graphify Knowledge Graph** (`graphify-out/`). Use `graphify query` for architecture memory.
+
 Exports instincts to a shareable format. Perfect for:
 - Sharing with teammates
 - Transferring to a new machine

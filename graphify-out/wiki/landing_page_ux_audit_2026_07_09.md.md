@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **landing-page-ux-audit-2026-07-09.md** (0 connections) — `docs/operations/audits/landing-page-ux-audit-2026-07-09.md`
+- **landing-page-ux-audit-2026-07-09.md** (0 connections) — `docs/operations/audits/archive/landing-page-ux-audit-2026-07-09.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/operations/audits/landing-page-ux-audit-2026-07-09.md`
+- `docs/operations/audits/archive/landing-page-ux-audit-2026-07-09.md`
 
 ## Audit Trail
 

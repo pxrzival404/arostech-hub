@@ -1,0 +1,36 @@
+{
+  "folder": "docs/system/data-model",
+  "description": "Canonical declarative Zod schemas, TypeScript interfaces, and Neon Prisma data models",
+  "layer": "high-level-architecture",
+  "documents": [
+    {
+      "id": "SYS-DATA-00",
+      "file": "00-overview.md",
+      "title": "Data Model 00: Overview & Database Architecture",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the database topology (Neon PostgreSQL via Prisma ORM), core data invariants, legacy schema supersession rules, and the deprecation policy."
+    },
+    {
+      "id": "SYS-DATA-01",
+      "file": "01-rfq-cart-schema.md",
+      "title": "Data Model 01: Universal RFQ Submission & Cart Schema Contracts",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the canonical declarative Zod schemas, TypeScript types, and Prisma relational models for Universal RFQ multi-item cart submissions and notification jobs."
+    },
+    {
+      "id": "SYS-DATA-02",
+      "file": "02-auth-session-schema.md",
+      "title": "Data Model 02: Auth.js v5 Session & User Authorization Schema",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the TypeScript contracts, Zod schemas, and Prisma models for Auth.js v5 user authentication, OAuth accounts, sessions, and client project scope filters."
+    },
+    {
+      "id": "SYS-DATA-03",
+      "file": "03-cms-content-schema.md",
+      "title": "Data Model 03: Sanity CMS Content Schemas & GROQ Bindings",
+      "status": "LOCKED_BASELINE",
+      "summary": "Defines the Sanity.io headless CMS schemas for products, certifications, portfolio showcases, and spoke configurations, including GROQ query contracts and ISR revalidation patterns."
+    }
+  ],
+  "subfolders": []
+}

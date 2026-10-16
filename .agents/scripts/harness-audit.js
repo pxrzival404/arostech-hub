@@ -40,7 +40,7 @@ const PROVIDERS = {
   },
   Cloudflare: {
     detect: (rootDir) =>
-      fileExists(rootDir, 'wrangler.toml') || fileExists(rootDir, 'wrangler.jsonc'),
+      fileExists(rootDir, 'wrangler.toml') || fileExists(rootDir, 'wrangler.jsonc') || fileExists(rootDir, 'wrangler.json'),
     keyPattern: /\b(cloudflare|wrangler)\b/i,
     buildPattern: /(wrangler|cloudflare)/i,
     workflowPattern: /(cloudflare\/wrangler-action|wrangler\s+(deploy|publish))/i,

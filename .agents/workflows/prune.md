@@ -6,6 +6,9 @@ command: true
 
 # Prune Pending Instincts
 
+> [!NOTE]
+> **Memory Standard Notice**: File-based ECC instincts are superseded by **Graphify Knowledge Graph** (`graphify-out/`).
+
 Remove expired pending instincts that were auto-generated but never reviewed or promoted.
 
 ## Implementation

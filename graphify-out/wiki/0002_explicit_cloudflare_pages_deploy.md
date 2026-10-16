@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **0002-explicit-cloudflare-pages-deploy-command.md** (0 connections) — `docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md`
+- **0002-explicit-cloudflare-pages-deploy-command.md** (0 connections) — `docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md`
+- `docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md`
 
 ## Audit Trail
 

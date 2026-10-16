@@ -1,5 +1,5 @@
 ---
-description: Load the most recent session file from ~/.claude/session-data/ and resume work with full context from where the last session ended.
+description: Load the most recent session file from .agents/sessions/ and resume work with full context from where the last session ended.
 ---
 
 # Resume Session Command
@@ -12,15 +12,14 @@ This command is the counterpart to `/save-session`.
 - Starting a new session to continue work from a previous day
 - After starting a fresh session due to context limits
 - When handing off a session file from another source (just provide the file path)
-- Any time you have a session file and want Claude to fully absorb it before proceeding
+- Any time you have a session file and want Antigravity to fully absorb it before proceeding
 
 ## Usage
 
 ```
-/resume-session                                                      # loads most recent file in ~/.claude/session-data/
-/resume-session 2024-01-15                                           # loads most recent session for that date
-/resume-session ~/.claude/session-data/2024-01-15-abc123de-session.tmp  # loads a current short-id session file
-/resume-session ~/.claude/sessions/2024-01-15-session.tmp               # loads a specific legacy-format file
+/resume-session                                            # loads most recent file in .agents/sessions/
+/resume-session 2026-08-15                                 # loads most recent session for that date
+/resume-session .agents/sessions/2026-08-15-conv-session.md # loads a specific session snapshot file
 ```
 
 ## Process
@@ -29,21 +28,18 @@ This command is the counterpart to `/save-session`.
 
 If no argument provided:
 
-1. Check `~/.claude/session-data/`
-2. Pick the most recently modified `*-session.tmp` file
+1. Check `.agents/sessions/`
+2. Pick the most recently modified `*-session.md` (or `*-session.tmp`) file
 3. If the folder does not exist or has no matching files, tell the user:
    ```
-   No session files found in ~/.claude/session-data/
+   No session files found in .agents/sessions/
    Run /save-session at the end of a session to create one.
    ```
    Then stop.
 
 If an argument is provided:
 
-- If it looks like a date (`YYYY-MM-DD`), search `~/.claude/session-data/` first, then the legacy
-  `~/.claude/sessions/`, for files matching `YYYY-MM-DD-session.tmp` (legacy format) or
-  `YYYY-MM-DD-<shortid>-session.tmp` (current format)
-  and load the most recently modified variant for that date
+- If it looks like a date (`YYYY-MM-DD`), search `.agents/sessions/` for files matching that date prefix
 - If it looks like a file path, read that file directly
 - If not found, report clearly and stop
 

@@ -11,7 +11,7 @@ globs: "next.config.ts, scripts/pages-build.js, wrangler.*, .wrangler.toml, wran
 > **Build Tool**: `@opennextjs/cloudflare ^1.0.0` (with `open-next.config.ts`)  
 > **Framework**: Next.js 16.2.6 (App Router)  
 > **Owner Agent**: `architect` (deployment architecture & pipeline governance)  
-> **Primary Authority**: [ADR-0007](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md) (Supersedes [ADR-0001](file:///d:/dev/arostech-hub/docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md) & [ADR-0002](file:///d:/dev/arostech-hub/docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md))
+> **Primary Authority**: [ADR-0007](file:///d:/dev/arostech-hub/docs/system/adr/0007-adopt-opennext-cloudflare-adapter.md) (Supersedes [ADR-0001](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md) & [ADR-0002](file:///d:/dev/arostech-hub/docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md))
 
 ---
 

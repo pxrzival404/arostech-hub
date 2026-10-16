@@ -6,15 +6,18 @@ status: ACCEPTED
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L29-L35"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L35-L80"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L29-L35"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L35-L80"
   api_reference: "file:///d:/dev/arostech-hub/docs/system/api/reference.md#L60-L120"
 ---
 
 # ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture
 
+> **TL;DR**: Authoritative specification and architectural reference for ADR-0004: Universal RFQ Cart Schema and Post-RFQ Lead Classification Architecture within the DBSN platform (docs/system/adr/0004-universal-rfq-cart-schema-and-post-rfq-lead-classification.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-12 PRD v3.5 & v4.0.0 Universal RFQ Transition`  
-> **Authoritative Baseline Reference**: Architectural Decision Record formalizing the unified, single-schema RFQ submission model (`rfqSubmissionSchema`) and post-submission lead classification pipeline, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L29-L35)) and system data model ([`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L35-L80)).
+> **Authoritative Baseline Reference**: Architectural Decision Record formalizing the unified, single-schema RFQ submission model (`rfqSubmissionSchema`) and post-submission lead classification pipeline, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L29-L35)) and system data model ([`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L35-L80)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0004-universal-rfq-cart-schema-and-post-rfq-lead-classification.md`
 
 ---

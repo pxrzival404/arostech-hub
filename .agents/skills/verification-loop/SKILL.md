@@ -1,6 +1,6 @@
 ---
 name: verification-loop
-description: "A comprehensive verification system for Claude Code sessions."
+description: "A comprehensive multi-phase verification loop for development sessions (build, typecheck, lint, test, security)."
 license: MIT
 metadata:
   origin: ECC
@@ -8,7 +8,7 @@ metadata:
 
 # Verification Loop Skill
 
-A comprehensive verification system for Claude Code sessions.
+A comprehensive multi-phase verification system for agent sessions.
 
 ## When to Use
 
@@ -19,6 +19,8 @@ Invoke this skill:
 - After refactoring
 
 ## Verification Phases
+
+Execute all verification commands sequentially using `run_command` in Git Bash (`bash` environment):
 
 ### Phase 1: Build Verification
 ```bash
@@ -57,7 +59,7 @@ ruff check . 2>&1 | head -30
 npm run test -- --coverage 2>&1 | tail -50
 
 # Check coverage threshold
-# Target: 80% minimum
+# Target: 85.0% minimum (Strict Zero-Regression Gate)
 ```
 
 Report:
@@ -125,5 +127,5 @@ Run: /verify
 
 ## Integration with Hooks
 
-This skill complements PostToolUse hooks but provides deeper verification.
+This skill complements PostToolUse hooks configured in [`.agents/hooks.json`](file:///d:/dev/arostech-hub/.agents/hooks.json) but provides deeper verification.
 Hooks catch issues immediately; this skill provides comprehensive review.

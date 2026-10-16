@@ -2,12 +2,13 @@
 name: openspec-explore
 description: Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.
 allowed-tools: Bash(openspec:*)
+tools: [run_command, view_file, grep_search, graphify:query_graph, graphify:get_neighbors, graphify:shortest_path]
 license: MIT
-compatibility: Requires openspec CLI.
+compatibility: Requires openspec CLI (v1.8.0+), Graphify MCP / CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.8.0"
+  version: "1.8.0"
+  memory_standard: "graphify-knowledge-graph"
 ---
 
 Enter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.
@@ -27,7 +28,7 @@ Enter explore mode. Think deeply. Visualize freely. Follow the conversation wher
 - **Visual** - Use ASCII diagrams liberally when they'd help clarify thinking
 - **Adaptive** - Follow interesting threads, pivot when new information emerges
 - **Patient** - Don't rush to conclusions, let the shape of the problem emerge
-- **Grounded** - Explore the actual codebase when relevant, don't just theorize
+- **Grounded in Knowledge Graph (Graphify)** - Explore the actual codebase via Graphify memory mapping (`graphify:query_graph` or `graphify query "<concept>"`) to ground architectural discussions in reality, not guesswork
 
 ---
 
@@ -41,11 +42,11 @@ Depending on what the user brings, you might:
 - Reframe the problem
 - Find analogies
 
-**Investigate the codebase**
-- Map existing architecture relevant to the discussion
-- Find integration points
-- Identify patterns already in use
-- Surface hidden complexity
+**Investigate the codebase (Graphify Memory Standard)**
+- Query knowledge graph (`graphify:query_graph` or `graphify query "<feature>"`) to map dependencies
+- Find shortest dependency paths (`graphify:shortest_path` or `graphify path "<moduleA>" "<moduleB>"`)
+- Identify god nodes and architectural clusters (`graphify:god_nodes` / `graphify:get_community`)
+- Map existing architecture relevant to the discussion and surface hidden complexity
 
 **Compare options**
 - Brainstorm multiple approaches

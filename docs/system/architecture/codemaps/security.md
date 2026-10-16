@@ -13,6 +13,9 @@ authoritative_references:
 
 # Auth.js v5 Edge Security & Client Portal Access Codemap
 
+> **TL;DR**: Authoritative specification and architectural reference for Auth.js v5 Edge Security & Client Portal Access Codemap within the DBSN platform (docs/system/architecture/codemaps/security.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-12 Auth.js v5 Security Codemap Baseline`  
 > **Authoritative Baseline Reference**: This document details the security architecture, Edge JWT token validation, role-based authorization matrix, and row-level client project access codemap for the **DBSN Centralized Digital Ecosystem**, fully synchronized with PRD v4.0.0 and ADR-0005 ([`adr_0005`](file:///d:/dev/arostech-hub/docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md#L1-L50)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/architecture/codemaps/security.md`

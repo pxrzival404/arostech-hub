@@ -1,29 +1,28 @@
 ---
 trigger: model_decision
-description: Hooks system rules, PreToolUse/PostToolUse/Stop hooks, auto-accept permissions, and TodoWrite best practices
+description: Hooks system rules, PreInvocation/PreToolUse/PostToolUse/Stop hooks, auto-accept permissions, and task tracking best practices
 ---
 
 # Hooks System
 
-## Hook Types
+## Hook Types (Antigravity Standard)
 
-- **PreToolUse**: Before tool execution (validation, parameter modification)
-- **PostToolUse**: After tool execution (auto-format, checks)
-- **Stop**: When session ends (final verification)
-
+- **PreInvocation**: Before model execution (inject contextual instructions/ephemeral messages via `injectSteps`)
+- **PreToolUse**: Before tool step executes (validate, block via `decision: 'deny'`, or prompt via `decision: 'ask'`)
+- **PostToolUse**: After tool step completes (auto-format tracking, diagnostics; expects `{}`)
+- **PostInvocation**: After tool calls finish (continuation control via `terminationBehavior`)
+- **Stop**: When execution loop terminates (verify completion; returns `{ decision: 'continue' }` or `{}`)
 
 ## Native Antigravity Platform Matchers
 
-When configuring .agents/hooks.json for Antigravity, Antigravity CLI, or Antigravity IDE:
-- Include native Antigravity tool names (
-un_command, write_to_file, 
-eplace_file_content, multi_replace_file_content) alongside legacy Bash/Edit/Write matchers.
+When configuring `.agents/hooks.json` for Antigravity:
+- Include native Antigravity tool names (`run_command`, `write_to_file`, `replace_file_content`, `multi_replace_file_content`) alongside legacy matchers.
 - Ensure all pre-tool security guardrails trigger uniformly across all Antigravity runtimes.
 
 ## Stop Hook Report-Only Guardrail
 
-- Stop hooks (stop-format-typecheck.js) MUST execute formatters in check-only / report-only mode by default.
-- Unprompted background disk writes (--write) during Stop execution are strictly prohibited unless ECC_FORMAT_WRITE=1 is explicitly passed.
+- Stop hooks (`stop-format-typecheck.js`) MUST execute formatters in check-only / report-only mode by default.
+- Unprompted background disk writes (`--write`) during Stop execution are strictly prohibited unless `ECC_FORMAT_WRITE=1` is explicitly passed.
 - Format notices and lint warnings must be output to stderr without mutating files on disk.
 
 ## Auto-Accept Permissions
@@ -32,22 +31,14 @@ Use with caution:
 - Enable for trusted, well-defined plans
 - Disable for exploratory work
 - Never use dangerously-skip-permissions flag
-- Configure `allowedTools` in `<harness-home>/settings.json` instead
+- Configure `allowedTools` in `.agents/settings.json` instead
 
-## TodoWrite Best Practices
+## Task & Plan Tracking Best Practices
 
-Use TodoWrite tool to:
-- Track progress on multi-step tasks
-- Verify understanding of instructions
-- Enable real-time steering
-- Show granular implementation steps
-
-Todo list reveals:
-- Out of order steps
-- Missing items
-- Extra unnecessary items
-- Wrong granularity
-- Misinterpreted requirements
+In Antigravity, track task execution via:
+- **`implementation_plan.md` artifacts** (`<appDataDir>/brain/<conversation-id>/implementation_plan.md`) with explicit GFM task checklists (`- [ ]`, `- [x]`).
+- **OpenSpec SDD Tasks** (`openspec/changes/<change-id>/tasks.md`) for Layer 3/5 TDD tracking.
+- Track progress systematically to reveal out-of-order steps, missing items, or wrong granularity.
 
 ## Graphify Post-Commit Hook (Layer 6 Automation)
 

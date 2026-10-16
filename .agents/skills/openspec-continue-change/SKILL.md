@@ -2,12 +2,13 @@
 name: openspec-continue-change
 description: Continue working on an OpenSpec change by creating the next artifact. Use when the user wants to progress their change, create the next artifact, or continue their workflow.
 allowed-tools: Bash(openspec:*)
+tools: [run_command, replace_file_content, write_to_file, view_file, grep_search, graphify:query_graph, graphify:get_neighbors]
 license: MIT
-compatibility: Requires openspec CLI.
+compatibility: Requires openspec CLI (v1.8.0+), Graphify MCP / CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.8.0"
+  version: "1.8.0"
+  memory_standard: "graphify-knowledge-graph"
 ---
 
 Continue working on a change by creating the next artifact.

@@ -6,15 +6,18 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_api"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L636-L797"
-  db_schema: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797"
+  db_schema: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150"
   routing_lifecycle: "file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L98"
 ---
 
 # Public API Reference Contracts
 
+> **TL;DR**: Authoritative specification and architectural reference for Public API Reference Contracts within the DBSN platform (docs/system/api/reference.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Baseline Sync`  
-> **Authoritative Baseline Reference**: This document defines canonical API contracts for all endpoints in the **DBSN Centralized Digital Ecosystem**, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L636-L797)).
+> **Authoritative Baseline Reference**: This document defines canonical API contracts for all endpoints in the **DBSN Centralized Digital Ecosystem**, adhering strictly to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797)).
 
 ---
 
@@ -300,6 +303,6 @@ Triggered by Sanity.io webhooks upon content publication or modification to exec
 
 - Knowledge Graph Node ID: `doc:docs/system/api/reference.md`
 - Graphify Community: `community_api`
-- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L636-L797)
-- Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model.md#L1-L150)
+- Authoritative PRD Reference: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L636-L797)
+- Data Model Reference: [`data-model.md`](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L1-L150)
 - Execution Lifecycle Reference: [`execution-lifecycle.md`](file:///d:/dev/arostech-hub/docs/system/architecture/execution-lifecycle.md#L1-L98)

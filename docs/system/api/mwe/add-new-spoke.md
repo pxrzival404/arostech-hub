@@ -7,11 +7,14 @@ target_domain: dayaberkah.id
 graphify_community: "community_api"
 authoritative_references:
   overview: "file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L40-L60"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L84-L105"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L84-L105"
   adr_0003: "file:///d:/dev/arostech-hub/docs/system/adr/0003-greenfield-hub-and-spoke-subdomain-routing.md#L1-L50"
 ---
 
 # Minimal Working Example: Adding a New Product Spoke Subdomain
+
+> **TL;DR**: Authoritative specification and architectural reference for Minimal Working Example: Adding a New Product Spoke Subdomain within the DBSN platform (docs/system/api/mwe/add-new-spoke.md).
+
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Baseline Sync`  
 > **Authoritative Baseline Reference**: This guide provides a step-by-step walk-through for registering and deploying a new product spoke subdomain within the **DBSN Greenfield Hub-and-Spoke Architecture**, adhering to PRD v4.0.0 ([`overview.md`](file:///d:/dev/arostech-hub/docs/system/architecture/overview.md#L40-L60)).

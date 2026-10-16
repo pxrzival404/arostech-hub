@@ -2,12 +2,13 @@
 name: openspec-onboard
 description: Guided onboarding for OpenSpec - walk through a complete workflow cycle with narration and real codebase work.
 allowed-tools: Bash(openspec:*)
+tools: [run_command, replace_file_content, write_to_file, view_file, grep_search, graphify:query_graph]
 license: MIT
-compatibility: Requires openspec CLI.
+compatibility: Requires openspec CLI (v1.8.0+), Graphify MCP / CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.8.0"
+  version: "1.8.0"
+  memory_standard: "graphify-knowledge-graph"
 ---
 
 Guide the user through their first complete OpenSpec workflow cycle. This is a teaching experience—you'll do real work in their codebase while explaining each step.

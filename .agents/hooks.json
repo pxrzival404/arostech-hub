@@ -1,18 +1,93 @@
 {
-  "version": "1.0.0",
-  "hooks": {
+  "agy-security-guard": {
+    "enabled": true,
     "PreToolUse": [
       {
-        "id": "pre:gateguard-fact-force",
-        "description": "Fact-forcing gate for pre-tool execution validation",
-        "handler": "./scripts/hooks/gateguard-fact-force.js",
-        "events": ["PreToolUse", "beforeSubmitPrompt"]
+        "matcher": "run_command|replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|bash|edit|write|multiedit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./scripts/pre-tool-guardrail-agy.js",
+            "timeout": 15
+          },
+          {
+            "type": "command",
+            "command": "node ./scripts/hooks/block-no-verify.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "gateguard-fact-force": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command|replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|bash|edit|write|multiedit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./scripts/hooks/gateguard-fact-force.js",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  },
+  "platform-rule-gates": {
+    "enabled": true,
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node ./scripts/pre-edit-rule-gate.cjs",
+        "timeout": 10
       },
       {
-        "id": "pre:platform-rule-gate",
-        "description": "Enforces AGENTS.md §2.3 Rule File Gating before domain file edits",
-        "handler": "./scripts/pre-edit-rule-gate.cjs",
-        "events": ["PreToolUse"]
+        "type": "command",
+        "command": "node ./scripts/pre-write-ai-doc-guard.cjs",
+        "timeout": 10
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|edit|write|multiedit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./scripts/pre-edit-rule-gate.cjs",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "node ./scripts/pre-write-ai-doc-guard.cjs",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "post-edit-tracker": {
+    "enabled": true,
+    "PostToolUse": [
+      {
+        "matcher": "replace_file_content|write_to_file|multi_replace_file_content|edit_file|write_file|edit|write|multiedit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./scripts/hooks/post-edit-accumulator.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "quality-verification-stop": {
+    "enabled": true,
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node ./scripts/stop-format-typecheck.js",
+        "timeout": 60
       }
     ]
   }

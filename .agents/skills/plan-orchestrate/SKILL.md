@@ -43,41 +43,43 @@ Where `{ORCH_CMD}` is determined in Phase 0 (see below). The command string in t
 - No `--mode` / `--gate` / `--agents=...` flags exist — never invent them.
 - Agent names come from the catalogue in this skill. Embedded double quotes in the task description are escaped as `\"`.
 
-## ECC install form and namespacing
+## Agent Catalogue and Namespacing
 
-Two install forms determine the prefix on **both** the slash command and every agent name. The two MUST stay in sync — one form per output, never mixed:
-
-Let `<claude-home>` denote the Claude Code home directory: `~/.claude` on macOS/Linux, `%USERPROFILE%\.claude` on Windows. Resolve it the way the host platform resolves the user home directory (do not hardcode `~`).
+Let `<harness-home>` denote the agent configuration root: `.agents` in workspace or `~/.gemini/config` globally.
 
 | Form | Detection | `{ORCH_CMD}` | Agent name format |
 |---|---|---|---|
-| Plugin install (2.0.0+) | `<claude-home>/plugins/marketplaces/ecc/` exists | `/ecc:orchestrate` | `ecc:<name>` |
-| Legacy bare install | Above absent; agent files under `<claude-home>/agents/` | `/orchestrate` | `<name>` |
-
-Why this matters: under the plugin install, agents register as `ecc:tdd-guide`. Bare names force fuzzy matching, which fails intermittently under parallel calls. Under legacy, the prefixed forms are not registered and fail outright.
+| Plugin install | Plugin directory in `<harness-home>/plugins/` | `/orchestrate` | `<name>` or `<plugin>:<name>` |
+| Standard install | Agent files under `.agents/agents/` | `/orchestrate` | `<name>` |
 
 ## Available agent catalogue (must pick from these)
 
-General:
+General & Architecture:
 - `planner` — requirement restatement, risk decomposition, step planning
-- `architect` — architecture, system design, refactor proposals
-- `tdd-guide` — write tests → implement → 80%+ coverage
+- `architect` / `code-architect` — architecture, system design, refactor proposals
+- `code-explorer` — deep execution path tracing and dependency mapping
+- `tdd-guide` — write tests → implement → 85.0%+ coverage (Strict Zero-Regression Gate)
 - `code-reviewer` — generic code review
 - `security-reviewer` — security audit, OWASP, secret leakage
 - `refactor-cleaner` — dead code, duplicates, knip-class cleanup
 - `doc-updater` — documentation, codemap, README
-- `docs-lookup` — third-party library API lookups (Context7)
+- `docs-lookup` / `research` — third-party library API lookups (Context7)
 - `e2e-runner` — end-to-end test orchestration
-- `database-reviewer` — PostgreSQL schema, migration, performance
+- `database-reviewer` — PostgreSQL / Neon schema, migration, performance
+- `a11y-architect` — WCAG 2.2 accessibility architect
+- `seo-specialist` — Core Web Vitals, metadata, structured data
 - `harness-optimizer` — local agent harness configuration
+- `agent-evaluator` — 5-axis quality scorecard evaluation
 - `loop-operator` — long-running autonomous loops
-- `chief-of-staff` — multi-channel triage (rarely a fit for plan steps)
 
 Build error resolvers:
-- `build-error-resolver` (generic) / `cpp-build-resolver` / `go-build-resolver` / `java-build-resolver` / `kotlin-build-resolver` / `rust-build-resolver` / `pytorch-build-resolver`
+- `build-error-resolver` (generic & TypeScript)
+- `react-build-resolver` (Next.js, Vite, React compile & hydration)
 
 Code reviewers:
-- `python-reviewer` / `typescript-reviewer` / `go-reviewer` / `rust-reviewer` / `cpp-reviewer` / `java-reviewer` / `kotlin-reviewer` / `flutter-reviewer`
+- `typescript-reviewer` (TypeScript/JavaScript, async safety)
+- `react-reviewer` (React/JSX, hooks, RSC boundaries, performance)
+- `code-simplifier` (clarity, consistency, dead code simplification)
 
 A misspelled agent name fails `/orchestrate`. Cross-check against this list before emitting.
 
@@ -86,13 +88,11 @@ A misspelled agent name fails `/orchestrate`. Cross-check against this list befo
 ### Phase 0 — Detect ECC mode + language
 
 1. Read `<plan-doc-path>`. If missing or empty, report and stop.
-2. Detect ECC install form once and freeze it into `ECC_MODE`. Algorithm (run in order, stop at the first match):
-   1. If `<claude-home>/plugins/marketplaces/ecc/` exists → `ECC_MODE=plugin`.
-   2. Else if `<claude-home>/agents/` exists and contains at least one ECC agent file (e.g. `tdd-guide.md`, `code-reviewer.md`) → `ECC_MODE=legacy`.
-   3. Else → default to `ECC_MODE=legacy` and emit a one-line warning at the top of the output: `> Warning: could not detect ECC install; defaulting to legacy form. If you use the plugin install, edit the prefixes manually.`
-   4. If both markers exist (mixed install), `plugin` wins — the plugin namespace is the only one that resolves agent names without fuzzy matching.
-
-   From this point on, every emitted line uses the matching prefix on **both** the slash command and every agent name. **Never emit both forms in the same output.**
+2. Detect agent installation once and freeze it into `ECC_MODE`. Algorithm:
+   1. If `.agents/agents/` or `~/.gemini/config/` exists → `ECC_MODE=native`.
+   2. Else if `<claude-home>/plugins/marketplaces/ecc/` exists → `ECC_MODE=plugin`.
+   3. Else if `<claude-home>/agents/` exists → `ECC_MODE=legacy`.
+   4. Else → default to `ECC_MODE=native`.
 3. Resolve `--lang`. When `auto`, run a polyglot-aware detection:
    - Probe markers: `pyproject.toml` / `uv.lock` / `requirements.txt` → python; `package.json` → typescript; `go.mod` → go; `Cargo.toml` → rust; `CMakeLists.txt` or top-level `*.cpp` → cpp; `pom.xml` / `build.gradle` (Java) → java; `build.gradle.kts` or top-level Kotlin → kotlin; `pubspec.yaml` → flutter.
    - **Polyglot tie-break**: if more than one marker matches, pick the language whose source files outnumber the others (count via `git ls-files`, excluding `vendor/`, `node_modules/`, `dist/`, `build/`, `.venv/`, generated files, and obvious test fixtures). On a tie or when no language exceeds 60% of source files, set `lang=unknown`.

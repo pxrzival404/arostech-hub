@@ -250,19 +250,35 @@ Only dispatch subagents for files listed in `graphify-out/.graphify_uncached.txt
 
 Load files from `graphify-out/.graphify_uncached.txt`. Split into chunks of 20-25 files each. Each image gets its own chunk (vision needs separate context). When splitting, group files from the same directory together so related artifacts land in the same chunk and cross-file relationships are more likely to be extracted.
 
-**Step B2 - Dispatch ALL subagents in a single message**
+**Step B2 - Dispatch ALL subagents in a single invoke_subagent call**
 
-Call the Agent tool multiple times IN THE SAME RESPONSE - one call per chunk. This is the only way they run in parallel. If you make one Agent call, wait, then make another, you are doing it sequentially and defeating the purpose.
+Call `invoke_subagent` with the `Subagents` array containing all chunks in a single tool call to run them in parallel:
 
-**IMPORTANT - subagent type:** Always use `subagent_type="general-purpose"`. Do NOT use `Explore` - it is read-only and cannot write chunk files to disk, which silently drops extraction results. General-purpose has Write and Bash access which the subagent needs.
+**IMPORTANT - subagent type:** Always use `TypeName: "self"` (or `subagent_type="general-purpose"` in Claude Code). Do NOT use `research` (or `Explore`) — it is read-only and cannot write chunk files to disk, which silently drops extraction results. The `self` subagent inherits write tools which the subagent needs to persist chunk files.
 
 Concrete example for 3 chunks:
+```json
+{
+  "Subagents": [
+    {
+      "TypeName": "self",
+      "Role": "AST Chunk Extractor 1",
+      "Prompt": "<Extraction Prompt for Chunk 1, saving to graphify-out/.graphify_chunk_01.json>"
+    },
+    {
+      "TypeName": "self",
+      "Role": "AST Chunk Extractor 2",
+      "Prompt": "<Extraction Prompt for Chunk 2, saving to graphify-out/.graphify_chunk_02.json>"
+    },
+    {
+      "TypeName": "self",
+      "Role": "AST Chunk Extractor 3",
+      "Prompt": "<Extraction Prompt for Chunk 3, saving to graphify-out/.graphify_chunk_03.json>"
+    }
+  ]
+}
 ```
-[Agent tool call 1: files 1-15, subagent_type="general-purpose"]
-[Agent tool call 2: files 16-30, subagent_type="general-purpose"]
-[Agent tool call 3: files 31-45, subagent_type="general-purpose"]
-```
-All three in one message. Not three separate messages.
+All chunks in one tool call.
 
 Each subagent receives this exact prompt (substitute FILE_LIST, CHUNK_NUM, TOTAL_CHUNKS, DEEP_MODE, and CHUNK_PATH).
 
@@ -281,10 +297,10 @@ See `references/extraction-spec.md` for the exact subagent prompt (JSON schema, 
 Wait for all subagents. For each result:
 - Check that `graphify-out/.graphify_chunk_NN.json` exists on disk — this is the success signal
 - If the file exists and contains valid JSON with `nodes` and `edges`, include it and save to cache
-- If the file is missing, the subagent was likely dispatched as read-only (Explore type) — print a warning: "chunk N missing from disk — subagent may have been read-only. Re-run with general-purpose agent." Do not silently skip.
+- If the file is missing, the subagent was likely dispatched as read-only (`research` / `Explore` type) — print a warning: "chunk N missing from disk — subagent may have been read-only. Re-run with `self` / general-purpose agent." Do not silently skip.
 - If a subagent failed or returned invalid JSON, print a warning and skip that chunk - do not abort
 
-If more than half the chunks failed or are missing, stop and tell the user to re-run and ensure `subagent_type="general-purpose"` is used.
+If more than half the chunks failed or are missing, stop and tell the user to re-run and ensure `TypeName="self"` is used.
 
 Merge all chunk files into `.graphify_semantic_new.json`. **After each Agent call completes, read the real token counts from the Agent tool result's `usage` field and write them back into the chunk JSON before merging** — the chunk JSON itself always has placeholder zeros. Then run:
 ```bash

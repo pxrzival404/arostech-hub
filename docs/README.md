@@ -1,17 +1,22 @@
 ---
 id: DOC-ROOT-INDEX
 title: DBSN Central Documentation Hub Master Index
-version: 4.0.0
+version: 5.0.0
 status: LOCKED_BASELINE
+target_domain: dayaberkah.id
 graphify_community: "community_root"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100"
+  workflow: "file:///d:/dev/arostech-hub/docs/engineering/governance/0xrizz-workflow.md#L1-L100"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100"
   ai_rules: "file:///d:/dev/arostech-hub/docs/engineering/governance/ai-agent-rules.md#L1-L60"
 ---
 
 # DBSN Documentation Hub — Master Index
 
-> **Authoritative Baseline Reference**: Central documentation hub for the **PT. Daya Berkah Sentosa Nusantara (DBSN)** centralized digital ecosystem, structured into 4 top-level domains, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100)).
+> **TL;DR**: Authoritative specification and architectural reference for DBSN Documentation Hub — Master Index within the DBSN platform (docs/README.md).
+
+
+> **Authoritative Baseline Reference**: Central documentation hub for the **PT Daya Berkah Sentosa Nusantara (DBSN)** centralized digital ecosystem, structured into 4 top-level domains, fully aligned with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100)).
 
 ---
 
@@ -32,7 +37,7 @@ authoritative_references:
 ### 1. Strategy & Scope (`docs/strategy/`)
 - 📄 [`vision.md`](file:///d:/dev/arostech-hub/docs/strategy/vision.md#L1-L60) — Strategic business context & design philosophy.
 - 📄 [`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L1-L60) — Release phase milestones & delivery targets.
-- 📄 [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L100) — Canonical Product Requirements Document (PRD v4.0.0).
+- 📄 [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L100) — Canonical Product Requirements Document (PRD v4.0.0).
 
 ### 2. System Architecture & API (`docs/system/`)
 - 📐 [`architecture/README.md`](file:///d:/dev/arostech-hub/docs/system/architecture/README.md#L1-L60) — System architecture overview & execution topology.

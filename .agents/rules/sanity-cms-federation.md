@@ -3,7 +3,7 @@
 > **Rule ID**: `RULE-CMS-001`  
 > **Project**: PT Daya Berkah Sentosa Nusantara (DBSN) — `arostech-hub`  
 > **Owner Agents**: `typescript-reviewer` (query type safety), `react-reviewer` (RSC data fetching)  
-> **Primary Authority**: [Data Model Spec](file:///d:/dev/arostech-hub/docs/system/data-model.md) & [Coding Standards](file:///d:/dev/arostech-hub/docs/engineering/governance/coding-standards.md)
+> **Primary Authority**: [Data Model Spec](file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md) & [Coding Standards](file:///d:/dev/arostech-hub/docs/engineering/governance/coding-standards.md)
 
 ---
 

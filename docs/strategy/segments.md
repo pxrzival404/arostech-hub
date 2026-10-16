@@ -6,16 +6,19 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_strategy"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L104-L186"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L104-L186"
   vision: "file:///d:/dev/arostech-hub/docs/strategy/vision.md#L1-L64"
   roadmap: "file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L1-L95"
 ---
 
 # Dokumen Persyaratan Produk (PRD)
+
+> **TL;DR**: Authoritative specification and architectural reference for Dokumen Persyaratan Produk (PRD) within the DBSN platform (docs/strategy/segments.md).
+
 ## Ekosistem Digital Terpadu DBSN — Pendekatan Berbasis Segmen Pelanggan
 
 > **OpenSpec SDD Lifecycle Mapping**: `MODIFIED: 2026-08-12 PRD v4.0.0 Greenfield Cascade`  
-> **Executive Companion Notice:** This document serves as the executive & segment-focused companion to the technical [**PRD v4.0.0**](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L15-L186).
+> **Executive Companion Notice:** This document serves as the executive & segment-focused companion to the technical [**PRD v4.0.0**](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L15-L186).
 
 **Disiapkan untuk:** Manajemen Eksekutif DBSN (CEO, CTO, COO)  
 **Tanggal:** 11 Mei 2026 (Updated August 2026 for Greenfield Baseline)  
@@ -40,7 +43,7 @@ authoritative_references:
 
 ### 1.1 Visi: Satu DBSN, Keberadaan Digital Terpadu
 
-PT. Daya Berkah Sentosa Nusantara (DBSN) mengonsolidasikan semua aset digital ke dalam **ekosistem digital terpusat** berbasis arsitektur *Hub-and-Spoke* (`dayaberkah.id`) yang melayani dua segmen pelanggan utama: Pejabat Pengadaan Pemerintah (B2G) dan Pembeli Teknis Sektor Swasta (B2B).
+PT Daya Berkah Sentosa Nusantara (DBSN) mengonsolidasikan semua aset digital ke dalam **ekosistem digital terpusat** berbasis arsitektur *Hub-and-Spoke* (`dayaberkah.id`) yang melayani dua segmen pelanggan utama: Pejabat Pengadaan Pemerintah (B2G) dan Pembeli Teknis Sektor Swasta (B2B).
 
 ### 1.2 Strategi Dua Jalur Pelanggan
 
@@ -153,7 +156,7 @@ Peta jalan implementasi untuk ekosistem terpadu `dayaberkah.id` terbagi ke dalam
 
 ### 5.4 Fase 4: Quality Gates & E2E Validation (Aktif — Q3 2026)
 - Pengoptimalan kinerja mobile dengan PageSpeed Insights (PSI) score ≥ 90.
-- Penegakan ambang batas pengujian minimum 80% coverage dan pengujian E2E Playwright.
+- Penegakan ambang batas pengujian minimum 85.0% coverage (Strict Zero-Regression Gate) dan pengujian E2E Playwright.
 - Finalisasi audit keamanan dan kesiapan peluncuran produksi.
 
 ---
@@ -182,5 +185,5 @@ Dengan mengkonsolidasikan tiga domain terpisah dan sistem terfragmentasi menjadi
 
 - Knowledge Graph Node ID: `doc:docs/strategy/segments.md`
 - Graphify Community: `community_strategy`
-- System PRD: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L120)
+- System PRD: [`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L120)
 - Master Engineering Roadmap: [`roadmap.md`](file:///d:/dev/arostech-hub/docs/strategy/roadmap.md#L1-L95)

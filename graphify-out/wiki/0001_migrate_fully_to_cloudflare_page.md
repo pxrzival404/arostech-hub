@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **0001-migrate-fully-to-cloudflare-pages.md** (0 connections) — `docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md`
+- **0001-migrate-fully-to-cloudflare-pages.md** (0 connections) — `docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md`
+- `docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md`
 
 ## Audit Trail
 

@@ -71,12 +71,10 @@ Categorize changed files: source, tests, docs, config, migrations.
 
 ### Planning Artifacts
 
-Check for related artifacts produced by `/plan-prd`, `/plan`, or the legacy PRP workflow:
-- `.claude/prds/` — PRDs this PR implements a milestone of
-- `.claude/plans/` — Plans executed by this PR
-- `.claude/PRPs/prds/` — legacy PRP PRDs
-- `.claude/PRPs/plans/` — legacy PRP implementation plans
-- `.claude/PRPs/reports/` — legacy PRP implementation reports
+Check for related artifacts produced by `/opsx-*`, `/plan-prd`, or `/plan`:
+- `openspec/changes/<change-id>/` — OpenSpec SDD change specs, proposal, and tasks
+- `docs/strategy/prds/` — PRDs this PR implements
+- Antigravity Brain `implementation_plan.md` and `walkthrough.md`
 
 Reference these in the PR body if they exist.
 

@@ -4,7 +4,7 @@
 
 ## Key Concepts
 
-- **prd.md** (0 connections) — `docs/strategy/prd.md`
+- **prd.md** (0 connections) — `docs/strategy/prd/00-overview-and-goals.md`
 
 ## Relationships
 
@@ -12,7 +12,7 @@
 
 ## Source Files
 
-- `docs/strategy/prd.md`
+- `docs/strategy/prd/00-overview-and-goals.md`
 
 ## Audit Trail
 

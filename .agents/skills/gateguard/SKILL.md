@@ -93,7 +93,7 @@ Triggers on: `rm -rf`, `git reset --hard`, `git push --force`, `drop table`, etc
 
 ### Option A: Use the ECC hook (zero install)
 
-The hook at `scripts/hooks/gateguard-fact-force.js` is included in this plugin. Enable it via hooks.json.
+The hook at `.agents/scripts/gateguard-fact-force.js` (or `.agents/scripts/hooks/gateguard-fact-force.js`) is configured in [`.agents/hooks.json`](file:///d:/dev/arostech-hub/.agents/hooks.json).
 
 If GateGuard blocks setup or repair work, start the session with
 `ECC_GATEGUARD=off`. For hook-level control, keep using
@@ -127,7 +127,7 @@ This adds `.gateguard.yml` for per-project configuration (custom messages, ignor
 - Customize gate messages for your domain. If your project has specific conventions, add them to the gate prompts.
 - Use `.gateguard.yml` to ignore paths like `.venv/`, `node_modules/`, `.git/`.
 
-## Related Skills
+## Related Skills & Agents
 
-- `safety-guard` — Runtime safety checks (complementary, not overlapping)
-- `code-reviewer` — Post-edit review (GateGuard is pre-edit investigation)
+- Skill: `safety-guard` — Runtime safety checks (complementary, not overlapping)
+- Agent: [`code-reviewer`](file:///d:/dev/arostech-hub/.agents/agents/code-reviewer/) — Post-edit review (GateGuard is pre-edit investigation)

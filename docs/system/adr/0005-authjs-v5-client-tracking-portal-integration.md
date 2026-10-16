@@ -6,15 +6,18 @@ status: ACCEPTED
 target_domain: dayaberkah.id
 graphify_community: "community_adr"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L48-L55"
-  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model.md#L25-L30"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L48-L55"
+  data_model: "file:///d:/dev/arostech-hub/docs/system/data-model/00-overview.md#L25-L30"
   config_schema: "file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L45-L65"
 ---
 
 # ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration
 
+> **TL;DR**: Authoritative specification and architectural reference for ADR-0005: Auth.js v5 JWT Session Model & Client Tracking Portal Integration within the DBSN platform (docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md).
+
+
 > **OpenSpec SDD Lifecycle Mapping**: `ADDED: 2026-08-12 Auth.js v5 Client Portal Baseline`  
-> **Authoritative Baseline Reference**: Architectural Decision Record defining the Auth.js v5 JWT authentication architecture, role-based authorization rules, and row-level client project scoping for `dashboard.dayaberkah.id`, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L48-L55)) and configuration schemas ([`configuration-schema.md`](file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L45-L65)).
+> **Authoritative Baseline Reference**: Architectural Decision Record defining the Auth.js v5 JWT authentication architecture, role-based authorization rules, and row-level client project scoping for `dashboard.dayaberkah.id`, synchronized with PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L48-L55)) and configuration schemas ([`configuration-schema.md`](file:///d:/dev/arostech-hub/docs/system/api/configuration-schema.md#L45-L65)).
 > **Graphify Knowledge Graph Anchoring**: Graphify Node ID: `doc:docs/system/adr/0005-authjs-v5-client-tracking-portal-integration.md`
 
 ---

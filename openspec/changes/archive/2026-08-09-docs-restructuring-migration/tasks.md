@@ -18,7 +18,7 @@
 ## 3. Simple File Moves (git mv — 1-to-1, no content change)
 
 - [x] 3.1 `git mv docs/system/project-roadmap.md docs/strategy/roadmap.md`
-- [x] 3.2 `git mv docs/prd/prd-v3.md docs/strategy/prd.md`
+- [x] 3.2 `git mv docs/prd/prd-v3.md docs/strategy/prd/00-overview-and-goals.md`
 - [x] 3.3 `git mv docs/prd/prd-c-level-segment-focus.md docs/strategy/segments.md`
 - [x] 3.4 `git mv docs/system/middleware-routing.md docs/system/architecture/execution-lifecycle.md`
 - [x] 3.5 `git mv "docs/CODEMAPS/backend.md" docs/system/architecture/codemaps/backend.md`
@@ -30,8 +30,8 @@
 - [x] 3.11 `git mv docs/ia/ia-strategy-navigation.md docs/system/architecture/information-architecture/navigation-strategy.md`
 - [x] 3.12 `git mv docs/adr/README.md docs/system/adr/README.md`
 - [x] 3.13 `git mv docs/adr/template.md docs/system/adr/template.md`
-- [x] 3.14 `git mv docs/adr/0001-migrate-fully-to-cloudflare-pages.md docs/system/adr/0001-migrate-fully-to-cloudflare-pages.md`
-- [x] 3.15 `git mv docs/adr/0002-explicit-cloudflare-pages-deploy-command.md docs/system/adr/0002-explicit-cloudflare-pages-deploy-command.md`
+- [x] 3.14 `git mv docs/adr/0001-migrate-fully-to-cloudflare-pages.md docs/system/adr/superseded/0001-migrate-fully-to-cloudflare-pages.md`
+- [x] 3.15 `git mv docs/adr/0002-explicit-cloudflare-pages-deploy-command.md docs/system/adr/superseded/0002-explicit-cloudflare-pages-deploy-command.md`
 - [x] 3.16 `git mv docs/api/api-reference.md docs/system/api/reference.md`
 - [x] 3.17 `git mv docs/api/env-configuration-schema.md docs/system/api/configuration-schema.md`
 - [x] 3.18 `git mv docs/mwe/add-api-endpoint.md docs/system/api/mwe/add-api-endpoint.md`
@@ -48,10 +48,10 @@
 - [x] 3.29 `git mv docs/system/dns-cutover-mapping.md docs/operations/runbooks/dns-cutover.md`
 - [x] 3.30 `git mv docs/audits/developer-fix-guide.md docs/operations/audits/developer-fix-guide.md`
 - [x] 3.31 `git mv docs/audits/verify-manual-tasks-prompt.md docs/operations/audits/verify-manual-tasks-prompt.md`
-- [x] 3.32 `git mv docs/audits/integration-health-audit-2026-07-14.md docs/operations/audits/integration-health-audit-2026-07-14.md`
-- [x] 3.33 `git mv docs/audits/landing-page-ux-audit-2026-07-09.md docs/operations/audits/landing-page-ux-audit-2026-07-09.md`
+- [x] 3.32 `git mv docs/audits/integration-health-audit-2026-07-14.md docs/operations/audits/archive/integration-health-audit-2026-07-14.md`
+- [x] 3.33 `git mv docs/audits/landing-page-ux-audit-2026-07-09.md docs/operations/audits/archive/landing-page-ux-audit-2026-07-09.md`
 - [x] 3.34 `git mv "docs/audits/lighthouse/desktop/dayaberkah.id-20260723T014653.json" docs/operations/audits/lighthouse/desktop/dayaberkah.id-20260723T014653.json`
-- [x] 3.35 `git mv "docs/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md" docs/operations/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md`
+- [x] 3.35 `git mv "docs/audits/lighthouse/recomendation/dayaberkah.id-20260723T014653.md" docs/operations/audits/archive/lighthouse-20260723-recommendation.md`
 
 ## 4. File Merges (content combination — creates new target files)
 
@@ -105,7 +105,7 @@
 - [x] 9.8 Update `docs/system/project-roadmap.md` (now at `docs/strategy/roadmap.md`): fix links to `AGENTS.md`, `testing/mocking-specs.md`, `development/local-setup.md`, `architecture/tdd-v1.md`
 - [x] 9.9 Update `docs/system/architecture/information-architecture/` files: fix relative cross-links between the 3 IA documents
 - [x] 9.10 Update `docs/operations/audits/developer-fix-guide.md`: fix link to `integration-health-audit-2026-07-14.md` (same directory, relative path unchanged — verify)
-- [x] 9.11 Update `docs/operations/audits/integration-health-audit-2026-07-14.md`: fix self-reference path string in agent prompt content
+- [x] 9.11 Update `docs/operations/audits/archive/integration-health-audit-2026-07-14.md`: fix self-reference path string in agent prompt content
 - [x] 9.12 Update `docs/engineering/governance/ai-agent-rules.md` (new AGENTS.md canonical file): update any internal doc path references in the rules body
 
 ## 10. Agent Rules & OpenSpec Sync

@@ -14,32 +14,22 @@
 
 'use strict';
 
-const crypto = require('crypto');
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
+let sessionIdentity;
+try {
+  sessionIdentity = require('../lib/session-identity');
+} catch {
+  sessionIdentity = require('./lib/session-identity');
+}
+const { getSessionTempPath } = sessionIdentity;
 
 const MAX_STDIN = 1024 * 1024;
-
-function getAccumFile() {
-  const raw =
-    process.env.CLAUDE_SESSION_ID ||
-    crypto.createHash('sha1').update(process.cwd()).digest('hex').slice(0, 12);
-  // Strip path separators and traversal sequences so the value is safe to embed
-  // directly in a filename regardless of what CLAUDE_SESSION_ID contains.
-  const sessionId = raw.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 64);
-  return path.join(os.tmpdir(), `ecc-edited-${sessionId}.txt`);
-}
-
-/**
- * @param {string} rawInput - Raw JSON string from stdin
- * @returns {string} The original input (pass-through)
- */
 const JS_TS_EXT = /\.(ts|tsx|js|jsx)$/;
 
-function appendPath(filePath) {
+function appendPath(accumFile, filePath) {
   if (filePath && JS_TS_EXT.test(filePath)) {
-    fs.appendFileSync(getAccumFile(), filePath + '\n', 'utf8');
+    fs.appendFileSync(accumFile, filePath + '\n', 'utf8');
   }
 }
 
@@ -50,12 +40,24 @@ function appendPath(filePath) {
 function run(rawInput) {
   try {
     const input = JSON.parse(rawInput);
-    // Edit / Write: single file_path
-    appendPath(input.tool_input?.file_path);
-    // MultiEdit: array of edits, each with its own file_path
-    const edits = input.tool_input?.edits;
+    const accumFile = getSessionTempPath('ecc-edited', input, '.txt');
+    const toolInput = input.tool_input || input.toolInput || input.input || input.toolCall?.args || input.args || input;
+    const target = toolInput.file_path || toolInput.TargetFile || toolInput.target_file || toolInput.filePath;
+
+    // Single file edit / write
+    if (target) {
+      appendPath(accumFile, target);
+    }
+
+    // Multi-edit / batch edits
+    const edits = toolInput.edits || toolInput.ReplacementChunks;
     if (Array.isArray(edits)) {
-      for (const edit of edits) appendPath(edit?.file_path);
+      for (const edit of edits) {
+        const editTarget = edit?.file_path || edit?.TargetFile || edit?.target_file || edit?.filePath || target;
+        if (editTarget) {
+          appendPath(accumFile, editTarget);
+        }
+      }
     }
   } catch {
     // Invalid input — pass through
@@ -70,7 +72,8 @@ if (require.main === module) {
     if (data.length < MAX_STDIN) data += chunk.substring(0, MAX_STDIN - data.length);
   });
   process.stdin.on('end', () => {
-    process.stdout.write(run(data));
+    run(data);
+    process.stdout.write('{}\n');
     process.exit(0);
   });
 }

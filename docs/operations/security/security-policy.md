@@ -6,13 +6,16 @@ status: LOCKED_BASELINE
 target_domain: dayaberkah.id
 graphify_community: "community_security"
 authoritative_references:
-  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35"
+  prd: "file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35"
   deployment_runbook: "file:///d:/dev/arostech-hub/docs/operations/runbooks/deployment.md#L1-L35"
 ---
 
 # DBSN Security Policy & Incident Response Protocol
 
-> **Authoritative Baseline Reference**: This document details the security posture, secret encryption standards, key rotation schedules, Auth.js v5 JWT policies, and incident response workflow for the **DBSN Centralized Digital Ecosystem** (`dayaberkah.id`), conforming to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd.md#L1-L35)).
+> **TL;DR**: Authoritative specification and architectural reference for DBSN Security Policy & Incident Response Protocol within the DBSN platform (docs/operations/security/security-policy.md).
+
+
+> **Authoritative Baseline Reference**: This document details the security posture, secret encryption standards, key rotation schedules, Auth.js v5 JWT policies, and incident response workflow for the **DBSN Centralized Digital Ecosystem** (`dayaberkah.id`), conforming to PRD v4.0.0 ([`prd.md`](file:///d:/dev/arostech-hub/docs/strategy/prd/00-overview-and-goals.md#L1-L35)).
 
 ---
 

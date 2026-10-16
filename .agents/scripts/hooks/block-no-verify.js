@@ -488,12 +488,16 @@ function extractCommand(rawInput) {
     const parsed = JSON.parse(trimmed);
     if (typeof parsed !== 'object' || parsed === null) return trimmed;
 
-    // Claude Code format: { tool_input: { command: "..." } }
-    const cmd = parsed.tool_input?.command;
-    if (typeof cmd === 'string') return cmd;
+    // Claude Code format: { tool_input: { command: "..." } } and Antigravity: { tool_input: { CommandLine: "..." } }
+    const inputObj = parsed.tool_input || parsed.toolInput || parsed.input || parsed.toolCall?.args || parsed.args || {};
+    if (typeof inputObj === 'object' && inputObj !== null) {
+      for (const key of ['CommandLine', 'command', 'cmd', 'input', 'shell', 'script']) {
+        if (typeof inputObj[key] === 'string') return inputObj[key];
+      }
+    }
 
-    // Generic JSON formats
-    for (const key of ['command', 'cmd', 'input', 'shell', 'script']) {
+    // Generic top-level JSON formats
+    for (const key of ['CommandLine', 'command', 'cmd', 'input', 'shell', 'script']) {
       if (typeof parsed[key] === 'string') return parsed[key];
     }
 
@@ -512,12 +516,14 @@ function run(rawInput) {
 
   if (result.blocked) {
     return {
-      exitCode: 2,
+      exitCode: 0,
+      decision: 'deny',
+      reason: result.reason,
       stderr: result.reason,
     };
   }
 
-  return { exitCode: 0 };
+  return { exitCode: 0, decision: 'allow' };
 }
 
 module.exports = { run };
@@ -538,9 +544,11 @@ if (require.main === module) {
 
     if (result.blocked) {
       process.stderr.write(result.reason + '\n');
-      process.exit(2);
+      process.stdout.write(JSON.stringify({ decision: 'deny', reason: result.reason }) + '\n');
+      process.exit(0);
     }
 
-    process.stdout.write(raw);
+    process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+    process.exit(0);
   });
 }

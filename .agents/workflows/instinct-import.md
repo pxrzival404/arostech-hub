@@ -6,6 +6,9 @@ command: true
 
 # Instinct Import Command
 
+> [!NOTE]
+> **Memory Standard Notice**: File-based ECC instincts are superseded by **Graphify Knowledge Graph** (`graphify-out/`). Use `graphify query` for architecture memory.
+
 ## Implementation
 
 Run the instinct CLI using the plugin root path:
