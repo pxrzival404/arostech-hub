@@ -1,0 +1,227 @@
+# Instincts generated from https://github.com/pxrzival404/arostech-hub
+# Generated: 2026-08-13T19:27:14.623Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: arostech-hub-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, style, chore, fix
+
+## Evidence
+
+- 7 commits analyzed
+- Detected conventional commit pattern
+- Examples: feat: initialize agent documentation, audit report templates, backend patterns, and graphify output infrastructure, style: remove unused legacy stylesheet and obsolete helper functions
+
+---
+id: arostech-hub-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Commit Length
+
+## Action
+
+Write moderate-length commit messages (~94 characters)
+
+## Evidence
+
+- Average commit message length: 94 chars
+- Based on 7 commits
+
+---
+id: arostech-hub-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Naming Files
+
+## Action
+
+Use kebab-case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: kebab-case
+
+---
+id: arostech-hub-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: arostech-hub-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: arostech-hub-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: app, lib
+
+---
+id: arostech-hub-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: arostech-hub-test-framework
+trigger: "when writing tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Test Framework
+
+## Action
+
+Use jest as the test framework
+
+## Evidence
+
+- Test framework detected: jest
+- File pattern: *.test.ts
+
+---
+id: arostech-hub-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: arostech-hub-test-mocking
+trigger: "when mocking dependencies in tests"
+confidence: 0.75
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Test Mocking
+
+## Action
+
+Use jest.mock for mocking
+
+## Evidence
+
+- Mocking pattern detected: jest.mock
+- Consistent across test files
+
+---
+id: arostech-hub-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/pxrzival404/arostech-hub
+---
+
+# Arostech Hub Test Types
+
+## Action
+
+Write unit, integration tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, integration
+- Coverage config: no
+
