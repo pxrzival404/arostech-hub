@@ -89,7 +89,7 @@
     "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.4.1",
     "lru-cache": "^11.5.1",
     "prisma": "^6.19.3",
